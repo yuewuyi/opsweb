@@ -1,0 +1,86 @@
+body{
+    background-color: #35353d;
+    font-family:  黑体;
+    color: white;
+}
+.checkbox{
+    vertical-align:middle;
+    margin-top:-2px;
+    margin-bottom:1px;
+}
+.login_form{
+    background-color: #3d4049;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+    top:45px;
+}
+.login_title{
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 25px ;
+    font-weight: bold;
+    letter-spacing: 4px;
+    position: absolute;
+    top:20px;
+}
+.text{
+    font-size: 15px;
+    letter-spacing: 4px;
+}
+.user_txt{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+.pwd_txt{
+    position: absolute;
+    top: 180px;
+    left: 50px;
+}
+.text_input{
+    width: 200px;
+    height: 30px;
+    color: black;
+}
+#user{
+    position: absolute;
+    top:120px;
+    left: 50px;
+}
+#pwd{
+    position: absolute;
+    top: 200px;
+    left: 50px;
+}
+.align{
+    vertical-align:middle;
+}
+.rember_login{
+    position: absolute;
+     top: 240px;
+    left: 50px;
+}
+#login_submit{
+    text-align: center;
+    width: 130px;
+    height: 30px;
+    background-color: #35353d;
+    border: none;
+    position: absolute;
+    top: 310px;
+    letter-spacing: 8px;
+    left: 85px;
+}
+#login_submit:hover{
+    font-weight: bold;
+    background-color: #505665;
+}
+#log_error{
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    color: dodgerblue;
+}

@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/index.css' %}">
+    <script src="{% static 'bootstrap/js/jquery-min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/js/top_memu.js' %}"></script>
+    <title>主页</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left_memu" id="sidebar">
+            <div class="left_top">
+
+            </div>
+        </div>
+        <div class="top_memu">
+            <div id="left_console" onMouseOver="memu_icon_style('over')" onmouseout="memu_icon_style('out')" onclick="sidebar_scla()">
+                <div id="memu_icon" ></div>.
+            </div>
+        </div>
+        <div  id="main">main</div>
+    </div>
+</body>
+</html>
