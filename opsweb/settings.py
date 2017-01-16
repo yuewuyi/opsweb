@@ -81,12 +81,11 @@ DATABASES = {
         'NAME': 'opsweb',
         'USER': 'root',
         'PASSWORD': 'suyue123',
-        'HOST': '192.168.2.114',
+#        'HOST': '192.168.2.114',
+        'HOST':'172.20.11.95',
         'PORT':'3306',
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
