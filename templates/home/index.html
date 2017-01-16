@@ -5,6 +5,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'home/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/sidebar.css' %}">
     <script src="{% static 'bootstrap/js/jquery-min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'home/js/top_memu.js' %}"></script>
@@ -14,8 +15,15 @@
     <div class="container">
         <div class="left_memu" id="sidebar">
             <div class="left_top">
-
             </div>
+            <div class="border"></div>
+            <ul class="navbar">
+                <li>监控</li>
+                <ul>
+                    <li>主机一览</li>
+                    <li>监控配置</li>
+                </ul>
+            </ul>
         </div>
         <div class="right_container">
             <div class="top_memu" id="header">
