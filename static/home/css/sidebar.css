@@ -40,7 +40,7 @@
     opacity:0.5;
 }
 .link_title:hover .title_mask{
-    width: 100%;
+    width: 100%  !important;
 }
 .link_title:hover{
     color: white;
@@ -50,4 +50,29 @@
 }
 .link_cont:hover{
     color: white;
+}
+.show_title{
+    display: block;
+    height: 40px;
+    background-color: #2c3b41;
+    align-content: center;
+    line-height: 40px;
+    position: relative;
+    color: white;
+    text-indent:20px;
+    font-size: 16px;
+}
+.show_mask{
+    width: 3px;
+    background-color: #1C1C1C;
+    position: absolute;
+    height: 40px;
+    transition: 0.3s 0s width ease;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    opacity:0.5;
+}
+.show_title:hover .show_mask{
+    width: 100%;
 }

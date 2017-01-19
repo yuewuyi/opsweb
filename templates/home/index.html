@@ -9,6 +9,7 @@
     <script src="{% static 'bootstrap/js/jquery-min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'home/js/top_memu.js' %}"></script>
+    <script src="{% static 'home/js/sidebar.js' %}"></script>
     <title>主页</title>
 </head>
 <body>
@@ -18,20 +19,22 @@
             <div id="accordion">
                 <div class="panel pan_group">
                     <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#montior">
-                        <span class="title_mask"></span><span class="glyphicon glyphicon-eye-open icon_style"> 监 控</span>
+                        <span class="title_mask" id="mon_mask"></span><span class="glyphicon glyphicon-eye-open icon_style"> 监 控</span>
                     </div>
                     <div id="montior" class="panel-collapse collapse">
+                        <span  class="show_title" onMouseOver="mask('over','mon_mask')" onmouseout="mask('out','mon_mask')"><span class="show_mask"></span>监 控</span>
                         <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
-                        <span class="link_cont"><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
+                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
                     </div>
                 </div>
                 <div class="panel pan_group">
                     <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#log">
-                        <span class="title_mask"></span><span class="glyphicon glyphicon-book icon_style"> 日  志</span>
+                        <span class="title_mask" id="log_mask"></span><span class="glyphicon glyphicon-book icon_style"> 日  志</span>
                     </div>
                     <div id="log" class="panel-collapse collapse">
-                        <span class="link_cont"><span class="glyphicon glyphicon-star-empty icon_style"> 日志查看</span></span>
-                        <span class="link_cont"><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
+                        <span  class="show_title" onMouseOver="mask('over','log_mask')" onmouseout="mask('out','log_mask')"><span class="show_mask"></span>日 志</span>
+                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 日志查看</span></span>
+                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
                     </div>
                 </div>
             </div>
