@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
@@ -14,16 +14,27 @@
 <body>
     <div class="container">
         <div class="left_memu" id="sidebar">
-            <div class="left_top">
+            <div class="left_top"></div>
+            <div id="accordion">
+                <div class="panel pan_group">
+                    <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#montior">
+                        <span class="title_mask"></span><span class="glyphicon glyphicon-eye-open icon_style"> 监 控</span>
+                    </div>
+                    <div id="montior" class="panel-collapse collapse">
+                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
+                        <span class="link_cont"><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
+                    </div>
+                </div>
+                <div class="panel pan_group">
+                    <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#log">
+                        <span class="title_mask"></span><span class="glyphicon glyphicon-book icon_style"> 日  志</span>
+                    </div>
+                    <div id="log" class="panel-collapse collapse">
+                        <span class="link_cont"><span class="glyphicon glyphicon-star-empty icon_style"> 日志查看</span></span>
+                        <span class="link_cont"><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
+                    </div>
+                </div>
             </div>
-            <div class="border"></div>
-            <ul class="navbar">
-                <li>监控</li>
-                <ul>
-                    <li>主机一览</li>
-                    <li>监控配置</li>
-                </ul>
-            </ul>
         </div>
         <div class="right_container">
             <div class="top_memu" id="header">

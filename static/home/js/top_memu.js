@@ -13,11 +13,11 @@ $(window).resize(function () {
 })
 function memu_icon_style(state) {
     if(state=='over'){
-        $("#left_console").css("backgroundColor","#35353d")
+        $("#left_console").css("backgroundColor","#1E282C")
         $("#memu_icon").css({"border-bottom-color":"#3d4049","border-top-color":"#3d4049","background-color":"#3d4049"})
     }
     else if(state=="out"){
-        $("#left_console").css("backgroundColor","#3d4049")
+        $("#left_console").css("backgroundColor","#222d32")
         $("#memu_icon").css({"border-bottom-color":"#35353d","border-top-color":"#35353d","background-color":"#35353d"})
     }
 }
