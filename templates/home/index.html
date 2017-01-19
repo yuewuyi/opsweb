@@ -13,20 +13,27 @@
     <title>主页</title>
 </head>
 <body>
+{#主体容器#}
     <div class="container">
+{#左边菜单#}
         <div class="left_memu" id="sidebar">
             <div class="left_top"></div>
+{#bootstrap面板#}
             <div id="accordion">
+{#面板一组#}
                 <div class="panel pan_group">
+{#面板父菜单，内部span依次为遮罩层，图标#}
                     <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#montior">
                         <span class="title_mask" id="mon_mask"></span><span class="glyphicon glyphicon-eye-open icon_style"> 监 控</span>
                     </div>
+{#面板子菜单，div内部第一行为显示父菜单名，后面则为子菜单，结构和父菜单的相似#}
                     <div id="montior" class="panel-collapse collapse">
                         <span  class="show_title" onMouseOver="mask('over','mon_mask')" onmouseout="mask('out','mon_mask')"><span class="show_mask"></span>监 控</span>
                         <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
                         <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
                     </div>
                 </div>
+{#面板二组#}
                 <div class="panel pan_group">
                     <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#log">
                         <span class="title_mask" id="log_mask"></span><span class="glyphicon glyphicon-book icon_style"> 日  志</span>
@@ -39,12 +46,15 @@
                 </div>
             </div>
         </div>
+{#右边主体#}
         <div class="right_container">
+{#头部#}
             <div class="top_memu" id="header">
                 <div id="left_console" onMouseOver="memu_icon_style('over')" onmouseout="memu_icon_style('out')" onclick="sidebar_scla()">
                     <div id="memu_icon" ></div>.
                 </div>
             </div>
+{#内容主体#}
             <div  id="main">main</div>
         </div>
     </div>
