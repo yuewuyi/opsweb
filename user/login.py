@@ -12,7 +12,7 @@ def login_post(request):
             else:
                 request.session.set_expiry(1209600);
             request.session['user']=request.POST['user']
-            return HttpResponse('OK')
+            return HttpResponse(request.session['user'])
         else:
             firstmessage = form.errors.as_data()
             return render(request,'user/index.html',{'error':firstmessage['user'][0].messages[0]})

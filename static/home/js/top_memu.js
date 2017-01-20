@@ -21,10 +21,13 @@ function memu_icon_style(state) {
 function sidebar_scla() {
     s_width=parseInt($("#sidebar").css("width"))
     s_max_width=200
-    s_min_width=45
+    s_min_width=0
     if (s_width==200){
         $("#sidebar").css("width",s_min_width)
+        $("#accordion").hide()
+
     }else {
         $("#sidebar").css("width",s_max_width)
+        $("#accordion").show()
     }
 }

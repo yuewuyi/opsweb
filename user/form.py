@@ -1,10 +1,11 @@
-import re
 from django import forms
 from user.models import User
 from django.core.exceptions import ObjectDoesNotExist
+import re
+#表单验证器
 class login_vlid(forms.Form):
     pwd = forms.CharField(max_length=600)
-    user = forms.CharField(max_length=30)
+    user = forms.CharField(max_length=20)
     def clean_user(self):
         pwd = self.cleaned_data['pwd']
         user = self.cleaned_data['user']
@@ -13,5 +14,6 @@ class login_vlid(forms.Form):
         try:
             User.objects.get(user=user,pwd=pwd)
             return user
+#抛出对象不存在异常
         except ObjectDoesNotExist:
             raise forms.ValidationError('用户名或密码错误')
