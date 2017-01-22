@@ -3,7 +3,7 @@ from user.models import User
 from django.core.exceptions import ObjectDoesNotExist
 import re
 #表单验证器
-class login_vlid(forms.Form):
+class LoginVlid(forms.Form):
     pwd = forms.CharField(max_length=600)
     user = forms.CharField(max_length=20)
     def clean_user(self):

@@ -49,6 +49,7 @@ MIDDLEWARE = [
     # 'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'user.auth.UserAuthMiddleware'
 ]
 
 ROOT_URLCONF = 'opsweb.urls'
@@ -61,7 +62,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                # 'django.template.context_processors.request',
+                'django.template.context_processors.request',
                 # # 'django.contrib.auth.context_processors.auth',
                 # #'django.contrib.messages.context_processors.messages',
             ],
@@ -81,8 +82,8 @@ DATABASES = {
         'NAME': 'opsweb',
         'USER': 'root',
         'PASSWORD': 'suyue123',
-        'HOST': '192.168.2.114',
-        # 'HOST':'172.20.11.95',
+        # 'HOST': '192.168.2.114',
+        'HOST':'172.20.11.95',
         'PORT':'3306',
     }
 }

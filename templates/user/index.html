@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class='login_form'>
-        <form action="{% url 'login_post' %}" method="post" id="login_post">
+        <form action="{% url 'LoginPost' %}" method="post" id="login_post">
         {% csrf_token %}
         <div  class="login_title">登录运维平台</div>
         <div  class="text user_txt">用户名</div>
