@@ -19,8 +19,11 @@ class UserAuthMiddleware(MiddlewareMixin):
 #判断是否为不需要验证的url
         elif not self.__auth_url_config[request.path] == 'none':
             try:
-                request.session['user']
-                response = self.get_response(request)
+                user=request.session['user']
+                if UserAuth(user,self.__auth_url_config[request.path]).GetValue():
+                    response = self.get_response(request)
+                else:
+                    response = HttpResponse(status=403)
             except Exception as e:
                 response = HttpResponseRedirect(reverse('login'))
         else:

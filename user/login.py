@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from user.form import LoginVlid
-from django.core.urlresolvers import reverse
 def index(request):
     return render(request,'user/index.html')
 def login_post(request):
@@ -13,7 +12,7 @@ def login_post(request):
             else:
                 request.session.set_expiry(1209600);
             request.session['user'] = request.POST['user']
-            return HttpResponse('ok')
+            return  render(request,'home/index.html',{'user':request.POST['user']})
         else:
             firstmessage = form.errors.as_data()
             return render(request,'user/index.html',{'error':firstmessage['user'][0].messages[0]})
