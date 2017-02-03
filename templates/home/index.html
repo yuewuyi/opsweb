@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load TempUserAuth %}
 <!DOCTYPE html>
 <html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -55,7 +56,11 @@
                 </div>
             </div>
 {#内容主体#}
-            <div  id="main">{{ user }}</div>
+            <div  id="main">
+                {% if 'dsadsa'|request.session.user|current_time == 'admin' %}
+                    dsadasdsa
+                {% endif %}
+            </div>
         </div>
     </div>
 </body>
