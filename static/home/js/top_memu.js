@@ -5,6 +5,7 @@
 $(document).ready(function () {
     height=parseInt($("#left_console").css("height"))
     $("#memu_icon").css({"border-bottom":height*0.1+"px solid #35353d","border-top":height*0.1+"px solid #35353d"})
+    $("#main").load('/monitor/',null);
 })
 //改变菜单按钮背景颜色和菜单按钮的颜色
 function memu_icon_style(state) {
@@ -30,4 +31,7 @@ function sidebar_scla() {
         $("#sidebar").css("width",s_max_width)
         $("#accordion").show()
     }
+}
+function loadhtml() {
+    
 }

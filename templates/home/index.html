@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load TempUserAuth %}
 <!DOCTYPE html>
 <html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -30,8 +29,12 @@
 {#面板子菜单，div内部第一行为显示父菜单名，后面则为子菜单，结构和父菜单的相似#}
                     <div id="montior" class="panel-collapse collapse">
                         <span  class="show_title" onMouseOver="mask('over','mon_mask')" onmouseout="mask('out','mon_mask')"><span class="show_mask"></span>监 控</span>
-                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
+                        {% if request.session.jurisdiction.is_show %}
+                        <span class="link_cont" onclick="test({% url 'HoomeIndex' %})"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
+                        {% endif %}
+                        {% if request.session.jurisdiction.is_config %}
                         <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
+                        {% endif %}
                     </div>
                 </div>
 {#面板二组#}
@@ -41,8 +44,12 @@
                     </div>
                     <div id="log" class="panel-collapse collapse">
                         <span  class="show_title" onMouseOver="mask('over','log_mask')" onmouseout="mask('out','log_mask')"><span class="show_mask"></span>日 志</span>
+                        {% if request.session.jurisdiction.is_show %}
                         <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 日志查看</span></span>
-                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
+                        {% endif %}
+                        {% if request.session.jurisdiction.is_config %}
+                            <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -56,11 +63,7 @@
                 </div>
             </div>
 {#内容主体#}
-            <div  id="main">
-                {% if 'dsadsa'|request.session.user|current_time == 'admin' %}
-                    dsadasdsa
-                {% endif %}
-            </div>
+            <div  id="main"></div>
         </div>
     </div>
 </body>
