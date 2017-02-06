@@ -10,6 +10,7 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/user/':'none',
         '/user/Login/':'none',
         '/monitor/':'show',
+        '/monitor/config/':'config',
     }
     def __init__(self,get_response):
         self.get_response = get_response

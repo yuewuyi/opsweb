@@ -32,6 +32,6 @@ function sidebar_scla() {
         $("#accordion").show()
     }
 }
-function loadhtml() {
-    
+function loadhtml(url) {
+        $("#main").load(url,null);
 }

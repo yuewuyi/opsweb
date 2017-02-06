@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$',views.index, name='MontiorIndex'),
-    url(r'^/monitor/config/$',views.config,name='MonitorConfig')
+    url(r'^config/$',views.config,name='MonitorConfig')
 ]
