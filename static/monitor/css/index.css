@@ -1,0 +1,66 @@
+.monitor_container{
+    width: 100%;
+    height: 100%;
+    background-color: #ebeef0;
+}
+.monitor_search{
+    height: 115px;
+    width: 98%;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid;
+    border-color: #dfe4e7;
+}
+.monitor_search_title{
+    font-family: 楷体;
+    font-size: 15px;
+    text-indent: 5px;
+    margin: 4px 5px 3px 0px;
+}
+.monitor_search_hr{
+    width: 100%;
+    background-color: #e0e5e8;
+    height: 2px;
+}
+.monitor_search_form{
+    width: 455.5px;
+    height: 35px;
+    margin: 12px auto;
+}
+.monitor_search_text{
+    height: 20px;
+}
+#host_name{
+    margin: 0 40px 0 9.3px;
+}
+#ip_addr{
+    margin: 0 0 0 9.3px;
+}
+.monitor_search_form_hr{
+    width: 100%;
+    background-color: #e0e5e8;
+    height: 1px;
+    margin: 15px auto 0px auto;
+}
+.monitor_botton_form{
+    margin: 0 auto 5px auto;
+    height: 20px;
+    width: 100px;
+    background-color: #2aabd2;
+}
+.monitor_query_botton{
+    height: 20px;
+    width: 40px;
+    margin: 0 auto;
+    float: left;
+    border-radius: 4px;
+}
+#host_query{
+    background-color: #367fa9;
+
+}
+#host_reset{
+    background-color: #dd4b39;
+    margin: 0 0 0 20px;
+}

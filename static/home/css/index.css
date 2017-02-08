@@ -53,4 +53,18 @@ html, body {
     height:100%;
     width:100%;
 }
+.page_title{
+    font-size: 14px;
+    font-family: 宋体;
+    letter-spacing: 2px;
+    font-weight: 600;
+    line-height: 35px;
+    text-indent: 5px;
+}
+.page_hr{
+    width: 100%;
+    background-color: #e0e5e8;
+    height: 2px;
+    line-height: 200px;
+}
 
