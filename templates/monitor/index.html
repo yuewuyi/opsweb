@@ -9,7 +9,39 @@
             <div class="monitor_search_form_hr"></div>
         </div>
         <div class="monitor_botton_form">
-            <div class="monitor_query_botton" id="host_query">dsa</div><div id="host_reset" class="monitor_query_botton">dsa</div>
+            <div class="monitor_query_botton" id="host_query">查询</div><div id="host_reset" class="monitor_query_botton">重置</div>
         </div>
+    </div>
+    <div class="table_border">
+        <table class="host_table">
+            <tr>
+                <td>主机名/状态</td>
+                <td>
+                    <select id="graphs_select">
+                        <option>cpu</option>
+                        <option>内存</option>
+                    </select>
+                </td>
+                <td>IP地址</td>
+                <td>web</td>
+                <td>thrift</td>
+                <td>应用模板</td>
+                <td>操作</td>
+            </tr>
+            <tr>
+                <td><div class="host_status"></div></td>
+                <td><div class="host_graphs"></div></td>
+                <td>127.0.0.1</td>
+                <td><div class="circles">23</div></td>
+                <td><div class="circles">45</div></td>
+                <td>userdb-thrift,busidb-thrift,appm,</td>
+                <td>
+                    <div class="monitor_table_operate"></div>
+                    <div class="monitor_table_operate"></div>
+                    <div class="monitor_table_operate"></div>
+                    <div class="monitor_table_operate"></div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
