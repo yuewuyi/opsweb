@@ -1,9 +1,12 @@
 <div class="monitor_container">
+{# 页面标题 #}
     <div class="page_title">主机一览</div>
     <div class="page_hr"></div>
     <div class="monitor_search">
+{# 搜索框标题 #}
         <div class="monitor_search_title">主机查询</div>
         <div class="monitor_search_hr"></div>
+ {# 搜索框控件 #}
         <div class="monitor_search_form">
             主机名<input type="text" id="host_name" class="monitor_search_text">IP地址<input type="text" id="ip_addr" class="monitor_search_text">
             <div class="monitor_search_form_hr"></div>
@@ -12,7 +15,9 @@
             <div class="monitor_query_botton" id="host_query">查询</div><div id="host_reset" class="monitor_query_botton">重置</div>
         </div>
     </div>
+{# 主机信息表 #}
     <div class="table_border">
+
         <table class="host_table">
             <tr>
                 <td>主机名/状态</td>
@@ -29,17 +34,17 @@
                 <td>操作</td>
             </tr>
             <tr>
-                <td><div class="host_status"></div></td>
-                <td><div class="host_graphs"></div></td>
+                <td><div class="host_status" id="monitor_host_name">appm</div></td>
+                <td><div class="host_graphs" id="cpu_memory_graphs"></div></td>
                 <td>127.0.0.1</td>
                 <td><div class="circles">23</div></td>
                 <td><div class="circles">45</div></td>
                 <td>userdb-thrift,busidb-thrift,appm,</td>
                 <td>
-                    <div class="monitor_table_operate"></div>
-                    <div class="monitor_table_operate"></div>
-                    <div class="monitor_table_operate"></div>
-                    <div class="monitor_table_operate"></div>
+                    <div class="monitor_table_operate" id="turn_monitor">开启监控</div>
+                    <div class="monitor_table_operate" id="monitor_info">监控详情</div>
+                    <div class="monitor_table_operate" id="log_view">日志查看</div>
+                    <div class="monitor_table_operate" id="app_deploy">应用部署</div>
                 </td>
             </tr>
         </table>

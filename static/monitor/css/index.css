@@ -56,6 +56,10 @@
     color: white;
     cursor: pointer;
     text-align: center;
+    font-family: 楷体;
+}
+.monitor_query_botton:hover{
+    opacity:0.8;
 }
 #host_query{
     background-color: #367fa9;
@@ -113,11 +117,31 @@
 .host_graphs{
     height: 90px;
     width: 100%;
-    background-color: deepskyblue;
 }
 .monitor_table_operate{
-    width: 30px;
-    height: 15px;
+    width: 60px;
+    height: 17px;
     background-color: #00b17f;
-    margin: 0 auto;
+    margin: 0 auto 3px auto;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    font-family: 楷体;
+    color: white;
+}
+.monitor_table_operate:hover{
+    opacity:0.8;
+}
+#monitor_info{
+    background-color: #22a2ab;
+}
+#log_view{
+    background-color: #a179c2;
+}
+#app_deploy{
+    background-color: #47a4e9;
+}
+#monitor_host_name{
+    line-height: 80px;
+    color: white;
 }
