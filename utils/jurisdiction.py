@@ -1,5 +1,6 @@
 from user.models import User
 from django.core.exceptions import ObjectDoesNotExist
+#获取用户权限
 class UserAuth():
     __user=''
     __type=''

@@ -1,3 +1,9 @@
+<script>
+    $(document).ready(function () {
+                graphar()
+            }
+    )
+</script>
 <div class="monitor_container">
 {# 页面标题 #}
     <div class="page_title">主机一览</div>
@@ -41,7 +47,7 @@
                 <td><div class="circles">45</div></td>
                 <td>userdb-thrift,busidb-thrift,appm,</td>
                 <td>
-                    <div class="monitor_table_operate" id="turn_monitor">开启监控</div>
+                    <div class="monitor_table_operate" id="turn_monitor" onclick="graphar()">开启监控</div>
                     <div class="monitor_table_operate" id="monitor_info">监控详情</div>
                     <div class="monitor_table_operate" id="log_view">日志查看</div>
                     <div class="monitor_table_operate" id="app_deploy">应用部署</div>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'user',
     'home',
     'monitor',
+    'api',
 ]
 
 MIDDLEWARE = [

@@ -1,14 +1,11 @@
-$(function () {
+function graphar() {
     Highcharts.setOptions({
         timezoneOffset: -8
     });
-    $.getJSON('//data.jianshukeji.com/jsonp?filename=json/usdeur.json&callback=?', function (data) {
         $('#cpu_memory_graphs').highcharts({
             chart: {
-                zoomType: 'x',
                 margin:[0,0,0,0],
-                height:90,
-                width:180,
+                spacing:[0,0,0,0],
             },
             title: {
                 text: ''
@@ -19,6 +16,7 @@ $(function () {
             },
             yAxis: {
                 max:1,
+                min:0,
                 visible:false,
             },
             legend: {
@@ -85,5 +83,4 @@ $(function () {
                 enabled: false
             },
         });
-    });
-});
+};
