@@ -1,3 +1,12 @@
+var req_data=''
+var docCookies = {
+  getItem: function (sKey) {
+    return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+  },
+  hasItem: function (sKey) {
+    return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+  },
+}
 function graphar() {
     Highcharts.setOptions({
         timezoneOffset: -8
@@ -84,3 +93,35 @@ function graphar() {
             },
         });
 };
+function req_ajax(url,data) {
+    var dtd = $.Deferred()
+    $.ajax({
+        type:'POST',
+        url:url,
+        data:data,
+        headers:{
+            "Content-Type":"application/json",
+            "X-CSRFToken":docCookies.getItem('csrftoken')
+        },
+    })
+        .done(function (data) {
+            req_data=data
+            dtd.resolve()
+        })
+        .fail(function () {
+            alert('数据获取失败')
+        })
+    return dtd.promise();
+}
+function zabbix_host_get() {
+    data = JSON.stringify({
+        "output": ["host", "available"],
+        "selectInterfaces": ["ip"],
+        "search": {}
+    })
+    $.when(req_ajax('/api/zabbix_host_get/', data))
+        .done(function () {
+
+        })
+}
+
