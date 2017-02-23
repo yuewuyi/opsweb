@@ -121,7 +121,20 @@ function zabbix_host_get() {
     })
     $.when(req_ajax('/api/zabbix_host_get/', data))
         .done(function () {
-
+            $("#host_table").append("<tr>" +
+                    "<td><div class='host_status monitor_host_name' >appm</div></td>"+
+                    "<td><div class='host_graphs' id='cpu_memory_graphs'></div></td>"+
+                    "<td>127.0.0.1</td>"+
+                    "<td><div class='circles'>23</div></td>"+
+                    "<td><div class='circles'></td>"+
+                    "<td>userdb-thrift,busidb-thrift,appm,</td>"+
+                    "<td>" +
+                    "<div class='monitor_table_operate turn_monitor' onclick='graphar()'>开启监控</div>"+
+                    "<div class='monitor_table_operate monitor_info'>监控详情</div>"+
+                    "<div class='monitor_table_operate log_view'>日志查看</div>"+
+                    "<div class='monitor_table_operate app_deploy'>应用部署</div>"+
+                    "</td>"+
+                "</tr>>")
         })
 }
 

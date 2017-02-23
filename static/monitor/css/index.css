@@ -133,16 +133,16 @@
 .monitor_table_operate:hover{
     opacity:0.8;
 }
-#monitor_info{
+.monitor_info{
     background-color: #22a2ab;
 }
-#log_view{
+.log_view{
     background-color: #a179c2;
 }
-#app_deploy{
+.app_deploy{
     background-color: #47a4e9;
 }
-#monitor_host_name{
+.monitor_host_name{
     line-height: 80px;
     color: white;
 }
