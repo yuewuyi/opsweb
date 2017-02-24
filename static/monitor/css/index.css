@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     background-color: #ebeef0;
+     overflow:scroll;
 }
 .monitor_search{
     height: 115px;
@@ -91,9 +92,9 @@
 .host_table tr td:nth-child(2){
     width: 180px;
 }
-
-.host_table tr td:nth-child(6){
+.host_table tr td:nth-child(7){
     width: 180px;
+    border-right: 0px;
 }
 #graphs_select{
     width: 100%;
@@ -110,10 +111,26 @@
     color: white;
     font-family: 华文琥珀;
 }
-.host_status{
+.host_status_enable{
     height: 90px;
     width: 100%;
     background-color: #59db8f;
+    line-height: 80px;
+    color: white;
+}
+.host_status_disable{
+    height: 90px;
+    width: 100%;
+    background-color: #8a9397;
+    line-height: 80px;
+    color: black;
+}
+.host_status_waring{
+    height: 90px;
+    width: 100%;
+    background-color: #ffa059;
+    line-height: 80px;
+    color: black;
 }
 .host_graphs{
     height: 90px;
@@ -142,7 +159,6 @@
 .app_deploy{
     background-color: #47a4e9;
 }
-.monitor_host_name{
-    line-height: 80px;
-    color: white;
+.close_monitor{
+    background-color: #d64d55;
 }
