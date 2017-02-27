@@ -118,9 +118,7 @@ function zabbix_host_get() {
     data = JSON.stringify({
         "output": ["host", "available","error","status"],
         "selectInterfaces": ["ip"],
-        "with_triggers":'true'
-        // "search": {}
-        // "filter":{"host":["zabbix_server"]},
+        "selectTriggers":'extend',
     })
     $.when(req_ajax('/api/zabbix_host_get/', data))
         .done(function () {
