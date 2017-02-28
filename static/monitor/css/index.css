@@ -24,7 +24,7 @@
     background-color: #e0e5e8;
     height: 2px;
 }
-.monitor_search_form{
+#monitor_search_form{
     width: 455.5px;
     height: 35px;
     margin: 12px auto 0px auto;

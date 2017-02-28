@@ -1,11 +1,6 @@
-<script>
-    $(document).ready(function () {
-                graphar()
-                zabbix_host_get()
-            }
-    )
-</script>
-<div class="monitor_container">
+{% extends 'home/index.html' %}
+{% block content %}
+    <div class="monitor_container">
 {# 页面标题 #}
     <div class="page_title">主机一览</div>
     <div class="page_hr"></div>
@@ -14,12 +9,13 @@
         <div class="monitor_search_title">主机查询</div>
         <div class="monitor_search_hr"></div>
  {# 搜索框控件 #}
-        <div class="monitor_search_form">
-            主机名<input type="text" id="host_name" class="monitor_search_text">IP地址<input type="text" id="ip_addr" class="monitor_search_text">
+        <form id="monitor_search_form" action={% url 'MontiorIndex' %} method="post">
+            主机名<input type="text" name="host_name" class="monitor_search_text">IP地址<input type="text" name="ip_addr" class="monitor_search_text">
             <div class="monitor_search_form_hr"></div>
-        </div>
+            {% csrf_token %}
+        </form>
         <div class="monitor_botton_form">
-            <div class="monitor_query_botton" id="host_query">查询</div><div id="host_reset" class="monitor_query_botton">重置</div>
+            <div class="monitor_query_botton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div id="host_reset" class="monitor_query_botton">重置</div>
         </div>
     </div>
 {# 主机信息表 #}
@@ -39,6 +35,33 @@
                 <td>应用模板</td>
                 <td>操作</td>
             </tr>
+            {% for item in data %}
+                <tr>
+                    {% if item.status == '1' %}
+                        <td><div class="host_status_disable">{{ item.host }}</div></td>
+                    {% elif item.triggers %}
+                        <td><div class="host_status_waring">{{ item.host }}</div></td>
+                    {% else %}
+                        <td><div class="host_status_enable">{{ item.host }}</div></td>
+                    {% endif %}
+                    <td><div class='host_graphs' id='{{ item.host }}'></div></td>
+                    <td>{{ item.interfaces.0.ip }}</td>
+                    <td><div class='circles'>23</div></td>
+                    <td><div class='circles'>24</div></td></td>
+                    <td>userdb-thrift,busidb-thrift,appm</td>
+                    <td>
+                        {% if item.status == '1' %}
+                            <div class='monitor_table_operate'>开启监控</div>
+                        {% else %}
+                            <div class='monitor_table_operate close_monitor'>关闭监控</div>
+                        {% endif %}
+                        <div class='monitor_table_operate monitor_info'>监控详情</div>
+                        <div class='monitor_table_operate log_view'>日志查看</div>
+                        <div class='monitor_table_operate app_deploy'>应用部署</div>
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
-</div>
+    </div>
+{% endblock %}

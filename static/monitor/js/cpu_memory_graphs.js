@@ -1,5 +1,4 @@
 var req_data=''
-var table_str=""
 var docCookies = {
   getItem: function (sKey) {
     return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
@@ -114,41 +113,3 @@ function req_ajax(url,data) {
         })
     return dtd.promise();
 }
-function zabbix_host_get() {
-    data = JSON.stringify({
-        "output": ["host", "available","error","status"],
-        "selectInterfaces": ["ip"],
-        "selectTriggers":'extend',
-    })
-    $.when(req_ajax('/api/zabbix_host_get/', data))
-        .done(function () {
-            req_data.forEach(function (item,index,array) {
-                table_str+="<tr>"
-                if(item['available']=='0'){
-                    table_str+="<td><div class='host_status_disable'>"+item['host']+"</div></td>"
-                }else {
-                    table_str+="<td><div class='host_status_enable'>"+item['host']+"</div></td>"
-                }
-
-                table_str+= "<td><div class='host_graphs' id='grphas_"+item['host']+"'></div></td>"+
-                    "<td>"+item['interfaces'][0]['ip']+"</td>"+
-                    "<td><div class='circles'>23</div></td>"+
-                    "<td><div class='circles'>24</td>"+
-                    "<td>userdb-thrift,busidb-thrift,appm,</td>"+
-                    "<td>"
-                if(item['status']=='1'){
-                   table_str+= "<div class='monitor_table_operate'>开启监控</div>"
-                }
-                else {
-                    table_str+= "<div class='monitor_table_operate close_monitor'>关闭监控</div>"
-                }
-                table_str+="<div class='monitor_table_operate monitor_info'>监控详情</div>"+
-                    "<div class='monitor_table_operate log_view'>日志查看</div>"+
-                    "<div class='monitor_table_operate app_deploy'>应用部署</div>"+
-                    "</td>"+
-                "</tr>"
-            })
-            $("#host_table").append(table_str)
-        })
-}
-

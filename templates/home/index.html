@@ -15,6 +15,7 @@
     <script src="{% static 'home/js/top_memu.js' %}"></script>
     <script src="{% static 'home/js/sidebar.js' %}"></script>
     <script src="{% static 'monitor/js/cpu_memory_graphs.js' %}"></script>
+    <script src="{% static 'monitor/js/monitor.js' %}"></script>
     <title>主页</title>
 </head>
 <body>
@@ -35,10 +36,10 @@
                     <div id="montior" class="panel-collapse collapse">
                         <span  class="show_title" onMouseOver="mask('over','mon_mask')" onmouseout="mask('out','mon_mask')"><span class="show_mask"></span>监 控</span>
                         {% if request.session.jurisdiction.is_show %}
-                        <span class="link_cont" onclick="loadhtml('{% url 'MontiorIndex' %}')"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
+                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
                         {% endif %}
                         {% if request.session.jurisdiction.is_config %}
-                        <span class="link_cont" onclick="loadhtml('{% url 'MonitorConfig' %}')"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
+                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
                         {% endif %}
                     </div>
                 </div>
@@ -64,10 +65,13 @@
 {#头部#}
             <div class="top_memu" id="header">
                 <div id="left_console" onMouseOver="memu_icon_style('over')" onmouseout="memu_icon_style('out')" onclick="sidebar_scla()">
-                    <div id="memu_icon" ></div>.
+                    <div id="memu_icon" ></div>
                 </div>
             </div>
 {#内容主体#}
+            {% block content %}
+                <div>默认内容</div>
+            {% endblock %}
             <div  id="main"></div>
         </div>
     </div>
