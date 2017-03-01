@@ -15,7 +15,7 @@
             {% csrf_token %}
         </form>
         <div class="monitor_botton_form">
-            <div class="monitor_query_botton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div id="host_reset" class="monitor_query_botton">重置</div>
+            <div class="monitor_query_botton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div id="host_reset" class="monitor_query_botton" onclick="warning_info_div()">重置</div>
         </div>
     </div>
 {# 主机信息表 #}
@@ -30,8 +30,8 @@
                     </select>
                 </td>
                 <td>IP地址</td>
-                <td>web</td>
-                <td>thrift</td>
+                <td>appliction</td>
+                <td>item</td>
                 <td>应用模板</td>
                 <td>操作</td>
             </tr>
@@ -42,13 +42,13 @@
                     {% elif item.triggers %}
                         <td><div class="host_status_waring">{{ item.host }}</div></td>
                     {% else %}
-                        <td><div class="host_status_enable">{{ item.host }}</div></td>
+                        <td><div class="host_status_enable" >{{ item.host }}</div></td>
                     {% endif %}
                     <td><div class='host_graphs' id='{{ item.host }}'></div></td>
                     <td>{{ item.interfaces.0.ip }}</td>
                     <td><div class='circles'>23</div></td>
                     <td><div class='circles'>24</div></td></td>
-                    <td>userdb-thrift,busidb-thrift,appm</td>
+                    <td>z1,z2,z3,z4</td>
                     <td>
                         {% if item.status == '1' %}
                             <div class='monitor_table_operate'>开启监控</div>
