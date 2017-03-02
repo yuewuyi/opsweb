@@ -1,6 +1,6 @@
 {% extends 'home/index.html' %}
 {% block content %}
-    <div class="monitor_container">
+    <div class="monitor_container" data-host="{{ data }}" id="data_storage">
 {# 页面标题 #}
     <div class="page_title">主机一览</div>
     <div class="page_hr"></div>
@@ -10,12 +10,12 @@
         <div class="monitor_search_hr"></div>
  {# 搜索框控件 #}
         <form id="monitor_search_form" action={% url 'MontiorIndex' %} method="post">
-            主机名<input type="text" name="host_name" class="monitor_search_text">IP地址<input type="text" name="ip_addr" class="monitor_search_text">
+            主机名<input type="text" name="host_name" class="monitor_search_text" id="host_name">IP地址<input id="ip_addr" type="text" name="ip_addr" class="monitor_search_text">
             <div class="monitor_search_form_hr"></div>
             {% csrf_token %}
         </form>
         <div class="monitor_botton_form">
-            <div class="monitor_query_botton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div id="host_reset" class="monitor_query_botton" onclick="warning_info_div()">重置</div>
+            <div class="monitor_query_botton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div id="host_reset" class="monitor_query_botton">重置</div>
         </div>
     </div>
 {# 主机信息表 #}
@@ -40,7 +40,7 @@
                     {% if item.status == '1' %}
                         <td><div class="host_status_disable">{{ item.host }}</div></td>
                     {% elif item.triggers %}
-                        <td><div class="host_status_waring">{{ item.host }}</div></td>
+                        <td><div class="host_status_waring" onmouseover="warning_info_div('create','{{ item.host }}')" onmouseout="warning_info_div('remove')">{{ item.host }}</div></td>
                     {% else %}
                         <td><div class="host_status_enable" >{{ item.host }}</div></td>
                     {% endif %}

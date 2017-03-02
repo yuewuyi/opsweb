@@ -1,16 +1,16 @@
 from zabbix.api import ZabbixAPI
 from utils.config import app_config
 class zabbix_data:
-    __conf_value=''
+    __zapi=''
     def __init__(self):
         conf=app_config()
-        self.__config_value=conf.get_config_value()
+        config_value=conf.get_config_value()
+        self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0], user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
     def host_trigger_get(self,params):
         warn=[]
         disable=[]
         enable=[]
-        zapi = ZabbixAPI(url=self.__config_value['zabbix_api_addr'][0], user=self.__config_value['zabbix_api_user'][0],password=self.__config_value['zabbix_api_user'][1])
-        result = zapi.do_request('host.get',params)['result']
+        result = self.__zapi.do_request('host.get',params)['result']
         for i in range(len(result)):
             result[i]['triggers'] = list(filter(lambda x: x['value'] == "1" and x['status'] == "0", result[i]['triggers']))
             if result[i]['status']=='1':
@@ -20,3 +20,15 @@ class zabbix_data:
             else:
                 enable.append(result[i])
         return warn+enable+disable
+    def item_history_get(self,params):
+        params={
+            "output":["itemid","key_"],
+            "filter":{
+                "host": ["activemq_master","zabbix_server"]
+            }
+        }
+        result=self.__zapi.do_request('item.get',params)['result']
+        for i in result:
+            if result['key_']=='system.cpu.util[,idle]':
+                print(result['itemid'])
+        return result

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from utils.zabbix_public_invok import zabbix_data
+from django.http import HttpResponse
 # Create your views here.
 def index(request):
     params = {
@@ -19,4 +20,7 @@ def index(request):
     result=zabbix_data_get.host_trigger_get(params)
     return render(request,'monitor/index.html',{"data":result})
 def config(request):
-    return render(request, 'monitor/config.html')
+    zabbix_data_get = zabbix_data()
+    result = zabbix_data_get.item_history_get('')
+    return HttpResponse(result)
+    # return render(request, 'monitor/config.html')
