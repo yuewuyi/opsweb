@@ -1,5 +1,10 @@
 {% extends 'home/index.html' %}
 {% block content %}
+    <script>
+        $(document).ready(function () {
+            cup_memory_data_req()
+        })
+    </script>
     <div class="monitor_container" data-host="{{ data }}" id="data_storage">
 {# 页面标题 #}
     <div class="page_title">主机一览</div>
@@ -44,7 +49,7 @@
                     {% else %}
                         <td><div class="host_status_enable" >{{ item.host }}</div></td>
                     {% endif %}
-                    <td><div class='host_graphs' id='{{ item.host }}'></div></td>
+                    <td><div class='host_graphs' id='hostid_{{ item.hostid }}'></div></td>
                     <td>{{ item.interfaces.0.ip }}</td>
                     <td><div class='circles'>23</div></td>
                     <td><div class='circles'>24</div></td></td>

@@ -113,3 +113,7 @@ function req_ajax(url,data) {
         })
     return dtd.promise();
 }
+function cup_memory_data_req() {
+    host_data=eval($("#data_storage").data('host'))
+    alert($("#data_storage").data('host'))
+}

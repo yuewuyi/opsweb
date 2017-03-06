@@ -22,13 +22,25 @@ class zabbix_data:
         return warn+enable+disable
     def item_history_get(self,params):
         params={
-            "output":["itemid","key_"],
+            "output":["itemid","hostid","key_"],
             "filter":{
-                "host": ["activemq_master","zabbix_server"]
-            }
+                "key_":["system.cpu.util[,,avg1]","vm.memory.size[total]","vm.memory.size[available]"]
+            },
         }
-        result=self.__zapi.do_request('item.get',params)['result']
-        for i in result:
-            if result['key_']=='system.cpu.util[,idle]':
-                print(result['itemid'])
+        result1=self.__zapi.do_request('item.get',params)['result']
+        items=[]
+        hostid=[]
+        print(result1)
+        for i in range(len(result1)):
+            items.append(result1[i]['itemid'])
+            hostid.append(result1[i]['hostid'])
+        params={
+            "output": "extend",
+            "itemids":items,
+            "hostids":hostid,
+            "sortfield": "clock",
+            "time_from":1488782241-3600,
+            "sortfield":"clock"
+        }
+        result=self.__zapi.do_request("history.get",params)['result']
         return result

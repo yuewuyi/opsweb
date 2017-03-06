@@ -7,6 +7,7 @@ def index(request):
         "output": ["host", "available", "error", "status"],
         "selectInterfaces": ["ip"],
         "selectTriggers": 'extend',
+        "selectItems":["itemid","key_"],
         "sortfield": ['host'],
         "search": {}
     }
@@ -18,6 +19,7 @@ def index(request):
             params['search']["ip"] = request.POST['ip_addr']
     zabbix_data_get=zabbix_data()
     result=zabbix_data_get.host_trigger_get(params)
+    print(result)
     return render(request,'monitor/index.html',{"data":result})
 def config(request):
     zabbix_data_get = zabbix_data()
