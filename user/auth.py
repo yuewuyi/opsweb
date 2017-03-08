@@ -11,7 +11,7 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/user/Login/':'none',
         '/monitor/':'show',
         '/monitor/config/':'config',
-        '/api/zabbix_host_get/':'show'
+        '/api/zabbix_cpu_get/':'show',
     }
     def __init__(self,get_response):
         self.get_response = get_response

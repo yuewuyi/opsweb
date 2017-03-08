@@ -7,11 +7,11 @@ var docCookies = {
     return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
   },
 }
-function graphar() {
+function graphar(id,data) {
     Highcharts.setOptions({
         timezoneOffset: -8
     });
-        $('#grphas_tomcat_test').highcharts({
+        $(id).highcharts({
             chart: {
                 margin:[0,0,0,0],
                 spacing:[0,0,0,0],
@@ -24,7 +24,7 @@ function graphar() {
 
             },
             yAxis: {
-                max:1,
+                max:100,
                 min:0,
                 visible:false,
             },
@@ -43,7 +43,7 @@ function graphar() {
                         stops: [
                             [0, Highcharts.getOptions().colors[0]],
                             [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                        ]
+                        ],
                     },
                     lineWidth: 1,
                     states: {
@@ -52,6 +52,11 @@ function graphar() {
                         }
                     },
                     threshold: null
+                },
+                series:{
+                    marker:{
+                        enabled:false
+                    }
                 }
             },
             exporting:{
@@ -59,34 +64,7 @@ function graphar() {
             },
             series: [{
                 type: 'area',
-                data: [
-                    [Date.UTC(2015,10,1,10,01,00),0.11],
-                    [Date.UTC(2015,10,1,10,02,00),0.12],
-                    [Date.UTC(2015,10,1,10,03,00),0.24],
-                    [Date.UTC(2015,10,1,10,04,00),0.09],
-                    [Date.UTC(2015,10,1,10,05,00),0.31],
-                    [Date.UTC(2015,10,1,10,06,00),0.22],
-                    [Date.UTC(2015,10,1,10,07,00),0.34],
-                    [Date.UTC(2015,10,1,10,08,00),0.01],
-                    [Date.UTC(2015,10,1,10,09,00),0.03],
-                    [Date.UTC(2015,10,1,10,10,00),0.04],
-                    [Date.UTC(2015,10,1,10,11,00),0.05],
-                    [Date.UTC(2015,10,1,10,12,00),0.07],
-                    [Date.UTC(2015,10,1,10,13,00),0.05],
-                    [Date.UTC(2015,10,1,10,14,00),0.09],
-                    [Date.UTC(2015,10,1,10,15,00),0.20],
-                    [Date.UTC(2015,10,1,10,16,00),0.01],
-                    [Date.UTC(2015,10,1,10,17,00),0.02],
-                    [Date.UTC(2015,10,1,10,18,00),0.03],
-                    [Date.UTC(2015,10,1,10,19,00),0.04],
-                    [Date.UTC(2015,10,1,10,20,00),0.12],
-                    [Date.UTC(2015,10,1,10,21,00),0.9],
-                    [Date.UTC(2015,10,1,10,22,00),0.45],
-                    [Date.UTC(2015,10,1,10,23,00),0.21],
-                    [Date.UTC(2015,10,1,10,24,00),0.32],
-                    [Date.UTC(2015,10,1,10,25,00),0.35],
-
-                ]
+                data: data,
             }],
             credits: {
                 enabled: false
@@ -98,7 +76,7 @@ function req_ajax(url,data) {
     $.ajax({
         type:'POST',
         url:url,
-        data:data,
+        data:JSON.stringify(data),
         headers:{
             "Content-Type":"application/json",
             "X-CSRFToken":docCookies.getItem('csrftoken')
@@ -113,7 +91,32 @@ function req_ajax(url,data) {
         })
     return dtd.promise();
 }
-function cup_memory_data_req() {
+function cpu_data_req() {
+    var itemids=[]
+    var hostids=[]
+    var host_item_ids={}
     host_data=eval($("#data_storage").data('host'))
-    alert($("#data_storage").data('host'))
+    $.each(host_data,function (index,value,array) {
+        itemid={}
+       if (value['status']=='0'){
+            $.each(value['items'],function (index2,value2,array2) {
+                if (value2['key_']=='system.cpu.util[,,avg1]'){
+                    itemid[value2['key_']]=value2['itemid']
+                    itemids.push(value2['itemid'])
+                    return false
+                }
+            })
+            hostids.push(value['hostid'])
+            host_item_ids[value['hostid']]=itemid
+       }else {
+           return false;
+       }
+    })
+    $.when(req_ajax('/api/zabbix_cpu_get/',{"itemids":itemids,"hostids":hostids,"host_item_ids":host_item_ids}))
+        .done(function () {
+          for (var key in req_data){
+              graphar("#hostid_"+key,req_data[key]['system.cpu.util[,,avg1]'])
+          }
+        })
+
 }

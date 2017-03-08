@@ -1,5 +1,6 @@
 from zabbix.api import ZabbixAPI
 from utils.config import app_config
+import time
 class zabbix_data:
     __zapi=''
     def __init__(self):
@@ -21,26 +22,6 @@ class zabbix_data:
                 enable.append(result[i])
         return warn+enable+disable
     def item_history_get(self,params):
-        params={
-            "output":["itemid","hostid","key_"],
-            "filter":{
-                "key_":["system.cpu.util[,,avg1]","vm.memory.size[total]","vm.memory.size[available]"]
-            },
-        }
-        result1=self.__zapi.do_request('item.get',params)['result']
-        items=[]
-        hostid=[]
-        print(result1)
-        for i in range(len(result1)):
-            items.append(result1[i]['itemid'])
-            hostid.append(result1[i]['hostid'])
-        params={
-            "output": "extend",
-            "itemids":items,
-            "hostids":hostid,
-            "sortfield": "clock",
-            "time_from":1488782241-3600,
-            "sortfield":"clock"
-        }
-        result=self.__zapi.do_request("history.get",params)['result']
+        result=self.__zapi.do_request("history.get",params)["result"]
+
         return result

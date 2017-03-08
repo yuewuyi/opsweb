@@ -1,10 +1,5 @@
 {% extends 'home/index.html' %}
 {% block content %}
-    <script>
-        $(document).ready(function () {
-            cup_memory_data_req()
-        })
-    </script>
     <div class="monitor_container" data-host="{{ data }}" id="data_storage">
 {# 页面标题 #}
     <div class="page_title">主机一览</div>
@@ -27,7 +22,7 @@
     <div class="table_border" >
         <table class="host_table" id="host_table">
             <tr>
-                <td>主机名/状态</td>
+                <td id="host_test_name">主机名/状态</td>
                 <td>
                     <select id="graphs_select">
                         <option>cpu</option>
@@ -69,4 +64,9 @@
         </table>
     </div>
     </div>
+       <script>
+         $(document).ready(function () {
+                cpu_data_req()
+         })
+        </script>
 {% endblock %}
