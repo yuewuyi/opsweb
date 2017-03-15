@@ -23,5 +23,4 @@ class zabbix_data:
         return warn+enable+disable
     def item_history_get(self,params):
         result=self.__zapi.do_request("history.get",params)["result"]
-
         return result
