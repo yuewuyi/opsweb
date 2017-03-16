@@ -9,13 +9,13 @@
         <div class="monitor_search_title">主机查询</div>
         <div class="monitor_search_hr"></div>
  {# 搜索框控件 #}
-        <form id="monitor_search_form" action={% url 'MontiorIndex' %} method="post">
+        <form id="monitor_search_form" action={% url 'MonitorIndex' %} method="post">
             主机名<input type="text" name="host_name" class="monitor_search_text" id="host_name">IP地址<input id="ip_addr" type="text" name="ip_addr" class="monitor_search_text">
             <div class="monitor_search_form_hr"></div>
             {% csrf_token %}
         </form>
         <div class="monitor_botton_form">
-            <div class="monitor_query_botton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div id="host_reset" class="monitor_query_botton">重置</div>
+            <div class="monitor_query_botton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div onclick="window.location.href='{% url 'MonitorIndex' %}'" id="host_reset" class="monitor_query_botton" >重置</div>
         </div>
     </div>
 {# 主机信息表 #}
@@ -24,9 +24,9 @@
             <tr>
                 <td id="host_test_name">主机名/状态</td>
                 <td>
-                    <select id="graphs_select">
-                        <option>cpu</option>
-                        <option>内存</option>
+                    <select id="graphs_select" onchange="cpu_memory_change(this.options[this.options.selectedIndex].value)">
+                        <option value="cpu" selected="selected">cpu</option>
+                        <option value="memory">内存</option>
                     </select>
                 </td>
                 <td>IP地址</td>
@@ -55,7 +55,7 @@
                         {% else %}
                             <div class='monitor_table_operate close_monitor'>关闭监控</div>
                         {% endif %}
-                        <div class='monitor_table_operate monitor_info'>监控详情</div>
+                        <div class='monitor_table_operate monitor_info' onclick="window.location.href='{% url 'MonitorHostDetailed' %}?'">监控详情</div>
                         <div class='monitor_table_operate log_view'>日志查看</div>
                         <div class='monitor_table_operate app_deploy'>应用部署</div>
                     </td>
@@ -66,7 +66,7 @@
     </div>
        <script>
          $(document).ready(function () {
-                memory_data_req()
+                cpu_data_req()
          })
         </script>
 {% endblock %}

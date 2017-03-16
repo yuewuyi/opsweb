@@ -10,6 +10,7 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/user/':'none',
         '/user/Login/':'none',
         '/monitor/':'show',
+        '/monitor/host_detailed/':'show',
         '/monitor/config/':'config',
         '/api/zabbix_cpu_get/':'show',
         '/api/zabbix_memory_get/':'show',

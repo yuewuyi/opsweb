@@ -76,6 +76,7 @@ function cpu_graphar(id,data) {
         });
 };
 function memory_graphs(id,data) {
+    var indexs=null
      Highcharts.setOptions({
         timezoneOffset: -8
     });
@@ -100,8 +101,11 @@ function memory_graphs(id,data) {
                 enabled: false
             },
               tooltip: {
-                pointFormat: '<span style="color:{series.color}">{series.name}{point.y:,.1f}GB 百分比:</span>',
-                shared: true
+                   formatter: function () {
+                        var s = data['vm.memory.size[available]'][indexs][0] +'<br\>'+'<span style="color: #7cb5ec">内存总量:'+data['vm.memory.size[total]']+'GB</span><br\><span style="color: #7cb5Ec">内存使用量'+ this.y + 'GB('+data['vm.memory.size[available]'][indexs][2]+'%)</br></span>';
+                        return s;
+                    },
+                  shared: true
             },
             plotOptions: {
                 area: {
@@ -128,6 +132,14 @@ function memory_graphs(id,data) {
                 series:{
                     marker:{
                         enabled:false
+                    },
+                    point:{
+                        events:{
+                                mouseOver: function(event) {
+                                indexs = event.target.x;
+                                console.log(indexs);
+                             }
+                        }
                     }
                 }
             },
@@ -136,7 +148,7 @@ function memory_graphs(id,data) {
             },
             series: [{
                 type: 'area',
-                data: data,
+                data: data['vm.memory.size[available]'],
                 name:"内存使用率:"
             }],
             credits: {
@@ -215,8 +227,14 @@ function memory_data_req() {
     $.when(req_ajax('/api/zabbix_memory_get/',{"itemids":itemids,"hostids":hostids,"host_item_ids":host_item_ids}))
         .done(function () {
           for (var key in req_data){
-              memory_graphs("#hostid_"+key,req_data[key]['vm.memory.size[available]'])
+              memory_graphs("#hostid_"+key,req_data[key])
           }
-            alert("ok")
         })
+}
+function cpu_memory_change(value) {
+    if(value=="cpu"){
+        cpu_data_req()
+    }else if(value=="memory"){
+        memory_data_req()
+    }
 }

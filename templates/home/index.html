@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{% static 'monitor/css/index.css' %}">
     <script src="{% static 'bootstrap/js/jquery-min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-{#    <script src="{% static 'angular/js/angular.min.js' %}"></script>#}
     <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
     <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
     <script src="{% static 'home/js/top_memu.js' %}"></script>
@@ -36,7 +35,7 @@
                     <div id="montior" class="panel-collapse collapse">
                         <span  class="show_title" onMouseOver="mask('over','mon_mask')" onmouseout="mask('out','mon_mask')"><span class="show_mask"></span>监 控</span>
                         {% if request.session.jurisdiction.is_show %}
-                        <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
+                        <span class="link_cont" onclick="window.location.href='{% url 'MonitorIndex' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
                         {% endif %}
                         {% if request.session.jurisdiction.is_config %}
                         <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>

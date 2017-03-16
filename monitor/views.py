@@ -25,3 +25,8 @@ def config(request):
     result = zabbix_data_get.item_history_get('')
     return HttpResponse(result)
     # return render(request, 'monitor/config.html')
+def host_info_detailed(request):
+    return HttpResponse('OK')
+
+
+
