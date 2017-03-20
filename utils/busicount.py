@@ -8,9 +8,9 @@ config = {
           'db':'busidb',
           'charset':'utf8mb4',
           }
-start="2017-03-15 00:00:00"
-end="2017-03-16 00:00:00"
-transdate="2017-03-15"
+start="2017-03-19 00:00:00"
+end="2017-03-20 00:00:00"
+transdate="2017-03-19"
 sum_data = []
 sum_data.append(['药店名', '总pc量', '未推荐药品', '推荐两种药品', '推荐三种以上药品', '处方量', '首推处方量', '首推药品盒数', '首推药品金额', '处方总金额', '平均客单价'])
 def data(start,end,transdate,config,storename):
@@ -23,7 +23,7 @@ def data(start,end,transdate,config,storename):
     cursor.execute("SELECT store_id from b_store where cn_name like '%"+storename+"%'")
     storeid = str(cursor.fetchone()[0])
     #PC设备总量
-    sql="select count(*) from b_pc_device where store_id="+storeid
+    sql="select count(*) from b_pc_busi where store_id="+storeid +" and end_time>='"+start+"' and  end_time<'"+end+"'"
     cursor.execute(sql)
     pr_data.append(str(cursor.fetchone()[0]))
     # 未推荐药品
@@ -33,35 +33,59 @@ def data(start,end,transdate,config,storename):
     #推荐两种药品
     sql="SELECT  two_count from b_drug_rcmd_sum where store_id="+storeid+" and trans_date ='"+transdate+"'"
     cursor.execute(sql)
-    pr_data.append(str(cursor.fetchone()[0]))
+    try:
+        pr_data.append(str(cursor.fetchone()[0]))
+    except:
+        pr_data.append('0')
     #推荐三种及以上
     sql="SELECT  three_count,four_count,five_count from b_drug_rcmd_sum where store_id="+storeid+" and trans_date ='"+transdate+"'"
     cursor.execute(sql)
-    pr_data.append(str(sum(cursor.fetchone())))
+    try:
+        pr_data.append(str(cursor.fetchone()[0]))
+    except:
+        pr_data.append('0')
     #处方量
     sql="SELECT pres_count from b_drug_rcmd_sum where store_id="+storeid+" and trans_date ='"+transdate+"'"
     cursor.execute(sql)
-    pr_data.append(cursor.fetchone()[0])
+    try:
+        pr_data.append(str(cursor.fetchone()[0]))
+    except:
+        pr_data.append('0')
     #首推处方量
-    sql="SELECT count(*) from b_pc_busi RIGHT JOIN b_drug_rcmd_detail on b_pc_busi.busi_id=b_drug_rcmd_detail.busi_id where b_pc_busi.store_id="+storeid+" and b_pc_busi.end_time < '"+end+"' and b_pc_busi.end_time >= '"+start+"' and b_drug_rcmd_detail.drug_type=2"
+    sql="SELECT drug_s_times from b_drug_rcmd_sum where store_id="+storeid+" and trans_date ='"+transdate+"'"
     cursor.execute(sql)
-    pr_data.append(cursor.fetchone()[0])
+    try:
+        pr_data.append(str(cursor.fetchone()[0]))
+    except:
+        pr_data.append('0')
     #首推药品盒数
     sql="SELECT drug_s_numbers from b_drug_rcmd_sum where store_id="+storeid+" and trans_date ='"+transdate+"'"
     cursor.execute(sql)
-    pr_data.append(cursor.fetchone()[0])
+    try:
+        pr_data.append(str(cursor.fetchone()[0]))
+    except:
+        pr_data.append('0')
     #首推药品金额
     sql="SELECT drug_s_price from b_drug_rcmd_sum where store_id="+storeid+" and trans_date ='"+transdate+"'"
     cursor.execute(str(sql))
-    pr_data.append(str(float(cursor.fetchone()[0])))
+    try:
+        pr_data.append(str(cursor.fetchone()[0]))
+    except:
+        pr_data.append('0')
     #处方总金额
     sql="SELECT sum_price from b_drug_rcmd_sum where store_id="+storeid+" and trans_date ='"+transdate+"'"
     cursor.execute(str(sql))
-    pr_data.append(str(float(cursor.fetchone()[0])))
+    try:
+        pr_data.append(str(cursor.fetchone()[0]))
+    except:
+        pr_data.append('0')
     #平均客单价
     sql="SELECT ave_price from b_drug_rcmd_sum where store_id="+storeid+" and trans_date ='"+transdate+"'"
     cursor.execute(sql)
-    pr_data.append(str(float(cursor.fetchone()[0])))
+    try:
+        pr_data.append(str(cursor.fetchone()[0]))
+    except:
+        pr_data.append('0')
     connection.close()
     return pr_data
 store_name=['幸福人医药光明店',

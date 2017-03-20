@@ -26,7 +26,7 @@ def config(request):
     return HttpResponse(result)
     # return render(request, 'monitor/config.html')
 def host_info_detailed(request):
-    return HttpResponse('OK')
-
+    return render(request,'monitor/host_detailed.html')
+    # return HttpResponse(request.GET['host'])
 
 

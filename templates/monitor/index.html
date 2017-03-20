@@ -55,7 +55,7 @@
                         {% else %}
                             <div class='monitor_table_operate close_monitor'>关闭监控</div>
                         {% endif %}
-                        <div class='monitor_table_operate monitor_info' onclick="window.location.href='{% url 'MonitorHostDetailed' %}?'">监控详情</div>
+                        <div class='monitor_table_operate monitor_info' onclick="window.location.href='{% url 'MonitorHostDetailed' %}?host={{ item.host }}'">监控详情</div>
                         <div class='monitor_table_operate log_view'>日志查看</div>
                         <div class='monitor_table_operate app_deploy'>应用部署</div>
                     </td>
