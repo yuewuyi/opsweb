@@ -1,6 +1,10 @@
 {% extends 'home/index.html' %}
+{% load staticfiles %}
 {% block content %}
-    <div class="monitor_container" data-host="{{ data }}" id="data_storage">
+    <link rel="stylesheet" href="{% static 'monitor/css/index.css' %}">
+    <script src="{% static 'monitor/js/monitor.js' %}"></script>
+{# 页面容器 #}
+    <div class="page_container" data-host="{{ data }}" id="data_storage">
 {# 页面标题 #}
     <div class="page_title">主机一览</div>
     <div class="page_hr"></div>

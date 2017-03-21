@@ -1,9 +1,3 @@
-.monitor_container{
-    width: 100%;
-    height: 100%;
-    background-color: #ebeef0;
-     overflow:scroll;
-}
 .monitor_search{
     height: 115px;
     width: 98%;

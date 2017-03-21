@@ -1,4 +1,18 @@
 {% extends 'home/index.html' %}
+{% load staticfiles %}
 {% block content %}
-    
+    <link rel="stylesheet" href="{% static 'monitor/css/host_detailed.css' %}">
+    <script src="{% static 'monitor/js/host_detailed.js' %}"></script>
+    <div class="page_container">
+         <div class="page_title">监控详情</div>
+         <div class="page_hr"></div>
+         <div class="disk_container">
+             <div class="disk_usage">
+                <div class="disk_usage_title div_title">磁盘使用情况</div>
+                <div class="disk_usage_graphs div_graphas">
+                    <div id="g1">dsadsadas</div>
+                </div>
+             </div>
+         </div>
+    </div>
 {% endblock %}
