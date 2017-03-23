@@ -20,6 +20,7 @@ function cpu_graphar(id,data) {
                 text: ''
             },
             xAxis: {
+                type:"datetime",
                 visible:false,
             },
             yAxis: {
@@ -31,7 +32,11 @@ function cpu_graphar(id,data) {
                 enabled: false
             },
             tooltip: {
-                pointFormat: '<span style="color:{series.color}">{series.name}{point.y:,.1f}%</span>',
+                formatter:function () {
+                    s= '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y',this.x)+'</span>'
+                    return s
+
+                },
                 shared: true
             },
             plotOptions: {
@@ -90,7 +95,6 @@ function memory_graphs(id,data) {
             },
             xAxis: {
                 visible:false,
-
             },
             yAxis: {
                 max:15.98,
