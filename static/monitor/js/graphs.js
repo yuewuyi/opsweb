@@ -8,9 +8,7 @@ var docCookies = {
   },
 }
 function cpu_graphar(id,data) {
-    Highcharts.setOptions({
-        timezoneOffset: -8
-    });
+    Highcharts.setOptions({ global: { useUTC: false } });
     $(id).highcharts({
             chart: {
                 margin:[0,0,0,0],
@@ -33,7 +31,8 @@ function cpu_graphar(id,data) {
             },
             tooltip: {
                 formatter:function () {
-                    s= '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y',this.x)+'</span>'
+                    s= '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
+                    s+='<br\><span style="color:#7cb5ec">cpu使用率:'+this.y+'%</span>'
                     return s
 
                 },
@@ -82,9 +81,7 @@ function cpu_graphar(id,data) {
 };
 function memory_graphs(id,data) {
     var indexs=null
-     Highcharts.setOptions({
-        timezoneOffset: -8
-    });
+    Highcharts.setOptions({ global: { useUTC: false } });
         $(id).highcharts({
             chart: {
                 margin:[0,0,0,0],
@@ -97,7 +94,7 @@ function memory_graphs(id,data) {
                 visible:false,
             },
             yAxis: {
-                max:15.98,
+                max:data['vm.memory.size[total]'],
                 min:0,
                 visible:false,
             },
@@ -106,7 +103,10 @@ function memory_graphs(id,data) {
             },
               tooltip: {
                    formatter: function () {
-                        var s = data['vm.memory.size[available]'][indexs][0] +'<br\>'+'<span style="color: #7cb5ec">内存总量:'+data['vm.memory.size[total]']+'GB</span><br\><span style="color: #7cb5Ec">内存使用量'+ this.y + 'GB('+data['vm.memory.size[available]'][indexs][2]+'%)</br></span>';
+                        var s = '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',data['vm.memory.size[available]'][indexs][0])+'</span>'
+                        s+='<br\><span style="color:#7cb5ec">已使用:'+data['vm.memory.size[available]'][indexs][1]+'GB</span>'
+                        s+='<br\><span style="color:#7cb5ec">使用百分比:'+data['vm.memory.size[available]'][indexs][2]+'%</span>'
+                        s+='<br\><span style="color:#7cb5ec">总计:'+data['vm.memory.size[total]']+'GB</span>'
                         return s;
                     },
                   shared: true
@@ -140,7 +140,7 @@ function memory_graphs(id,data) {
                     point:{
                         events:{
                                 mouseOver: function(event) {
-                                indexs = event.target.x;
+                                indexs = event.target.index;
                                 console.log(indexs);
                              }
                         }

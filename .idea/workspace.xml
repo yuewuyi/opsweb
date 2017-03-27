@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a11635e-e5de-4b60-9929-65cdcf98da80" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/jsontest.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/views.py" afterPath="$PROJECT_DIR$/api/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/monitor/js/graphs.js" afterPath="$PROJECT_DIR$/static/monitor/js/graphs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/monitor/js/host_detailed.js" afterPath="$PROJECT_DIR$/static/monitor/js/host_detailed.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/busicount.py" afterPath="$PROJECT_DIR$/utils/busicount.py" />
     </list>
     <ignored path="opsweb.iws" />
@@ -21,7 +19,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/opsweb$osstest.coverage" NAME="osstest Coverage Results" MODIFIED="1490177025105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
-    <SUITE FILE_PATH="coverage/opsweb$busicount.coverage" NAME="busicount Coverage Results" MODIFIED="1490231188723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/opsweb$busicount.coverage" NAME="busicount Coverage Results" MODIFIED="1490576740018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/opsweb$jsontest.coverage" NAME="jsontest Coverage Results" MODIFIED="1490241412315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -43,48 +41,28 @@
     <favorites_list name="opsweb" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="host_detailed.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/monitor/js/host_detailed.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-61">
-              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-              <folding>
-                <marker date="1490240142241" expanded="true" signature="269:286" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="26" column="71" selection-start-line="26" selection-start-column="71" selection-end-line="26" selection-end-column="71" />
+            <state relative-caret-position="221">
+              <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="graphs.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="graphs.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/monitor/js/graphs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="35" column="81" selection-start-line="35" selection-start-column="81" selection-end-line="35" selection-end-column="81" />
+            <state relative-caret-position="377">
+              <caret line="108" column="60" selection-start-line="108" selection-start-column="60" selection-end-line="108" selection-end-column="60" />
               <folding>
-                <marker date="1490263373318" expanded="true" signature="1096:1102" ph="..." />
-                <marker date="1490263373318" expanded="true" signature="1096:1109" ph="..." />
+                <marker date="1490609159305" expanded="true" signature="1091:1097" ph="..." />
+                <marker date="1490609159305" expanded="true" signature="1091:1104" ph="..." />
+                <marker date="1490609159305" expanded="true" signature="1210:1223" ph="..." />
+                <marker date="1490609159305" expanded="true" signature="3265:3278" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jsontest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/jsontest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -153,11 +131,11 @@
         <option value="$PROJECT_DIR$/static/monitor/css/host_detailed.css" />
         <option value="$PROJECT_DIR$/templates/monitor/host_detailed.html" />
         <option value="$PROJECT_DIR$/utils/osstest.py" />
-        <option value="$PROJECT_DIR$/utils/busicount.py" />
         <option value="$PROJECT_DIR$/static/monitor/js/host_detailed.js" />
         <option value="$PROJECT_DIR$/utils/jsontest.py" />
-        <option value="$PROJECT_DIR$/static/monitor/js/graphs.js" />
+        <option value="$PROJECT_DIR$/utils/busicount.py" />
         <option value="$PROJECT_DIR$/api/views.py" />
+        <option value="$PROJECT_DIR$/static/monitor/js/graphs.js" />
       </list>
     </option>
   </component>
@@ -170,7 +148,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-4" />
     <option name="width" value="1378" />
-    <option name="height" value="728" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -197,7 +175,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -226,13 +204,67 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opsweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opsweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opsweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opsweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opsweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opsweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -262,7 +294,7 @@
       <recent name="D:\project\opsweb\user" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.jsontest">
+  <component name="RunManager" selected="Python.busicount">
     <configuration default="false" name="busicount" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -579,8 +611,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.jsontest" />
-        <item index="1" class="java.lang.String" itemvalue="Python.busicount" />
+        <item index="0" class="java.lang.String" itemvalue="Python.busicount" />
+        <item index="1" class="java.lang.String" itemvalue="Python.jsontest" />
         <item index="2" class="java.lang.String" itemvalue="Python.osstest" />
       </list>
     </recent_temporary>
@@ -611,27 +643,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1378" height="728" extended-state="1" />
+    <frame x="-4" y="0" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21092564" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21699545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15384616" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27986908" sideWeight="0.5605144" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.49693722" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32876712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1816694" sideWeight="0.46596065" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21512605" sideWeight="0.43948564" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20949264" sideWeight="0.43948564" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1816694" sideWeight="0.46596065" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -885,9 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
           <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -909,7 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="9" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -924,7 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1383">
           <caret line="74" column="7" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -932,7 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -940,56 +966,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/osstest.py" />
     <entry file="file://$PROJECT_DIR$/utils/busicount.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        <state relative-caret-position="19">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1490231125909" expanded="true" signature="640:689" ph="SELECT store... b_store" />
-            <marker date="1490231125909" expanded="true" signature="640:690" ph="SELECT store... b_store" />
-            <marker date="1490231125909" expanded="true" signature="640:705" ph="SELECT store... b_store" />
-            <marker date="1490231125909" expanded="true" signature="769:815" ph="select count... b_pc_device" />
-            <marker date="1490231125909" expanded="true" signature="769:877" ph="select count... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="970:1031" ph="SELECT COUNT... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="970:1058" ph="SELECT COUNT... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="970:1083" ph="SELECT COUNT... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="970:1084" ph="SELECT COUNT... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="970:1085" ph="SELECT COUNT... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="970:1090" ph="SELECT COUNT... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="970:1092" ph="SELECT COUNT... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="1116:1117" ph="SELECT COUNT... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="1185:1223" ph="SELECT two_c... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1185:1239" ph="SELECT two_c... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1185:1268" ph="SELECT two_c... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1185:1282" ph="SELECT two_c... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1429:1550" ph="SELECT three... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1693:1731" ph="SELECT pres_... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1693:1747" ph="SELECT pres_... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1693:1775" ph="SELECT pres_... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1693:1776" ph="SELECT pres_... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1693:1790" ph="SELECT pres_... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="1935:1942" ph="SELECT count... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="1935:2034" ph="SELECT count... b_pc_busi" />
-            <marker date="1490231125909" expanded="true" signature="2180:2281" ph="SELECT drug_... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="2427:2526" ph="SELECT drug_... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="2676:2772" ph="SELECT sum_p... b_drug_rcmd_sum" />
-            <marker date="1490231125909" expanded="true" signature="2922:3018" ph="SELECT ave_p... b_drug_rcmd_sum" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/js/host_detailed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-          <folding>
-            <marker date="1490240142241" expanded="true" signature="269:286" ph="..." />
+            <element signature="e#0#14#0" expanded="false" />
+            <marker date="1490576739789" expanded="true" signature="640:689" ph="SELECT store... b_store" />
+            <marker date="1490576739789" expanded="true" signature="640:690" ph="SELECT store... b_store" />
+            <marker date="1490576739789" expanded="true" signature="640:705" ph="SELECT store... b_store" />
+            <marker date="1490576739789" expanded="true" signature="769:815" ph="select count... b_pc_device" />
+            <marker date="1490576739789" expanded="true" signature="769:877" ph="select count... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="970:1031" ph="SELECT COUNT... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="970:1058" ph="SELECT COUNT... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="970:1083" ph="SELECT COUNT... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="970:1084" ph="SELECT COUNT... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="970:1085" ph="SELECT COUNT... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="970:1090" ph="SELECT COUNT... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="970:1092" ph="SELECT COUNT... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="1116:1117" ph="SELECT COUNT... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="1185:1223" ph="SELECT two_c... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1185:1239" ph="SELECT two_c... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1185:1268" ph="SELECT two_c... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1185:1282" ph="SELECT two_c... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1429:1550" ph="SELECT three... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1693:1731" ph="SELECT pres_... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1693:1747" ph="SELECT pres_... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1693:1775" ph="SELECT pres_... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1693:1776" ph="SELECT pres_... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1693:1790" ph="SELECT pres_... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="1935:1942" ph="SELECT count... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="1935:2034" ph="SELECT count... b_pc_busi" />
+            <marker date="1490576739789" expanded="true" signature="2180:2281" ph="SELECT drug_... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="2427:2526" ph="SELECT drug_... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="2676:2772" ph="SELECT sum_p... b_drug_rcmd_sum" />
+            <marker date="1490576739789" expanded="true" signature="2922:3018" ph="SELECT ave_p... b_drug_rcmd_sum" />
           </folding>
         </state>
       </provider>
@@ -1002,22 +1017,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/js/graphs.js">
+    <entry file="file://$PROJECT_DIR$/static/monitor/js/host_detailed.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="35" column="81" selection-start-line="35" selection-start-column="81" selection-end-line="35" selection-end-column="81" />
+        <state relative-caret-position="536">
+          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
           <folding>
-            <marker date="1490263373318" expanded="true" signature="1096:1102" ph="..." />
-            <marker date="1490263373318" expanded="true" signature="1096:1109" ph="..." />
+            <marker date="1490240142241" expanded="true" signature="269:286" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="71" selection-start-line="26" selection-start-column="71" selection-end-line="26" selection-end-column="71" />
+        <state relative-caret-position="221">
+          <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/monitor/js/graphs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="108" column="60" selection-start-line="108" selection-start-column="60" selection-end-line="108" selection-end-column="60" />
+          <folding>
+            <marker date="1490609159305" expanded="true" signature="1091:1097" ph="..." />
+            <marker date="1490609159305" expanded="true" signature="1091:1104" ph="..." />
+            <marker date="1490609159305" expanded="true" signature="1210:1223" ph="..." />
+            <marker date="1490609159305" expanded="true" signature="3265:3278" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

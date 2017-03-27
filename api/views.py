@@ -24,7 +24,7 @@ def zabbix_cpu_get(request):
         for item in result:
             if not item['itemid'] in cpu_data.keys():
                 cpu_data[item['itemid']] = []
-            cpu_data[item['itemid']].append([int(item['clock'])*1000000, float(item['value'])])
+            cpu_data[item['itemid']].append([int(item['clock'])*1000,  round(float(item['value']),2)])
         for item in data['host_item_ids']:
             data['host_item_ids'][item]['system.cpu.util[,,avg1]']=cpu_data[data['host_item_ids'][item]['system.cpu.util[,,avg1]']]
         return HttpResponse(json.dumps(data['host_item_ids']),content_type='application/json')
@@ -48,7 +48,7 @@ def zabbix_memory_get(request):
         for item in result:
             if not item['itemid'] in cpu_data.keys():
                 cpu_data[item['itemid']] = []
-            cpu_data[item['itemid']].append([int(item['clock']), round(int(item['value'])/(1024*1024*1024),2)])
+            cpu_data[item['itemid']].append([int(item['clock'])*1000, round(int(item['value'])/(1024*1024*1024),2)])
         for item in data['host_item_ids']:
             memory_total=cpu_data[data['host_item_ids'][item]['vm.memory.size[total]']][len(cpu_data[data['host_item_ids'][item]['vm.memory.size[total]']][0])-1][1]
             data['host_item_ids'][item]['vm.memory.size[total]']=memory_total
