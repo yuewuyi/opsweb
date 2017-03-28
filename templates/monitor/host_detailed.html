@@ -6,10 +6,10 @@
     <div class="page_container">
          <div class="page_title">监控详情</div>
          <div class="page_hr"></div>
-         <div class="disk_container">
+         <div class="div_container">
              <div class="disk_usage">
                 <div class="div_title">磁盘使用情况</div>
-                <div class="div_graphas">
+                <div class="div_graphas_container">
                     <div class="disk_usage_graphs" id="disk_g1"></div>
                     <div class="disk_usage_graphs" id="disk_g2"></div>
                     <div class="disk_usage_graphs" id="disk_g3"></div>
@@ -17,9 +17,25 @@
                 </div>
              </div>
              <div class="disk_io_speed">
-                    <div class="div_title"></div>
-                    <div class="div_graphas" id="disk_io_speed_graphs"></div>
+                    <div class="div_title">磁盘读写速率<span><a href="#">1小时</a><a href="#">2小时</a><a href="#">1天</a><a href="#">1周</a><a href="#">1月</a><a href="#">1年</a><a href="#">自定义</a></span></div>
+                    <div class="div_graphas_container">
+                        <div class="div_graphas" id="disk_io_speed_graphs"></div>
+                    </div>
              </div>
          </div>
+          <div class="div_container">
+                <div class="host_detailed_cpu">
+                    <div class="div_title">cpu使用情况<span><a href="#">1小时</a><a href="#">2小时</a><a href="#">1天</a><a href="#">1周</a><a href="#">1月</a><a href="#">1年</a><a href="#">自定义</a></span></div>
+                    <div class="div_graphas_container">
+                        <div class="div_graphas" id="host_detailed_cpu"></div>
+                    </div>
+                </div>
+                <div class="host_detailed_memory">
+                    <div class="div_title">内存使用情况<span><a href="#">1小时</a><a href="#">2小时</a><a href="#">1天</a><a href="#">1周</a><a href="#">1月</a><a href="#">1年</a><a href="#">自定义</a></span></div>
+                    <div class="div_graphas_container">
+                    </div>
+                </div>
+          </div>
+
     </div>
 {% endblock %}

@@ -14,7 +14,8 @@ def zabbix_cpu_get(request):
             "history":0,
             "itemids":data['itemids'],
             "hostids":data['hostids'],
-            "time_from":int(time.time())-7200,
+            "time_from": data["start_time"],
+            "time_till": data["stop_time"],
             "sortfield":"clock",
             "sortorder":"ACS",
         }
@@ -33,12 +34,14 @@ def zabbix_cpu_get(request):
 def zabbix_memory_get(request):
     if request.method=="POST":
         data=json.loads(request.body.decode())
+
         params={
             "output":"extend",
             "hitory":3,
             "itemids":data["itemids"],
             "hostids":data["hostids"],
-            "time_from":int(time.time())-7200,
+            "time_from":data["start_time"],
+            "time_till":data["stop_time"],
             "sortfield":"clock",
             "sortorder":"ACS",
         }

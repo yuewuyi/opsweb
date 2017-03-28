@@ -71,7 +71,7 @@ function cpu_graphar(id,data) {
             },
             series: [{
                 type: 'area',
-                data: data,
+                data: data1,
                 name:"cpu使用率:"
             }],
             credits: {
@@ -180,10 +180,16 @@ function req_ajax(url,data) {
         })
     return dtd.promise();
 }
-function cpu_data_req() {
+function cpu_data_req(start_time,stop_time) {
     var itemids=[]
     var hostids=[]
     var host_item_ids={}
+    if(stop_time==''){
+        stop_time=Date.parse(new Date())/1000;
+    }
+    if(start_time==''){
+        start_time=stop_time-7200
+    }
     host_data=eval($("#data_storage").data('host'))
     $.each(host_data,function (index,value,array) {
         itemid={}
@@ -201,17 +207,23 @@ function cpu_data_req() {
            return false;
        }
     })
-    $.when(req_ajax('/api/zabbix_cpu_get/',{"itemids":itemids,"hostids":hostids,"host_item_ids":host_item_ids}))
+    $.when(req_ajax('/api/zabbix_cpu_get/',{"itemids":itemids,"hostids":hostids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}))
         .done(function () {
           for (var key in req_data){
               cpu_graphar("#hostid_"+key,req_data[key]['system.cpu.util[,,avg1]'])
           }
         })
 }
-function memory_data_req() {
+function memory_data_req(start_time,stop_time) {
     var itemids=[]
     var hostids=[]
     var host_item_ids={}
+    if(stop_time==''){
+        stop_time=Date.parse(new Date())/1000;
+    }
+    if(start_time==''){
+        start_time=stop_time-7200
+    }
     host_data=eval($("#data_storage").data('host'))
     $.each(host_data,function (index,value,array) {
         itemid={}
@@ -228,7 +240,7 @@ function memory_data_req() {
            return false;
        }
     })
-    $.when(req_ajax('/api/zabbix_memory_get/',{"itemids":itemids,"hostids":hostids,"host_item_ids":host_item_ids}))
+    $.when(req_ajax('/api/zabbix_memory_get/',{"itemids":itemids,"hostids":hostids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}))
         .done(function () {
           for (var key in req_data){
               memory_graphs("#hostid_"+key,req_data[key])
@@ -237,8 +249,8 @@ function memory_data_req() {
 }
 function cpu_memory_change(value) {
     if(value=="cpu"){
-        cpu_data_req()
+        cpu_data_req('','')
     }else if(value=="memory"){
-        memory_data_req()
+        memory_data_req('','')
     }
 }
