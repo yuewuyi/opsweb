@@ -71,7 +71,7 @@ function cpu_graphar(id,data) {
             },
             series: [{
                 type: 'area',
-                data: data1,
+                data: data,
                 name:"cpu使用率:"
             }],
             credits: {

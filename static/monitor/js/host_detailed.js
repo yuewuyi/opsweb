@@ -445,11 +445,12 @@ function host_detailed_cpu_graphar() {
                 zoomType: 'x'
             },
             title: {
-                text: ''
+                text: '',
             },
             xAxis: {
                 type: 'datetime',
                 gridLineWidth :1,
+                tickInterval:1000*60*5,
                 labels:{
                     formatter:function(){
                         return Highcharts.dateFormat('%H:%M', this.value)
@@ -505,6 +506,212 @@ function host_detailed_cpu_graphar() {
             }
         });
 }
+function host_detailed_memory_graphar() {
+    Highcharts.setOptions({ global: { useUTC: false } });
+    $('#host_detailed_memory').highcharts({
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                type: 'datetime',
+                tickInterval:1000*60*5,
+                gridLineWidth :1,
+                labels:{
+                    formatter:function(){
+                        return Highcharts.dateFormat('%H:%M', this.value)
+                    },
+                    rotation:270,
+                    style:{
+                        fontSize:'12px',
+                        color:'green'
+                    }
+                },
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                tickAmount:5,
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    color:'#FEA934',
+                    fillColor: {
+                        linearGradient: {
+                            x1: 1,
+                            y1: 0,
+                            x2: 1,
+                            y2: 1
+                        },
+                        stops: [
+                            [0,'#FEA934'],
+                            [1, Highcharts.Color('#FEA934').setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        enabled:false
+                    },
+                    lineWidth: 1,
+                    threshold: null
+                }
+            },
+            exporting:{
+                enabled:false
+                },
+            series: [{
+                type: 'area',
+                name: 'cpu使用率',
+                data: data1
+            }],
+            credits:{
+                enabled:false
+            }
+        });
+}
+function nic_in() {
+    Highcharts.setOptions({ global: { useUTC: false } });
+    $('#nic_in').highcharts({
+        chart: {
+            type: 'spline'
+        },
+        colors:[ '#FEA934','#48a301'],
+        title: {
+            text: ''
+        },
+        legend: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+            title: {
+                text: ''
+            },
+            tickInterval:1000*60*5,
+            gridLineWidth :1,
+            labels:{
+                formatter:function(){
+                    return Highcharts.dateFormat('%H:%M', this.value)
+                },
+                rotation:270,
+                style:{
+                    fontSize:'12px',
+                    color:'green'
+                }
+            },
+        },
+        yAxis: {
+            title: {
+                text: ''
+            },
+            tickAmount:5,
+        },
+        tooltip: {
+            headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
+            pointFormat: '{series.name}:{point.y:.2f}%'
+        },
+        plotOptions: {
+            spline: {
+                dataLabels: {
+                    enabled: false
+                },
+            },
+            series: {
+                  lineWidth:1,
+                  marker: {
+                      enabled: false
+                  },
+            }
+        },
+        exporting:{
+                enabled:false
+        },
+        credits: {
+                enabled: false
+            },
+        series: [ {
+            name: '内网',
+            data: data1
+        },{
+            name:'外网',
+            data:data2
+        }]
+    });
+}
+function nic_out() {
+    Highcharts.setOptions({ global: { useUTC: false } });
+    $('#nic_out').highcharts({
+        chart: {
+            type: 'spline'
+        },
+        colors:[ '#FEA934','#48a301'],
+        title: {
+            text: ''
+        },
+        legend: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+            title: {
+                text: ''
+            },
+            tickInterval:1000*60*5,
+            gridLineWidth :1,
+            labels:{
+                formatter:function(){
+                    return Highcharts.dateFormat('%H:%M', this.value)
+                },
+                rotation:270,
+                style:{
+                    fontSize:'12px',
+                    color:'green'
+                }
+            },
+        },
+        yAxis: {
+            title: {
+                text: ''
+            },
+            tickAmount:5,
+        },
+        tooltip: {
+            headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
+            pointFormat: '{series.name}:{point.y:.2f}%'
+        },
+        plotOptions: {
+            spline: {
+                dataLabels: {
+                    enabled: false
+                },
+            },
+            series: {
+                  lineWidth:1,
+                  marker: {
+                      enabled: false
+                  },
+            }
+        },
+        exporting:{
+                enabled:false
+        },
+        credits: {
+                enabled: false
+            },
+        series: [ {
+            name: '内网',
+            data: data1
+        },{
+            name:'外网',
+            data:data2
+        }]
+    });
+}
 $(document).ready(function () {
     z=4
     if (z<4) {
@@ -517,4 +724,7 @@ $(document).ready(function () {
     }
     disk_io_speed()
     host_detailed_cpu_graphar()
+    host_detailed_memory_graphar()
+    nic_in()
+    nic_out()
 })

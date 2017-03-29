@@ -1,14 +1,14 @@
 div a{
     color: white;
     margin-left:4px;
-     margin-right:4px;
-
+    margin-right:4px;
 }
+
 .div_title span{
     float: right;
 }
 .div_container{
-    height: 175px;
+    height: 180px;
     width: 98%;
     margin: 10px auto 0 auto;
 }
@@ -16,16 +16,14 @@ div a{
     background-color: #222d32;
     color: white;
     font-family: 楷体;
-    height: 13%;
     line-height: 25px;
-    text-indent: 6px;
     -moz-box-shadow:0px 1px 3px #858585;
     -webkit-box-shadow:0px 1px 3px #858585;
     box-shadow:0px 1px 3px #858585;
     width: 100%;
 }
 .div_graphas_container{
-    height: 87%;
+    height: 155px;
     background-color: white;
     -moz-box-shadow:0px 1px 3px #858585;
     -webkit-box-shadow:0px 1px 3px #858585;
@@ -56,13 +54,23 @@ div a{
     float: left;
 }
 .host_detailed_cpu{
-    height: 200px;
+    height: 100%;
     width: 49.8%;
     float: left;
 }
 .host_detailed_memory{
-    height: 200px;
+    height: 100%;
     width: 49.8%;
     float: right;
     margin-left: 0.4%;
+}
+.app_graphs_container{
+    height: 300px;
+    width: 98%;
+    margin: 10px auto 0 auto;
+}
+.select_button{
+    border: 0;
+    border-radius: 0;
+    background-color: #222d32;
 }
