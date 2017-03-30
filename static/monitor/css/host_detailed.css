@@ -74,3 +74,12 @@ div a{
     border-radius: 0;
     background-color: #222d32;
 }
+.select_box{
+    color: white;
+    background-color: #222d32;
+    border-radius: 0;
+    min-width: 45px;
+}
+.select_box li a{
+    color: white;
+}
