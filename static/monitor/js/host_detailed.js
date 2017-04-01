@@ -712,6 +712,217 @@ function nic_out() {
         }]
     });
 }
+function tomcat_heap_memory_graphar() {
+    Highcharts.setOptions({ global: { useUTC: false } });
+    $('#tomcat_heap_mem').highcharts({
+            chart: {
+                zoomType: 'x',
+                borderColor:'#222d32',
+                borderWidth:1
+            },
+            title: {
+                text: '<p style="font-size: 12px;">tomcat堆内存</p>'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickInterval:1000*60*5,
+                gridLineWidth :1,
+                labels:{
+                    formatter:function(){
+                        return Highcharts.dateFormat('%H:%M', this.value)
+                    },
+                    rotation:270,
+                    style:{
+                        fontSize:'12px',
+                        color:'green'
+                    }
+                },
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                tickAmount:5,
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    color:'#FEA934',
+                    fillColor: {
+                        linearGradient: {
+                            x1: 1,
+                            y1: 0,
+                            x2: 1,
+                            y2: 1
+                        },
+                        stops: [
+                            [0,'#FEA934'],
+                            [1, Highcharts.Color('#FEA934').setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        enabled:false
+                    },
+                    lineWidth: 1,
+                    threshold: null
+                }
+            },
+            exporting:{
+                enabled:false
+                },
+            series: [{
+                type: 'area',
+                name: 'cpu使用率',
+                data: data1
+            }],
+            credits:{
+                enabled:false
+            }
+        });
+}
+function tomcat_non_heap_memory_graphar() {
+    Highcharts.setOptions({ global: { useUTC: false } });
+    $('#tomcat_non_heap_mem').highcharts({
+            chart: {
+                zoomType: 'x',
+                borderColor:'#222d32',
+                borderWidth:1
+            },
+            title: {
+                text: '<p style="font-size: 12px;">tomcat非堆内存</p>'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickInterval:1000*60*5,
+                gridLineWidth :1,
+                labels:{
+                    formatter:function(){
+                        return Highcharts.dateFormat('%H:%M', this.value)
+                    },
+                    rotation:270,
+                    style:{
+                        fontSize:'12px',
+                        color:'green'
+                    }
+                },
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                tickAmount:5,
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    color:'#FEA934',
+                    fillColor: {
+                        linearGradient: {
+                            x1: 1,
+                            y1: 0,
+                            x2: 1,
+                            y2: 1
+                        },
+                        stops: [
+                            [0,'#FEA934'],
+                            [1, Highcharts.Color('#FEA934').setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        enabled:false
+                    },
+                    lineWidth: 1,
+                    threshold: null
+                }
+            },
+            exporting:{
+                enabled:false
+                },
+            series: [{
+                type: 'area',
+                name: 'cpu使用率',
+                data: data1
+            }],
+            credits:{
+                enabled:false
+            }
+        });
+}
+function tomcat_connect() {
+    Highcharts.setOptions({ global: { useUTC: false } });
+    $('#tomcat_connect').highcharts({
+        chart: {
+            type: 'spline',
+            borderColor:'#222d32',
+            borderWidth:1
+        },
+        colors:[ '#FEA934','#48a301'],
+        title: {
+            text: '<p style="font-size: 12px;">tomcat当前连接数</p>'
+        },
+        legend: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+            title: {
+                text: ''
+            },
+            tickInterval:1000*60*5,
+            gridLineWidth :1,
+            labels:{
+                formatter:function(){
+                    return Highcharts.dateFormat('%H:%M', this.value)
+                },
+                rotation:270,
+                style:{
+                    fontSize:'12px',
+                    color:'green'
+                }
+            },
+        },
+        yAxis: {
+            title: {
+                text: ''
+            },
+            tickAmount:5,
+        },
+        tooltip: {
+            headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
+            pointFormat: '{series.name}:{point.y:.2f}%'
+        },
+        plotOptions: {
+            spline: {
+                dataLabels: {
+                    enabled: false
+                },
+            },
+            series: {
+                  lineWidth:1,
+                  marker: {
+                      enabled: false
+                  },
+            }
+        },
+        exporting:{
+                enabled:false
+        },
+        credits: {
+                enabled: false
+            },
+        series: [ {
+            name: '内网',
+            data: data1
+        },{
+            name:'外网',
+            data:data2
+        }]
+    });
+}
 $(document).ready(function () {
     z=4
     if (z<4) {
@@ -727,4 +938,7 @@ $(document).ready(function () {
     host_detailed_memory_graphar()
     nic_in()
     nic_out()
+    tomcat_heap_memory_graphar()
+    tomcat_non_heap_memory_graphar()
+    tomcat_connect()
 })
