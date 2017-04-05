@@ -26,7 +26,18 @@ def config(request):
     return HttpResponse(result)
     # return render(request, 'monitor/config.html')
 def host_info_detailed(request):
-    return render(request,'monitor/host_detailed.html')
+    hostname=request.GET['host']
+    params = {
+        "output": 'extend',
+        "selectDiscoveries":'extend',
+        'filter':{
+            'host':hostname
+        }
+    }
+    zabbix_data_get = zabbix_data()
+    result = zabbix_data_get.host_item_get(params)
+    return HttpResponse(result)
+    # return render(request,'monitor/host_detailed.html')
     # return HttpResponse(request.GET['host'])
 
 

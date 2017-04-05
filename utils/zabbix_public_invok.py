@@ -24,3 +24,6 @@ class zabbix_data:
     def item_history_get(self,params):
         result=self.__zapi.do_request("history.get",params)["result"]
         return result
+    def host_item_get(self,params):
+        result=self.__zapi.do_request("host.get",params)["result"]
+        return result
