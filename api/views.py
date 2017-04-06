@@ -34,7 +34,6 @@ def zabbix_cpu_get(request):
 def zabbix_memory_get(request):
     if request.method=="POST":
         data=json.loads(request.body.decode())
-
         params={
             "output":"extend",
             "hitory":3,
