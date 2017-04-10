@@ -8,9 +8,9 @@ config = {
           'db':'busidb',
           'charset':'utf8mb4',
           }
-start="2017-04-05 00:00:00"
-end="2017-04-06 00:00:00"
-transdate="2017-04-05"
+start="2017-04-09 00:00:00"
+end="2017-04-010 00:00:00"
+transdate="2017-04-09"
 sum_data = []
 sum_data.append(['药店名', '总pc量', '未推荐药品', '推荐两种药品', '推荐三种以上药品', '处方量', '首推处方量', '首推药品盒数', '首推药品金额', '处方总金额', '平均客单价'])
 def data(start,end,transdate,config,storename):

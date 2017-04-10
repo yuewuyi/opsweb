@@ -26,24 +26,30 @@ def config(request):
     return HttpResponse(result)
     # return render(request, 'monitor/config.html')
 def host_info_detailed(request):
-    hostname=request.GET['host']
-    host={
-        "output": ['hostid'],
-        "selectItems":['itemid','key_','name'],
-        "selectDiscoveries":['name','_key','itemid'],
-        "history":1,
-        "selectParentTemplates":['name'],
-        'filter':{
-            'host':hostname
-        }
+    app={
+        "tomcat":{
+            "itemid":[],
+            "app":[],
+            "key_item":{}
+        },
+        "thrift":{},
+        "cpu":{},
+        "memory":{},
+        "nic":{},
+        "disk":{},
     }
     item={
         "output": "extend",
-        "hostids":"29809"
+        "selectApplications":"extend",
+        "selectItemDiscovery":"extend",
+        "filter":{
+            "host":request.GET['host']
+        },
     }
     zabbix_data_get = zabbix_data()
-    result = zabbix_data_get.host_item_get(host)
     result = zabbix_data_get.item_get(item)
+    for item in result:
+
     return HttpResponse(result)
     # return render(request,'monitor/host_detailed.html')
     # return HttpResponse(request.GET['host'])
