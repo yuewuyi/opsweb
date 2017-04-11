@@ -3,7 +3,7 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'monitor/css/host_detailed.css' %}">
     <script src="{% static 'monitor/js/host_detailed.js' %}"></script>
-    <div class="page_container">
+    <div class="page_container" data-item="{{ data.result }}" data-app="[{{ data.app }}]" id="data_storage">
          <div class="page_title">监控详情</div>
          <div class="page_hr"></div>
          <div class="div_container">
@@ -51,14 +51,15 @@
                     </div>
                 </div>
           </div>
+          {% if data.app.tomcat %}
           <div class="app_graphs_container">
                     <div class="div_title">
                         <div class="btn-group">
                             <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle">tomcat</button>
                             <ul class="dropdown-menu select_box" role="menu">
-                                <li><a href="#">app3</a></li>
-                                <li><a href="#">app2</a></li>
-                                <li><a href="#">app1</a></li>
+                                {% for item in data.app.tomcat %}
+                                <li><a href="#">{{ item }}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <span>
@@ -77,14 +78,16 @@
                         <div id="tomcat_non_heap_mem" class="app_little_graphs"></div>
                     </div>
           </div>
+          {% endif %}
+          {% if data.app.thrift %}
           <div class="app_graphs_container">
                     <div class="div_title">
                         <div class="btn-group">
                             <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle">thrift</button>
                             <ul class="dropdown-menu select_box" role="menu">
-                                <li><a href="#">thrift-1</a></li>
-                                <li><a href="#">thrift-2</a></li>
-                                <li><a href="#">thrift-dsaaaaaaaaaaaaa3</a></li>
+                                {% for item in data.app.thrift %}
+                                <li><a href="#">{{ item }}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <span>
@@ -103,6 +106,7 @@
                         <div id="thrift_cpu" class="app_little_graphs"></div>
                     </div>
           </div>
+          {% endif %}
           <div class="host_detailed_footer"></div>
     </div>
 {% endblock %}

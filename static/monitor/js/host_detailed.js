@@ -325,7 +325,21 @@ data2=[
         3.64
       ]
     ]
-function disk_usage(id) {
+function B_format(data) {
+     unit=''
+     divisor=0
+     if(this.y>=1024*1024*1024*1024){
+         divisor=1024*1024*1024*1024
+         unit='TB'
+     }else if(this.y>=1024*1024*1024){
+         divisor=1024*1024*1024
+         unit='GB'
+     }else if(this.y>=1024*1024){
+         divisor=1024*1024
+         unit='MB'
+     }
+    return data
+function disk_usage(id,name,total,used,free) {
     $(id).highcharts({
         chart: {
             margin:[20,0,,0],
@@ -333,7 +347,7 @@ function disk_usage(id) {
         },
         colors:[ '#FEA934','#B4FC7E'],
         title: {
-            text: '<span style="line-height:30px;"><b>/server</b></span>',
+            text: '<span style="line-height:30px;"><b>'+name+'</b></span>',
             margin:[0,0,0,0],
             style:{
                 fontSize:5,
@@ -341,8 +355,10 @@ function disk_usage(id) {
             useHTML:true,
         },
         tooltip: {
-            headerFormat: '{series.name}<br>',
-            pointFormat: '{point.name}: {point.y}<b>{point.percentage:.1f}%</b>'
+            headerFormat: '',
+            pointFormatter:function () {
+               return this.name+':'+B_format(this.y)
+            }
         },
         plotOptions: {
             pie: {
@@ -360,8 +376,8 @@ function disk_usage(id) {
             type: 'pie',
             name: '磁盘使用情况',
             data: [
-                ['已用',3000000],
-                ['可用',5000000]
+                ['已用',used],
+                ['可用',free]
             ]
         }],
         credits: {
@@ -1135,14 +1151,28 @@ function thrift_cpu() {
         });
 }
 $(document).ready(function () {
-    z=4
-    if (z<4) {
+    app=eval($("#data_storage").data('app'))
+    item=eval($("#data_storage").data('item'))
+    disk_num=app[0]['disk'].length
+    disk_name=''
+    disk_used=''
+    disk_total=''
+    if (disk_num<4) {
         mgleft = ['32.5%', '25%', '11.5%']
-        document.getElementById('disk_g1').style.marginLeft = mgleft[z - 1]
+        document.getElementById('disk_g1').style.marginLeft = mgleft[disk_num - 1]
     }
-    for (i=1;i<=z;i++){
+    for (i=1;i<=disk_num;i++){
+        for (j=0;j<item.length;j++){
+            disk_name=app[0]['disk'][i-1]
+            if(item[j]['name']=='Total_disk_space_on_'+disk_name){
+                disk_total=parseInt(item[j]['lastvalue'])
+            }
+            else if(item[j]['name']=='Used_disk_space_on_'+disk_name){
+                disk_used=parseInt(item[j]['lastvalue'])
+            }
+        }
         document.getElementById('disk_g'+i).style.display = "inline"
-        disk_usage('#disk_g' + i)
+        disk_usage('#disk_g'+i,disk_name,disk_total,disk_used,disk_total-disk_used)
     }
     disk_io_speed()
     host_detailed_cpu()
