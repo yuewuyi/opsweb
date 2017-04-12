@@ -21,10 +21,7 @@ def index(request):
     result=zabbix_data_get.host_trigger_get(params)
     return render(request,'monitor/index.html',{"data":result})
 def config(request):
-    zabbix_data_get = zabbix_data()
-    result = zabbix_data_get.item_history_get('')
-    return HttpResponse(result)
-    # return render(request, 'monitor/config.html')
+    return render(request, 'monitor/config.html')
 def host_info_detailed(request):
     tomcat = re.compile(r'^app[\d]*_Tomcat_ping$')
     thrift = re.compile(r'^[\w\-\.]*_thrift_ping$')

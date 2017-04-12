@@ -1,12 +1,19 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="controls">
+                    <div id="reportrange" class="pull-left dateRange" style="width:350px">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                        <span id="searchDateRange"></span>
+                        <b class="caret"></b>
+                    </div>
+    </div>
+    <script>
+         $(document).ready(function (){
+                    //时间插件
+                    $('#reportrange span').html(moment().subtract('hours', 1).format('YYYY-MM-DD HH:mm:ss') + ' - ' + moment().format('YYYY-MM-DD HH:mm:ss'));
+                    $('#reportrange').daterangepicker()
+        })
+    </script>
 
-
-<div ng-app="myApp" ng-controller="customersCtrl">
-
-<table>
-  <tr ng-repeat="x in names">
-    <td>[[ x.host ]]</td>
-    <td>[[ x.ip ]]</td>
-  </tr>
-</table>
-
-</div>
+{% endblock %}

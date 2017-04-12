@@ -326,19 +326,20 @@ data2=[
       ]
     ]
 function B_format(data) {
-     unit=''
-     divisor=0
-     if(this.y>=1024*1024*1024*1024){
-         divisor=1024*1024*1024*1024
-         unit='TB'
-     }else if(this.y>=1024*1024*1024){
-         divisor=1024*1024*1024
-         unit='GB'
-     }else if(this.y>=1024*1024){
-         divisor=1024*1024
-         unit='MB'
-     }
-    return data
+    unit = ''
+    divisor = 0
+    if (data >= 1024 * 1024 * 1024 * 1024) {
+        divisor = 1024 * 1024 * 1024 * 1024
+        unit = 'TB'
+    } else if (data >= 1024 * 1024 * 1024) {
+        divisor = 1024 * 1024 * 1024
+        unit = 'GB'
+    } else if (data >= 1024 * 1024) {
+        divisor = 1024 * 1024
+        unit = 'MB'
+    }
+    return parseFloat(data/divisor).toFixed(2)+unit
+}
 function disk_usage(id,name,total,used,free) {
     $(id).highcharts({
         chart: {
@@ -357,7 +358,10 @@ function disk_usage(id,name,total,used,free) {
         tooltip: {
             headerFormat: '',
             pointFormatter:function () {
-               return this.name+':'+B_format(this.y)
+                str=this.name+':'+B_format(this.y)
+                str+='<br>百分比:'+parseFloat(this.percentage).toFixed(2)+'%'
+                str+='<br>总计:'+B_format(total)
+                return str
             }
         },
         plotOptions: {
