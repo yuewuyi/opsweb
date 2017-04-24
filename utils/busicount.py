@@ -1,16 +1,16 @@
 import pymysql
 import csv
 config = {
-          'host':'10.175.201.136',
+          'host':'10.168.85.120',
           'port':3306,
           'user':'root',
           'password':'Pass1234',
           'db':'busidb',
           'charset':'utf8mb4',
           }
-start="2017-04-10 00:00:00"
-end="2017-04-011 00:00:00"
-transdate="2017-04-10"
+start="2017-04-19 00:00:00"
+end="2017-04-20 00:00:00"
+transdate="2017-04-19"
 sum_data = []
 sum_data.append(['药店名', '总pc量', '未推荐药品', '推荐两种药品', '推荐三种以上药品', '处方量', '首推处方量', '首推药品盒数', '首推药品金额', '处方总金额', '平均客单价'])
 def data(start,end,transdate,config,storename):
