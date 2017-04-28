@@ -738,7 +738,6 @@ function tomcat_heap_memory() {
             chart: {
                 zoomType: 'x',
                 borderColor:'#222d32',
-                borderWidth:1
             },
             title: {
                 text: '<p style="font-size: 12px;">tomcat堆内存</p>'
@@ -808,7 +807,6 @@ function tomcat_non_heap_memory() {
             chart: {
                 zoomType: 'x',
                 borderColor:'#222d32',
-                borderWidth:1
             },
             title: {
                 text: '<p style="font-size: 12px;">tomcat非堆内存</p>'
@@ -878,7 +876,6 @@ function tomcat_connect() {
         chart: {
             type: 'spline',
             borderColor:'#222d32',
-            borderWidth:1
         },
         colors:[ '#FEA934','#48a301'],
         title: {
@@ -949,7 +946,6 @@ function thrift_connect() {
         chart: {
             type: 'spline',
             borderColor:'#222d32',
-            borderWidth:1
         },
         colors:[ '#FEA934','#48a301'],
         title: {
@@ -1020,7 +1016,6 @@ function thrift_memory() {
             chart: {
                 zoomType: 'x',
                 borderColor:'#222d32',
-                borderWidth:1
             },
             title: {
                 text: '<p style="font-size: 12px;">thrift堆内存</p>'
@@ -1090,7 +1085,6 @@ function thrift_cpu() {
             chart: {
                 zoomType: 'x',
                 borderColor:'#222d32',
-                borderWidth:1
             },
             title: {
                 text: '<p style="font-size: 12px;">thrift cpu</p>'
@@ -1154,6 +1148,45 @@ function thrift_cpu() {
             }
         });
 }
+function date_select(id) {
+        $(id+' span').html(moment().subtract(1,'hours').format('YYYY-MM-DD HH:mm:ss') + ' - ' + moment().format('YYYY-MM-DD HH:mm:ss'));
+                    $(id).daterangepicker(
+                            {
+                                maxDate : moment(), //最大时间
+                                showDropdowns : true,
+                                timePicker : true, //是否显示小时和分钟
+                                timePickerIncrement : 1, //时间的增量，单位为分钟
+                                timePicker24Hour : true, //使用24小时制来显示时间
+                                dateLimit:{
+                                  months:1024
+                                },
+                                ranges : {
+                                    '最近1小时': [moment().subtract(1,'hours'), moment()],
+                                    '最近2小时': [moment().subtract(2,'hours'), moment()],
+                                    '最近3小时': [moment().subtract(3,'hours'), moment()],
+                                    '今日': [moment().startOf('day'), moment()],
+                                    '昨日': [moment().subtract(1,'days').startOf('day'), moment().subtract(1,'days').endOf('day')],
+                                    '最近7日': [moment().subtract(6,'days'), moment()],
+                                    '最近30日': [moment().subtract(29,'days'), moment()]
+                                },
+                                opens : 'left', //日期选择框的弹出位置
+                                format : 'YYYY-MM-DD HH:mm:ss', //控件中from和to 显示的日期格式
+                                separator : ' to ',
+                                locale : {
+                                    applyLabel : '确定',
+                                    cancelLabel : '取消',
+                                    fromLabel : '起始时间',
+                                    toLabel : '结束时间',
+                                    customRangeLabel : '自定义',
+                                    daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+                                    monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                                            '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+                                    firstDay : 1
+                                }
+                            }, function(start, end) {//格式化日期显示框
+                                $(id+' span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));
+                           });
+}
 $(document).ready(function () {
     app=eval($("#data_storage").data('app'))
     item=eval($("#data_storage").data('item'))
@@ -1178,15 +1211,26 @@ $(document).ready(function () {
         document.getElementById('disk_g'+i).style.display = "inline"
         disk_usage('#disk_g'+i,disk_name,disk_total,disk_used,disk_total-disk_used)
     }
+    if (app[0]['tomcat'].length!=0){
+            date_select('#tomcat_date')
+            tomcat_heap_memory()
+            tomcat_non_heap_memory()
+            tomcat_connect()
+    }
+     if (app[0]['thrift'].length!=0){
+            date_select('#thrift_date')
+            thrift_connect()
+            thrift_memory()
+            thrift_cpu()
+    }
     disk_io_speed()
     host_detailed_cpu()
     host_detailed_memory()
     nic_in()
     nic_out()
-    tomcat_heap_memory()
-    tomcat_non_heap_memory()
-    tomcat_connect()
-    thrift_connect()
-    thrift_memory()
-    thrift_cpu()
+    date_select('#disk_io_date')
+    date_select('#host_cpu_date')
+    date_select('#host_mem_date')
+    date_select('#host_nic_in_date')
+    date_select('#host_nic_out_date')
 })
