@@ -1,32 +1,48 @@
 from django.shortcuts import render
 from utils.zabbix_public_invok import zabbix_data
 from django.http import HttpResponse
+from utils.config import app_config
 import re
-# Create your views here.
 def index(request):
+    conf=app_config()
+    conf=conf.get_zabbix_item_key()
     params = {
         "output": ["host", "available", "error", "status"],
         "selectInterfaces": ["ip"],
         "selectTriggers": 'extend',
-        "selectItems":["itemid","key_"],
+        "selectItems": ["itemid","name"],
         "sortfield": ['host'],
-        "search": {}
+        'search':{}
     }
-    if request.method=="POST":
-        if request.POST['host_name']:
-            params['search']["host"]=request.POST['host_name']
-        if request.POST['ip_addr']:
-            params['search']["ip"] = request.POST['ip_addr']
-    zabbix_data_get=zabbix_data()
-    result=zabbix_data_get.host_trigger_get(params)
-    return render(request,'monitor/index.html',{"data":result})
+    try:
+        params['search']["host"]=request.GET['host_name']
+        params['search']["ip"]=request.GET['ipaddr']
+    except:
+        params['search']={}
+    zabbix_data_get = zabbix_data()
+    result = zabbix_data_get.host_trigger_get(params)
+    return  render(request, 'monitor/index.html', {"data": result,"zabbix_conf":[conf]})
 def config(request):
-    return render(request, 'monitor/config.html')
+    params = {
+        "output": "extend",
+        "hitory": 3,
+        "hostids":[10141],
+        "time_from": 1493713024,
+        "time_till": 1493713624,
+        "sortfield": "clock",
+        "sortorder": "ACS",
+    }
+    zabbix_data_get = zabbix_data()
+    result=zabbix_data_get.item_history_get(params)
+    return HttpResponse(result)
+    # return render(request, 'monitor/config.html')
 def host_info_detailed(request):
-    tomcat = re.compile(r'^app[\d]*_Tomcat_ping$')
-    thrift = re.compile(r'^[\w\-\.]*_thrift_ping$')
-    disk=re.compile(r'^Used_disk_space_on_[\w\-\/:\.]*$')
-    nic=re.compile(r'^Outgoing_network_traffic_on_eth[0-1]$')
+    conf = app_config()
+    conf = conf.get_zabbix_item_key()
+    tomcat = re.compile(r'^app[\d]*%s$'%conf['tomcat_ping'])
+    thrift = re.compile(r'^[\w\-\.]*%s$'%conf['thrift_ping'])
+    disk=re.compile(r'^%s[\w\-\/:\.]*$'%conf['disk_used_space'])
+    nic=re.compile(r'^%s[0-1]$'%conf['nic_out'])
     app={
         'tomcat':[],
         'thrift':[],
@@ -34,7 +50,7 @@ def host_info_detailed(request):
         'nic':[],
     }
     item={
-        "output":['itemid','name','lastvalue','key_'],
+        "output":['itemid','name','lastvalue'],
         "filter":{
             "host":request.GET['host']
         },
@@ -44,13 +60,13 @@ def host_info_detailed(request):
     for item in result:
         name=item['name']
         if tomcat.search(name):
-            app['tomcat'].append(name.split('_Tomcat_ping')[0])
+            app['tomcat'].append(name.split(conf['tomcat_ping'])[0])
         elif thrift.search(name):
-            app['thrift'].append(name.split('_thrift_ping')[0])
+            app['thrift'].append(name.split(conf['thrift_ping'])[0])
         elif disk.search(name):
-            app['disk'].append(name.split('Used_disk_space_on_')[1])
+            app['disk'].append(name.split(conf['disk_used_space'])[1])
         elif nic.search(name):
-            app['nic'].append(name.split('Outgoing_network_traffic_on_')[1])
-    return render(request,'monitor/host_detailed.html',{"data":{'app':app,'result':result}})
+            app['nic'].append(name.split(conf['nic_out'])[1])
+    return render(request,'monitor/host_detailed.html',{"data":{'app':app,'result':result,'conf':conf}})
 
 

@@ -1,6 +1,5 @@
 from zabbix.api import ZabbixAPI
 from utils.config import app_config
-import time
 class zabbix_data:
     __zapi=''
     def __init__(self):
@@ -23,6 +22,9 @@ class zabbix_data:
         return warn+enable+disable
     def item_history_get(self,params):
         result=self.__zapi.do_request("history.get",params)["result"]
+        return result
+    def item_trend_get(self, params):
+        result = self.__zapi.do_request("trend.get", params)["result"]
         return result
     def host_item_get(self,params):
         result=self.__zapi.do_request("host.get",params)["result"]

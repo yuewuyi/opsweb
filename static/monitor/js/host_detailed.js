@@ -1,6 +1,41 @@
 /**
  * Created by suyue on 2017/3/21.
  */
+//获取url参数
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}
+//时间截取转换
+function data_split_format(id) {
+    date_arr={
+        'start_time':0,
+        'end_time':0
+    }
+    date=$(id).find('span').html()
+    date=date.split(" -- ")
+    date_arr['start_time']=Date.parse(date[0])/1000
+    date_arr['end_time']=Date.parse(date[1])/1000
+    return date_arr
+}
+//创建请求参数
+function  create_request_parm(id) {
+    itemid=[]
+    host_item_ids={}
+    item_dit={}
+    date_arr=data_split_format(id)
+    host_info=eval($("#data_storage").data('item'))
+    zabbix_conf=eval($("#data_storage").data('conf'))[0]
+    for (i=0;i<host_info.length;i++){
+        item_dit[host_info[i]['name']]=host_info[i]['itemid']
+    }
+    if(id=="#host_cpu_date"){
+        itemid.push(item_dit[zabbix_conf['cpu_util']])
+        host_item_ids[hostid]={'cpu_util':item_dit[zabbix_conf['cpu_util']]}
+    }
+    return {'item':itemid,'host_item_ids':host_item_ids,'date':date_arr}
+}
 data1=[
       [
         1490678961000,
@@ -325,6 +360,7 @@ data2=[
         3.64
       ]
     ]
+//B单位转换
 function B_format(data) {
     unit = ''
     divisor = 0
@@ -340,6 +376,8 @@ function B_format(data) {
     }
     return parseFloat(data/divisor).toFixed(2)+unit
 }
+
+//磁盘使用图
 function disk_usage(id,name,total,used,free) {
     $(id).highcharts({
         chart: {
@@ -389,7 +427,10 @@ function disk_usage(id,name,total,used,free) {
             },
     });
 }
+//磁盘读写速率图
 function disk_io_speed() {
+    date_arr=''
+    date_arr=data_split_format('#disk_io_date')
     Highcharts.setOptions({ global: { useUTC: false } });
     $('#disk_io_speed_graphs').highcharts({
         chart: {
@@ -458,73 +499,85 @@ function disk_io_speed() {
         }]
     });
 }
+//主机详情CPU图
 function host_detailed_cpu() {
-    Highcharts.setOptions({ global: { useUTC: false } });
-    $('#host_detailed_cpu').highcharts({
-            chart: {
-                zoomType: 'x'
-            },
-            title: {
-                text: '',
-            },
-            xAxis: {
-                type: 'datetime',
-                gridLineWidth :1,
-                tickInterval:1000*60*5,
-                labels:{
-                    formatter:function(){
-                        return Highcharts.dateFormat('%H:%M', this.value)
+    hostid=getQueryString('hostid')
+    parm=create_request_parm('#host_cpu_date')
+    $.when(req_ajax('/api/zabbix_cpu_get/',{"itemids":parm['item'],"host_item_ids":parm['host_item_ids'],"start_time":parm['date']['start_time'],"stop_time":parm['date']['end_time']}))
+        .done(function () {
+             Highcharts.setOptions({ global: { useUTC: false } });
+            $('#host_detailed_cpu').highcharts({
+                chart: {
+                    zoomType: 'x'
+                },
+                title: {
+                    text: '',
+                },
+                xAxis: {
+                    type: 'datetime',
+                    gridLineWidth :1,
+                    tickInterval:1000*60*10,
+                    labels:{
+                        formatter:function(){
+                            return Highcharts.dateFormat('%H:%M', this.value)
+                        },
+                        rotation:270,
+                        style:{
+                            fontSize:'12px',
+                            color:'green'
+                        }
                     },
-                    rotation:270,
-                    style:{
-                        fontSize:'12px',
-                        color:'green'
+                },
+                yAxis: {
+                    max:100,
+                    min:0,
+                    title: {
+                        text: ''
+                    },
+                    tickAmount:5,
+                },
+                tooltip: {
+                    headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
+                    pointFormat: '{series.name}:{point.y:.2f}%'
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    area: {
+                        color:'#48a301',
+                        fillColor: {
+                            linearGradient: {
+                                x1: 1,
+                                y1: 0,
+                                x2: 1,
+                                y2: 1
+                            },
+                            stops: [
+                                [0,'#48a301'],
+                                [1, Highcharts.Color('#48a301').setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            enabled:false
+                        },
+                        lineWidth: 1,
+                        threshold: null
                     }
                 },
-            },
-            yAxis: {
-                title: {
-                    text: ''
-                },
-                tickAmount:5,
-            },
-            legend: {
-                enabled: false
-            },
-            plotOptions: {
-                area: {
-                    color:'#48a301',
-                    fillColor: {
-                        linearGradient: {
-                            x1: 1,
-                            y1: 0,
-                            x2: 1,
-                            y2: 1
-                        },
-                        stops: [
-                            [0,'#48a301'],
-                            [1, Highcharts.Color('#48a301').setOpacity(0).get('rgba')]
-                        ]
+                exporting:{
+                    enabled:false
                     },
-                    marker: {
-                        enabled:false
-                    },
-                    lineWidth: 1,
-                    threshold: null
+                series: [{
+                    type: 'area',
+                    name: 'cpu使用率',
+                    data: req_data[hostid]['cpu_util']
+                }],
+                credits:{
+                    enabled:false
                 }
-            },
-            exporting:{
-                enabled:false
-                },
-            series: [{
-                type: 'area',
-                name: 'cpu使用率',
-                data: data1
-            }],
-            credits:{
-                enabled:false
-            }
-        });
+            });
+        })
 }
 function host_detailed_memory() {
     Highcharts.setOptions({ global: { useUTC: false } });
@@ -1148,8 +1201,9 @@ function thrift_cpu() {
             }
         });
 }
+//日期插件
 function date_select(id) {
-        $(id+' span').html(moment().subtract(1,'hours').format('YYYY-MM-DD HH:mm:ss') + ' - ' + moment().format('YYYY-MM-DD HH:mm:ss'));
+        $(id+' span').html(moment().subtract(1,'hours').format('YYYY-MM-DD HH:mm:ss') + ' -- ' + moment().format('YYYY-MM-DD HH:mm:ss'));
                     $(id).daterangepicker(
                             {
                                 maxDate : moment(), //最大时间
@@ -1166,8 +1220,8 @@ function date_select(id) {
                                     '最近3小时': [moment().subtract(3,'hours'), moment()],
                                     '今日': [moment().startOf('day'), moment()],
                                     '昨日': [moment().subtract(1,'days').startOf('day'), moment().subtract(1,'days').endOf('day')],
-                                    '最近7日': [moment().subtract(6,'days'), moment()],
-                                    '最近30日': [moment().subtract(29,'days'), moment()]
+                                    '最近7日': [moment().subtract(7,'days'), moment()],
+                                    '最近30日': [moment().subtract(30,'days'), moment()]
                                 },
                                 opens : 'left', //日期选择框的弹出位置
                                 format : 'YYYY-MM-DD HH:mm:ss', //控件中from和to 显示的日期格式
@@ -1184,12 +1238,16 @@ function date_select(id) {
                                     firstDay : 1
                                 }
                             }, function(start, end) {//格式化日期显示框
-                                $(id+' span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));
+                                $(id+' span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' -- ' + end.format('YYYY-MM-DD HH:mm:ss'));
+                                if(id=="#host_cpu_date"){
+                                    host_detailed_cpu()
+                                }
                            });
 }
 $(document).ready(function () {
     app=eval($("#data_storage").data('app'))
     item=eval($("#data_storage").data('item'))
+    zabbix_conf=eval($("#data_storage").data('conf'))[0]
     disk_num=app[0]['disk'].length
     disk_name=''
     disk_used=''
@@ -1201,10 +1259,10 @@ $(document).ready(function () {
     for (i=1;i<=disk_num;i++){
         for (j=0;j<item.length;j++){
             disk_name=app[0]['disk'][i-1]
-            if(item[j]['name']=='Total_disk_space_on_'+disk_name){
+            if(item[j]['name']==zabbix_conf['disk_total_space']+disk_name){
                 disk_total=parseInt(item[j]['lastvalue'])
             }
-            else if(item[j]['name']=='Used_disk_space_on_'+disk_name){
+            else if(item[j]['name']==zabbix_conf['disk_used_space']+disk_name){
                 disk_used=parseInt(item[j]['lastvalue'])
             }
         }
@@ -1223,14 +1281,14 @@ $(document).ready(function () {
             thrift_memory()
             thrift_cpu()
     }
-    disk_io_speed()
-    host_detailed_cpu()
-    host_detailed_memory()
-    nic_in()
-    nic_out()
     date_select('#disk_io_date')
     date_select('#host_cpu_date')
     date_select('#host_mem_date')
     date_select('#host_nic_in_date')
     date_select('#host_nic_out_date')
+    disk_io_speed()
+    host_detailed_cpu()
+    host_detailed_memory()
+    nic_in()
+    nic_out()
 })

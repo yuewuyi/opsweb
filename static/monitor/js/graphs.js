@@ -1,4 +1,5 @@
 var req_data=''
+//获取cookie
 var docCookies = {
   getItem: function (sKey) {
     return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
@@ -94,7 +95,7 @@ function memory_graphs(id,data) {
                 visible:false,
             },
             yAxis: {
-                max:data['vm.memory.size[total]'],
+                max:data['total_mem'],
                 min:0,
                 visible:false,
             },
@@ -103,10 +104,10 @@ function memory_graphs(id,data) {
             },
               tooltip: {
                    formatter: function () {
-                        var s = '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',data['vm.memory.size[available]'][indexs][0])+'</span>'
-                        s+='<br\><span style="color:#7cb5ec">已使用:'+data['vm.memory.size[available]'][indexs][1]+'GB</span>'
-                        s+='<br\><span style="color:#7cb5ec">使用百分比:'+data['vm.memory.size[available]'][indexs][2]+'%</span>'
-                        s+='<br\><span style="color:#7cb5ec">总计:'+data['vm.memory.size[total]']+'GB</span>'
+                        var s = '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',data['alivable_mem'][indexs][0])+'</span>'
+                        s+='<br\><span style="color:#7cb5ec">已使用:'+data['alivable_mem'][indexs][1]+'GB</span>'
+                        s+='<br\><span style="color:#7cb5ec">使用百分比:'+data['alivable_mem'][indexs][2]+'%</span>'
+                        s+='<br\><span style="color:#7cb5ec">总计:'+data['total_mem']+'GB</span>'
                         return s;
                     },
                   shared: true
@@ -152,7 +153,7 @@ function memory_graphs(id,data) {
             },
             series: [{
                 type: 'area',
-                data: data['vm.memory.size[available]'],
+                data: data['alivable_mem'],
                 name:"内存使用率:"
             }],
             credits: {
@@ -180,9 +181,9 @@ function req_ajax(url,data) {
         })
     return dtd.promise();
 }
+//请求CPU数据并赋值给图形
 function cpu_data_req(start_time,stop_time) {
     var itemids=[]
-    var hostids=[]
     var host_item_ids={}
     if(stop_time==''){
         stop_time=Date.parse(new Date())/1000;
@@ -191,32 +192,34 @@ function cpu_data_req(start_time,stop_time) {
         start_time=stop_time-7200
     }
     host_data=eval($("#data_storage").data('host'))
+    zabbix_conf=eval($("#data_storage").data('key'))[0]
     $.each(host_data,function (index,value,array) {
         itemid={}
+        //去除status为0的主机
        if (value['status']=='0'){
             $.each(value['items'],function (index2,value2,array2) {
-                if (value2['key_']=='system.cpu.util[,,avg1]'){
-                    itemid[value2['key_']]=value2['itemid']
+                if (value2['name']==zabbix_conf['cpu_util']){
+                    itemid['cpu_util']=value2['itemid']
                     itemids.push(value2['itemid'])
                     return false
                 }
             })
-            hostids.push(value['hostid'])
             host_item_ids[value['hostid']]=itemid
        }else {
            return false;
        }
     })
-    $.when(req_ajax('/api/zabbix_cpu_get/',{"itemids":itemids,"hostids":hostids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}))
+    //使用链式调用
+    $.when(req_ajax('/api/zabbix_cpu_get/',{"itemids":itemids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}))
         .done(function () {
           for (var key in req_data){
-              cpu_graphar("#hostid_"+key,req_data[key]['system.cpu.util[,,avg1]'])
+              cpu_graphar("#hostid_"+key,req_data[key]['cpu_util'])
           }
         })
 }
+//请求内存数据
 function memory_data_req(start_time,stop_time) {
     var itemids=[]
-    var hostids=[]
     var host_item_ids={}
     if(stop_time==''){
         stop_time=Date.parse(new Date())/1000;
@@ -225,22 +228,25 @@ function memory_data_req(start_time,stop_time) {
         start_time=stop_time-7200
     }
     host_data=eval($("#data_storage").data('host'))
+    zabbix_conf=eval($("#data_storage").data('key'))[0]
     $.each(host_data,function (index,value,array) {
         itemid={}
        if (value['status']=='0'){
             $.each(value['items'],function (index2,value2,array2) {
-                if (value2['key_']=='vm.memory.size[total]'|| value2['key_']=="vm.memory.size[available]"){
-                    itemid[value2['key_']]=value2['itemid']
+                if (value2['name']==zabbix_conf['total_mem']){
+                    itemid['total_mem']=value2['itemid']
+                    itemids.push(value2['itemid'])
+                }else if (value2['name']==zabbix_conf['alivable_mem']){
+                    itemid['alivable_mem']=value2['itemid']
                     itemids.push(value2['itemid'])
                 }
             })
-            hostids.push(value['hostid'])
             host_item_ids[value['hostid']]=itemid
        }else {
            return false;
        }
     })
-    $.when(req_ajax('/api/zabbix_memory_get/',{"itemids":itemids,"hostids":hostids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}))
+    $.when(req_ajax('/api/zabbix_memory_get/',{"itemids":itemids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}))
         .done(function () {
           for (var key in req_data){
               memory_graphs("#hostid_"+key,req_data[key])

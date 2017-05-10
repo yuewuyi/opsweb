@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{% static 'monitor/css/index.css' %}">
     <script src="{% static 'monitor/js/monitor.js' %}"></script>
 {# 页面容器 #}
-    <div class="page_container" data-host="{{ data }}" id="data_storage">
+    <div class="page_container" data-host="{{ data }}" id="data_storage" data-key="{{ zabbix_conf }}">
 {# 页面标题 #}
     <div class="page_title">主机一览</div>
     <div class="page_hr"></div>
@@ -13,8 +13,8 @@
         <div class="monitor_search_title">主机查询</div>
         <div class="monitor_search_hr"></div>
  {# 搜索框控件 #}
-        <form id="monitor_search_form" action={% url 'MonitorIndex' %} method="post">
-            主机名<input type="text" name="host_name" class="monitor_search_text" id="host_name">IP地址<input id="ip_addr" type="text" name="ip_addr" class="monitor_search_text">
+        <form id="monitor_search_form">
+            主机名<input type="text" class="monitor_search_text" id="host_name">IP地址<input id="ip_addr" type="text" class="monitor_search_text">
             <div class="monitor_search_form_hr"></div>
             {% csrf_token %}
         </form>
@@ -59,7 +59,7 @@
                         {% else %}
                             <div class='monitor_table_operate close_monitor'>关闭监控</div>
                         {% endif %}
-                        <div class='monitor_table_operate monitor_info' onclick="window.location.href='{% url 'MonitorHostDetailed' %}?host={{ item.host }}'">监控详情</div>
+                        <div class='monitor_table_operate monitor_info' onclick="window.location.href='{% url 'MonitorHostDetailed' %}?host={{ item.host }}&hostid={{ item.hostid }}'">监控详情</div>
                         <div class='monitor_table_operate log_view'>日志查看</div>
                         <div class='monitor_table_operate app_deploy'>应用部署</div>
                     </td>

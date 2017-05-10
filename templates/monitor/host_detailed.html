@@ -3,7 +3,7 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'monitor/css/host_detailed.css' %}">
     <script src="{% static 'monitor/js/host_detailed.js' %}"></script>
-    <div class="page_container" data-item="{{ data.result }}" data-app="[{{ data.app }}]" id="data_storage">
+    <div class="page_container" data-item="{{ data.result }}" data-app="[{{ data.app }}]" data-conf="[{{ data.conf }}]" id="data_storage">
          <div class="page_title">监控详情</div>
          <div class="page_hr"></div>
          <div class="div_container">

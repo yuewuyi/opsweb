@@ -1,8 +1,12 @@
 /**
  * Created by suyue on 2017/2/28.
  */
+
 function monitor_search_form_submit() {
-    $("#monitor_search_form").submit()
+    hostname=$.trim($('#host_name').val())
+    ipaddr=$.trim($('#ip_addr').val())
+    url='/monitor/?host_name='+hostname+'&ipaddr='+ipaddr
+    location.href=encodeURI(url)
 }
 function warning_info_div(action,host) {
     if(action=='create') {
