@@ -10,7 +10,7 @@ def index(request):
         "output": ["host", "available", "error", "status"],
         "selectInterfaces": ["ip"],
         "selectTriggers": 'extend',
-        "selectItems": ["itemid","name"],
+        "selectItems": ["itemid","name",'value_type','units'],
         "sortfield": ['host'],
         'search':{}
     }
@@ -50,7 +50,7 @@ def host_info_detailed(request):
         'nic':[],
     }
     item={
-        "output":['itemid','name','lastvalue'],
+        "output":['itemid','name','lastvalue','value_type','units'],
         "filter":{
             "host":request.GET['host']
         },

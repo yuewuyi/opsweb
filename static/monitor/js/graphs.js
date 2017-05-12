@@ -8,7 +8,57 @@ var docCookies = {
     return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
   },
 }
-function cpu_graphar(id,data) {
+//单位转换
+function unit_format(data,units) {
+    var unit = ''
+    var divisor = 0
+    if (units=='B'){
+         if (data >= 1024 * 1024 * 1024 * 1024) {
+            divisor = 1024 * 1024 * 1024 * 1024
+            unit = 'TB'
+         } else if (data >= 1024 * 1024 * 1024) {
+            divisor = 1024 * 1024 * 1024
+            unit = 'GB'
+         } else if (data >= 1024 * 1024) {
+            divisor = 1024 * 1024
+            unit = 'MB'
+         }
+         return parseFloat(data/divisor).toFixed(2)+unit
+    }
+
+
+}
+//构建请求参数
+function get_host_key(key_name) {
+    var itemids=[]
+    var host_item_ids={}
+    var units=''
+    var value_type=''
+    var stop_time=Date.parse(new Date())/1000;
+    var start_time=stop_time-7200
+    var host_data=eval($("#data_storage").data('host'))
+    var zabbix_conf=eval($("#data_storage").data('key'))[0]
+    $.each(host_data,function (index,value,array) {
+        var itemid={}
+        //去除status为0的主机
+       if (value['status']=='0'){
+            $.each(value['items'],function (index2,value2,array2) {
+                if (value2['name']==zabbix_conf[key_name]){
+                    units=value2['units']
+                    value_type=value2['value_type']
+                    itemid['data']=value2['itemid']
+                    itemids.push(value2['itemid'])
+                    return false
+                }
+            })
+            host_item_ids[value['hostid']]=itemid
+       }else {
+           return false;
+       }
+    })
+    return {'units':units,"value_type":value_type,"itemids":itemids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}
+}
+function cpu_graphar(id,data,units) {
     Highcharts.setOptions({ global: { useUTC: false } });
     $(id).highcharts({
             chart: {
@@ -33,9 +83,8 @@ function cpu_graphar(id,data) {
             tooltip: {
                 formatter:function () {
                     s= '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
-                    s+='<br\><span style="color:#7cb5ec">cpu使用率:'+this.y+'%</span>'
+                    s+='<br\><span style="color:#7cb5ec">cpu使用率:'+this.y+units+'</span>'
                     return s
-
                 },
                 shared: true
             },
@@ -80,8 +129,11 @@ function cpu_graphar(id,data) {
             },
         });
 };
-function memory_graphs(id,data) {
+function memory_graphs(id,alivable_data,total_data,units) {
     var indexs=null
+    for(var item in alivable_data){
+        alivable_data[item][1]=total_data-alivable_data[item][1]
+    }
     Highcharts.setOptions({ global: { useUTC: false } });
         $(id).highcharts({
             chart: {
@@ -95,7 +147,7 @@ function memory_graphs(id,data) {
                 visible:false,
             },
             yAxis: {
-                max:data['total_mem'],
+                max:total_data,
                 min:0,
                 visible:false,
             },
@@ -104,10 +156,10 @@ function memory_graphs(id,data) {
             },
               tooltip: {
                    formatter: function () {
-                        var s = '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',data['alivable_mem'][indexs][0])+'</span>'
-                        s+='<br\><span style="color:#7cb5ec">已使用:'+data['alivable_mem'][indexs][1]+'GB</span>'
-                        s+='<br\><span style="color:#7cb5ec">使用百分比:'+data['alivable_mem'][indexs][2]+'%</span>'
-                        s+='<br\><span style="color:#7cb5ec">总计:'+data['total_mem']+'GB</span>'
+                        var s = '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',alivable_data[indexs][0])+'</span>'
+                        s+='<br\><span style="color:#7cb5ec">已使用:'+unit_format(alivable_data[indexs][1],units)+'</span>'
+                        s+='<br\><span style="color:#7cb5ec">使用百分比:'+parseFloat(alivable_data[indexs][1]*100/total_data).toFixed(2)+'%</span>'
+                        s+='<br\><span style="color:#7cb5ec">总计:'+unit_format(total_data,units)+'</span>'
                         return s;
                     },
                   shared: true
@@ -153,7 +205,7 @@ function memory_graphs(id,data) {
             },
             series: [{
                 type: 'area',
-                data: data['alivable_mem'],
+                data: alivable_data,
                 name:"内存使用率:"
             }],
             credits: {
@@ -182,81 +234,45 @@ function req_ajax(url,data) {
     return dtd.promise();
 }
 //请求CPU数据并赋值给图形
-function cpu_data_req(start_time,stop_time) {
-    var itemids=[]
-    var host_item_ids={}
-    if(stop_time==''){
-        stop_time=Date.parse(new Date())/1000;
-    }
-    if(start_time==''){
-        start_time=stop_time-7200
-    }
-    host_data=eval($("#data_storage").data('host'))
-    zabbix_conf=eval($("#data_storage").data('key'))[0]
-    $.each(host_data,function (index,value,array) {
-        itemid={}
-        //去除status为0的主机
-       if (value['status']=='0'){
-            $.each(value['items'],function (index2,value2,array2) {
-                if (value2['name']==zabbix_conf['cpu_util']){
-                    itemid['cpu_util']=value2['itemid']
-                    itemids.push(value2['itemid'])
-                    return false
-                }
-            })
-            host_item_ids[value['hostid']]=itemid
-       }else {
-           return false;
-       }
-    })
+function cpu_data_req() {
     //使用链式调用
-    $.when(req_ajax('/api/zabbix_cpu_get/',{"itemids":itemids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}))
+    var parm=get_host_key('cpu_util')
+    $.when(req_ajax('/api/zabbix_history_get/',parm))
         .done(function () {
           for (var key in req_data){
-              cpu_graphar("#hostid_"+key,req_data[key]['cpu_util'])
+              cpu_graphar("#hostid_"+key,req_data[key]['data'],parm['units'])
           }
         })
 }
 //请求内存数据
-function memory_data_req(start_time,stop_time) {
-    var itemids=[]
-    var host_item_ids={}
-    if(stop_time==''){
-        stop_time=Date.parse(new Date())/1000;
-    }
-    if(start_time==''){
-        start_time=stop_time-7200
-    }
-    host_data=eval($("#data_storage").data('host'))
-    zabbix_conf=eval($("#data_storage").data('key'))[0]
-    $.each(host_data,function (index,value,array) {
-        itemid={}
-       if (value['status']=='0'){
-            $.each(value['items'],function (index2,value2,array2) {
-                if (value2['name']==zabbix_conf['total_mem']){
-                    itemid['total_mem']=value2['itemid']
-                    itemids.push(value2['itemid'])
-                }else if (value2['name']==zabbix_conf['alivable_mem']){
-                    itemid['alivable_mem']=value2['itemid']
-                    itemids.push(value2['itemid'])
-                }
-            })
-            host_item_ids[value['hostid']]=itemid
-       }else {
-           return false;
-       }
-    })
-    $.when(req_ajax('/api/zabbix_memory_get/',{"itemids":itemids,"host_item_ids":host_item_ids,"start_time":start_time,"stop_time":stop_time}))
+function memory_data_req() {
+    var alivable_data=0
+    var total_data=0
+    var alivable_parm=get_host_key('alivable_mem')
+    var total_parm=get_host_key('total_mem')
+    $.when(req_ajax('/api/zabbix_history_get/',alivable_parm))
         .done(function () {
-          for (var key in req_data){
-              memory_graphs("#hostid_"+key,req_data[key])
-          }
+            alivable_data=req_data
+            if (total_data){
+                for (var key in alivable_data){
+                    memory_graphs("#hostid_"+key,alivable_data[key]['data'],total_data[key]['data'][total_data[key]['data'].length-1][1],alivable_parm['units'])
+                }
+            }
+        })
+     $.when(req_ajax('/api/zabbix_history_get/',total_parm))
+        .done(function () {
+            total_data=req_data
+             if (alivable_data){
+                for (var key in alivable_data){
+                    memory_graphs("#hostid_"+key,alivable_data[key]['data'],total_data[key]['data'][total_data[key]['data'].length-1][1],alivable_parm['units'])
+                }
+            }
         })
 }
 function cpu_memory_change(value) {
     if(value=="cpu"){
-        cpu_data_req('','')
+        cpu_data_req()
     }else if(value=="memory"){
-        memory_data_req('','')
+        memory_data_req()
     }
 }

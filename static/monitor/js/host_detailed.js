@@ -9,32 +9,35 @@ function getQueryString(name) {
 }
 //时间截取转换
 function data_split_format(id) {
-    date_arr={
+    var date_arr={
         'start_time':0,
         'end_time':0
     }
-    date=$(id).find('span').html()
+    var date=$(id).find('span').html()
     date=date.split(" -- ")
     date_arr['start_time']=Date.parse(date[0])/1000
     date_arr['end_time']=Date.parse(date[1])/1000
     return date_arr
 }
 //创建请求参数
-function  create_request_parm(id) {
-    itemid=[]
-    host_item_ids={}
-    item_dit={}
-    date_arr=data_split_format(id)
-    host_info=eval($("#data_storage").data('item'))
-    zabbix_conf=eval($("#data_storage").data('conf'))[0]
-    for (i=0;i<host_info.length;i++){
-        item_dit[host_info[i]['name']]=host_info[i]['itemid']
+function  create_request_parm(id,key_name) {
+    var itemid=[]
+    var hostid=getQueryString('hostid')
+    var host_item_ids={}
+    var item_dit={}
+    var units=''
+    var value_type=0
+    var date_arr=data_split_format(id)
+    var host_info=eval($("#data_storage").data('item'))
+    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
+    for (var i=0;i<host_info.length;i++){
+        item_dit[host_info[i]['name']]=host_info[i]
     }
-    if(id=="#host_cpu_date"){
-        itemid.push(item_dit[zabbix_conf['cpu_util']])
-        host_item_ids[hostid]={'cpu_util':item_dit[zabbix_conf['cpu_util']]}
-    }
-    return {'item':itemid,'host_item_ids':host_item_ids,'date':date_arr}
+    units= item_dit[zabbix_conf[key_name]]['units']
+    value_type=item_dit[zabbix_conf[key_name]]['value_type']
+    itemid.push(item_dit[zabbix_conf[key_name]]['itemid'])
+    host_item_ids[hostid]={'data':item_dit[zabbix_conf[key_name]]['itemid']}
+    return {'item':itemid,'host_item_ids':host_item_ids,'date':date_arr,'units':units,'value_type':value_type}
 }
 data1=[
       [
@@ -360,23 +363,6 @@ data2=[
         3.64
       ]
     ]
-//B单位转换
-function B_format(data) {
-    unit = ''
-    divisor = 0
-    if (data >= 1024 * 1024 * 1024 * 1024) {
-        divisor = 1024 * 1024 * 1024 * 1024
-        unit = 'TB'
-    } else if (data >= 1024 * 1024 * 1024) {
-        divisor = 1024 * 1024 * 1024
-        unit = 'GB'
-    } else if (data >= 1024 * 1024) {
-        divisor = 1024 * 1024
-        unit = 'MB'
-    }
-    return parseFloat(data/divisor).toFixed(2)+unit
-}
-
 //磁盘使用图
 function disk_usage(id,name,total,used,free) {
     $(id).highcharts({
@@ -396,9 +382,9 @@ function disk_usage(id,name,total,used,free) {
         tooltip: {
             headerFormat: '',
             pointFormatter:function () {
-                str=this.name+':'+B_format(this.y)
+                str=this.name+':'+unit_format(this.y,'B')
                 str+='<br>百分比:'+parseFloat(this.percentage).toFixed(2)+'%'
-                str+='<br>总计:'+B_format(total)
+                str+='<br>总计:'+unit_format(this.y,'B')
                 return str
             }
         },
@@ -429,8 +415,8 @@ function disk_usage(id,name,total,used,free) {
 }
 //磁盘读写速率图
 function disk_io_speed() {
-    date_arr=''
-    date_arr=data_split_format('#disk_io_date')
+    var date_arr=''
+    var date_arr=data_split_format('#disk_io_date')
     Highcharts.setOptions({ global: { useUTC: false } });
     $('#disk_io_speed_graphs').highcharts({
         chart: {
@@ -501,9 +487,10 @@ function disk_io_speed() {
 }
 //主机详情CPU图
 function host_detailed_cpu() {
-    hostid=getQueryString('hostid')
-    parm=create_request_parm('#host_cpu_date')
-    $.when(req_ajax('/api/zabbix_cpu_get/',{"itemids":parm['item'],"host_item_ids":parm['host_item_ids'],"start_time":parm['date']['start_time'],"stop_time":parm['date']['end_time']}))
+    var hostid=getQueryString('hostid')
+    var parm=create_request_parm('#host_cpu_date','cpu_util')
+    var tick_interval=parseInt((parm['date']['end_time']-parm['date']['start_time'])/70)
+    $.when(req_ajax('/api/zabbix_history_get/',{"value_type":parm['value_type'],"itemids":parm['item'],"host_item_ids":parm['host_item_ids'],"start_time":parm['date']['start_time'],"stop_time":parm['date']['end_time']}))
         .done(function () {
              Highcharts.setOptions({ global: { useUTC: false } });
             $('#host_detailed_cpu').highcharts({
@@ -516,7 +503,7 @@ function host_detailed_cpu() {
                 xAxis: {
                     type: 'datetime',
                     gridLineWidth :1,
-                    tickInterval:1000*60*10,
+                    tickInterval:1000*tick_interval,
                     labels:{
                         formatter:function(){
                             return Highcharts.dateFormat('%H:%M', this.value)
@@ -534,11 +521,11 @@ function host_detailed_cpu() {
                     title: {
                         text: ''
                     },
-                    tickAmount:5,
+                    tickAmount:7,
                 },
                 tooltip: {
                     headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
-                    pointFormat: '{series.name}:{point.y:.2f}%'
+                    pointFormat: '{series.name}:{point.y:.2f}'+parm['units']
                 },
                 legend: {
                     enabled: false
@@ -571,7 +558,7 @@ function host_detailed_cpu() {
                 series: [{
                     type: 'area',
                     name: 'cpu使用率',
-                    data: req_data[hostid]['cpu_util']
+                    data: req_data[hostid]['data']
                 }],
                 credits:{
                     enabled:false
@@ -1245,15 +1232,15 @@ function date_select(id) {
                            });
 }
 $(document).ready(function () {
-    app=eval($("#data_storage").data('app'))
-    item=eval($("#data_storage").data('item'))
-    zabbix_conf=eval($("#data_storage").data('conf'))[0]
-    disk_num=app[0]['disk'].length
-    disk_name=''
-    disk_used=''
-    disk_total=''
+    var app=eval($("#data_storage").data('app'))
+    var item=eval($("#data_storage").data('item'))
+    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
+    var disk_num=app[0]['disk'].length
+    var disk_name=''
+    var disk_used=''
+    var disk_total=''
     if (disk_num<4) {
-        mgleft = ['32.5%', '25%', '11.5%']
+        var mgleft = ['32.5%', '25%', '11.5%']
         document.getElementById('disk_g1').style.marginLeft = mgleft[disk_num - 1]
     }
     for (i=1;i<=disk_num;i++){
