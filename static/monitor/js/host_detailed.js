@@ -28,6 +28,7 @@ function  create_request_parm(id,key_name) {
     var units=''
     var value_type=0
     var date_arr=data_split_format(id)
+    var tick_interval=parseInt((date_arr['end_time']-date_arr['start_time'])/70)
     var host_info=eval($("#data_storage").data('item'))
     var zabbix_conf=eval($("#data_storage").data('conf'))[0]
     for (var i=0;i<host_info.length;i++){
@@ -37,7 +38,15 @@ function  create_request_parm(id,key_name) {
     value_type=item_dit[zabbix_conf[key_name]]['value_type']
     itemid.push(item_dit[zabbix_conf[key_name]]['itemid'])
     host_item_ids[hostid]={'data':item_dit[zabbix_conf[key_name]]['itemid']}
-    return {'item':itemid,'host_item_ids':host_item_ids,'date':date_arr,'units':units,'value_type':value_type}
+    return {start_time:date_arr['start_time'],
+        hostid:hostid,
+        stop_time:date_arr['end_time'],
+        tick_interval:tick_interval,
+        itemids:itemid,
+        host_item_ids:host_item_ids,
+        date:date_arr,
+        units:units,
+        value_type:value_type}
 }
 data1=[
       [
@@ -415,87 +424,100 @@ function disk_usage(id,name,total,used,free) {
 }
 //磁盘读写速率图
 function disk_io_speed() {
-    var date_arr=''
-    var date_arr=data_split_format('#disk_io_date')
-    Highcharts.setOptions({ global: { useUTC: false } });
-    $('#disk_io_speed_graphs').highcharts({
-        chart: {
-            type: 'spline'
-        },
-        colors:[ '#FEA934','#48a301'],
-        title: {
-            text: ''
-        },
-        legend: {
-            enabled: false
-        },
-        xAxis: {
-            type: 'datetime',
+    var write_parm=create_request_parm('#disk_io_date','disk_io_write')
+    var read_parm=create_request_parm('#disk_io_date','disk_io_read')
+     $.when(req_ajax('/api/zabbix_history_get/',write_parm,'req_data1'),req_ajax('/api/zabbix_history_get/',read_parm,'req_data2'))
+        .done(function () {
+            alert(JSON.stringify(req_data1))
+            alert(JSON.stringify(req_data2))
+            Highcharts.setOptions({ global: { useUTC: false } });
+            $('#disk_io_speed_graphs').highcharts({
+            chart: {
+                type: 'spline'
+            },
+            colors:[ '#FEA934','#48a301'],
             title: {
                 text: ''
             },
-            tickInterval:1000*60*5,
-            gridLineWidth :1,
-            labels:{
-                formatter:function(){
-                    return Highcharts.dateFormat('%H:%M', this.value)
-                },
-                rotation:270,
-                style:{
-                    fontSize:'12px',
-                    color:'green'
-                }
-            },
-        },
-        yAxis: {
-            title: {
-                text: ''
-            },
-            tickAmount:5,
-        },
-        tooltip: {
-            headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
-            pointFormat: '{series.name}:{point.y:.2f}%'
-        },
-        plotOptions: {
-            spline: {
-                dataLabels: {
-                    enabled: false
-                },
-            },
-            series: {
-                  lineWidth:1,
-                  marker: {
-                      enabled: false
-                  },
-            }
-        },
-        exporting:{
-                enabled:false
-        },
-        credits: {
+            legend: {
                 enabled: false
             },
-        series: [ {
-            name: '磁盘读取速度',
-            data: data1
-        },{
-            name:'磁盘写入速率',
-            data:data2
-        }]
-    });
+            xAxis: {
+                type: 'datetime',
+                title: {
+                    text: ''
+                },
+                tickInterval:1000*60*5,
+                gridLineWidth :1,
+                labels:{
+                    formatter:function(){
+                        if (Highcharts.dateFormat('%H:%M', this.value)=='00:00'){
+                                return Highcharts.dateFormat('%m/%d', this.value)
+                            }else {
+                                return Highcharts.dateFormat('%H:%M', this.value)
+                            }
+                    },
+                    rotation:270,
+                    style:{
+                        fontSize:'12px',
+                        color:'green'
+                    }
+                },
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                tickAmount:5,
+            },
+            tooltip: {
+                headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
+                pointFormat: '{series.name}:{point.y:.2f}%'
+            },
+            plotOptions: {
+                spline: {
+                    dataLabels: {
+                        enabled: false
+                    },
+                },
+                series: {
+                    lineWidth:1,
+                    marker: {
+                        enabled: false
+                    },
+                }
+            },
+            exporting:{
+                    enabled:false
+            },
+            credits: {
+                    enabled: false
+                },
+            series: [ {
+                name: '磁盘写入速度',
+                data: req_data1[read_parm['hostid']]['data']
+            },{
+                name:'磁盘读取速率',
+                data:req_data2[read_parm['hostid']]['data']
+            }]
+            });
+        })
 }
 //主机详情CPU图
 function host_detailed_cpu() {
     var hostid=getQueryString('hostid')
     var parm=create_request_parm('#host_cpu_date','cpu_util')
-    var tick_interval=parseInt((parm['date']['end_time']-parm['date']['start_time'])/70)
-    $.when(req_ajax('/api/zabbix_history_get/',{"value_type":parm['value_type'],"itemids":parm['item'],"host_item_ids":parm['host_item_ids'],"start_time":parm['date']['start_time'],"stop_time":parm['date']['end_time']}))
+    $.when(req_ajax('/api/zabbix_history_get/',parm,'req_data'))
         .done(function () {
-             Highcharts.setOptions({ global: { useUTC: false } });
+             Highcharts.setOptions({global: { useUTC: false }});
             $('#host_detailed_cpu').highcharts({
                 chart: {
-                    zoomType: 'x'
+                    zoomType: 'x',
+                     resetZoomButton: {
+                        theme: {
+                            display: 'none'
+                            }
+                     }
                 },
                 title: {
                     text: '',
@@ -503,10 +525,15 @@ function host_detailed_cpu() {
                 xAxis: {
                     type: 'datetime',
                     gridLineWidth :1,
-                    tickInterval:1000*tick_interval,
+                    tickInterval:1000*parm['tick_interval'],
                     labels:{
                         formatter:function(){
-                            return Highcharts.dateFormat('%H:%M', this.value)
+                            if (Highcharts.dateFormat('%H:%M', this.value)=='00:00'){
+                                return Highcharts.dateFormat('%m/%d', this.value)
+                            }else {
+                                return Highcharts.dateFormat('%H:%M', this.value)
+                            }
+
                         },
                         rotation:270,
                         style:{
@@ -558,7 +585,7 @@ function host_detailed_cpu() {
                 series: [{
                     type: 'area',
                     name: 'cpu使用率',
-                    data: req_data[hostid]['data']
+                    data: req_data[parm['hostid']]['data']
                 }],
                 credits:{
                     enabled:false

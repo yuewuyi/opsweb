@@ -1,5 +1,6 @@
-var req_data=''
+
 //获取cookie
+window['req'] = 100;
 var docCookies = {
   getItem: function (sKey) {
     return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
@@ -213,7 +214,7 @@ function memory_graphs(id,alivable_data,total_data,units) {
             },
         });
 }
-function req_ajax(url,data) {
+function req_ajax(url,data,var_name) {
     var dtd = $.Deferred()
     $.ajax({
         type:'POST',
@@ -225,7 +226,7 @@ function req_ajax(url,data) {
         },
     })
         .done(function (data) {
-            req_data=data
+            window[var_name]=data
             dtd.resolve()
         })
         .fail(function () {
@@ -237,7 +238,7 @@ function req_ajax(url,data) {
 function cpu_data_req() {
     //使用链式调用
     var parm=get_host_key('cpu_util')
-    $.when(req_ajax('/api/zabbix_history_get/',parm))
+    $.when(req_ajax('/api/zabbix_history_get/',parm,'req_data'))
         .done(function () {
           for (var key in req_data){
               cpu_graphar("#hostid_"+key,req_data[key]['data'],parm['units'])
@@ -246,27 +247,13 @@ function cpu_data_req() {
 }
 //请求内存数据
 function memory_data_req() {
-    var alivable_data=0
-    var total_data=0
     var alivable_parm=get_host_key('alivable_mem')
     var total_parm=get_host_key('total_mem')
-    $.when(req_ajax('/api/zabbix_history_get/',alivable_parm))
+    $.when(req_ajax('/api/zabbix_history_get/',alivable_parm,'req_data1'),req_ajax('/api/zabbix_history_get/',total_parm,'req_data2'))
         .done(function () {
-            alivable_data=req_data
-            if (total_data){
-                for (var key in alivable_data){
-                    memory_graphs("#hostid_"+key,alivable_data[key]['data'],total_data[key]['data'][total_data[key]['data'].length-1][1],alivable_parm['units'])
+                for (var key in req_data){
+                    memory_graphs("#hostid_"+key,req_data1[key]['data'],req_data2[key]['data'][req_data2[key]['data'].length-1][1],alivable_parm['units'])
                 }
-            }
-        })
-     $.when(req_ajax('/api/zabbix_history_get/',total_parm))
-        .done(function () {
-            total_data=req_data
-             if (alivable_data){
-                for (var key in alivable_data){
-                    memory_graphs("#hostid_"+key,alivable_data[key]['data'],total_data[key]['data'][total_data[key]['data'].length-1][1],alivable_parm['units'])
-                }
-            }
         })
 }
 function cpu_memory_change(value) {
