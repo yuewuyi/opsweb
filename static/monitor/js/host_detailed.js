@@ -28,16 +28,15 @@ function  create_request_parm(id,key_name) {
     var units=''
     var value_type=0
     var date_arr=data_split_format(id)
-    var tick_interval=parseInt((date_arr['end_time']-date_arr['start_time'])/70)
+    var tick_interval=parseInt((date_arr['end_time']-date_arr['start_time'])/20)
     var host_info=eval($("#data_storage").data('item'))
-    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
     for (var i=0;i<host_info.length;i++){
         item_dit[host_info[i]['name']]=host_info[i]
     }
-    units= item_dit[zabbix_conf[key_name]]['units']
-    value_type=item_dit[zabbix_conf[key_name]]['value_type']
-    itemid.push(item_dit[zabbix_conf[key_name]]['itemid'])
-    host_item_ids[hostid]={'data':item_dit[zabbix_conf[key_name]]['itemid']}
+    units= item_dit[key_name]['units']
+    value_type=item_dit[key_name]['value_type']
+    itemid.push(item_dit[key_name]['itemid'])
+    host_item_ids[hostid]={'data':item_dit[key_name]['itemid']}
     return {start_time:date_arr['start_time'],
         hostid:hostid,
         stop_time:date_arr['end_time'],
@@ -391,10 +390,10 @@ function disk_usage(id,name,total,used,free) {
         tooltip: {
             headerFormat: '',
             pointFormatter:function () {
-                str=this.name+':'+unit_format(this.y,'B')
-                str+='<br>百分比:'+parseFloat(this.percentage).toFixed(2)+'%'
-                str+='<br>总计:'+unit_format(this.y,'B')
-                return str
+                var s = '<span>'+this.name+':'+unit_format(this.y,'B')+'</span>'
+                s+='<br><span>百分比:'+parseFloat(this.percentage).toFixed(2)+'%'
+                s+='<br\><span">总计:'+unit_format(this.y,'B')+'</span>'
+                return s;
             }
         },
         plotOptions: {
@@ -424,16 +423,21 @@ function disk_usage(id,name,total,used,free) {
 }
 //磁盘读写速率图
 function disk_io_speed() {
-    var write_parm=create_request_parm('#disk_io_date','disk_io_write')
-    var read_parm=create_request_parm('#disk_io_date','disk_io_read')
-     $.when(req_ajax('/api/zabbix_history_get/',write_parm,'req_data1'),req_ajax('/api/zabbix_history_get/',read_parm,'req_data2'))
+    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
+    var write_parm=create_request_parm('#disk_io_date',zabbix_conf['disk_io_write'])
+    var read_parm=create_request_parm('#disk_io_date',zabbix_conf['disk_io_read'])
+    $.when(req_ajax('/api/zabbix_history_get/',write_parm,'disk_write_data'),req_ajax('/api/zabbix_history_get/',read_parm,'disk_read_data'))
         .done(function () {
-            alert(JSON.stringify(req_data1))
-            alert(JSON.stringify(req_data2))
             Highcharts.setOptions({ global: { useUTC: false } });
             $('#disk_io_speed_graphs').highcharts({
             chart: {
-                type: 'spline'
+                type: 'spline',
+                zoomType: 'x',
+                resetZoomButton: {
+                        theme: {
+                            display: 'none'
+                            }
+                     }
             },
             colors:[ '#FEA934','#48a301'],
             title: {
@@ -447,7 +451,7 @@ function disk_io_speed() {
                 title: {
                     text: ''
                 },
-                tickInterval:1000*60*5,
+                tickInterval:1000*read_parm['tick_interval'],
                 gridLineWidth :1,
                 labels:{
                     formatter:function(){
@@ -468,11 +472,19 @@ function disk_io_speed() {
                 title: {
                     text: ''
                 },
-                tickAmount:5,
+                tickAmount:7,
+                labels:{
+                    formatter:function(){
+                        return unit_format(this.value,write_parm['units'])
+                    }
+                }
             },
             tooltip: {
-                headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
-                pointFormat: '{series.name}:{point.y:.2f}%'
+                formatter:function(){
+                    var s = '<span style="color:'+this.color+'">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
+                        s+='<br\><span style="color:'+this.color+'">'+this.series.name+':'+unit_format(this.y,write_parm['units'])+'</span>'
+                        return s;
+                }
             },
             plotOptions: {
                 spline: {
@@ -495,19 +507,20 @@ function disk_io_speed() {
                 },
             series: [ {
                 name: '磁盘写入速度',
-                data: req_data1[read_parm['hostid']]['data']
+                data: disk_write_data[read_parm['hostid']]['data']
             },{
                 name:'磁盘读取速率',
-                data:req_data2[read_parm['hostid']]['data']
+                data:disk_read_data[read_parm['hostid']]['data']
             }]
             });
         })
 }
 //主机详情CPU图
 function host_detailed_cpu() {
+    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
     var hostid=getQueryString('hostid')
-    var parm=create_request_parm('#host_cpu_date','cpu_util')
-    $.when(req_ajax('/api/zabbix_history_get/',parm,'req_data'))
+    var parm=create_request_parm('#host_cpu_date',zabbix_conf['cpu_util'])
+    $.when(req_ajax('/api/zabbix_history_get/',parm,'req_cup_data'))
         .done(function () {
              Highcharts.setOptions({global: { useUTC: false }});
             $('#host_detailed_cpu').highcharts({
@@ -551,8 +564,8 @@ function host_detailed_cpu() {
                     tickAmount:7,
                 },
                 tooltip: {
-                    headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
-                    pointFormat: '{series.name}:{point.y:.2f}'+parm['units']
+                    headerFormat: '<span style="color:{series.color}">{point.x:%Y-%m-%d %H:%M:%S}</span><br>',
+                    pointFormat: '<span style="color:{series.color}">{series.name}:{point.y:.2f}'+parm['units']+'</span>'
                 },
                 legend: {
                     enabled: false
@@ -585,7 +598,7 @@ function host_detailed_cpu() {
                 series: [{
                     type: 'area',
                     name: 'cpu使用率',
-                    data: req_data[parm['hostid']]['data']
+                    data: req_cup_data[parm['hostid']]['data']
                 }],
                 credits:{
                     enabled:false
@@ -594,74 +607,109 @@ function host_detailed_cpu() {
         })
 }
 function host_detailed_memory() {
-    Highcharts.setOptions({ global: { useUTC: false } });
-    $('#host_detailed_memory').highcharts({
-            chart: {
-                zoomType: 'x'
-            },
-            title: {
-                text: ''
-            },
-            xAxis: {
-                type: 'datetime',
-                tickInterval:1000*60*5,
-                gridLineWidth :1,
-                labels:{
-                    formatter:function(){
-                        return Highcharts.dateFormat('%H:%M', this.value)
-                    },
-                    rotation:270,
-                    style:{
-                        fontSize:'12px',
-                        color:'green'
-                    }
+    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
+    var alivable_parm=create_request_parm('#host_mem_date',zabbix_conf['alivable_mem'])
+    var total_parm=create_request_parm('#host_mem_date',zabbix_conf['total_mem'])
+    $.when(req_ajax('/api/zabbix_history_get/',alivable_parm,'alivable_mem_data'),req_ajax('/api/zabbix_history_get/',total_parm,'total_mem_data'))
+        .done(function () {
+            var total_data=total_mem_data[alivable_parm['hostid']]['data'][total_mem_data[alivable_parm['hostid']]['data'].length-1][1]
+            var alivable_data=alivable_mem_data[alivable_parm['hostid']]['data']
+            for(var item in alivable_data){
+                alivable_data[item][1]=total_data-alivable_data[item][1]
+            }
+            Highcharts.setOptions({ global: { useUTC: false } });
+            $('#host_detailed_memory').highcharts({
+                chart: {
+                    zoomType: 'x'
                 },
-            },
-            yAxis: {
                 title: {
                     text: ''
                 },
-                tickAmount:5,
-            },
-            legend: {
-                enabled: false
-            },
-            plotOptions: {
-                area: {
-                    color:'#FEA934',
-                    fillColor: {
-                        linearGradient: {
-                            x1: 1,
-                            y1: 0,
-                            x2: 1,
-                            y2: 1
+                xAxis: {
+                    type: 'datetime',
+                    tickInterval:1000*alivable_parm['tick_interval'],
+                    gridLineWidth :1,
+                    labels:{
+                         formatter:function(){
+                            if (Highcharts.dateFormat('%H:%M', this.value)=='00:00'){
+                                return Highcharts.dateFormat('%m/%d', this.value)
+                            }else {
+                                return Highcharts.dateFormat('%H:%M', this.value)
+                            }
+
                         },
-                        stops: [
-                            [0,'#FEA934'],
-                            [1, Highcharts.Color('#FEA934').setOpacity(0).get('rgba')]
-                        ]
+                        rotation:270,
+                        style:{
+                            fontSize:'12px',
+                            color:'green'
+                        }
                     },
-                    marker: {
-                        enabled:false
-                    },
-                    lineWidth: 1,
-                    threshold: null
-                }
-            },
-            exporting:{
-                enabled:false
                 },
-            series: [{
-                type: 'area',
-                name: 'cpu使用率',
-                data: data1
-            }],
-            credits:{
-                enabled:false
-            }
-        });
+                yAxis: {
+                    max:total_data,
+                    min:0,
+                    title: {
+                        text: ''
+                    },
+                    labels:{
+                        formatter:function(){
+                            return unit_format(this.value,alivable_parm['units'])
+                        }
+                     },
+                    tickAmount:7,
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                   formatter: function () {
+                       console.log(this)
+                        var s = '<span style="color:'+this.color+'">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
+                        s+='<br\><span style="color:'+this.color+'">已使用:'+unit_format(this.y,alivable_parm['units'])+'</span>'
+                        s+='<br\><span style="color:'+this.color+'">使用百分比:'+parseFloat(this.y*100/total_data).toFixed(2)+'%</span>'
+                        s+='<br\><span style="color:'+this.color+'">总计:'+unit_format(total_data,alivable_parm['units'])+'</span>'
+                        return s;
+                   },
+                },
+                plotOptions: {
+                    area: {
+                        color:'#FEA934',
+                        fillColor: {
+                            linearGradient: {
+                                x1: 1,
+                                y1: 0,
+                                x2: 1,
+                                y2: 1
+                            },
+                            stops: [
+                                [0,'#FEA934'],
+                                [1, Highcharts.Color('#FEA934').setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            enabled:false
+                        },
+                        lineWidth: 1,
+                        threshold: null
+                    }
+                },
+                exporting:{
+                    enabled:false
+                    },
+                series: [{
+                    type: 'area',
+                    data: alivable_data,
+                    name:"内存使用率:"
+                }],
+                credits:{
+                    enabled:false
+                }
+                });
+            })
 }
 function nic_in() {
+    var app=eval($("#data_storage").data('app'))
+
     Highcharts.setOptions({ global: { useUTC: false } });
     $('#nic_in').highcharts({
         chart: {
@@ -1255,6 +1303,10 @@ function date_select(id) {
                                 $(id+' span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' -- ' + end.format('YYYY-MM-DD HH:mm:ss'));
                                 if(id=="#host_cpu_date"){
                                     host_detailed_cpu()
+                                }else if(id=="#disk_io_date"){
+                                    disk_io_speed()
+                                }else if(id=="#host_mem_date"){
+                                    host_detailed_memory()
                                 }
                            });
 }

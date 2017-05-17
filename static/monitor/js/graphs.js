@@ -11,8 +11,8 @@ var docCookies = {
 }
 //单位转换
 function unit_format(data,units) {
-    var unit = ''
-    var divisor = 0
+    var unit = units
+    var divisor = 1
     if (units=='B'){
          if (data >= 1024 * 1024 * 1024 * 1024) {
             divisor = 1024 * 1024 * 1024 * 1024
@@ -23,6 +23,9 @@ function unit_format(data,units) {
          } else if (data >= 1024 * 1024) {
             divisor = 1024 * 1024
             unit = 'MB'
+         } else if(data >= 1024){
+            divisor = 1024
+            unit = 'KB'
          }
          return parseFloat(data/divisor).toFixed(2)+unit
     }
@@ -131,7 +134,6 @@ function cpu_graphar(id,data,units) {
         });
 };
 function memory_graphs(id,alivable_data,total_data,units) {
-    var indexs=null
     for(var item in alivable_data){
         alivable_data[item][1]=total_data-alivable_data[item][1]
     }
@@ -155,11 +157,11 @@ function memory_graphs(id,alivable_data,total_data,units) {
             legend: {
                 enabled: false
             },
-              tooltip: {
+            tooltip: {
                    formatter: function () {
-                        var s = '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',alivable_data[indexs][0])+'</span>'
-                        s+='<br\><span style="color:#7cb5ec">已使用:'+unit_format(alivable_data[indexs][1],units)+'</span>'
-                        s+='<br\><span style="color:#7cb5ec">使用百分比:'+parseFloat(alivable_data[indexs][1]*100/total_data).toFixed(2)+'%</span>'
+                        var s = '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
+                        s+='<br\><span style="color:#7cb5ec">已使用:'+unit_format(this.y,units)+'</span>'
+                        s+='<br\><span style="color:#7cb5ec">使用百分比:'+parseFloat(this.y*100/total_data).toFixed(2)+'%</span>'
                         s+='<br\><span style="color:#7cb5ec">总计:'+unit_format(total_data,units)+'</span>'
                         return s;
                     },
@@ -191,14 +193,6 @@ function memory_graphs(id,alivable_data,total_data,units) {
                     marker:{
                         enabled:false
                     },
-                    point:{
-                        events:{
-                                mouseOver: function(event) {
-                                indexs = event.target.index;
-                                console.log(indexs);
-                             }
-                        }
-                    }
                 }
             },
             exporting:{

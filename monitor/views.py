@@ -39,10 +39,10 @@ def config(request):
 def host_info_detailed(request):
     conf = app_config()
     conf = conf.get_zabbix_item_key()
-    tomcat = re.compile(r'^app[\d]*%s$'%conf['tomcat_ping'])
+    tomcat = re.compile(r'^[\w]*%s$'%conf['tomcat_ping'])
     thrift = re.compile(r'^[\w\-\.]*%s$'%conf['thrift_ping'])
     disk=re.compile(r'^%s[\w\-\/:\.]*$'%conf['disk_used_space'])
-    nic=re.compile(r'^%s[0-1]$'%conf['nic_out'])
+    nic=re.compile(r'^%s[\w]*$'%conf['nic_out'])
     app={
         'tomcat':[],
         'thrift':[],
@@ -67,6 +67,7 @@ def host_info_detailed(request):
             app['disk'].append(name.split(conf['disk_used_space'])[1])
         elif nic.search(name):
             app['nic'].append(name.split(conf['nic_out'])[1])
+    print(app)
     return render(request,'monitor/host_detailed.html',{"data":{'app':app,'result':result,'conf':conf}})
 
 

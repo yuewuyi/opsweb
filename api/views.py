@@ -86,6 +86,10 @@ def zabbix_history_get(request):
             result = zabbix_data_get.item_trend_get(history)
         else:
             result=zabbix_data_get.item_history_get(history)
+        if not result:
+            hostid=list(data['host_item_ids'].keys())[0]
+            data['host_item_ids'][hostid]['data']=[0,0]
+            return HttpResponse(json.dumps(data['host_item_ids']), content_type='application/json')
         rely_data= {}
         for item in result:
             if not item['itemid'] in rely_data.keys():
