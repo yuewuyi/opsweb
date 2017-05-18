@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="div_graphas_container">
-                        <div class="div_graphas" id="nic_in"></div>
+                        <div class="div_graphas" id="nic_out"></div>
                     </div>
                 </div>
                 <div class="host_detailed_memory">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="div_graphas_container">
-                        <div class="div_graphas" id="nic_out"></div>
+                        <div class="div_graphas" id="nic_in"></div>
                     </div>
                 </div>
           </div>
@@ -78,7 +78,7 @@
                             <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle">tomcat</button>
                             <ul class="dropdown-menu select_box" role="menu">
                                 {% for item in data.app.tomcat %}
-                                <li><a href="#">{{ item }}</a></li>
+                                <li><a>{{ item }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>

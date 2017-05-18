@@ -20,7 +20,7 @@ function data_split_format(id) {
     return date_arr
 }
 //创建请求参数
-function  create_request_parm(id,key_name) {
+function  create_request_parm(id,key_name,app_name) {
     var itemid=[]
     var hostid=getQueryString('hostid')
     var host_item_ids={}
@@ -526,11 +526,11 @@ function host_detailed_cpu() {
             $('#host_detailed_cpu').highcharts({
                 chart: {
                     zoomType: 'x',
-                     resetZoomButton: {
+                    resetZoomButton: {
                         theme: {
                             display: 'none'
                             }
-                     }
+                    }
                 },
                 title: {
                     text: '',
@@ -546,7 +546,6 @@ function host_detailed_cpu() {
                             }else {
                                 return Highcharts.dateFormat('%H:%M', this.value)
                             }
-
                         },
                         rotation:270,
                         style:{
@@ -620,7 +619,12 @@ function host_detailed_memory() {
             Highcharts.setOptions({ global: { useUTC: false } });
             $('#host_detailed_memory').highcharts({
                 chart: {
-                    zoomType: 'x'
+                    zoomType: 'x',
+                    resetZoomButton: {
+                        theme: {
+                            display: 'none'
+                            }
+                    }
                 },
                 title: {
                     text: ''
@@ -663,7 +667,6 @@ function host_detailed_memory() {
                 },
                 tooltip: {
                    formatter: function () {
-                       console.log(this)
                         var s = '<span style="color:'+this.color+'">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
                         s+='<br\><span style="color:'+this.color+'">已使用:'+unit_format(this.y,alivable_parm['units'])+'</span>'
                         s+='<br\><span style="color:'+this.color+'">使用百分比:'+parseFloat(this.y*100/total_data).toFixed(2)+'%</span>'
@@ -707,13 +710,36 @@ function host_detailed_memory() {
                 });
             })
 }
-function nic_in() {
-    var app=eval($("#data_storage").data('app'))
-
-    Highcharts.setOptions({ global: { useUTC: false } });
-    $('#nic_in').highcharts({
+function nic_out() {
+    var nic_arr=eval($("#data_storage").data('app'))[0]['nic']
+    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
+    var id='#host_nic_out_date'
+    if(nic_arr.length==1){
+        var eth0_parm=create_request_parm(id,zabbix_conf['nic_out']+nic_arr[0])
+        $.when(req_ajax('/api/zabbix_history_get/',eth0_parm,'eth0_data'))
+            .done(function () {
+                nic_out_graph(eth0_data[eth0_parm['hostid']]['data'],'',eth0_parm)
+            })
+    }else if (nic_arr.length==2){
+        var eth0_parm=create_request_parm(id,zabbix_conf['nic_out']+nic_arr[0])
+        var eth1_parm=create_request_parm(id,zabbix_conf['nic_out']+nic_arr[1])
+        $.when(req_ajax('/api/zabbix_history_get/',eth0_parm,'eth0_data'),req_ajax('/api/zabbix_history_get/',eth1_parm,'eth1_data'))
+         .done(function () {
+                nic_out_graph(eth0_data[eth0_parm['hostid']]['data'],eth1_data[eth0_parm['hostid']]['data'],eth0_parm)
+            })
+    }
+}
+function nic_out_graph(eth0_data,eth1_data,parm) {
+     Highcharts.setOptions({ global: { useUTC: false } });
+    $('#nic_out').highcharts({
         chart: {
-            type: 'spline'
+            type: 'spline',
+            zoomType: 'x',
+                    resetZoomButton: {
+                        theme: {
+                            display: 'none'
+                        }
+            }
         },
         colors:[ '#FEA934','#48a301'],
         title: {
@@ -727,7 +753,7 @@ function nic_in() {
             title: {
                 text: ''
             },
-            tickInterval:1000*60*5,
+            tickInterval:1000*parm['tick_interval'],
             gridLineWidth :1,
             labels:{
                 formatter:function(){
@@ -744,11 +770,19 @@ function nic_in() {
             title: {
                 text: ''
             },
-            tickAmount:5,
+            tickAmount:7,
+            labels:{
+                        formatter:function(){
+                            return unit_format(this.value,parm['units'])
+                        }
+                     },
         },
         tooltip: {
-            headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
-            pointFormat: '{series.name}:{point.y:.2f}%'
+            formatter: function () {
+                        var s = '<span style="color:'+this.color+'">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
+                        s+='<br\><span style="color:'+this.color+'">'+this.series.name+'出口流量:'+unit_format(this.y,parm['units'])+'</span>'
+                        return s;
+                   },
         },
         plotOptions: {
             spline: {
@@ -771,18 +805,43 @@ function nic_in() {
             },
         series: [ {
             name: '内网',
-            data: data1
+            data: eth0_data
         },{
             name:'外网',
-            data:data2
+            data:eth1_data
         }]
     });
 }
-function nic_out() {
-    Highcharts.setOptions({ global: { useUTC: false } });
-    $('#nic_out').highcharts({
+function nic_in() {
+    var nic_arr=eval($("#data_storage").data('app'))[0]['nic']
+    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
+    var id='#host_nic_in_date'
+    if(nic_arr.length==1){
+        var eth0_parm=create_request_parm(id,zabbix_conf['nic_in']+nic_arr[0])
+        $.when(req_ajax('/api/zabbix_history_get/',eth0_parm,'eth0_data'))
+            .done(function () {
+                nic_in_graph(eth0_data[eth0_parm['hostid']]['data'],'',eth0_parm)
+            })
+    }else if (nic_arr.length==2){
+        var eth0_parm=create_request_parm(id,zabbix_conf['nic_in']+nic_arr[0])
+        var eth1_parm=create_request_parm(id,zabbix_conf['nic_in']+nic_arr[1])
+        $.when(req_ajax('/api/zabbix_history_get/',eth0_parm,'eth0_data'),req_ajax('/api/zabbix_history_get/',eth1_parm,'eth1_data'))
+         .done(function () {
+                nic_in_graph(eth0_data[eth0_parm['hostid']]['data'],eth1_data[eth0_parm['hostid']]['data'],eth0_parm)
+            })
+    }
+}
+function nic_in_graph(eth0_data,eth1_data,parm) {
+     Highcharts.setOptions({ global: { useUTC: false } });
+    $('#nic_in').highcharts({
         chart: {
-            type: 'spline'
+            type: 'spline',
+            zoomType: 'x',
+                    resetZoomButton: {
+                        theme: {
+                            display: 'none'
+                        }
+            }
         },
         colors:[ '#FEA934','#48a301'],
         title: {
@@ -796,7 +855,7 @@ function nic_out() {
             title: {
                 text: ''
             },
-            tickInterval:1000*60*5,
+            tickInterval:1000*parm['tick_interval'],
             gridLineWidth :1,
             labels:{
                 formatter:function(){
@@ -813,11 +872,19 @@ function nic_out() {
             title: {
                 text: ''
             },
-            tickAmount:5,
+            tickAmount:7,
+            labels:{
+                        formatter:function(){
+                            return unit_format(this.value,parm['units'])
+                        }
+                     },
         },
         tooltip: {
-            headerFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br>',
-            pointFormat: '{series.name}:{point.y:.2f}%'
+            formatter: function () {
+                        var s = '<span style="color:'+this.color+'">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
+                        s+='<br\><span style="color:'+this.color+'">'+this.series.name+'入口流量:'+unit_format(this.y,parm['units'])+'</span>'
+                        return s;
+                   },
         },
         plotOptions: {
             spline: {
@@ -840,10 +907,10 @@ function nic_out() {
             },
         series: [ {
             name: '内网',
-            data: data1
+            data: eth0_data
         },{
             name:'外网',
-            data:data2
+            data:eth1_data
         }]
     });
 }
@@ -1307,6 +1374,10 @@ function date_select(id) {
                                     disk_io_speed()
                                 }else if(id=="#host_mem_date"){
                                     host_detailed_memory()
+                                }else if(id=="#host_nic_out_date"){
+                                     nic_out()
+                                }else if(id=="#host_nic_in_date"){
+                                     nic_in()
                                 }
                            });
 }
