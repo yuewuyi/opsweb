@@ -86,6 +86,8 @@ div a{
 }
 .select_box li a{
     color: white;
+    text-decoration:none;
+    out-line: none;
 }
 .app_div_graphas_container{
     width: 100%;

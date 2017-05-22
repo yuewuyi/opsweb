@@ -1,6 +1,19 @@
 /**
  * Created by suyue on 2017/3/21.
  */
+//多个tomcat，thrift切换
+function change_app(obj,type) {
+    var app_name=$(obj).html()
+    if(type=='tomcat'){
+        $("#tomcat_select_button").html(app_name)
+        $("#tomcat_date").data('app_name',app_name)
+        tomcat_graphs()
+    }
+    if(type=='thrift'){
+        $("#thrift_select_button").html(app_name)
+        $("#thrift_date").data('app_name',app_name)
+    }
+}
 //获取url参数
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -1330,6 +1343,21 @@ function thrift_cpu() {
             }
         });
 }
+//获取数据加载tomcat图表
+function tomcat_graphs() {
+    var id='#tomcat_date'
+    var app_name=$(id).data('app_name')
+    var zabbix_conf=eval($("#data_storage").data('conf'))[0]
+    var heap_mem_max=create_request_parm(id,app_name+zabbix_conf['tomcat_heap_mem_max'])
+    var heap_mem_used=create_request_parm(id,app_name+zabbix_conf['tomcat_heap_mem_used'])
+    var con_est_parm=create_request_parm(id,app_name+zabbix_conf['tomcat_con_est'])
+    var con_wait_parm=create_request_parm(id,app_name+zabbix_conf['tomcat_con_wait'])
+    var request_count=create_request_parm(id,app_name+zabbix_conf['tomcat_request'])
+    var err_request_count=create_request_parm(id,app_name+zabbix_conf['tomcat_err_request'])
+
+
+    
+}
 //日期插件
 function date_select(id) {
         $(id+' span').html(moment().subtract(1,'hours').format('YYYY-MM-DD HH:mm:ss') + ' -- ' + moment().format('YYYY-MM-DD HH:mm:ss'));
@@ -1411,6 +1439,7 @@ $(document).ready(function () {
             tomcat_heap_memory()
             tomcat_non_heap_memory()
             tomcat_connect()
+            tomcat_graphs()
     }
      if (app[0]['thrift'].length!=0){
             date_select('#thrift_date')

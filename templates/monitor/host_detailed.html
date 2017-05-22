@@ -75,14 +75,14 @@
           <div class="app_graphs_container">
                     <div class="div_title">
                         <div class="btn-group">
-                            <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle">tomcat</button>
+                            <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle" id="tomcat_select_button" data-AppName="{{ data.app.tomcat.0 }}">{{ data.app.tomcat.0 }}</button>
                             <ul class="dropdown-menu select_box" role="menu">
                                 {% for item in data.app.tomcat %}
-                                <li><a>{{ item }}</a></li>
+                                <li><a  onclick="change_app(this,'tomcat')">{{ item }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
-                        <div id="tomcat_date" class="date_div">
+                        <div id="tomcat_date" class="date_div" data-app_name="{{ data.app.tomcat.0 }}">
                             <span></span>
                         </div>
                     </div>
@@ -97,14 +97,14 @@
           <div class="app_graphs_container">
                     <div class="div_title">
                         <div class="btn-group">
-                            <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle">thrift</button>
+                            <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle" id="thrift_select_button">{{ data.app.thrift.0 }}</button>
                             <ul class="dropdown-menu select_box" role="menu">
                                 {% for item in data.app.thrift %}
-                                <li><a href="#">{{ item }}</a></li>
+                                <li><a  onclick="change_app(this,'thrift')">{{ item }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
-                        <div id="thrift_date" class="date_div">
+                        <div id="thrift_date" class="date_div" data-app_name="{{ data.app.thrift.0 }}">
                             <span></span>
                         </div>
                     </div>

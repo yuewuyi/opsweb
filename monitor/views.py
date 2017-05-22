@@ -67,7 +67,6 @@ def host_info_detailed(request):
             app['disk'].append(name.split(conf['disk_used_space'])[1])
         elif nic.search(name):
             app['nic'].append(name.split(conf['nic_out'])[1])
-    print(app)
     return render(request,'monitor/host_detailed.html',{"data":{'app':app,'result':result,'conf':conf}})
 
 
