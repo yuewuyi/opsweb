@@ -10,7 +10,7 @@ var docCookies = {
   },
 }
 //单位转换
-function unit_format(data,units) {
+function unit_format(data,units,type) {
     var unit = units
     var divisor = 1
     if (units=='B'){
@@ -27,9 +27,27 @@ function unit_format(data,units) {
             divisor = 1024
             unit = 'KB'
          }
-         return parseFloat(data/divisor).toFixed(2)+unit
-    }
 
+    }else {
+        if (data >= 10000 * 10000) {
+            divisor = 10000 * 10000
+            unit = '亿'
+        } else if (data >= 10000 * 1000) {
+            divisor = 10000 * 1000
+            unit = '千万'
+        } else if (data >= 10000 * 100) {
+            divisor = 10000 * 1000
+            unit = '百万'
+        } else if (data >= 10000) {
+            divisor = 10000
+            unit = '万'
+        }
+    }
+    if (type=='float'){
+        return parseFloat(data/divisor).toFixed(1)+unit
+    }else if(type=='int'){
+        return parseInt(data/divisor)+unit
+    }
 
 }
 //构建请求参数
@@ -160,9 +178,9 @@ function memory_graphs(id,alivable_data,total_data,units) {
             tooltip: {
                    formatter: function () {
                         var s = '<span style="color:#7cb5ec">'+Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x)+'</span>'
-                        s+='<br\><span style="color:#7cb5ec">已使用:'+unit_format(this.y,units)+'</span>'
+                        s+='<br\><span style="color:#7cb5ec">已使用:'+unit_format(this.y,units,'float')+'</span>'
                         s+='<br\><span style="color:#7cb5ec">使用百分比:'+parseFloat(this.y*100/total_data).toFixed(2)+'%</span>'
-                        s+='<br\><span style="color:#7cb5ec">总计:'+unit_format(total_data,units)+'</span>'
+                        s+='<br\><span style="color:#7cb5ec">总计:'+unit_format(total_data,units,'float')+'</span>'
                         return s;
                     },
                   shared: true

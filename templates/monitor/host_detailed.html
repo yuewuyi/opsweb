@@ -89,32 +89,32 @@
                     <div class="app_div_graphas_container">
                         <div id="tomcat_heap_mem" class="app_little_graphs"></div>
                         <div id="tomcat_connect" class="app_little_graphs"></div>
-                        <div id="tomcat_non_heap_mem" class="app_little_graphs"></div>
+                        <div id="tomcat_request" class="app_little_graphs"></div>
                     </div>
           </div>
           {% endif %}
-          {% if data.app.thrift %}
-          <div class="app_graphs_container">
-                    <div class="div_title">
-                        <div class="btn-group">
-                            <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle" id="thrift_select_button">{{ data.app.thrift.0 }}</button>
-                            <ul class="dropdown-menu select_box" role="menu">
-                                {% for item in data.app.thrift %}
-                                <li><a  onclick="change_app(this,'thrift')">{{ item }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div id="thrift_date" class="date_div" data-app_name="{{ data.app.thrift.0 }}">
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="app_div_graphas_container">
-                        <div id="thrift_mem" class="app_little_graphs"></div>
-                        <div id="thrift_connect" class="app_little_graphs"></div>
-                        <div id="thrift_cpu" class="app_little_graphs"></div>
-                    </div>
-          </div>
-          {% endif %}
+{#          {% if data.app.thrift %}#}
+{#          <div class="app_graphs_container">#}
+{#                    <div class="div_title">#}
+{#                        <div class="btn-group">#}
+{#                            <button type="button" data-toggle="dropdown" class="select_button dropdown-toggle" id="thrift_select_button">{{ data.app.thrift.0 }}</button>#}
+{#                            <ul class="dropdown-menu select_box" role="menu">#}
+{#                                {% for item in data.app.thrift %}#}
+{#                                <li><a  onclick="change_app(this,'thrift')">{{ item }}</a></li>#}
+{#                                {% endfor %}#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div id="thrift_date" class="date_div" data-app_name="{{ data.app.thrift.0 }}">#}
+{#                            <span></span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="app_div_graphas_container">#}
+{#                        <div id="thrift_mem" class="app_little_graphs"></div>#}
+{#                        <div id="thrift_connect" class="app_little_graphs"></div>#}
+{#                        <div id="thrift_cpu" class="app_little_graphs"></div>#}
+{#                    </div>#}
+{#          </div>#}
+{#          {% endif %}#}
           <div class="host_detailed_footer"></div>
     </div>
 {% endblock %}
