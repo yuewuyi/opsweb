@@ -1,0 +1,132 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'monitor/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'monitor/css/Latest_Data.css' %}">
+{# 页面容器 #}
+    <div class="page_container" data-host="{{ data }}" id="data_storage" data-key="{{ zabbix_conf }}">
+{# 页面标题 #}
+        <div class="page_title">最新监控数据</div>
+        <div class="page_hr"></div>
+        <div class="monitor_search">
+{# 搜索框标题 #}
+            <div class="monitor_search_title">查询</div>
+            <div class="monitor_search_hr"></div>
+ {# 搜索框控件 #}
+            <form id="monitor_search_form">
+                主机名<input type="text" class="monitor_search_text" id="host_name">字段名<input id="ip_addr" type="text" class="monitor_search_text">
+                <div class="monitor_search_form_hr"></div>
+                {% csrf_token %}
+            </form>
+            <div class="monitor_botton_form">
+                <div class="monitor_query_botton" id="host_query">查询</div><div onclick="window.location.href='{% url 'LatestData' %}'" id="host_reset" class="monitor_query_botton" >重置</div>
+            </div>
+        </div>
+{# 最新数据显示面板 #}
+        <div class="table_border">
+            <table class="head_table">
+                <tr>
+                    <th>主机名</th>
+                    <th>application/item</th>
+                    <th>最新监控数据</th>
+                    <th>最后检测时间</th>
+                    <th>图表</th>
+                </tr>
+            </table>
+            <div class="host_container" data-toggle="collapse" data-target="#demo">
+                <div class="host_name_mask"></div><div>zabbix_server</div>
+            </div>
+            <div id="demo" class="collapse in" >
+                <div data-toggle="collapse" data-target="#demo2" class="application_container">
+                     <div class="host_name_mask"></div><div>cpu(10)</div>
+                </div>
+                <div class="collapse out" id="demo2" style="width: 100%">
+                <table class="item_table">
+                    <tr>
+                        <td></td>
+                        <td>产品 A</td>
+                        <td>200</td>
+                        <td>产品 A</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>产品 B</td>
+                        <td>400</td>
+                        <td>产品 B</td>
+                        <td>400</td>
+                    </tr>
+                </table>
+                </div>
+                <div data-toggle="collapse" data-target="#demo3" class="application_container">
+                     <div class="host_name_mask"></div><div>cpu(10)</div>
+                </div>
+                <div class="collapse out" id="demo3" style="width: 100%">
+                <table class="item_table">
+                    <tr>
+                        <td></td>
+                        <td>产品 A</td>
+                        <td>200</td>
+                        <td>产品 A</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>产品 B</td>
+                        <td>400</td>
+                        <td>产品 B</td>
+                        <td>400</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+            <div class="host_container" data-toggle="collapse" data-target="#ademo">
+                <div class="host_name_mask"></div><div>zabbix_server</div>
+            </div>
+            <div id="ademo" class="collapse in" >
+                <div data-toggle="collapse" data-target="#ademo2" class="application_container">
+                     <div class="host_name_mask"></div><div>cpu(10)</div>
+                </div>
+                <div class="collapse out" id="ademo2" style="width: 100%">
+                <table class="item_table">
+                    <tr>
+                        <td></td>
+                        <td>产品 A</td>
+                        <td>200</td>
+                        <td>产品 A</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>产品 B</td>
+                        <td>400</td>
+                        <td>产品 B</td>
+                        <td>400</td>
+                    </tr>
+                </table>
+                </div>
+                <div data-toggle="collapse" data-target="#ademo3" class="application_container">
+                     <div class="host_name_mask"></div><div>cpu(10)</div>
+                </div>
+                <div class="collapse out" id="ademo3" style="width: 100%">
+                <table class="item_table">
+                    <tr>
+                        <td></td>
+                        <td>产品 A</td>
+                        <td>200</td>
+                        <td>产品 A</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>产品 B</td>
+                        <td>400</td>
+                        <td>产品 B</td>
+                        <td>400</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

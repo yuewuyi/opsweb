@@ -1,0 +1,63 @@
+/*头部表格*/
+.head_table{
+    width: 100%;
+    border-bottom: 4px solid #EBEEF0;
+    text-indent: 1%;
+    height: 25px;
+    line-height: 25px;
+}
+.head_table tr th{
+    width: 20%;
+    height: 25px;
+    line-height: 25px;
+}
+/*主机名容器*/
+.host_container{
+    font-weight: bold;
+    border-bottom: 2px solid #EBEEF0;
+    text-indent: 1%;
+    background-color: #daedfa;
+    cursor: pointer;
+    position: relative;
+    height: 25px;
+    line-height: 25px;
+}
+/*应用名容器*/
+.application_container{
+    text-indent: 21%;
+    border-bottom: 2px solid #EBEEF0;
+    background-color: #edf5fb;
+    cursor: pointer;
+    position: relative;
+    height: 25px;
+    line-height: 25px;
+}
+/*item详情表*/
+.item_table{
+    width: 100%;
+}
+/*item_table td样式*/
+.item_table tr td{
+    text-indent: 1%;
+    width: 20%;
+    border-bottom: 2px solid #EBEEF0;
+    height: 25px;
+    line-height: 25px;
+}
+.host_name_mask{
+    width: 2px;
+    background-color: #3C8DBC;
+    position: absolute;
+    height: 25px;
+    transition: 0.2s 0s width ease;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    opacity:0.5;
+}
+.host_container:hover .host_name_mask{
+    width: 100%  !important;
+}
+.application_container:hover .host_name_mask{
+    width: 100%  !important;
+}

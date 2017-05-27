@@ -99,7 +99,10 @@ def zabbix_history_get(request):
             else:
                 rely_data[item['itemid']].append([int(item['clock']) * 1000, int(item[value_name])])
         for item in data['host_item_ids']:
-            data['host_item_ids'][item]['data']=rely_data[data['host_item_ids'][item]['data']]
+            try:
+                data['host_item_ids'][item]['data']=rely_data[data['host_item_ids'][item]['data']]
+            except Exception as e:
+                pass
         return HttpResponse(json.dumps(data['host_item_ids']),content_type='application/json')
     else:
         return HttpResponse(status=404)

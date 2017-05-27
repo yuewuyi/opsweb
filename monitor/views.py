@@ -68,6 +68,7 @@ def host_info_detailed(request):
         elif nic.search(name):
             app['nic'].append(name.split(conf['nic_out'])[1])
     return render(request,'monitor/host_detailed.html',{"data":{'app':app,'result':result,'conf':conf}})
-def last_data(request):
-    return render(request, 'monitor/last_data.html')
+def Latest_Data(request):
+
+    return render(request, 'monitor/Latest_Data.html')
 

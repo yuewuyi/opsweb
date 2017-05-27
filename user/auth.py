@@ -13,7 +13,7 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/monitor/host_detailed/':'show',
         '/monitor/config/':'config',
         '/api/zabbix_history_get/':'show',
-        '/monitor/last_data/':'show'
+        '/monitor/Latest_Data/':'show'
     }
     def __init__(self,get_response):
         self.get_response = get_response
