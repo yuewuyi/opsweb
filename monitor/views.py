@@ -3,6 +3,8 @@ from utils.zabbix_public_invok import zabbix_data
 from django.http import HttpResponse
 from utils.config import app_config
 import re
+import time
+#监控一览视图
 def index(request):
     conf=app_config()
     conf=conf.get_zabbix_item_key()
@@ -36,6 +38,7 @@ def config(request):
     result=zabbix_data_get.item_history_get(params)
     return HttpResponse(result)
     # return render(request, 'monitor/config.html')
+#监控详情视图
 def host_info_detailed(request):
     conf = app_config()
     conf = conf.get_zabbix_item_key()
@@ -68,7 +71,43 @@ def host_info_detailed(request):
         elif nic.search(name):
             app['nic'].append(name.split(conf['nic_out'])[1])
     return render(request,'monitor/host_detailed.html',{"data":{'app':app,'result':result,'conf':conf}})
+#最新数据视图
 def Latest_Data(request):
-
-    return render(request, 'monitor/Latest_Data.html')
-
+    Render_Data={
+    }
+    item_parm={
+        "output":['name','itemid','lastvalue','lastclock','prevvalue','units','value_type'],
+        "selectHosts":["host","hostid","status"],
+        "selectApplications":["name"],
+        "search":{
+            "name":"mysql"
+        }
+    }
+    zabbix_data_get = zabbix_data()
+    result=zabbix_data_get.item_get(item_parm)
+    for item in result:
+        if item['hosts'][0]['status'] == '3':
+            continue;
+        if item['applications']:
+            Application_Name=item['applications'][0]['name']
+        else:
+            Application_Name=''
+        del (item['applications'])
+        host=item['hosts'][0]
+        del (item['hosts'])
+        item['lastclock']=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(int(item['lastclock'])))
+        if not host['host'] in Render_Data.keys():
+            Render_Data[host['host']]={
+                'hostid':host['hostid'],
+                'application': {
+                }
+            }
+        if not Application_Name:
+            Render_Data[host['host']]['application']['other']=[]
+        if not Application_Name in Render_Data[host['host']]['application'].keys() and Application_Name!='':
+            Render_Data[host['host']]['application'][Application_Name]=[]
+        if Application_Name:
+            Render_Data[host['host']]['application'][Application_Name].append(item)
+        else:
+            Render_Data[host['host']]['application']['other'].append(item)
+    return render(request, 'monitor/Latest_Data.html',{'data':Render_Data})

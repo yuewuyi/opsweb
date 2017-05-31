@@ -33,100 +33,32 @@
                     <th>图表</th>
                 </tr>
             </table>
-            <div class="host_container" data-toggle="collapse" data-target="#demo">
-                <div class="host_name_mask"></div><div>zabbix_server</div>
+            {% for key,value in data.items %}
+            <div class="host_container" data-toggle="collapse" data-target="#{{ key }}">
+                <div class="host_name_mask"></div><div>{{ key }}</div>
             </div>
-            <div id="demo" class="collapse in" >
-                <div data-toggle="collapse" data-target="#demo2" class="application_container">
-                     <div class="host_name_mask"></div><div>cpu(10)</div>
+
+            <div id="{{ key }}" class="collapse in" >
+                {% for key2,value2 in value.application.items %}
+                <div data-toggle="collapse" data-target="#{{ key }}_{{ value2.0.itemid }}" class="application_container">
+                     <div class="host_name_mask"></div><div>{{ key2 }}({{ value2|length }})</div>
                 </div>
-                <div class="collapse out" id="demo2" style="width: 100%">
+                <div class="collapse out" id="{{ key }}_{{ value2.0.itemid }}">
                 <table class="item_table">
+                    {% for value3 in value2 %}
                     <tr>
                         <td></td>
-                        <td>产品 A</td>
-                        <td>200</td>
-                        <td>产品 A</td>
-                        <td>200</td>
+                        <td>{{ value3.name }}</td>
+                        <td>{{ value3.lastvalue }}</td>
+                        <td>{{ value3.lastclock }}</td>
+                        <td>graph</td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td>产品 B</td>
-                        <td>400</td>
-                        <td>产品 B</td>
-                        <td>400</td>
-                    </tr>
+                    {% endfor %}
                 </table>
                 </div>
-                <div data-toggle="collapse" data-target="#demo3" class="application_container">
-                     <div class="host_name_mask"></div><div>cpu(10)</div>
-                </div>
-                <div class="collapse out" id="demo3" style="width: 100%">
-                <table class="item_table">
-                    <tr>
-                        <td></td>
-                        <td>产品 A</td>
-                        <td>200</td>
-                        <td>产品 A</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>产品 B</td>
-                        <td>400</td>
-                        <td>产品 B</td>
-                        <td>400</td>
-                    </tr>
-                </table>
-                </div>
+              {% endfor %}
             </div>
-            <div class="host_container" data-toggle="collapse" data-target="#ademo">
-                <div class="host_name_mask"></div><div>zabbix_server</div>
-            </div>
-            <div id="ademo" class="collapse in" >
-                <div data-toggle="collapse" data-target="#ademo2" class="application_container">
-                     <div class="host_name_mask"></div><div>cpu(10)</div>
-                </div>
-                <div class="collapse out" id="ademo2" style="width: 100%">
-                <table class="item_table">
-                    <tr>
-                        <td></td>
-                        <td>产品 A</td>
-                        <td>200</td>
-                        <td>产品 A</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>产品 B</td>
-                        <td>400</td>
-                        <td>产品 B</td>
-                        <td>400</td>
-                    </tr>
-                </table>
-                </div>
-                <div data-toggle="collapse" data-target="#ademo3" class="application_container">
-                     <div class="host_name_mask"></div><div>cpu(10)</div>
-                </div>
-                <div class="collapse out" id="ademo3" style="width: 100%">
-                <table class="item_table">
-                    <tr>
-                        <td></td>
-                        <td>产品 A</td>
-                        <td>200</td>
-                        <td>产品 A</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>产品 B</td>
-                        <td>400</td>
-                        <td>产品 B</td>
-                        <td>400</td>
-                    </tr>
-                </table>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
