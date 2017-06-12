@@ -80,9 +80,17 @@ def Latest_Data(request):
         "selectHosts":["host","hostid","status"],
         "selectApplications":["name"],
         "search":{
-            "name":"mysql"
+        },
+        "filter":{
         }
     }
+    try:
+        if request.GET['HostName']:
+            item_parm['filter']["host"]=request.GET['HostName']
+        item_parm['search']["name"]=request.GET['ItemName']
+    except:
+        return render(request, 'monitor/Latest_Data.html', {'data': Render_Data})
+    print(item_parm)
     zabbix_data_get = zabbix_data()
     result=zabbix_data_get.item_get(item_parm)
     for item in result:
@@ -111,3 +119,6 @@ def Latest_Data(request):
         else:
             Render_Data[host['host']]['application']['other'].append(item)
     return render(request, 'monitor/Latest_Data.html',{'data':Render_Data})
+#监控字段历史页面
+def history(request):
+    return  render(request,'monitor/history.html')

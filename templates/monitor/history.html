@@ -1,0 +1,20 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+{# 页面容器 #}
+    <link rel="stylesheet" href="{% static 'monitor/css/history.css' %}">
+    <script src="{% static 'monitor/js/history.js' %}"></script>
+    <div class="page_container">
+{# 图表容器   #}
+        <div class="page_title">监控字段详情</div>
+        <div class="page_hr"></div>
+        <div class="graphs_container" id="graphs_data" data-storage="[{{ data }}]">
+            <div class="graphs_head">图表
+                <div id="graphs_date">
+                    <span></span>
+                </div>
+            </div>
+            <div id="custom_graph"></div>
+        </div>
+    </div>
+{% endblock %}

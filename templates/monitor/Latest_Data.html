@@ -3,8 +3,9 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'monitor/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'monitor/css/Latest_Data.css' %}">
+    <script src="{% static 'monitor/js/Latest_Data.js' %}"></script>
 {# 页面容器 #}
-    <div class="page_container" data-host="{{ data }}" id="data_storage" data-key="{{ zabbix_conf }}">
+    <div class="page_container">
 {# 页面标题 #}
         <div class="page_title">最新监控数据</div>
         <div class="page_hr"></div>
@@ -13,13 +14,13 @@
             <div class="monitor_search_title">查询</div>
             <div class="monitor_search_hr"></div>
  {# 搜索框控件 #}
-            <form id="monitor_search_form">
-                主机名<input type="text" class="monitor_search_text" id="host_name">字段名<input id="ip_addr" type="text" class="monitor_search_text">
+            <form id="LastestDataSearch">
+                主机名<input type="text" class="monitor_search_text" id="HostName">字段名<input id="ItemName" type="text" class="monitor_search_text">
                 <div class="monitor_search_form_hr"></div>
                 {% csrf_token %}
             </form>
             <div class="monitor_botton_form">
-                <div class="monitor_query_botton" id="host_query">查询</div><div onclick="window.location.href='{% url 'LatestData' %}'" id="host_reset" class="monitor_query_botton" >重置</div>
+                <div class="monitor_query_botton" id="LatestDataSearchButton" onclick="LastestDataFromSubmit()">查询</div><div onclick="window.location.href='{% url 'LatestData' %}'" class="monitor_query_botton" id="HostReset">重置</div>
             </div>
         </div>
 {# 最新数据显示面板 #}
@@ -51,7 +52,7 @@
                         <td>{{ value3.name }}</td>
                         <td>{{ value3.lastvalue }}</td>
                         <td>{{ value3.lastclock }}</td>
-                        <td>graph</td>
+                        <td><a href="{% url 'MonitorHistory' %}?itemid={{ value3.itemid }}&unit={{ value3.units }}&ValueType={{ value3.value_type }}&hostid={{ value.hostid }}">详细</a></td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -60,5 +61,6 @@
             </div>
             {% endfor %}
         </div>
+        <div class="host_detailed_footer"></div>
     </div>
 {% endblock %}

@@ -79,7 +79,6 @@ def zabbix_history_get(request):
             "sortfield":"clock",
             "sortorder":"ACS",
         }
-
         zabbix_data_get=zabbix_data()
         if (end_time - start_time).days > 7:
             value_name = 'value_max'
@@ -87,17 +86,17 @@ def zabbix_history_get(request):
         else:
             result=zabbix_data_get.item_history_get(history)
         if not result:
-            hostid=list(data['host_item_ids'].keys())[0]
-            data['host_item_ids'][hostid]['data']=[0,0]
             return HttpResponse(json.dumps(data['host_item_ids']), content_type='application/json')
         rely_data= {}
         for item in result:
             if not item['itemid'] in rely_data.keys():
                 rely_data[item['itemid']] = []
-            if not int(data['value_type']):
+            if int(data['value_type'])==0:
                 rely_data[item['itemid']].append([int(item['clock'])*1000,  round(float(item[value_name]),2)])
-            else:
+            elif int(data['value_type'])==3:
                 rely_data[item['itemid']].append([int(item['clock']) * 1000, int(item[value_name])])
+            else:
+                rely_data[item['itemid']].append([int(item['clock']) * 1000,item[value_name]])
         for item in data['host_item_ids']:
             try:
                 data['host_item_ids'][item]['data']=rely_data[data['host_item_ids'][item]['data']]

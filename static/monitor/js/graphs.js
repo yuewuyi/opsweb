@@ -1,61 +1,9 @@
-
-//获取cookie
-window['req'] = 100;
-var docCookies = {
-  getItem: function (sKey) {
-    return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
-  },
-  hasItem: function (sKey) {
-    return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
-  },
-}
-//单位转换
-function unit_format(data,units,type) {
-    var unit = units
-    var divisor = 1
-    if (units=='B'){
-         if (data >= 1024 * 1024 * 1024 * 1024) {
-            divisor = 1024 * 1024 * 1024 * 1024
-            unit = 'TB'
-         } else if (data >= 1024 * 1024 * 1024) {
-            divisor = 1024 * 1024 * 1024
-            unit = 'GB'
-         } else if (data >= 1024 * 1024) {
-            divisor = 1024 * 1024
-            unit = 'MB'
-         } else if(data >= 1024){
-            divisor = 1024
-            unit = 'KB'
-         }
-
-    }else {
-        if (data >= 10000 * 10000) {
-            divisor = 10000 * 10000
-            unit = '亿'
-        } else if (data >= 10000 * 1000) {
-            divisor = 10000 * 1000
-            unit = '千万'
-        } else if (data >= 10000 * 100) {
-            divisor = 10000 * 1000
-            unit = '百万'
-        } else if (data >= 10000) {
-            divisor = 10000
-            unit = '万'
-        }
-    }
-    if (type=='float'){
-        return parseFloat(data/divisor).toFixed(1)+unit
-    }else if(type=='int'){
-        return parseInt(data/divisor)+unit
-    }
-
-}
 //构建请求参数
 function get_host_key(key_name) {
     var itemids=[]
     var host_item_ids={}
     var units=''
-    var value_type=''
+    var value_type=0
     var stop_time=Date.parse(new Date())/1000;
     var start_time=stop_time-7200
     var host_data=eval($("#data_storage").data('host'))
@@ -225,26 +173,6 @@ function memory_graphs(id,alivable_data,total_data,units) {
                 enabled: false
             },
         });
-}
-function req_ajax(url,data,var_name) {
-    var dtd = $.Deferred()
-    $.ajax({
-        type:'POST',
-        url:url,
-        data:JSON.stringify(data),
-        headers:{
-            "Content-Type":"application/json",
-            "X-CSRFToken":docCookies.getItem('csrftoken')
-        },
-    })
-        .done(function (data) {
-            window[var_name]=data
-            dtd.resolve()
-        })
-        .fail(function () {
-            alert('数据获取失败')
-        })
-    return dtd.promise();
 }
 //请求CPU数据并赋值给图形
 function cpu_data_req() {

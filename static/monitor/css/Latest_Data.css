@@ -7,9 +7,23 @@
     line-height: 25px;
 }
 .head_table tr th{
-    width: 20%;
     height: 25px;
     line-height: 25px;
+}
+.head_table tr th:nth-child(1){
+    width: 16%;
+}
+.head_table tr th:nth-child(2){
+    width: 49%;
+}
+.head_table tr th:nth-child(3){
+    width: 10%;
+}
+.head_table tr th:nth-child(4){
+    width: 20%;
+}
+.head_table tr th:nth-child(5){
+    width: 5%;
 }
 /*主机名容器*/
 .host_container{
@@ -24,7 +38,7 @@
 }
 /*应用名容器*/
 .application_container{
-    text-indent: 21%;
+    text-indent: 17%;
     border-bottom: 2px solid #EBEEF0;
     background-color: #edf5fb;
     cursor: pointer;
@@ -39,13 +53,24 @@
 /*item_table td样式*/
 .item_table tr td{
     text-indent: 1%;
-    width: 20%;
     border-bottom: 2px solid #EBEEF0;
     height: 25px;
     line-height: 25px;
 }
+.item_table tr td:nth-child(1){
+    width: 16%;
+}
+.item_table tr td:nth-child(2){
+    width: 49.3%;
+}
+.item_table tr td:nth-child(3){
+    width: 10%;
+}
+.item_table tr td:nth-child(4){
+    width: 20%;
+}
 .host_name_mask{
-    width: 2px;
+    width: 3px;
     background-color: #3C8DBC;
     position: absolute;
     height: 25px;
@@ -60,4 +85,27 @@
 }
 .application_container:hover .host_name_mask{
     width: 100%  !important;
+}
+
+#HostName{
+    margin: 0 40px 0 9.3px;
+}
+#ItemName{
+    margin: 0 0 0 9.3px;
+}
+#LastestDataSearch{
+    width: 455.5px;
+    height: 35px;
+    margin: 12px auto 0px auto;
+}
+#LatestDataSearchButton{
+    background-color: #367fa9;
+    margin: 0 20px 0 0;
+}
+#HostReset{
+    background-color: #dd4b39;
+}
+.host_detailed_footer{
+    width: 100%;
+    height: 50px;
 }
