@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^user/',include('user.urls')),
     url(r'^home/',include('home.urls')),
     url(r'^monitor/',include('monitor.urls')),
-    url(r'^api/',include('api.urls'))
+    url(r'^api/',include('api.urls')),
+    url(r'^log/',include('log.urls'))
 ]

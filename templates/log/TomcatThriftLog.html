@@ -1,0 +1,29 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'log/css/TomcatThrift.css' %}">
+<div class="page_container">
+    <div class="page_title">Toncat、Thrift日志</div>
+    <div class="page_hr"></div>
+    <div class="TomcatThriftSearchBox">
+        <div class="InputBox">
+            主机名 <input type="text" id="HostName">
+            ip <input type="text" id="ip">
+            应用名 <input type="text" id="AppName">
+            应用类型 <select id="AppType">
+                        <option>全部</option>
+                        <option>tomcat</option>
+                        <option>thrift</option>
+                     </select>
+            日志类型  <select id="LogType">
+                        <option>全部</option>
+                        <option>ERROR</option>
+                        <option>INFO</option>
+                        <option>WARN</option>
+                      </select>
+        </div>
+    </div>
+    <div class="LogGraph" id="TomcatThriftGraph"></div>
+    <div class="LogView"></div>
+</div>
+{% endblock %}

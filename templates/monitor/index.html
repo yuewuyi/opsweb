@@ -55,14 +55,14 @@
                     <td><div class='circles'>24</div></td></td>
                     <td>z1,z2,z3,z4</td>
                     <td>
-                        {% if item.status == '1' %}
-                            <div class='monitor_table_operate'>开启监控</div>
-                        {% else %}
-                            <div class='monitor_table_operate close_monitor'>关闭监控</div>
-                        {% endif %}
+{#                        {% if item.status == '1' %}#}
+{#                            <div class='monitor_table_operate'>开启监控</div>#}
+{#                        {% else %}#}
+{#                            <div class='monitor_table_operate close_monitor'>关闭监控</div>#}
+{#                        {% endif %}#}
                         <div class='monitor_table_operate monitor_info' onclick="window.location.href='{% url 'MonitorHostDetailed' %}?host={{ item.host }}&hostid={{ item.hostid }}'">监控详情</div>
                         <div class='monitor_table_operate log_view'>日志查看</div>
-                        <div class='monitor_table_operate app_deploy'>应用部署</div>
+{#                        <div class='monitor_table_operate app_deploy'>应用部署</div>#}
                     </td>
                 </tr>
             {% endfor %}

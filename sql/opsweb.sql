@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2017-05-18 19:59:16
+Date: 2017-06-16 18:10:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,7 +75,8 @@ CREATE TABLE `django_session` (
 INSERT INTO `django_session` VALUES ('ffze65ns23lcf0vqyxz3q4sicufblszq', 'NDczMDVlMjkyMDRkN2FiYTljYTcxMjg5YzhjZTliNjkwZjQyOWZjYjp7Il9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMCwidXNlciI6ImFkbWluIiwianVyaXNkaWN0aW9uIjp7ImlzX2FkbWluIjp0cnVlLCJpc19jb25maWciOnRydWUsImlzX3Nob3ciOnRydWUsImlzX3VwIjp0cnVlfX0=', '2017-05-25 08:50:07.583367');
 INSERT INTO `django_session` VALUES ('l15jhfzgb66x5am3ht18uphvdb1oex3l', 'NDczMDVlMjkyMDRkN2FiYTljYTcxMjg5YzhjZTliNjkwZjQyOWZjYjp7Il9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMCwidXNlciI6ImFkbWluIiwianVyaXNkaWN0aW9uIjp7ImlzX2FkbWluIjp0cnVlLCJpc19jb25maWciOnRydWUsImlzX3Nob3ciOnRydWUsImlzX3VwIjp0cnVlfX0=', '2017-05-19 06:26:46.704049');
 INSERT INTO `django_session` VALUES ('nskznd3j1j3aivgoz3lhlstpmums31hd', 'NDczMDVlMjkyMDRkN2FiYTljYTcxMjg5YzhjZTliNjkwZjQyOWZjYjp7Il9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMCwidXNlciI6ImFkbWluIiwianVyaXNkaWN0aW9uIjp7ImlzX2FkbWluIjp0cnVlLCJpc19jb25maWciOnRydWUsImlzX3Nob3ciOnRydWUsImlzX3VwIjp0cnVlfX0=', '2017-05-26 06:06:08.670186');
-INSERT INTO `django_session` VALUES ('qdgi53mkiudyiz0lo2d62b8chpzvzewi', 'NDczMDVlMjkyMDRkN2FiYTljYTcxMjg5YzhjZTliNjkwZjQyOWZjYjp7Il9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMCwidXNlciI6ImFkbWluIiwianVyaXNkaWN0aW9uIjp7ImlzX2FkbWluIjp0cnVlLCJpc19jb25maWciOnRydWUsImlzX3Nob3ciOnRydWUsImlzX3VwIjp0cnVlfX0=', '2017-06-01 09:49:08.367536');
+INSERT INTO `django_session` VALUES ('qdgi53mkiudyiz0lo2d62b8chpzvzewi', 'NDczMDVlMjkyMDRkN2FiYTljYTcxMjg5YzhjZTliNjkwZjQyOWZjYjp7Il9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMCwidXNlciI6ImFkbWluIiwianVyaXNkaWN0aW9uIjp7ImlzX2FkbWluIjp0cnVlLCJpc19jb25maWciOnRydWUsImlzX3Nob3ciOnRydWUsImlzX3VwIjp0cnVlfX0=', '2017-06-14 10:33:30.923806');
+INSERT INTO `django_session` VALUES ('xm2yfyr2uov5e0s2egebr4bcjlimm0xn', 'NDczMDVlMjkyMDRkN2FiYTljYTcxMjg5YzhjZTliNjkwZjQyOWZjYjp7Il9zZXNzaW9uX2V4cGlyeSI6MTIwOTYwMCwidXNlciI6ImFkbWluIiwianVyaXNkaWN0aW9uIjp7ImlzX2FkbWluIjp0cnVlLCJpc19jb25maWciOnRydWUsImlzX3Nob3ciOnRydWUsImlzX3VwIjp0cnVlfX0=', '2017-06-30 09:49:08.443114');
 
 -- ----------------------------
 -- Table structure for `Item_Config`
@@ -86,7 +87,7 @@ CREATE TABLE `Item_Config` (
   `key` varchar(40) DEFAULT NULL,
   `item` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of Item_Config
@@ -102,6 +103,12 @@ INSERT INTO `Item_Config` VALUES ('8', 'disk_used_space', 'Used_disk_space_on_')
 INSERT INTO `Item_Config` VALUES ('9', 'nic_out', 'Outgoing_network_traffic_on_');
 INSERT INTO `Item_Config` VALUES ('10', 'disk_total_space', 'Total_disk_space_on_');
 INSERT INTO `Item_Config` VALUES ('11', 'nic_in', 'Incoming_network_traffic_on_');
+INSERT INTO `Item_Config` VALUES ('12', 'tomcat_con_est', '_Connect_EST');
+INSERT INTO `Item_Config` VALUES ('13', 'tomcat_con_wait', '_Connect_WAIT');
+INSERT INTO `Item_Config` VALUES ('14', 'tomcat_heap_mem_max', '_HeapMemMax');
+INSERT INTO `Item_Config` VALUES ('15', 'tomcat_heap_mem_used', '_HeapMemUsed');
+INSERT INTO `Item_Config` VALUES ('16', 'tomcat_request', '_requestCount');
+INSERT INTO `Item_Config` VALUES ('17', 'tomcat_err_request', '_errorCount');
 
 -- ----------------------------
 -- Table structure for `User`

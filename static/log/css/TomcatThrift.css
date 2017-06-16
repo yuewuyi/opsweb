@@ -1,0 +1,47 @@
+/*图表div*/
+.LogGraph{
+    width: 98%;
+    height: 200px;
+    background-color: white;
+    margin: 4px auto 0 auto;
+    border: 2px solid;
+    border-color: #dfe4e7;
+}
+/*搜索框div*/
+.TomcatThriftSearchBox{
+    width: 98%;
+    height: 80px;
+    background-color: white;
+    margin: 20px auto 0 auto;
+    border-radius: 4px;
+    border: 2px solid;
+    border-color: #dfe4e7;
+}
+/*日志显示*/
+.LogView{
+     width: 98%;
+     height: 900px;
+     background-color: white;
+     margin: 4px auto 0 auto;
+     border: 2px solid;
+     border-color: #dfe4e7;
+}
+/*输入框*/
+.InputBox{
+    width: 80%;
+    margin: 8px auto 0 auto;
+    font-weight: bold;
+}
+
+#AppType{
+    margin-right: 2.2%;
+}
+#HostName{
+    margin-right: 3%;
+}
+#ip{
+    margin-right: 3%;
+}
+#AppName{
+    margin-right: 3%;
+}

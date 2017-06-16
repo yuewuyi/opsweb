@@ -15,6 +15,7 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/api/zabbix_history_get/':'show',
         '/monitor/Latest_Data/':'show',
         '/monitor/history/':'show',
+        '/log/TomcatThrift/':'show',
     }
     def __init__(self,get_response):
         self.get_response = get_response
