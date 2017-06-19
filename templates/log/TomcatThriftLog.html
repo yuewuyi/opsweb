@@ -2,15 +2,16 @@
 {% load staticfiles %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'log/css/TomcatThrift.css' %}">
+    <script src="{% static 'log/js/TomcatThriftLog.js' %}"></script>
 <div class="page_container">
     <div class="page_title">Toncat、Thrift日志</div>
     <div class="page_hr"></div>
     <div class="TomcatThriftSearchBox">
         <div class="InputBox">
-            主机名 <input type="text" id="HostName">
-            ip <input type="text" id="ip">
-            应用名 <input type="text" id="AppName">
-            应用类型 <select id="AppType">
+            主机名 <input type="text" id="HostName" class="MarginRight TextStyle">
+            ip <input type="text" id="ip" class="MarginRight TextStyle">
+            应用名 <input type="text" id="AppName" class="MarginRight TextStyle">
+            应用类型 <select id="AppType" class="MarginRight">
                         <option>全部</option>
                         <option>tomcat</option>
                         <option>thrift</option>
@@ -22,8 +23,17 @@
                         <option>WARN</option>
                       </select>
         </div>
+        <div class="SearchBoxHr"></div>
+        <div class="ButtonBox">
+            <div class="SearchButton ButtonStyle">搜索</div>
+            <div class="ResetButton ButtonStyle">重置</div>
+        </div>
     </div>
-    <div class="LogGraph" id="TomcatThriftGraph"></div>
+    <div class="LogGraph" id="TomcatThriftGraph">
+        <div id="TomcatThriftDate" class="DateDiv">
+                <span class="DateFontStyle"></span>
+        </div>
+    </div>
     <div class="LogView"></div>
 </div>
 {% endblock %}

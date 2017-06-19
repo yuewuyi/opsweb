@@ -18,34 +18,35 @@
     background-color: #e0e5e8;
     height: 2px;
 }
-#monitor_search_form{
-    width: 455.5px;
+.search_form{
+    width: 40.6%;
     height: 35px;
     margin: 12px auto 0px auto;
 }
 .monitor_search_text{
     height: 20px;
+    width: 34.45%;
 }
-#host_name{
+.InputT1{
     margin: 0 40px 0 9.3px;
 }
-#ip_addr{
+.InputT2{
     margin: 0 0 0 9.3px;
 }
 .monitor_search_form_hr{
-    width: 100%;
+    width:  43%;
     background-color: #e0e5e8;
     height: 1px;
-    margin: 15px auto 0px auto;
+    margin: 0 auto 0px auto;
 }
 .monitor_botton_form{
     margin: 6px auto;
     height: 20px;
-    width: 120px;
+    width: 10.7%;
 }
 .monitor_query_botton{
     height: 19px;
-    width: 50px;
+    width: 41.3%;
     float: left;
     border-radius: 2px;
     color: white;
@@ -56,11 +57,11 @@
 .monitor_query_botton:hover{
     opacity:0.8;
 }
-#host_query{
+.QueryButton{
     background-color: #367fa9;
     margin: 0 20px 0 0;
 }
-#host_reset{
+.ResetButton{
     background-color: #dd4b39;
 }
 .table_border{

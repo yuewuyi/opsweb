@@ -14,13 +14,13 @@
             <div class="monitor_search_title">查询</div>
             <div class="monitor_search_hr"></div>
  {# 搜索框控件 #}
-            <form id="LastestDataSearch">
-                主机名<input type="text" class="monitor_search_text" id="HostName">字段名<input id="ItemName" type="text" class="monitor_search_text">
-                <div class="monitor_search_form_hr"></div>
+            <form id="LastestDataSearch" class="search_form">
+                主机名<input type="text" class="monitor_search_text LatestText1" id="HostName"> 监控字段名<input id="ItemName" type="text" class="monitor_search_text InputT2">
                 {% csrf_token %}
             </form>
+            <div class="monitor_search_form_hr"></div>
             <div class="monitor_botton_form">
-                <div class="monitor_query_botton" id="LatestDataSearchButton" onclick="LastestDataFromSubmit()">查询</div><div onclick="window.location.href='{% url 'LatestData' %}'" class="monitor_query_botton" id="HostReset">重置</div>
+                <div class="monitor_query_botton QueryButton" id="LatestDataSearchButton" onclick="LastestDataFromSubmit()">查询</div><div onclick="window.location.href='{% url 'LatestData' %}'" class="monitor_query_botton ResetButton" id="HostReset">重置</div>
             </div>
         </div>
 {# 最新数据显示面板 #}

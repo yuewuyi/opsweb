@@ -14,13 +14,13 @@
         <div class="monitor_search_title">主机查询</div>
         <div class="monitor_search_hr"></div>
  {# 搜索框控件 #}
-        <form id="monitor_search_form">
-            主机名<input type="text" class="monitor_search_text" id="host_name">IP地址<input id="ip_addr" type="text" class="monitor_search_text">
-            <div class="monitor_search_form_hr"></div>
+        <form id="monitor_search_form" class="search_form">
+            主机名<input type="text" class="monitor_search_text InputT1" id="host_name">IP地址<input id="ip_addr" type="text" class="monitor_search_text InputT2">
             {% csrf_token %}
         </form>
+        <div class="monitor_search_form_hr"></div>
         <div class="monitor_botton_form">
-            <div class="monitor_query_botton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div onclick="window.location.href='{% url 'MonitorIndex' %}'" id="host_reset" class="monitor_query_botton" >重置</div>
+            <div class="monitor_query_botton QueryButton" id="host_query" onclick="monitor_search_form_submit()">查询</div><div onclick="window.location.href='{% url 'MonitorIndex' %}'" id="host_reset" class="monitor_query_botton ResetButton" >重置</div>
         </div>
     </div>
 {# 主机信息表 #}

@@ -28,20 +28,52 @@
 }
 /*输入框*/
 .InputBox{
-    width: 80%;
+    width: 90%;
     margin: 8px auto 0 auto;
-    font-weight: bold;
 }
 
-#AppType{
-    margin-right: 2.2%;
+.MarginRight{
+    margin-right: 2.6%;
 }
-#HostName{
-    margin-right: 3%;
+.TextStyle{
+    width: 17%;
+    height: 20px;
 }
-#ip{
-    margin-right: 3%;
+.SearchBoxHr{
+    width: 95%;
+    background-color: #e0e5e8;
+    height: 1px;
+    margin: 10px auto 0px auto;
 }
-#AppName{
-    margin-right: 3%;
+.ButtonStyle{
+    height: 19px;
+    width: 45%;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    font-family: 楷体;
+    float: left;
+}
+.SearchButton{
+    background-color: #367fa9;
+}
+.ResetButton{
+    background-color: #dd4b39;
+    margin-left: 10%;
+}
+.ButtonBox{
+    width: 10%;
+    height: 19px;
+    margin: 7px auto 0 auto;
+}
+.DateFontStyle{
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+}
+.DateDiv{
+    width: 22.7%;
+    height: 12px;
+    margin: 0 auto;
 }

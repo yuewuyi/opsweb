@@ -86,26 +86,10 @@
 .application_container:hover .host_name_mask{
     width: 100%  !important;
 }
-
-#HostName{
-    margin: 0 40px 0 9.3px;
-}
-#ItemName{
-    margin: 0 0 0 9.3px;
-}
-#LastestDataSearch{
-    width: 455.5px;
-    height: 35px;
-    margin: 12px auto 0px auto;
-}
-#LatestDataSearchButton{
-    background-color: #367fa9;
-    margin: 0 20px 0 0;
-}
-#HostReset{
-    background-color: #dd4b39;
-}
 .host_detailed_footer{
     width: 100%;
     height: 50px;
+}
+.LatestText1{
+    margin: 0 5px 0 9.3px;
 }
