@@ -13,6 +13,7 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/monitor/host_detailed/':'show',
         '/monitor/config/':'config',
         '/api/zabbix_history_get/':'show',
+        '/api/TomcatThriftLog/':'show',
         '/monitor/Latest_Data/':'show',
         '/monitor/history/':'show',
         '/log/TomcatThrift/':'show',

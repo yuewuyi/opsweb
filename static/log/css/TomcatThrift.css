@@ -77,3 +77,8 @@
     height: 12px;
     margin: 0 auto;
 }
+.TomcatThriftLogGraph{
+    width: 100%;
+    height: 300px;
+    margin: 4px auto;
+}

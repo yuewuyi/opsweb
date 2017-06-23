@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from utils.zabbix_public_invok import zabbix_data
+from utils.ElsInvok import ElasticSearch
 import json
-import time
 import datetime
 #cpu使用值请求
 def zabbix_cpu_get(request):
@@ -105,3 +105,24 @@ def zabbix_history_get(request):
         return HttpResponse(json.dumps(data['host_item_ids']),content_type='application/json')
     else:
         return HttpResponse(status=404)
+def TomcatThriftLog(request):
+    if request.method=='POST':
+        es=ElasticSearch()
+        result=es.LogView()
+        LogData=result['hits']
+        LogCount={'date':[],'info':[],'error':[],'warn':[]}
+        LogCount['TotalCount']=result['hits']['total']
+        for item in result['aggregations']['date']['buckets']:
+            CountDict = {}
+            TypeList=['info','error','warn']
+            LogCount['date'].append(item['key'])
+            for item2 in item['LogType']['buckets']:
+                CountDict[item2['key']]=item2['doc_count']
+            for key in TypeList:
+                if key in CountDict.keys():
+                    LogCount[key].append(CountDict[key])
+                else:
+                    LogCount[key].append(0)
+    else:
+        return HttpResponse(status=404)
+    return HttpResponse(json.dumps(LogCount),content_type='application/json')
