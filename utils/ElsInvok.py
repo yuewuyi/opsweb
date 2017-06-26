@@ -52,7 +52,7 @@ class ElasticSearch:
     "date": {
       "date_histogram": {
         "field": "@timestamp",
-        "interval": "5m",
+        "interval": "300s",
         "time_zone": "Asia/Shanghai",
         "min_doc_count": 1
       }

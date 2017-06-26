@@ -27,4 +27,5 @@
     -webkit-box-shadow:0px 1px 3px #858585;
     box-shadow:0px 1px 3px #858585;
     width: 100%;
+    overflow:hidden;
 }

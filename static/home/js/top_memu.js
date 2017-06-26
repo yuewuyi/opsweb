@@ -25,12 +25,10 @@ function sidebar_scla() {
     if (s_width==200){
         $("#sidebar").css("width",s_min_width)
         $("#accordion").hide()
-
+        setTimeout("graphs_size()",500)
     }else {
         $("#sidebar").css("width",s_max_width)
         $("#accordion").show()
+        setTimeout("graphs_size()",500)
     }
-}
-function loadhtml(url) {
-        $("#main").load(url,null);
 }

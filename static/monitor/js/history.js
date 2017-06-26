@@ -106,3 +106,6 @@ $(document).ready(function () {
     date_select('#graphs_date')
     custom_graphs()
 })
+function graphs_size() {
+     $('#custom_graph').highcharts().reflow()
+}

@@ -110,7 +110,7 @@ def TomcatThriftLog(request):
         es=ElasticSearch()
         result=es.LogView()
         LogData=result['hits']
-        LogCount={'date':[],'info':[],'error':[],'warn':[]}
+        LogCount={'date':[],'info':[],'error':[],'warn':[],'MaxCount':0}
         LogCount['TotalCount']=result['hits']['total']
         for item in result['aggregations']['date']['buckets']:
             CountDict = {}
@@ -120,6 +120,8 @@ def TomcatThriftLog(request):
                 CountDict[item2['key']]=item2['doc_count']
             for key in TypeList:
                 if key in CountDict.keys():
+                    if  LogCount['MaxCount']<CountDict[key]:
+                        LogCount['MaxCount']=CountDict[key]
                     LogCount[key].append(CountDict[key])
                 else:
                     LogCount[key].append(0)

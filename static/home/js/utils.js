@@ -12,7 +12,7 @@ function date_select(id) {
                                 timePickerIncrement : 1, //时间的增量，单位为分钟
                                 timePicker24Hour : true, //使用24小时制来显示时间
                                 dateLimit:{
-                                  months:1024
+                                  day:2048
                                 },
                                 ranges : {
                                     '最近1小时': [moment().subtract(1,'hours'), moment()],

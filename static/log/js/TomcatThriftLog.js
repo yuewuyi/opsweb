@@ -4,21 +4,39 @@
 function TomcatThriftLogGraph(){
     $.when(req_ajax('/api/TomcatThriftLog/','cs','GraphData'))
         .done(function () {
+             $('#CountNum').html('总共 '+GraphData['TotalCount']+'条')
+             Highcharts.setOptions({ global: { useUTC: false } });
              $('#TomcatThriftLogGraph').highcharts({
         chart: {
-            type: 'column'
+            type: 'column',
+            reflow:true
         },
         title: {
             text: ''
         },
         xAxis: {
-            categories: GraphData['date']
+            categories: GraphData['date'],
+            tickInterval:1,
+            labels:{
+                    formatter:function(){
+                        if (Highcharts.dateFormat('%H:%M', this.value)=='00:00'){
+                                return Highcharts.dateFormat('%m/%d', this.value)
+                            }else {
+                                return Highcharts.dateFormat('%H:%M', this.value)
+                            }
+                    },
+                    rotation:270,
+                    style:{
+                        fontSize:'12px',
+                    }
+                },
         },
         yAxis: {
-            softMax: 0,
             title: {
                 text: ''
             },
+            tickInterval:10,
+            max:GraphData['MaxCount'],
             stackLabels: {
                 enabled: false,
             }
@@ -34,9 +52,9 @@ function TomcatThriftLogGraph(){
         },
         tooltip: {
             formatter: function () {
-                return '<b>' + this.x + '</b><br/>' +
+                return '' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x) + '<br/>' +
                     this.series.name + ': ' + this.y + '<br/>' +
-                    '总量: ' + this.point.stackTotal;
+                    '总数: ' + this.point.stackTotal;
             }
         },
         plotOptions: {
@@ -66,6 +84,9 @@ function TomcatThriftLogGraph(){
 
 
 $(document).ready(function () {
-    date_select('#TomcatThriftDate')
+    date_select('#TomcatThriftDate',3)
     TomcatThriftLogGraph()
 })
+function graphs_size() {
+     $('#TomcatThriftLogGraph').highcharts().reflow()
+}

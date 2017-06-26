@@ -14,7 +14,6 @@ function change_app(obj,type) {
         $("#thrift_date").data('app_name',app_name)
     }
 }
-
 //创建请求参数
 function  create_request_parm(id,key_name,app_name) {
     var itemid=[]
@@ -1131,3 +1130,13 @@ $(document).ready(function () {
     nic_in()
     nic_out()
 })
+function graphs_size() {
+    $('#disk_io_speed_graphs').highcharts().reflow()
+    $('#host_detailed_cpu').highcharts().reflow()
+    $('#host_detailed_memory').highcharts().reflow()
+    $('#nic_out').highcharts().reflow()
+    $('#nic_in').highcharts().reflow()
+    $('#tomcat_heap_mem').highcharts().reflow()
+    $('#tomcat_connect').highcharts().reflow()
+    $('#tomcat_request').highcharts().reflow()
+}
