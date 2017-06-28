@@ -8,8 +8,33 @@ class ElasticSearch:
         conf=app_config()
         conf_value=conf.get_config_value()
         self.__ElscApi=Elasticsearch([{'host': conf_value['ElastciSearchAddr'][0],'port':int(conf_value['ElastciSearchAddr'][1])}])
-    def LogView(self):
-        a = {
+        # self.__ElscApi = Elasticsearch("http://121.41.23.54:80/elastic/")
+    def update_filedata(self,AppType):
+      parm={
+          "properties": {
+                "LogType": {
+                    "type":     "text",
+                    "fielddata": True
+                            },
+                "ip": {
+                      "type":     "text",
+                      "fielddata": True
+                      }
+                      }
+          }
+      tomcat_service={
+                          'tomcat_service':parm
+                    }
+      thrift={
+                          'thrift':parm
+                    }
+      if AppType=='TomcatThrift':
+        self.__ElscApi.indices.put_mapping(index='filebeat-tomcat_service-*',body=tomcat_service,doc_type='tomcat_service')
+        self.__ElscApi.indices.put_mapping(index='filebeat-thrift-*', body=thrift,doc_type='thrift')
+
+    def TomcatThriftLogReq(self):
+      self.update_filedata('TomcatThrift')
+      parm = {
   "size": 10,
   "sort": [
     {
@@ -31,8 +56,8 @@ class ElasticSearch:
         {
           "range": {
             "@timestamp": {
-              "gte": 1498187255327,
-              "lte": 1498201655327,
+              "gte": 1498618414844,
+              "lte": 1498632814844,
               "format": "epoch_millis"
             }
           }
@@ -66,5 +91,4 @@ class ElasticSearch:
     }
   }
 }
-
-        return self.__ElscApi.search(index="*", body=json.dumps(a))
+      return self.__ElscApi.search(index="*", body=parm)

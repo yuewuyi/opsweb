@@ -20,7 +20,7 @@
 /*日志显示*/
 .LogView{
      width: 98%;
-     height: 900px;
+     height: auto;
      background-color: white;
      margin: 5px auto 0 auto;
      border: 2px solid;
@@ -88,4 +88,51 @@
     height: 200px;
     margin: 8px auto;
     overflow:hidden;
+}
+.LogTable{
+    width: 100%;
+}
+.LogTable tr td{
+    text-align: center;
+    border: 1px solid #dfe4e7;
+    border-bottom: 2px solid #dfe4e7;
+}
+.LogTable tr:nth-child(1) td{
+    font-weight: bold;
+    line-height: 20px;
+    height: 20px;
+}
+.LogTable .BriefMessage:not(:nth-child(1)) td{
+    height: 100px;
+    vertical-align: text-top;
+}
+
+.LogTable .BriefMessage td:nth-child(1){
+    width: 10%;
+}
+.LogTable .BriefMessage td:nth-child(2){
+    width: 10%;
+    word-break: break-all;
+}
+.LogTable .BriefMessage td:nth-child(3){
+    width: 6%;
+}
+.LogTable .BriefMessage td:nth-child(4){
+    width: 10%;
+    word-break: break-all;
+}
+.LogTable .BriefMessage td:nth-child(5){
+    width: 5%;
+}
+.LogTable .BriefMessage td:nth-child(6){
+    width: 30%;
+    overflow: hidden;
+    word-break: break-all;
+}
+.LogTable .BriefMessage td:nth-child(7){
+    width: 4%;
+}
+.LogTable .DetailedMessage td:first-child{
+    width: 100%;
+    word-break: break-all;
 }

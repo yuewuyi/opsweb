@@ -108,10 +108,11 @@ def zabbix_history_get(request):
 def TomcatThriftLog(request):
     if request.method=='POST':
         es=ElasticSearch()
-        result=es.LogView()
+        result=es.TomcatThriftLogReq()
         LogData=result['hits']
+        print(LogData)
         LogCount={'date':[],'info':[],'error':[],'warn':[],'MaxCount':0}
-        LogCount['TotalCount']=result['hits']['total']
+        LogCount['TotalCount']=LogData['total']
         for item in result['aggregations']['date']['buckets']:
             CountDict = {}
             TypeList=['info','error','warn']

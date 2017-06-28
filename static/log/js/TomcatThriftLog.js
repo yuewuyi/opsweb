@@ -90,3 +90,12 @@ $(document).ready(function () {
 function graphs_size() {
      $('#TomcatThriftLogGraph').highcharts().reflow()
 }
+function ShowDetailed(obj){
+    var TdObject=$(obj).parent().parent().next().children(1)
+    TdObject.hide()
+    // if(TdObject.css("display")!="none"){
+    //     TdObject.css("display","none")
+    // }else{
+    //     TdObject.css("display","inline")
+    // }
+}
