@@ -62,7 +62,7 @@ function disk_usage(id,name,total,used,free) {
             pointFormatter:function () {
                 var s = '<span>'+this.name+':'+unit_format(this.y,'B','float')+'</span>'
                 s+='<br><span>百分比:'+parseFloat(this.percentage).toFixed(2)+'%'
-                s+='<br\><span">总计:'+unit_format(this.y,'B','float')+'</span>'
+                s+='<br\><span">总计:'+unit_format(total,'B','float')+'</span>'
                 return s;
             }
         },

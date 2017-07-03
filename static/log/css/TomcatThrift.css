@@ -103,8 +103,9 @@
     height: 20px;
 }
 .LogTable .BriefMessage:not(:nth-child(1)) td{
-    height: 100px;
+    height: 50px;
     vertical-align: text-top;
+    font-size: 12px;
 }
 
 .LogTable .BriefMessage td:nth-child(1){
@@ -126,13 +127,33 @@
 }
 .LogTable .BriefMessage td:nth-child(6){
     width: 30%;
-    overflow: hidden;
-    word-break: break-all;
+
 }
 .LogTable .BriefMessage td:nth-child(7){
     width: 4%;
+    border-right: 0px;
 }
-.LogTable .DetailedMessage td:first-child{
+.LogTable .DetailedMessageHide td:first-child{
     width: 100%;
     word-break: break-all;
+    text-align: left;
+    font-size: 12px;
+    display: none;
+}
+.LogTable .DetailedMessageShow td:first-child{
+    width: 100%;
+    word-break: break-all;
+    text-align: left;
+    font-size: 12px;
+}
+
+.TomcatThriftLogFooter{
+    width: 100%;
+    height: 60px;
+}
+.MessageDiv{
+    overflow: hidden;
+    word-break: break-all;
+    text-align: left;
+    height: 50px;
 }

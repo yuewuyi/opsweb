@@ -8,7 +8,6 @@ class ElasticSearch:
         conf=app_config()
         conf_value=conf.get_config_value()
         self.__ElscApi=Elasticsearch([{'host': conf_value['ElastciSearchAddr'][0],'port':int(conf_value['ElastciSearchAddr'][1])}])
-        # self.__ElscApi = Elasticsearch("http://121.41.23.54:80/elastic/")
     def update_filedata(self,AppType):
       parm={
           "properties": {
@@ -35,7 +34,7 @@ class ElasticSearch:
     def TomcatThriftLogReq(self):
       self.update_filedata('TomcatThrift')
       parm = {
-  "size": 10,
+  "size": 20,
   "sort": [
     {
       "@timestamp": {
@@ -63,15 +62,7 @@ class ElasticSearch:
           }
         }
       ],
-      "must_not": [
-
-      ]
     }
-  },
-  "_source": {
-    "excludes": [
-
-    ]
   },
   "aggs": {
     "date": {
@@ -91,4 +82,4 @@ class ElasticSearch:
     }
   }
 }
-      return self.__ElscApi.search(index="*", body=parm)
+      return self.__ElscApi.search(index="filebeat-thrift-*,filebeat-tomcat_service-*", body=parm)

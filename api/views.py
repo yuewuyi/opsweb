@@ -110,9 +110,9 @@ def TomcatThriftLog(request):
         es=ElasticSearch()
         result=es.TomcatThriftLogReq()
         LogData=result['hits']
-        print(LogData)
         LogCount={'date':[],'info':[],'error':[],'warn':[],'MaxCount':0}
         LogCount['TotalCount']=LogData['total']
+        LogCount['LogMessage']=LogData['hits']
         for item in result['aggregations']['date']['buckets']:
             CountDict = {}
             TypeList=['info','error','warn']

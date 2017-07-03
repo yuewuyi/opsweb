@@ -79,6 +79,7 @@ function TomcatThriftLogGraph(){
             data: GraphData['warn']
         }]
     });
+            AddTable(GraphData['LogMessage'])
         })
 }
 
@@ -91,11 +92,29 @@ function graphs_size() {
      $('#TomcatThriftLogGraph').highcharts().reflow()
 }
 function ShowDetailed(obj){
-    var TdObject=$(obj).parent().parent().next().children(1)
-    TdObject.hide()
-    // if(TdObject.css("display")!="none"){
-    //     TdObject.css("display","none")
-    // }else{
-    //     TdObject.css("display","inline")
-    // }
+    var TdObject=$(obj).parent().parent().next()
+    var ClassName=TdObject[0].className
+    if(ClassName=="DetailedMessageHide"){
+        TdObject.removeClass('DetailedMessageHide')
+        TdObject.addClass('DetailedMessageShow')
+    }else{
+        TdObject.removeClass('DetailedMessageShow')
+        TdObject.addClass('DetailedMessageHide')
+    }
+}
+function AddTable(message) {
+    for (i=0;i<message.length;i++){
+        var BrifeMessage=message[i]['_source']['message']
+        var tr1='<tr class="BriefMessage">'
+        tr1=tr1+"<td>"+message[i]['_source']['@timestamp']+"</td>"
+        tr1=tr1+"<td>"+message[i]['_source']['host']+"</td>"
+        tr1=tr1+"<td>"+message[i]['_source']['ip']+"</td>"
+        tr1=tr1+"<td>"+message[i]['_source']['AppName']+"</td>"
+        tr1=tr1+"<td>"+message[i]['_source']['LogType']+"</td>"
+        tr1=tr1+"<td><div class='MessageDiv'>"+BrifeMessage+"</div></td>"
+        tr1=tr1+'<td><a onclick="ShowDetailed(this)">查看</a></td>'
+        var tr2='<tr class="DetailedMessageHide"><td colspan="7">'+BrifeMessage.replace(/\n/g,'<BR>')+'</td></tr>'
+        $("#LogTable").append(tr1)
+        $("#LogTable").append(tr2)
+    }
 }
