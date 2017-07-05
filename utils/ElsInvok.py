@@ -34,52 +34,45 @@ class ElasticSearch:
     def TomcatThriftLogReq(self):
       self.update_filedata('TomcatThrift')
       parm = {
-  "size": 20,
-  "sort": [
-    {
-      "@timestamp": {
-        "order": "desc",
-        "unmapped_type": "boolean"
-      }
-    }
-  ],
-  "query": {
-    "bool": {
-      "must": [
-        {
-          "query_string": {
-            "query": "*",
-            "analyze_wildcard": True
-          }
-        },
-        {
-          "range": {
-            "@timestamp": {
-              "gte": 1498618414844,
-              "lte": 1498632814844,
-              "format": "epoch_millis"
+            "sort": [
+                        {
+                            "@timestamp": {
+                                "order": "desc",
+                                "unmapped_type": "date"
+                            }
+                        }
+                    ],
+            "query": {
+                "bool": {
+                    "must": [
+                        {
+                            "range": {
+                                "@timestamp": {
+                                        "gte": 1499206761292,
+                                        "lte": 1499249961292,
+                                        "format": "epoch_millis"
+                                                }
+                                     }
+                         }
+                            ]
+                        }
+                    },
+            "aggs": {
+                "date": {
+                    "date_histogram": {
+                        "field": "@timestamp",
+                        "interval": "10m",
+                        "time_zone": "Asia/Shanghai",
+                        "min_doc_count": 1
+                    },
+                    "aggs": {
+                        "LogType": {
+                            "terms": {
+                                "field": "LogType"
+                        }
+                    }
+                    }
+                }
             }
-          }
-        }
-      ],
     }
-  },
-  "aggs": {
-    "date": {
-      "date_histogram": {
-        "field": "@timestamp",
-        "interval": "300s",
-        "time_zone": "Asia/Shanghai",
-        "min_doc_count": 1
-      }
-      ,"aggs": {
-        "LogType": {
-          "terms": {
-            "field": "LogType"
-          }
-        }
-      }
-    }
-  }
-}
-      return self.__ElscApi.search(index="filebeat-thrift-*,filebeat-tomcat_service-*", body=parm)
+      return self.__ElscApi.search(index="filebeat-thrift-*,filebeat-tomcat_service-*", body=parm,scroll="60m",size=20)
