@@ -12,12 +12,12 @@
             ip <input type="text" id="ip" class="MarginRight TextStyle">
             应用名 <input type="text" id="AppName" class="MarginRight TextStyle">
             应用类型 <select id="AppType" class="MarginRight">
-                        <option>全部</option>
+                        <option>all</option>
                         <option>tomcat</option>
                         <option>thrift</option>
                      </select>
             日志类型  <select id="LogType">
-                        <option>全部</option>
+                        <option>all</option>
                         <option>ERROR</option>
                         <option>INFO</option>
                         <option>WARN</option>
@@ -25,7 +25,7 @@
         </div>
         <div class="SearchBoxHr"></div>
         <div class="ButtonBox">
-            <div class="SearchButton ButtonStyle">搜索</div>
+            <div class="SearchButton ButtonStyle" onclick="searchTomcatLog()">搜索</div>
             <div class="ResetButton ButtonStyle">重置</div>
         </div>
     </div>

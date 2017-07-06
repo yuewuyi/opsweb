@@ -105,16 +105,106 @@ def zabbix_history_get(request):
         return HttpResponse(json.dumps(data['host_item_ids']),content_type='application/json')
     else:
         return HttpResponse(status=404)
+
+
+
+#tomcat日志获取
 def TomcatThriftLog(request):
+    index="filebeat-thrift-*,filebeat-tomcat_service-*"
+    parm = {
+        "sort": [
+            {
+                "@timestamp": {
+                    "order": "desc",
+                    "unmapped_type": "date"
+                }
+            }
+        ],
+    }
+    query={
+                "bool": {
+                    "must": [
+
+                        {
+                            "range": {
+                                "@timestamp": {
+                                        "gte": 1499206761292,
+                                        "lte": 1499249961292,
+                                        "format": "epoch_millis"
+                                                }
+                                     }
+                         }
+                            ]
+                        }
+                }
+    aggs= {
+                "date": {
+                    "date_histogram": {
+                        "field": "@timestamp",
+                        "interval": "10m",
+                        "time_zone": "Asia/Shanghai",
+                        "min_doc_count": 1
+                    },
+                    "aggs": {
+                        "LogType": {
+                            "terms": {
+                                "field": "LogType"
+                        }
+                    }
+                    }
+                }
+            }
     if request.method=='POST':
+        postData = json.loads(request.body.decode())
+        query['bool']['must'][0]['range']['@timestamp']['gte']=postData['startTime']
+        query['bool']['must'][0]['range']['@timestamp']['lte'] = postData['endTime']
+        aggs['date']['date_histogram']['interval']=str(int((postData['endTime']-postData['startTime'])/(40*1000)))+'s'
+        if postData['appName']:
+            query['bool']['must'].append(
+                {
+                    "wildcard":{
+                        "AppName":"*%s*"%(postData['appName'])
+                    }
+                }
+            )
+        if postData['ipAddr']:
+            query['bool']['must'].append(
+                {
+                    "wildcard":{
+                        "ip":"*%s*"%(postData['ipAddr'])
+                    }
+                }
+            )
+        if postData['hostName']:
+            query['bool']['must'].append(
+                {
+                    "wildcard":{
+                        "host":"*%s*"%(postData['hostName'])
+                    }
+                }
+            )
+        if postData['logType']!='all':
+            query['bool']['must'].append(
+                {
+                    "term":{
+                        "LogType":postData['logType']
+                    }
+                }
+            )
+        if postData['appType']=="thrift":
+            index = "filebeat-thrift-*"
+        elif postData['appType']=="tomcat":
+            index = "filebeat-tomcat_service-*"
+        parm['query']=query
+        parm['aggs']=aggs
         es=ElasticSearch()
-        result=es.TomcatThriftLogReq()
-        print(json.dumps(result))
+        es.update_filedata('TomcatThrift')
+        result=es.logReq(parm,index)
         LogData=result['hits']
         LogCount={'date':[],'info':[],'error':[],'warn':[],'MaxCount':0}
         LogCount['TotalCount']=LogData['total']
         LogCount['LogMessage']=LogData['hits']
-        LogCount['ScrollId']=result['_scroll_id"']
+        LogCount['ScrollId']=result['_scroll_id']
         for item in result['aggregations']['date']['buckets']:
             CountDict = {}
             TypeList=['info','error','warn']
