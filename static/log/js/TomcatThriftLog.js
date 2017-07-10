@@ -62,6 +62,17 @@ function TomcatThriftLogGraph(parm){
                 stacking: 'normal',
                 dataLabels: {
                     enabled: false,
+                },
+                events:{
+                    click:function (event){
+                        var start_time=event.point.category
+                        var end_time=start_time+(sessionStorage.interval*1000)
+                        console.log(start_time)
+                        console.log(end_time)
+                        start_time=new Date(start_time)
+                        end_time=new Date(end_time)
+                        // searchTomcatLog(start_time)
+                    }
                 }
             }
         },
@@ -121,25 +132,39 @@ function AddTable(message) {
         $("#LogTable").append(tr2)
     }
 }
-function searchTomcatLog() {
+function searchTomcatLog(startTime) {
     var hostName=$.trim($('#HostName').val())
     var ipAddr=$.trim($('#ip').val())
     var appName=$.trim($('#AppName').val())
     var appType=$('#AppType').select().val()
     var logType=$('#LogType').select().val()
-    var date=($("#TomcatThriftDate").find('span').html()).split(" -- ")
+    if (startTime==''){
+        var date=($("#TomcatThriftDate").find('span').html()).split(" -- ")
+        date[0]=Date.parse(date[0])
+        date[1]=Date.parse(date[1])
+    }else {
+        var date=[startTime,startTime+(sessionStorage.interval*1000)]
+    }
+    var interval=parseInt((date[1]-date[0])/(60*1000))
+    sessionStorage.interval=interval
     var parm={
         "hostName":hostName.toLocaleLowerCase(),
         "ipAddr":ipAddr,
         "appName":appName.toLocaleLowerCase(),
         "appType":appType,
         "logType":logType.toLocaleLowerCase(),
-        "startTime":Date.parse(date[0]),
-        "endTime":Date.parse(date[1])
+        "startTime":date[0],
+        "endTime":date[1],
+        "interval":interval
     }
-    TomcatThriftLogGraph(parm)
+    if(interval<1){
+        alert('时间间隔太短')
+    }else {
+        TomcatThriftLogGraph(parm)
+    }
+
 }
 $(document).ready(function () {
     date_select('#TomcatThriftDate')
-    searchTomcatLog()
+    searchTomcatLog('')
 })

@@ -158,7 +158,7 @@ def TomcatThriftLog(request):
         postData = json.loads(request.body.decode())
         query['bool']['must'][0]['range']['@timestamp']['gte']=postData['startTime']
         query['bool']['must'][0]['range']['@timestamp']['lte'] = postData['endTime']
-        aggs['date']['date_histogram']['interval']=str(int((postData['endTime']-postData['startTime'])/(40*1000)))+'s'
+        aggs['date']['date_histogram']['interval']=str(postData['interval'])+'s'
         if postData['appName']:
             query['bool']['must'].append(
                 {
