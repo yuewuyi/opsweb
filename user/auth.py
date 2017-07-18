@@ -17,6 +17,9 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/monitor/Latest_Data/':'show',
         '/monitor/history/':'show',
         '/log/TomcatThrift/':'show',
+        '/api/logScroll/':'show',
+        '/log/nginx/':'show',
+        '/api/nginxLog/':'show',
     }
     def __init__(self,get_response):
         self.get_response = get_response

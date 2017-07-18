@@ -5,6 +5,7 @@ function TomcatThriftLogGraph(parm){
     $.when(req_ajax('/api/TomcatThriftLog/',parm,'GraphData'))
         .done(function () {
              $('#CountNum').html('总共 '+GraphData['TotalCount']+'条')
+             sessionStorage.scrollId=GraphData['ScrollId']
              Highcharts.setOptions({ global: { useUTC: false } });
              $('#TomcatThriftLogGraph').highcharts({
         chart: {
@@ -67,11 +68,10 @@ function TomcatThriftLogGraph(parm){
                     click:function (event){
                         var start_time=event.point.category
                         var end_time=start_time+(sessionStorage.interval*1000)
-                        console.log(start_time)
-                        console.log(end_time)
                         start_time=new Date(start_time)
                         end_time=new Date(end_time)
-                        // searchTomcatLog(start_time)
+                        $('#TomcatThriftDate span').html(start_time.format('Y-m-d H:i:s') + ' -- ' + end_time.format('Y-m-d H:i:s'));
+                        searchTomcatLog()
                     }
                 }
             }
@@ -79,15 +79,15 @@ function TomcatThriftLogGraph(parm){
         series: [{
             name: 'INFO',
             color:'#00AF7C',
-            data: GraphData['info']
+            data: GraphData['INFO']
         }, {
             name: 'ERROR',
             color:'#D24A52',
-            data: GraphData['error']
+            data: GraphData['ERROR']
         }, {
             name: 'WARN',
             color:'#FEA934',
-            data: GraphData['warn']
+            data: GraphData['WARN']
         }]
     });
             $("#LogTable tr:not(:nth-child(1))").remove()
@@ -117,8 +117,8 @@ function AddTable(message) {
         }else {
             BrifeMessage=DetailMessage
         }
-        var date=new Date(message[0]['_source']['@timestamp'])
-        date=(new Date()).format("Y-m-d H:i:s")
+        var date=new Date(message[i]['_source']['@timestamp'])
+        date=date.format("Y-m-d H:i:s")
         var tr1='<tr class="BriefMessage">'
         tr1=tr1+"<td>"+date+"</td>"
         tr1=tr1+"<td>"+message[i]['_source']['host']+"</td>"
@@ -132,21 +132,16 @@ function AddTable(message) {
         $("#LogTable").append(tr2)
     }
 }
-function searchTomcatLog(startTime) {
+function searchTomcatLog() {
     var hostName=$.trim($('#HostName').val())
     var ipAddr=$.trim($('#ip').val())
     var appName=$.trim($('#AppName').val())
     var appType=$('#AppType').select().val()
     var logType=$('#LogType').select().val()
-    if (startTime==''){
-        var date=($("#TomcatThriftDate").find('span').html()).split(" -- ")
-        date[0]=Date.parse(date[0])
-        date[1]=Date.parse(date[1])
-    }else {
-        var date=[startTime,startTime+(sessionStorage.interval*1000)]
-    }
+    var date=($("#TomcatThriftDate").find('span').html()).split(" -- ")
+    date[0]=Date.parse(date[0])
+    date[1]=Date.parse(date[1])
     var interval=parseInt((date[1]-date[0])/(60*1000))
-    sessionStorage.interval=interval
     var parm={
         "hostName":hostName.toLocaleLowerCase(),
         "ipAddr":ipAddr,
@@ -160,11 +155,34 @@ function searchTomcatLog(startTime) {
     if(interval<1){
         alert('时间间隔太短')
     }else {
+        sessionStorage.interval=interval
         TomcatThriftLogGraph(parm)
     }
 
 }
 $(document).ready(function () {
     date_select('#TomcatThriftDate')
+    sessionStorage.scroll=1
     searchTomcatLog('')
+    $("#appLog").scroll(function() {
+        var scrollTop = $(this).scrollTop()
+　　    var documentHeight = $(this).height()
+        var containerHeight =$(this).get(0).scrollHeight
+        if((scrollTop+documentHeight)/containerHeight>=0.95 && sessionStorage.scroll !=0){
+            sessionStorage.scroll=0
+            $.when(req_ajax('/api/logScroll/',{"scrollId":sessionStorage.scrollId},'scrollData'))
+                .done(function () {
+                    if (scrollData['code']==0){
+                        if(scrollData['message'].length !==0){
+                            sessionStorage.scroll=1
+                            AddTable(scrollData['message'])
+                        }
+                    }else {
+                        alert('分页ID不存在或已过期')
+                    }
+
+                })
+
+        }
+    });
 })

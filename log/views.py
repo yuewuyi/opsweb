@@ -5,3 +5,5 @@ from django.http import HttpResponse,HttpResponseRedirect
 #tomcat,thnrift服务日志视图
 def TomcatThriftLog(request):
     return render(request,'log/TomcatThriftLog.html')
+def nginxLog(request):
+    return render(request,'log/nginxLog.html')

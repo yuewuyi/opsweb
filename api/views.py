@@ -128,8 +128,8 @@ def TomcatThriftLog(request):
                         {
                             "range": {
                                 "@timestamp": {
-                                        "gte": 1499206761292,
-                                        "lte": 1499249961292,
+                                        "gte": 0,
+                                        "lte": 0,
                                         "format": "epoch_millis"
                                                 }
                                      }
@@ -148,7 +148,7 @@ def TomcatThriftLog(request):
                     "aggs": {
                         "LogType": {
                             "terms": {
-                                "field": "LogType"
+                                "field": "LogType.keyword"
                         }
                     }
                     }
@@ -198,16 +198,15 @@ def TomcatThriftLog(request):
         parm['query']=query
         parm['aggs']=aggs
         es=ElasticSearch()
-        es.update_filedata('TomcatThrift')
         result=es.logReq(parm,index)
         LogData=result['hits']
-        LogCount={'date':[],'info':[],'error':[],'warn':[],'MaxCount':0}
+        LogCount={'date':[],'INFO':[],'ERROR':[],'WARN':[],'MaxCount':0}
         LogCount['TotalCount']=LogData['total']
         LogCount['LogMessage']=LogData['hits']
         LogCount['ScrollId']=result['_scroll_id']
         for item in result['aggregations']['date']['buckets']:
             CountDict = {}
-            TypeList=['info','error','warn']
+            TypeList=['INFO','ERROR','WARN']
             LogCount['date'].append(item['key'])
             for item2 in item['LogType']['buckets']:
                 CountDict[item2['key']]=item2['doc_count']
@@ -221,3 +220,59 @@ def TomcatThriftLog(request):
     else:
         return HttpResponse(status=404)
     return HttpResponse(json.dumps(LogCount),content_type='application/json')
+#根据scrollID获取日志
+def logScroll(request):
+    if request.method == 'POST':
+        code=0
+        message=''
+        postData = json.loads(request.body.decode())
+        try:
+            es = ElasticSearch()
+            result = es.scrollReq(postData['scrollId'])
+            message = result['hits']['hits']
+        except:
+            code=-1
+        return HttpResponse(json.dumps({"message":message,"code":code}), content_type='application/json')
+    else:
+        return HttpResponse(404)
+#获取nginx日志
+def nginxLog(request):
+    parm = {
+        "sort": [
+            {
+                "@timestamp": {
+                    "order": "desc",
+                    "unmapped_type": "date"
+                }
+            }
+        ],
+    }
+    query = {
+        "bool": {
+            "must": [
+                {
+                    "range": {
+                        "@timestamp": {
+                            "gte": 1500157411658,
+                            "lte": 1500258311658,
+                            "format": "epoch_millis"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+    aggs = {
+    "map": {
+      "geohash_grid": {
+        "field":     "geoip.location",
+        "precision": 12
+      }
+    }
+}
+    es = ElasticSearch()
+    parm['query'] = query
+    parm['aggs'] = aggs
+    result = es.logReq(parm, 'filebeat-nginx_access-*')
+    return HttpResponse(json.dumps(result['aggregations']['map']['buckets']),content_type='application/json')
+    # return HttpResponse(json.dumps(location),content_type='application/json')
