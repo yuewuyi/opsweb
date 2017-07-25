@@ -1,34 +1,194 @@
-#container {
-    position: absolute;
-    top: 10px;
-    left: 40px;
-    right: 0;
-    bottom: 0;
-    width: 500px;
-    height: 400px;
-}
+/*5级maker样式*/
 .makerL1{
     background-color: hsla(70, 100%, 50%, 0.7);
-    height: 5px; width: 5px; border: 1px solid hsl(60, 100%, 40%);
+    height: 7px; width: 7px; border: 1px solid hsl(60, 100%, 40%);
+    border-radius: 50px;
+}
+.makerL1:hover{
+    background-color: hsla(70, 100%, 50%, 0.7);
+    height: 7px; width: 7px; border: 3px solid hsl(60, 100%, 40%);
     border-radius: 50px;
 }
 .makerL2{
     background-color:#FEB24C;
-    height: 8px; width: 8px; border: 1px solid #bb7d10;
+    height: 11px; width: 11px; border: 1px solid #bb7d10;
+    border-radius: 50px;
+}
+.makerL2:hover{
+    background-color:#FEB24C;
+    height: 11px; width: 11px; border: 3px solid #bb7d10;
     border-radius: 50px;
 }
 .makerL3{
     background-color:#FDBD3C;
-    height: 12px; width: 12px; border: 1px solid #b95b0e;
+    height: 16px; width: 16px; border: 1px solid #b95b0e;
+    border-radius: 50px;
+}
+.makerL3:hover{
+    background-color:#FDBD3C;
+    height: 16px; width: 16px; border: 4px solid #b95b0e;
     border-radius: 50px;
 }
 .makerL4{
     background-color:#F03B20;
-    height: 16px; width:16px; border: 1px solid #AA0E0D;
+    height: 18px; width:18px; border: 1px solid #AA0E0D;
+    border-radius: 50px;
+}
+.makerL4:hover{
+     background-color:#F03B20;
+    height: 18px; width:18px; border: 5px solid #AA0E0D;
     border-radius: 50px;
 }
 .makerL5{
     background-color: #BD0026;
-    height: 20px; width:20px; border: 1px solid #7D0C0D;
+    height: 22px; width:22px;
+    border: 1px solid #7D0C0D;
     border-radius: 50px;
+}
+.makerL5:hover {
+    background-color: #BD0026;
+    height: 22px; width:22px;
+    border: 6px solid #7D0C0D;
+    border-radius: 50px;
+}
+/*信息窗体样式*/
+.infoWindow{
+    font-size: 12px;
+    background:rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    margin-left: 20px;
+}
+/*去掉地图logo*/
+.amap-logo {
+    display: none;
+}
+.amap-copyright {
+    bottom:-100px;
+    display: none;
+}
+/*搜索框*/
+.NginxLogSearchBox{
+    width: 98%;
+    height: 80px;
+    background-color: white;
+    margin: 20px auto 0 auto;
+    border-radius: 4px;
+    border: 2px solid;
+    border-color: #dfe4e7;
+}
+input,select{
+    vertical-align:middle;
+}
+/*文本框div*/
+.InputBox{
+    width: 98%;
+    margin: 8px auto 0 auto;
+}
+/*文本框样式*/
+.textStyle{
+    height: 20px;
+    width: 10.3%;
+}
+.selectStyle{
+    height: 20px;
+}
+/*文本框右间距*/
+.marginright{
+    margin-right: 0.5%;
+}
+/**/
+.SearchBoxHr{
+    width: 99%;
+    background-color: #e0e5e8;
+    height: 1px;
+    margin: 10px auto 0px auto;
+}
+.ButtonStyle{
+    height: 19px;
+    width: 45%;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    font-family: 楷体;
+    float: left;
+}
+.SearchButton{
+    background-color: #367fa9;
+}
+.ResetButton{
+    background-color: #dd4b39;
+    margin-left: 10%;
+}
+.ButtonBox{
+    width: 10%;
+    height: 19px;
+    margin: 7px auto 0 auto;
+}
+.mapGraph{
+    width: 98%;
+    height: 400px;
+    margin: 10px auto 0 auto;
+}
+
+.tabTitle{
+    background-color: #367fa9;
+    width: 70%;
+    height: 30px;
+    -moz-box-shadow:0px 1px 1px #858585;
+    -webkit-box-shadow:0px 1px 1px #858585;
+    box-shadow:0px 1px 1px #858585;
+    float: left;
+}
+.tabTitle a{
+    text-decoration:none;
+    color: white;
+    font-family: "宋体";
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.tabStyle{
+    float: left;
+    height: 30px;
+    width: 5%;
+    text-align: center;
+    font-size: 14px;
+}
+.tabStyle:hover{
+    background-color: #256b93;
+}
+.DateDiv{
+    width: 34%;
+    float: right;
+    height: 30px;
+    text-align: right;
+}
+.DateDiv span{
+    font-size: 12px;
+    line-height: 30px;
+    color: white;
+    margin: 0 4px 0 0;
+}
+.mapGraphDiv{
+    background-color: white;
+    width: 70%;
+    height: 300px;
+    float: left;
+
+}
+.aggsTitle{
+    background-color: #dd4b39;
+    width: 28%;
+    height: 30px;
+    -moz-box-shadow:0px 1px 1px #858585;
+    -webkit-box-shadow:0px 1px 1px #858585;
+    box-shadow:0px 1px 1px #858585;
+    float: right;
+}
+.aggsDiv{
+    background-color: white;
+    width: 28%;
+    height: 300px;
+    float: right;
 }

@@ -83,7 +83,7 @@
     height: 12px;
     margin: 0 auto;
 }
-.TomcatThriftLogGraph{
+.mapGraph{
     width: 100%;
     height: 200px;
     margin: 8px auto;
@@ -146,7 +146,12 @@
     text-align: left;
     font-size: 12px;
 }
-
+.TomcatThriftLogGraph{
+    width: 100%;
+    height: 200px;
+    margin: 8px auto;
+    overflow:hidden;
+}
 .TomcatThriftLogFooter{
     width: 100%;
     height: 60px;

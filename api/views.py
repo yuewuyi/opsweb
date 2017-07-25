@@ -198,7 +198,7 @@ def TomcatThriftLog(request):
         parm['query']=query
         parm['aggs']=aggs
         es=ElasticSearch()
-        result=es.logReq(parm,index)
+        result=es.logReq(parm,index,20)
         LogData=result['hits']
         LogCount={'date':[],'INFO':[],'ERROR':[],'WARN':[],'MaxCount':0}
         LogCount['TotalCount']=LogData['total']
@@ -253,8 +253,8 @@ def nginxLog(request):
                 {
                     "range": {
                         "@timestamp": {
-                            "gte": 1500157411658,
-                            "lte": 1500258311658,
+                            "gte": 1500780440052,
+                            "lte": 1500885240052,
                             "format": "epoch_millis"
                         }
                     }
@@ -263,16 +263,139 @@ def nginxLog(request):
         }
     }
     aggs = {
+    "date": {
+                    "date_histogram": {
+                        "field": "@timestamp",
+                        "interval": "10h",
+                        "time_zone": "Asia/Shanghai",
+                        "min_doc_count": 1
+                    },
+                    "aggs": {
+                        "status": {
+                            "terms": {
+                                "field": "status"
+                        }
+                    }
+                    }
+                },
     "map": {
       "geohash_grid": {
-        "field":     "geoip.location",
+        "field": "geoip.location",
         "precision": 12
+      }
+    },
+    "cityIp":{
+      "terms": {
+        "field": "geoip.city_name.keyword"
+      }
+      , "aggs": {
+        "remote_addr": {
+            "terms": {
+              "field": "remote_addr.keyword"
+            }
+        }
       }
     }
 }
-    es = ElasticSearch()
-    parm['query'] = query
-    parm['aggs'] = aggs
-    result = es.logReq(parm, 'filebeat-nginx_access-*')
-    return HttpResponse(json.dumps(result['aggregations']['map']['buckets']),content_type='application/json')
-    # return HttpResponse(json.dumps(location),content_type='application/json')
+    if request.method=='POST':
+        postData = json.loads(request.body.decode())
+        query['bool']['must'][0]['range']['@timestamp']['gte'] = postData['startTime']
+        query['bool']['must'][0]['range']['@timestamp']['lte'] = postData['endTime']
+        if postData['ipAddr']:
+            query['bool']['must'].append(
+                {
+                    "wildcard":{
+                        "ip":"*%s*"%(postData['ipAddr'])
+                    }
+                }
+            )
+        if postData['hostName']:
+            query['bool']['must'].append(
+                {
+                    "wildcard":{
+                        "host":"*%s*"%(postData['hostName'])
+                    }
+                }
+            )
+        if postData['agentIp']:
+            query['bool']['must'].append(
+                {
+                    "wildcard":{
+                        "remote_addr":"*%s*"%(postData['agentIp'])
+                    }
+                }
+            )
+        if postData['uri']:
+            query['bool']['must'].append(
+                {
+                    "wildcard":{
+                        "uri":"*%s*"%(postData['uri'])
+                    }
+                }
+            )
+        if postData['reqStatus']:
+            if postData['reqStatusSymbol']=='=':
+                query['bool']['must'].append(
+                    {
+                        "term": {
+                            "status": postData['reqStatus']
+                        }
+                    }
+                )
+            elif postData['reqStatusSymbol']=='>=':
+                query['bool']['must'].append(
+                    {
+                        "range": {
+                            "status": {
+                                'gte': postData['reqStatus']
+                            }
+                        }
+                    }
+                )
+            elif postData['reqStatusSymbol']=='<=':
+                query['bool']['must'].append(
+                    {
+                        "range": {
+                            "status": {
+                                'lte': postData['reqStatus']
+                            }
+                        }
+                    }
+                )
+        if postData['reqTime']:
+            if postData['reqTimeSymbol']=='=':
+                query['bool']['must'].append(
+                    {
+                        "term": {
+                            "request_time": postData['reqTime']
+                        }
+                    }
+                )
+            elif postData['reqTimeSymbol']=='>=':
+                query['bool']['must'].append(
+                    {
+                        "range": {
+                            "request_time":{
+                                'gte': postData['reqTime']
+                            }
+                        }
+                    }
+                )
+            elif postData['reqTimeSymbol']=='<=':
+                query['bool']['must'].append(
+                    {
+                        "range": {
+                            "request_time": {
+                                'lte': postData['reqTime']
+                            }
+                        }
+                    }
+                )
+        es = ElasticSearch()
+        parm['query'] = query
+        parm['aggs'] = aggs
+        print(json.dumps(parm))
+        result = es.logReq(parm, 'filebeat-nginx_access-*',20)
+        return HttpResponse(json.dumps(result),content_type='application/json')
+    else:
+        return HttpResponse(404)

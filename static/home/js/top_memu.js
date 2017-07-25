@@ -14,7 +14,7 @@ $(document).ready(function () {
             $('#header').css('width',"100%")
         }
 })
-$(document).resize(function () {
+$(window).resize(function () {
     var width=$('.page_container').width()
     if (width<=1166){
         $('.page_container').width(1166)
@@ -53,9 +53,12 @@ function sidebar_scla() {
         $("#accordion").hide()
         setTimeout("graphs_size()",500)
     }else {
-         if(width <=1166){
-            $('.page_container').width(1166)
-            $('#header').width(1166)
+         if(width-200 <=1166){
+             setTimeout(function () {
+                 $('.page_container').width(1166)
+                 $('#header').width(1166)
+             },500)
+
         }else {
             $('.page_container').css('width',"100%")
             $('#header').css('width',"100%")
