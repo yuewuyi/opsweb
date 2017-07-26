@@ -198,7 +198,7 @@ def TomcatThriftLog(request):
         parm['query']=query
         parm['aggs']=aggs
         es=ElasticSearch()
-        result=es.logReq(parm,index,20)
+        result=es.logReq(parm,index,20,'2m')
         LogData=result['hits']
         LogCount={'date':[],'INFO':[],'ERROR':[],'WARN':[],'MaxCount':0}
         LogCount['TotalCount']=LogData['total']
@@ -237,6 +237,48 @@ def logScroll(request):
         return HttpResponse(404)
 #获取nginx日志
 def nginxLog(request):
+    aggsCityIP={
+        "cityIp": {
+            "terms": {
+                "field": "geoip.city_name.keyword",
+                 "size":1000
+            }
+            , "aggs": {
+                "remote_addr": {
+                    "terms": {
+                        "field": "remote_addr.keyword",
+                        "size":10
+                    }
+                }
+            }
+        }
+    }
+    aggsDate={
+        "date": {
+            "date_histogram": {
+                "field": "@timestamp",
+                "interval": "10h",
+                "time_zone": "Asia/Shanghai",
+                "min_doc_count": 1
+            },
+            "aggs": {
+                "status": {
+                    "terms": {
+                        "field": "status"
+                    }
+                }
+            }
+        },
+    }
+    aggsMap={
+        "map": {
+            "geohash_grid": {
+                "field": "geoip.location",
+                "precision": 12
+            }
+        }
+    }
+
     parm = {
         "sort": [
             {
@@ -262,41 +304,6 @@ def nginxLog(request):
             ]
         }
     }
-    aggs = {
-    "date": {
-                    "date_histogram": {
-                        "field": "@timestamp",
-                        "interval": "10h",
-                        "time_zone": "Asia/Shanghai",
-                        "min_doc_count": 1
-                    },
-                    "aggs": {
-                        "status": {
-                            "terms": {
-                                "field": "status"
-                        }
-                    }
-                    }
-                },
-    "map": {
-      "geohash_grid": {
-        "field": "geoip.location",
-        "precision": 12
-      }
-    },
-    "cityIp":{
-      "terms": {
-        "field": "geoip.city_name.keyword"
-      }
-      , "aggs": {
-        "remote_addr": {
-            "terms": {
-              "field": "remote_addr.keyword"
-            }
-        }
-      }
-    }
-}
     if request.method=='POST':
         postData = json.loads(request.body.decode())
         query['bool']['must'][0]['range']['@timestamp']['gte'] = postData['startTime']
@@ -391,11 +398,39 @@ def nginxLog(request):
                         }
                     }
                 )
+        scrollTime=0
+        size=0
+        if postData['action']=='date':
+            aggsDate['date']['date_histogram']['interval']=str(postData['interval'])+'s'
+            parm['aggs']=aggsDate
+            size=20
+            scrollTime = '2m'
+        elif postData['action']=='map':
+            parm['aggs']=aggsMap
+        elif postData['action']=='CityIp':
+            parm['aggs']=aggsCityIP
         es = ElasticSearch()
         parm['query'] = query
-        parm['aggs'] = aggs
-        print(json.dumps(parm))
-        result = es.logReq(parm, 'filebeat-nginx_access-*',20)
-        return HttpResponse(json.dumps(result),content_type='application/json')
+        result = es.logReq(parm, 'filebeat-nginx_access-*',size,scrollTime)
+        if postData['action'] == 'date':
+            respon={'message':'','maxCount':0,'norReq':[],'ErrReq':[],'totalCount':'','date':[]}
+            respon['message']=result['hits']['hits']
+            respon['totalCount'] = result['hits']['total']
+            for item in result['aggregations']['date']['buckets']:
+                ErrReq=0
+                norReq=0
+                respon['date'].append(item['key'])
+                if item['doc_count']>respon['maxCount']:
+                    respon['maxCount']=item['doc_count']
+                for item2 in item['status']['buckets']:
+                    if item2['key'] <400:
+                        norReq+=item2['doc_count']
+                    else:
+                        ErrReq+=item2['doc_count']
+                respon['norReq'].append(norReq)
+                respon['ErrReq'].append(ErrReq)
+        elif postData['action'] == 'map':
+            respon=result['aggregations']['map']['buckets']
+        return HttpResponse(json.dumps(respon),content_type='application/json')
     else:
         return HttpResponse(404)

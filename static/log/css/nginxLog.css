@@ -130,7 +130,6 @@ input,select{
     height: 400px;
     margin: 10px auto 0 auto;
 }
-
 .tabTitle{
     background-color: #367fa9;
     width: 70%;
@@ -171,11 +170,9 @@ input,select{
     margin: 0 4px 0 0;
 }
 .mapGraphDiv{
-    background-color: white;
     width: 70%;
     height: 300px;
     float: left;
-
 }
 .aggsTitle{
     background-color: #dd4b39;
@@ -191,4 +188,18 @@ input,select{
     width: 28%;
     height: 300px;
     float: right;
+}
+.CountNum{
+    height: 18px;
+    float: left;
+    text-indent: 2px;
+    font-weight: bold;
+    background-color: white;
+    width: 100%;
+}
+.nginxLogGraph{
+    width: 100%;
+    height: 282px;
+    background-color: white;
+    float: left;
 }

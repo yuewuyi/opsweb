@@ -45,25 +45,111 @@ function searchNginxLog() {
         'endTime':date[1]
     }
     nginxGraphs(parm)
+    addPoint(parm)
 }
 function nginxGraphs(parm) {
+    parm['action']='date'
     $.when(req_ajax("/api/nginxLog/",parm,'graphLogData'))
         .done(function () {
-                alert(JSON.stringify(graphLogData))
+             $('#CountNum').html('总共 '+graphLogData['totalCount']+'条')
+             // sessionStorage.scrollId=GraphData['ScrollId']
+             Highcharts.setOptions({ global: { useUTC: false } });
+             $('#nginxLogGraph').highcharts({
+        chart: {
+            type: 'column',
+            reflow:true
+        },
+        title: {
+            text: ''
+        },
+        xAxis: {
+            categories: graphLogData['date'],
+            tickInterval:1,
+            labels:{
+                    formatter:function(){
+                        if (Highcharts.dateFormat('%H:%M', this.value)=='00:00'){
+                                return Highcharts.dateFormat('%m/%d', this.value)
+                            }else {
+                                return Highcharts.dateFormat('%H:%M', this.value)
+                            }
+                    },
+                    rotation:270,
+                    style:{
+                        fontSize:'12px',
+                    }
+                },
+        },
+        yAxis: {
+            title: {
+                text: ''
+            },
+            tickInterval:10,
+            max:graphLogData['maxCount'],
+            stackLabels: {
+                enabled: false,
+            }
+        },
+        legend: {
+            enabled:false
+        },
+        exporting:{
+                enabled:false
+        },
+        credits:{
+                enabled:false
+        },
+        tooltip: {
+            formatter: function () {
+                return '' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.x) + '<br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    '总数: ' + this.point.stackTotal;
+            }
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: false,
+                },
+                events:{
+                    click:function (event){
+                        var start_time=event.point.category
+                        var end_time=start_time+(sessionStorage.interval*1000)
+                        start_time=new Date(start_time)
+                        end_time=new Date(end_time)
+                        $('#nginxLogDate span').html(start_time.format('Y-m-d H:i:s') + ' -- ' + end_time.format('Y-m-d H:i:s'));
+                        searchNginxLog()
+                    }
+                }
+            }
+        },
+        series: [{
+            name: '正常请求',
+            color:'#00AF7C',
+            data: graphLogData['norReq']
+        }, {
+            name: '错误请求',
+            color:'#D24A52',
+            data: graphLogData['ErrReq']
+        }]
+    });
         })
 }
-function addPoint(map) {
-    $.get('http://127.0.0.1:8000/api/nginxLog',function (data) {
+function addPoint(parm) {
+    parm['action']='map'
+    $.when(req_ajax("/api/nginxLog/",parm,'graphMapData'))
+    .done(function () {
         var location=[]
         var docCount=[]
         var point=''
         var infoWindow=''
         var markers = []
-        for (var i=0;i<data.length;i++){
-            location.push([decodeGeoHash(data[i]['key'])['longitude'][2],decodeGeoHash(data[i]['key'])['latitude'][2]])
-            docCount.push(data[i]['doc_count'])
+        for (var i=0;i<graphMapData.length;i++){
+            location.push([decodeGeoHash(graphMapData[i]['key'])['longitude'][2],decodeGeoHash(graphMapData[i]['key'])['latitude'][2]])
+            docCount.push(graphMapData[i]['doc_count'])
         }
         var maxNum=Math.max.apply(null,docCount)
+         map.clearMap()
         for(var i=0;i<location.length;i++){
             markers.push(new AMap.Marker({
                 map:map,
@@ -90,7 +176,7 @@ function addPoint(map) {
 
 $(document).ready(function () {
     date_select('#nginxLogDate')
-    var map = new AMap.Map('map', {
+    map = new AMap.Map('map', {
         resizeEnable: true,
         zoom:11,
         mapStyle:"amap://styles/eb7e0c164f54d395c1a66b7db4041173"
