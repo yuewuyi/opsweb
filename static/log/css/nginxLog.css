@@ -127,7 +127,7 @@ input,select{
 }
 .mapGraph{
     width: 98%;
-    height: 400px;
+    height: 300px;
     margin: 10px auto 0 auto;
 }
 .tabTitle{
@@ -173,6 +173,7 @@ input,select{
     width: 70%;
     height: 300px;
     float: left;
+    overflow:hidden;
 }
 .aggsTitle{
     background-color: #dd4b39;
@@ -182,12 +183,18 @@ input,select{
     -webkit-box-shadow:0px 1px 1px #858585;
     box-shadow:0px 1px 1px #858585;
     float: right;
+    color: white;
+    font-family: "宋体";
+    line-height: 30px;
+    font-weight: bold;
+    text-indent: 4px;
 }
 .aggsDiv{
     background-color: white;
     width: 28%;
     height: 300px;
     float: right;
+    overflow: auto;
 }
 .CountNum{
     height: 18px;
@@ -202,4 +209,73 @@ input,select{
     height: 282px;
     background-color: white;
     float: left;
+}
+.aggsTable{
+    width: 100%;
+    height: 100%;
+
+}
+.aggsTr{
+    font-size: 12px;
+    text-indent: 4px;
+    height: 12px;
+    vertical-align:text-top;
+}
+/*日志显示*/
+.LogView{
+     width: 98%;
+     height: auto;
+     background-color: white;
+     margin: 60px auto 0 auto;
+     border: 2px solid;
+     border-color: #dfe4e7;
+}
+.LogTable{
+    width: 100%;
+}
+.LogTable tr td{
+    text-align: center;
+    border: 1px solid #dfe4e7;
+    border-bottom: 2px solid #dfe4e7;
+}
+.LogTable tr:nth-child(1) td{
+    font-weight: bold;
+    line-height: 20px;
+    height: 20px;
+}
+.LogTable tr:not(:nth-child(1)) td{
+    vertical-align: text-top;
+    font-size: 12px;
+}
+.LogTable tr td:nth-child(1){
+    width: 13%;
+}
+.LogTable tr td:nth-child(2){
+    width: 15%;
+}
+.LogTable tr td:nth-child(3){
+    width: 6%;
+}
+.LogTable tr td:nth-child(4){
+    width: 6%;
+}
+.LogTable tr td:nth-child(5){
+    width: 10%;
+}
+.LogTable tr td:nth-child(6){
+    width: 9%;
+}
+.LogTable tr td:nth-child(7){
+    width: 6%;
+}
+.LogTable tr td:nth-child(8){
+    width: 8%;
+    border-right: 0px;
+}
+.LogTable tr td:nth-child(9){
+    border-right: 0px;
+}
+.nginxFooter{
+    width: 100%;
+    height: 60px;
 }

@@ -44,15 +44,29 @@ function searchNginxLog() {
         'startTime':date[0],
         'endTime':date[1]
     }
-    nginxGraphs(parm)
-    addPoint(parm)
+    if(interval<1){
+        alert('时间间隔太短')
+    }else {
+        sessionStorage.interval=interval
+        nginxGraphs(parm)
+        addPoint(parm)
+        cityIpCount(parm)
+    }
+
+}
+function graphs_size() {
+     $('#nginxLogGraph').highcharts().reflow()
 }
 function nginxGraphs(parm) {
     parm['action']='date'
+
     $.when(req_ajax("/api/nginxLog/",parm,'graphLogData'))
         .done(function () {
              $('#CountNum').html('总共 '+graphLogData['totalCount']+'条')
-             // sessionStorage.scrollId=GraphData['ScrollId']
+             sessionStorage.scroll=1
+             sessionStorage.scrollId=graphLogData['ScrollId']
+             $("#LogTable tr:not(:nth-child(1))").remove()
+             addTable(graphLogData['message'])
              Highcharts.setOptions({ global: { useUTC: false } });
              $('#nginxLogGraph').highcharts({
         chart: {
@@ -173,12 +187,64 @@ function addPoint(parm) {
         }
     })
 }
-
+// ip访问次数统计
+function cityIpCount(parm) {
+    parm['action']='CityIp'
+    $.when(req_ajax("/api/nginxLog/",parm,'cityIpData'))
+        .done(function () {
+            $("#aggsTable tr").remove()
+            for(i=0;i<cityIpData.length;i++) {
+                var tr = '<tr class="aggsTr"><td>' + cityIpData[i][0] + '</td>'
+                tr += '<td>' + cityIpData[i][1] + '</td>'
+                tr += '<td>' + cityIpData[i][2] + '</td></tr>'
+                $("#aggsTable").append(tr)
+            }
+        })
+}
+function addTable(message) {
+    for (i=0;i<message.length;i++){
+        var date=new Date(message[i]['_source']['@timestamp'])
+        date=date.format("Y-m-d H:i:s")
+        var tr='<tr>'
+        tr=tr+"<td>"+date+"</td>"
+        tr=tr+"<td>"+message[i]['_source']['host']+"</td>"
+        tr=tr+"<td>"+message[i]['_source']['status']+"</td>"
+        tr=tr+"<td>"+message[i]['_source']['request_time']+"</td>"
+        tr=tr+"<td>"+message[i]['_source']['remote_addr']+"</td>"
+        tr=tr+"<td>"+message[i]['_source']['geoip']['city_name']+"</td>"
+        tr=tr+"<td>"+message[i]['_source']['request_method']+"</td>"
+        tr=tr+"<td>"+message[i]['_source']['body_bytes_sent']+"</td>"
+        tr=tr+"<td>"+message[i]['_source']['uri']+"</td></tr>"
+        $("#LogTable").append(tr)
+    }
+}
 $(document).ready(function () {
     date_select('#nginxLogDate')
     map = new AMap.Map('map', {
         resizeEnable: true,
         zoom:11,
         mapStyle:"amap://styles/eb7e0c164f54d395c1a66b7db4041173"
+    });
+    searchNginxLog()
+    $("#nginxLog").scroll(function() {
+        var scrollTop = $(this).scrollTop()
+　　    var documentHeight = $(this).height()
+        var containerHeight =$(this).get(0).scrollHeight
+        if((scrollTop+documentHeight)/containerHeight>=0.95 && sessionStorage.scroll !=0){
+            sessionStorage.scroll=0
+            $.when(req_ajax('/api/logScroll/',{"scrollId":sessionStorage.scrollId},'scrollData'))
+                .done(function () {
+                    if (scrollData['code']==0){
+                        if(scrollData['message'].length !==0){
+                            sessionStorage.scroll=1
+                            addTable(scrollData['message'])
+                        }
+                    }else {
+                        alert('分页ID不存在或已过期')
+                    }
+
+                })
+
+        }
     });
 })

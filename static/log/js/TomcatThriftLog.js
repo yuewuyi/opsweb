@@ -6,6 +6,7 @@ function TomcatThriftLogGraph(parm){
         .done(function () {
              $('#CountNum').html('总共 '+GraphData['TotalCount']+'条')
              sessionStorage.scrollId=GraphData['ScrollId']
+             sessionStorage.scroll=1
              Highcharts.setOptions({ global: { useUTC: false } });
              $('#TomcatThriftLogGraph').highcharts({
         chart: {
@@ -162,7 +163,6 @@ function searchTomcatLog() {
 }
 $(document).ready(function () {
     date_select('#TomcatThriftDate')
-    sessionStorage.scroll=1
     searchTomcatLog('')
     $("#appLog").scroll(function() {
         var scrollTop = $(this).scrollTop()

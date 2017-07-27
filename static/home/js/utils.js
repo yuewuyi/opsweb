@@ -24,9 +24,8 @@ function date_select(id) {
                                     '最近30日': [moment().subtract(30,'days'), moment()]
                                 },
                                 opens : 'left', //日期选择框的弹出位置
-                                format : 'YYYY-MM-DD HH:mm:ss', //控件中from和to 显示的日期格式
-                                separator : ' to ',
                                 locale : {
+                                    format: "YYYY-MM-DD HH:mm:ss",
                                     applyLabel : '确定',
                                     cancelLabel : '取消',
                                     fromLabel : '起始时间',

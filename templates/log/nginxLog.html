@@ -10,7 +10,7 @@
     <script src="{% static 'log/js/nginxLog.js' %}"></script>
 </HEAD>
 <BODY>
-    <div class="page_container">
+    <div class="page_container" id="nginxLog">
         <div class="page_title">nginx日志</div>
         <div class="page_hr"></div>
         <div class="NginxLogSearchBox">
@@ -46,8 +46,11 @@
                     <span></span>
                 </div>
             </div>
-            <div class="aggsTitle"></div>
-            <div class="aggsDiv"></div>
+            <div class="aggsTitle">访问ip排行</div>
+            <div class="aggsDiv">
+                <table id="aggsTable" class="aggsTable">
+                </table>
+            </div>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active mapGraphDiv" id="map">
                 </div>
@@ -57,6 +60,22 @@
                 </div>
             </div>
         </div>
+        <div class="LogView">
+        <table class="LogTable" id="LogTable">
+            <tr>
+                <td>时间</td>
+                <td>主机名</td>
+                <td>请求状态</td>
+                <td>请求时间</td>
+                <td>客户端ip</td>
+                <td>城市名</td>
+                <td>请求方式</td>
+                <td>发送数据量</td>
+                <td>uri</td>
+            </tr>
+        </table>
+        </div>
+        <div class="nginxFooter"></div>
     </div>
 {% endblock %}
 </BODY>

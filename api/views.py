@@ -238,7 +238,7 @@ def logScroll(request):
 #获取nginx日志
 def nginxLog(request):
     aggsCityIP={
-        "cityIp": {
+        "cityip": {
             "terms": {
                 "field": "geoip.city_name.keyword",
                  "size":1000
@@ -415,6 +415,7 @@ def nginxLog(request):
         if postData['action'] == 'date':
             respon={'message':'','maxCount':0,'norReq':[],'ErrReq':[],'totalCount':'','date':[]}
             respon['message']=result['hits']['hits']
+            respon['ScrollId'] = result['_scroll_id']
             respon['totalCount'] = result['hits']['total']
             for item in result['aggregations']['date']['buckets']:
                 ErrReq=0
@@ -431,6 +432,13 @@ def nginxLog(request):
                 respon['ErrReq'].append(ErrReq)
         elif postData['action'] == 'map':
             respon=result['aggregations']['map']['buckets']
+        elif postData['action'] == 'CityIp':
+            respon=[]
+            for item in result['aggregations']['cityip']['buckets']:
+                cityName=item['key']
+                for item2 in item['remote_addr']['buckets']:
+                    respon.append([cityName,item2['key'],item2['doc_count']])
+            respon.sort(key=lambda x:x[2],reverse=True)
         return HttpResponse(json.dumps(respon),content_type='application/json')
     else:
         return HttpResponse(404)
