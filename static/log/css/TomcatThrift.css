@@ -133,14 +133,14 @@
     width: 4%;
     border-right: 0px;
 }
-.LogTable .DetailedMessageHide td:first-child{
+.DetailedMessageHide td:first-child{
     width: 100%;
     word-break: break-all;
     text-align: left;
     font-size: 12px;
     display: none;
 }
-.LogTable .DetailedMessageShow td:first-child{
+.DetailedMessageShow td:first-child{
     width: 100%;
     word-break: break-all;
     text-align: left;

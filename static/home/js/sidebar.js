@@ -9,3 +9,10 @@ function mask(action,mask_id){
         $("#"+mask_id).css("width","3px")
     }
 }
+
+function signOut() {
+    $.when(req_ajax('/user/signOut/','','data'))
+        .done(function () {
+            window.location.href="/user/"
+        })
+}

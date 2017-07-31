@@ -19,6 +19,11 @@ def login_post(request):
             return render(request,'user/index.html',{'error':firstmessage['user'][0].messages[0]})
     else:
         return HttpResponse(status=404)
-
+def signOut(request):
+    if request.method == 'POST':
+        request.session.flush()
+        return HttpResponse('')
+    else:
+        return HttpResponse(status=404)
 
 

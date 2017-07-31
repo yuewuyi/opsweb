@@ -9,6 +9,7 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/home/':'show',
         '/user/':'none',
         '/user/Login/':'none',
+        '/user/signOut/':'none',
         '/monitor/':'show',
         '/monitor/host_detailed/':'show',
         '/monitor/config/':'config',

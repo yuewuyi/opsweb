@@ -214,8 +214,22 @@ function addTable(message) {
         tr=tr+"<td>"+message[i]['_source']['geoip']['city_name']+"</td>"
         tr=tr+"<td>"+message[i]['_source']['request_method']+"</td>"
         tr=tr+"<td>"+message[i]['_source']['body_bytes_sent']+"</td>"
-        tr=tr+"<td>"+message[i]['_source']['uri']+"</td></tr>"
+        tr=tr+"<td>"+message[i]['_source']['uri']+"</td>"
+        tr=tr+'<td><a onclick="ShowDetailed(this)">查看</a></td></tr>'
+        var tr2='<tr class="DetailedMessageHide"><td colspan="10">'+JSON.stringify(message[i])+'</td></tr>'
         $("#LogTable").append(tr)
+        $("#LogTable").append(tr2)
+    }
+}
+function ShowDetailed(obj){
+    var TdObject=$(obj).parent().parent().next()
+    var ClassName=TdObject[0].className
+    if(ClassName=="DetailedMessageHide"){
+        TdObject.removeClass('DetailedMessageHide')
+        TdObject.addClass('DetailedMessageShow')
+    }else{
+        TdObject.removeClass('DetailedMessageShow')
+        TdObject.addClass('DetailedMessageHide')
     }
 }
 $(document).ready(function () {

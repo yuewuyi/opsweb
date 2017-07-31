@@ -23,7 +23,11 @@
     <div class="container">
 {#左边菜单#}
         <div class="left_memu" id="sidebar">
-            <div class="left_top"></div>
+            <div class="left_top">
+                <div class="headPic"><img src="{% static 'home/images/default.png' %}" class="headPicStyle" /></div>
+                <div class="userName">{{ request.session.user }}</div>
+                <div class="glyphicon glyphicon-off signOut" onclick="signOut()"></div>
+            </div>
 {#bootstrap面板#}
             <div id="accordion">
 {#面板一组#}

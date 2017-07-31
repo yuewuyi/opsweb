@@ -404,7 +404,7 @@ def nginxLog(request):
             aggsDate['date']['date_histogram']['interval']=str(postData['interval'])+'s'
             parm['aggs']=aggsDate
             size=20
-            scrollTime = '2m'
+            scrollTime = '5m'
         elif postData['action']=='map':
             parm['aggs']=aggsMap
         elif postData['action']=='CityIp':

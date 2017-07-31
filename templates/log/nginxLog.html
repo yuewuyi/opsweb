@@ -35,7 +35,7 @@
             <div class="SearchBoxHr"></div>
             <div class="ButtonBox">
                 <div class="SearchButton ButtonStyle" onclick="searchNginxLog()">搜索</div>
-                <div class="ResetButton ButtonStyle" onclick="window.location.href='{% url 'TomcatThriftLog' %}'">重置</div>
+                <div class="ResetButton ButtonStyle" onclick="window.location.href='{% url 'nginxLogPage' %}'">重置</div>
             </div>
         </div>
         <div class="mapGraph">
@@ -72,6 +72,7 @@
                 <td>请求方式</td>
                 <td>发送数据量</td>
                 <td>uri</td>
+                <td>详情</td>
             </tr>
         </table>
         </div>

@@ -272,10 +272,24 @@ input,select{
     width: 8%;
     border-right: 0px;
 }
-.LogTable tr td:nth-child(9){
+.LogTable tr td:nth-child(10){
+    width: 3%;
     border-right: 0px;
 }
 .nginxFooter{
     width: 100%;
     height: 60px;
+}
+.DetailedMessageHide td:first-child{
+    width: 100%;
+    word-break: break-all;
+    text-align: left;
+    font-size: 12px;
+    display: none;
+}
+.DetailedMessageShow td:first-child{
+    width: 100%;
+    word-break: break-all;
+    text-align: left;
+    font-size: 12px;
 }
