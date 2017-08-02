@@ -3,6 +3,8 @@ from utils.zabbix_public_invok import zabbix_data
 from utils.ElsInvok import ElasticSearch
 import json
 import datetime
+import logging
+logger = logging.getLogger('django')
 #cpu使用值请求
 def zabbix_cpu_get(request):
     if request.method == 'POST':
@@ -17,7 +19,11 @@ def zabbix_cpu_get(request):
             "sortorder":"ACS",
         }
         zabbix_data_get=zabbix_data()
-        result=zabbix_data_get.item_history_get(all_cpu_history)
+        try:
+            result=zabbix_data_get.item_history_get(all_cpu_history)
+        except Exception as e:
+            logger.error("全部主机cpu信息获取失败"+str(e))
+            pass
         cpu_data= {}
         for item in result:
             if not item['itemid'] in cpu_data.keys():
@@ -41,7 +47,11 @@ def zabbix_memory_get(request):
             "sortorder":"ACS",
         }
         zabbix_data_get=zabbix_data()
-        result = zabbix_data_get.item_history_get(params)
+        try:
+            result = zabbix_data_get.item_history_get(params)
+        except Exception as e:
+            logger.error("全部主机内存信息获取失败"+str(e))
+            pass
         cpu_data={}
         for item in result:
             if not item['itemid'] in cpu_data.keys():
@@ -56,11 +66,6 @@ def zabbix_memory_get(request):
                 cpu_data[data['host_item_ids'][item]['alivable_mem']][i].append(round((memory_total-memory_available)/memory_total*100,2))
             data['host_item_ids'][item]['alivable_mem'] = cpu_data[data['host_item_ids'][item]['alivable_mem']]
         return HttpResponse(json.dumps(data['host_item_ids']),content_type='application/json')
-    else:
-        return HttpResponse(status=404)
-def zabbix_disk_speed_get(request):
-    if request.method == "POST":
-        return HttpResponse('mdzz')
     else:
         return HttpResponse(status=404)
 #获取历史数据
@@ -80,13 +85,17 @@ def zabbix_history_get(request):
             "sortorder":"ACS",
         }
         zabbix_data_get=zabbix_data()
-        if (end_time - start_time).days > 7:
-            value_name = 'value_max'
-            result = zabbix_data_get.item_trend_get(history)
-        else:
-            result=zabbix_data_get.item_history_get(history)
-        if not result:
-            return HttpResponse(json.dumps(data['host_item_ids']), content_type='application/json')
+        try:
+            if (end_time - start_time).days > 7:
+                value_name = 'value_max'
+                result = zabbix_data_get.item_trend_get(history)
+            else:
+                result = zabbix_data_get.item_history_get(history)
+            if not result:
+                return HttpResponse(json.dumps(data['host_item_ids']), content_type='application/json')
+        except Exception as e:
+            logger.error("字段历史获取失败" + str(e))
+            pass
         rely_data= {}
         for item in result:
             if not item['itemid'] in rely_data.keys():
@@ -198,6 +207,11 @@ def TomcatThriftLog(request):
         parm['query']=query
         parm['aggs']=aggs
         es=ElasticSearch()
+        try:
+            result = es.logReq(parm, index, 20, '2m')
+        except Exception as e:
+            logger.error("tomcat日志获取失败" + str(e))
+            pass
         result=es.logReq(parm,index,20,'2m')
         LogData=result['hits']
         LogCount={'date':[],'INFO':[],'ERROR':[],'WARN':[],'MaxCount':0}
@@ -230,7 +244,8 @@ def logScroll(request):
             es = ElasticSearch()
             result = es.scrollReq(postData['scrollId'])
             message = result['hits']['hits']
-        except:
+        except Exception as e:
+            logger.error("通过scrollId获取信息失败" + str(e))
             code=-1
         return HttpResponse(json.dumps({"message":message,"code":code}), content_type='application/json')
     else:
@@ -411,7 +426,11 @@ def nginxLog(request):
             parm['aggs']=aggsCityIP
         es = ElasticSearch()
         parm['query'] = query
-        result = es.logReq(parm, 'filebeat-nginx_access-*',size,scrollTime)
+        try:
+            result = es.logReq(parm, 'filebeat-nginx_access-*', size, scrollTime)
+        except Exception as e:
+            logger.error("nginx日志获取失败" + str(e))
+            pass
         if postData['action'] == 'date':
             respon={'message':'','maxCount':0,'norReq':[],'ErrReq':[],'totalCount':'','date':[]}
             respon['message']=result['hits']['hits']

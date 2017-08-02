@@ -37,7 +37,6 @@ def config(request):
     zabbix_data_get = zabbix_data()
     result=zabbix_data_get.item_history_get(params)
     return HttpResponse(result)
-    # return render(request, 'monitor/config.html')
 #监控详情视图
 def host_info_detailed(request):
     conf = app_config()
