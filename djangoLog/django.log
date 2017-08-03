@@ -41,3 +41,13 @@ UnboundLocalError: local variable 'result' referenced before assignment
 2017-08-02 14:51:24,709 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/nginxLog/ HTTP/1.1" 500 14540
 2017-08-02 15:31:22,774 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
 2017-08-02 15:31:22,778 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-03 09:41:22,233 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-03 09:41:22,234 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-03 09:49:33,691 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-03 09:49:33,692 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-03 16:25:04,013 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-03 16:25:04,014 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 0
+2017-08-03 16:25:07,759 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-03 16:25:07,762 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 0
+2017-08-03 16:25:18,810 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-03 16:25:18,811 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0

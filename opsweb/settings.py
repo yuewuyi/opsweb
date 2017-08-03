@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'home',
     'monitor',
     'api',
+    'log'
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from . import views
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     url(r'^zabbix_cpu_get/$',views.zabbix_cpu_get, name='ZabbixCpuGet'),
     url(r'^zabbix_history_get/$',views.zabbix_history_get, name='ZabbixHistoryGet'),
@@ -9,3 +9,4 @@ urlpatterns = [
     url(r'^logScroll/$',views.logScroll,name='logScrollApi'),
     url(r'^nginxLog/$',views.nginxLog,name='nginxLogApi')
 ]
+urlpatterns += staticfiles_urlpatterns()
