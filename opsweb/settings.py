@@ -56,7 +56,7 @@ LOGGING = {
 SECRET_KEY = 'xz%=cx+bqt^ux0jj*60w5nyr42i_c3i)#5n3yd_l$o-)3l3-4)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

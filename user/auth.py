@@ -6,6 +6,7 @@ from user.models import User
 class UserAuthMiddleware(MiddlewareMixin):
 #url权限配置
     __auth_url_config={
+        '/':'show',
         '/home/':'show',
         '/user/':'none',
         '/user/Login/':'none',

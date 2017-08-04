@@ -1,0 +1,92 @@
+2017-08-04 17:16:18,938 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:16:18,942 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 0
+2017-08-04 17:16:29,830 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:16:29,831 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 0
+2017-08-04 17:17:05,549 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:17:05,551 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 0
+2017-08-04 17:21:59,342 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-04 17:21:59,343 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-04 17:22:08,933 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /user/Login/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\user\login.py", line 10, in login_post
+    if form.is_valid():
+  File "C:\Program Files\Python36\lib\site-packages\django\forms\forms.py", line 169, in is_valid
+    return self.is_bound and not self.errors
+  File "C:\Program Files\Python36\lib\site-packages\django\forms\forms.py", line 161, in errors
+    self.full_clean()
+  File "C:\Program Files\Python36\lib\site-packages\django\forms\forms.py", line 370, in full_clean
+    self._clean_fields()
+  File "C:\Program Files\Python36\lib\site-packages\django\forms\forms.py", line 391, in _clean_fields
+    value = getattr(self, 'clean_%s' % name)()
+  File "D:\project\opsweb\user\form.py", line 15, in clean_user
+    User.objects.get(user=user,pwd=pwd)
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\query.py", line 379, in get
+    num = len(clone)
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\query.py", line 238, in __len__
+    self._fetch_all()
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\query.py", line 1087, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\query.py", line 54, in __iter__
+    results = compiler.execute_sql()
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 824, in execute_sql
+    sql, params = self.as_sql()
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 369, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup()
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 46, in pre_sql_setup
+    self.setup_query()
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 37, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select()
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 226, in get_select
+    ret.append((col, self.compile(col, select_format=True), alias))
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 353, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\expressions.py", line 659, in as_sql
+    return "%s.%s" % (qn(self.alias), qn(self.target.column)), []
+  File "C:\Program Files\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 344, in quote_name_unless_alias
+    r = self.connection.ops.quote_name(name)
+  File "C:\Program Files\Python36\lib\site-packages\django\db\backends\dummy\base.py", line 21, in complain
+    raise ImproperlyConfigured("settings.DATABASES is improperly configured. "
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.
+2017-08-04 17:22:10,025 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /user/Login/ HTTP/1.1" 500 140078
+2017-08-04 17:22:40,883 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-04 17:22:40,886 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-04 17:23:27,320 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-04 17:23:27,342 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-04 17:44:44,747 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:44:44,748 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 0
+2017-08-04 17:45:10,499 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:45:10,504 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:45:13,750 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:45:13,751 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:45:59,278 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:45:59,287 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:46:12,736 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:46:12,741 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 0
+2017-08-04 17:46:50,255 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:46:50,257 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:46:51,956 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:46:51,957 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:48:12,794 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:48:12,795 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:48:14,399 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:48:14,401 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:48:15,816 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:48:15,818 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:48:19,409 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:48:19,411 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2430
+2017-08-04 17:48:36,631 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:48:36,633 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2429
+2017-08-04 17:48:36,732 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-04 17:48:36,733 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-04 17:48:38,317 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /
+2017-08-04 17:48:38,318 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET / HTTP/1.1" 404 2429
+2017-08-04 17:49:30,315 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-04 17:49:30,316 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
