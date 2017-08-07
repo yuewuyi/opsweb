@@ -102,3 +102,86 @@ django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly co
 2017-08-07 15:51:45,896 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
 2017-08-07 15:55:34,406 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
 2017-08-07 15:55:34,407 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 16:08:34,419 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 16:08:34,421 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 16:24:25,246 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 16:24:25,247 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 16:29:40,051 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 16:29:40,052 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 16:52:12,411 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 16:52:12,413 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 16:57:49,749 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 16:57:49,756 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 17:03:51,578 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /monitor/ HTTP/1.1" 500 59
+2017-08-07 17:04:37,443 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /monitor/ HTTP/1.1" 500 59
+2017-08-07 17:04:38,286 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 17:04:38,287 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 17:05:49,251 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /monitor/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\monitor\views.py", line 25, in index
+    zabbix_data_get = zabbix_data()
+  File "D:\project\opsweb\utils\zabbix_public_invok.py", line 8, in __init__
+    self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0], user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 156, in __init__
+    self._login(user, password)
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 186, in _login
+    self.auth = self.user.login(user=user, password=password)
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 82, in fn
+    args or kwargs
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 236, in do_request
+    res = urlopen(req)
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 223, in urlopen
+    return opener.open(url, data, timeout)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 526, in open
+    response = self._open(req, data)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 544, in _open
+    '_open', req)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 504, in _call_chain
+    result = func(*args)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 1346, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 1321, in do_open
+    r = h.getresponse()
+  File "C:\Program Files\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Program Files\Python36\lib\http\client.py", line 319, in begin
+    raise UnknownProtocol(version)
+http.client.UnknownProtocol: HTTP/0.0
+2017-08-07 17:05:49,498 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /monitor/ HTTP/1.1" 500 130694
+2017-08-07 17:05:49,830 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 17:05:49,832 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 17:07:10,692 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 17:07:10,694 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 17:09:02,447 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 17:09:02,449 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 17:15:04,166 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 17:15:04,170 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 17:20:56,109 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 17:20:56,110 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 17:27:07,468 ERROR    D:\project\opsweb\api\views.py[line:97] 字段历史获取失败HTTP/0.0
+2017-08-07 17:27:07,469 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /api/zabbix_history_get/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\api\views.py", line 100, in zabbix_history_get
+    for item in result:
+UnboundLocalError: local variable 'result' referenced before assignment
+2017-08-07 17:27:07,535 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/zabbix_history_get/ HTTP/1.1" 500 14506
+2017-08-07 17:27:07,541 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/zabbix_history_get/ HTTP/1.1" 500 59
+2017-08-07 17:30:00,758 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 17:30:00,759 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 17:31:08,492 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/zabbix_history_get/ HTTP/1.1" 500 59

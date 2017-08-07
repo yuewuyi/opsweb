@@ -35,9 +35,8 @@
                     </select>
                 </td>
                 <td>IP地址</td>
-                <td>appliction</td>
-                <td>item</td>
-                <td>应用模板</td>
+                <td>监控应用总数</td>
+                <td>监控字段总数</td>
                 <td>操作</td>
             </tr>
             {% for item in data %}
@@ -51,9 +50,8 @@
                     {% endif %}
                     <td><div class='host_graphs' id='hostid_{{ item.hostid }}'></div></td>
                     <td>{{ item.interfaces.0.ip }}</td>
-                    <td><div class='circles'>23</div></td>
-                    <td><div class='circles'>24</div></td></td>
-                    <td>z1,z2,z3,z4</td>
+                    <td><div class='circles'>{{ item.applications|length }}</div></td>
+                    <td><div class='circles'>{{ item.items|length }}</div></td></td>
                     <td>
 {#                        {% if item.status == '1' %}#}
 {#                            <div class='monitor_table_operate'>开启监控</div>#}
