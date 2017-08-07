@@ -173,7 +173,6 @@ input,select{
     width: 70%;
     height: 300px;
     float: left;
-    overflow:hidden;
 }
 .aggsTitle{
     background-color: #dd4b39;

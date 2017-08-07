@@ -94,3 +94,11 @@ django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly co
 2017-08-07 14:38:33,809 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
 2017-08-07 15:19:45,325 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
 2017-08-07 15:19:45,326 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 15:49:10,828 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 15:49:10,831 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 15:51:45,866 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 15:51:45,868 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 15:51:45,894 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 15:51:45,896 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-07 15:55:34,406 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-07 15:55:34,407 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
