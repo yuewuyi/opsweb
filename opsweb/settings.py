@@ -56,7 +56,7 @@ LOGGING = {
 SECRET_KEY = 'xz%=cx+bqt^ux0jj*60w5nyr42i_c3i)#5n3yd_l$o-)3l3-4)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -112,16 +112,16 @@ WSGI_APPLICATION = 'opsweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'opsweb',
-#         'USER': 'root',
-#         'PASSWORD': 'suyue123',
-#         'HOST':'172.20.11.102',
-#         'PORT':'3306',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'opsweb',
+        'USER': 'root',
+        'PASSWORD': 'suyue123',
+        'HOST':'172.20.11.102',
+        'PORT':'3306',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
