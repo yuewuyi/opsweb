@@ -11,6 +11,34 @@ function retDocument(loca,docCount,point) {
         return docCount[i]
     }
     //选择样式
+function showMessage(message,parKey) {
+    var   gettype=Object.prototype.toString
+    var   messageStr=''
+    for (key in message){
+        if (gettype.call(message[key])=="[object Object]"){
+            if(parKey==''){
+                messageStr+=showMessage(message[key],key)
+            }else {
+                messageStr+=showMessage(message[key],parKey+'.'+key)
+            }
+
+        }
+        else if(gettype.call(message[key])=="[object Array]"){
+            if(parKey!=''){
+                messageStr+='<b>'+parKey+'.'+key+':</b>'+(JSON.stringify(message[key])).replace(/[\[\]]/g,'')+'<BR/>'
+            }else {
+                messageStr+='<b>'+key+':</b>'+(JSON.stringify(message[key])).replace(/[\[\]]/g,'')+'<BR/>'
+            }
+        }else {
+            if(parKey!=''){
+                messageStr+='<b>'+parKey+'.'+key+':</b>'+JSON.stringify(message[key])+'<BR/>'
+            }else {
+                messageStr+='<b>'+key+':</b>'+JSON.stringify(message[key])+'<BR/>'
+            }
+        }
+    }
+    return messageStr
+}
 function selectStyle(maxNum,curNum) {
         var styleName='makerL1'
        if(curNum/maxNum>=0.9){
@@ -32,8 +60,8 @@ function searchNginxLog() {
     date[1]=Date.parse(date[1])
     var interval=parseInt((date[1]-date[0])/(60*1000))
     var parm={
-        'hostName':($.trim($('#HostName').val())).toLocaleLowerCase(),
-        'ipAddr':($.trim($('#ip').val())).toLocaleLowerCase(),
+        'hostName':$.trim($('#HostName').val()),
+        'ipAddr':$.trim($('#ip').val()),
         'agentIp':$.trim($('#AgentIp').val()),
         'reqStatusSymbol':$('#reqStatusSelect').select().val(),
         'reqStatus':parseInt($.trim($('#reqStatus').val())),
@@ -216,7 +244,7 @@ function addTable(message) {
         tr=tr+"<td>"+message[i]['_source']['body_bytes_sent']+"</td>"
         tr=tr+"<td>"+message[i]['_source']['uri']+"</td>"
         tr=tr+'<td><a onclick="ShowDetailed(this)">查看</a></td></tr>'
-        var tr2='<tr class="DetailedMessageHide"><td colspan="10">'+JSON.stringify(message[i])+'</td></tr>'
+        var tr2='<tr class="DetailedMessageHide"><td colspan="10">'+showMessage(message[i]['_source'],'')+'</td></tr>'
         $("#LogTable").append(tr)
         $("#LogTable").append(tr2)
     }

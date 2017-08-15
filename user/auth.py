@@ -22,6 +22,8 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/api/logScroll/':'show',
         '/log/nginx/':'show',
         '/api/nginxLog/':'show',
+        '/log/luceneCustomQuery/':'show',
+        '/api/customQuery/':'show',
     }
     def __init__(self,get_response):
         self.get_response = get_response

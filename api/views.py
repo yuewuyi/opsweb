@@ -23,7 +23,6 @@ def zabbix_cpu_get(request):
             result=zabbix_data_get.item_history_get(all_cpu_history)
         except Exception as e:
             logger.error("全部主机cpu信息获取失败"+str(e))
-            pass
         cpu_data= {}
         for item in result:
             if not item['itemid'] in cpu_data.keys():
@@ -51,7 +50,6 @@ def zabbix_memory_get(request):
             result = zabbix_data_get.item_history_get(params)
         except Exception as e:
             logger.error("全部主机内存信息获取失败"+str(e))
-            pass
         cpu_data={}
         for item in result:
             if not item['itemid'] in cpu_data.keys():
@@ -95,7 +93,6 @@ def zabbix_history_get(request):
                 return HttpResponse(json.dumps(data['host_item_ids']), content_type='application/json')
         except Exception as e:
             logger.error("字段历史获取失败" + str(e))
-            pass
         rely_data= {}
         for item in result:
             if not item['itemid'] in rely_data.keys():
@@ -207,30 +204,29 @@ def TomcatThriftLog(request):
         parm['query']=query
         parm['aggs']=aggs
         es=ElasticSearch()
+        LogCount = {'date': [], 'INFO': [], 'ERROR': [], 'WARN': [], 'MaxCount': 0}
         try:
             result = es.logReq(parm, index, 20, '2m')
+            LogData = result['hits']
+            LogCount['TotalCount'] = LogData['total']
+            LogCount['LogMessage'] = LogData['hits']
+            LogCount['ScrollId'] = result['_scroll_id']
+            for item in result['aggregations']['date']['buckets']:
+                CountDict = {}
+                TypeList = ['INFO', 'ERROR', 'WARN']
+                LogCount['date'].append(item['key'])
+                for item2 in item['LogType']['buckets']:
+                    CountDict[item2['key']] = item2['doc_count']
+                for key in TypeList:
+                    if key in CountDict.keys():
+                        if LogCount['MaxCount'] < CountDict[key]:
+                            LogCount['MaxCount'] = CountDict[key]
+                        LogCount[key].append(CountDict[key])
+                    else:
+                        LogCount[key].append(0)
         except Exception as e:
             logger.error("tomcat日志获取失败" + str(e))
             pass
-        result=es.logReq(parm,index,20,'2m')
-        LogData=result['hits']
-        LogCount={'date':[],'INFO':[],'ERROR':[],'WARN':[],'MaxCount':0}
-        LogCount['TotalCount']=LogData['total']
-        LogCount['LogMessage']=LogData['hits']
-        LogCount['ScrollId']=result['_scroll_id']
-        for item in result['aggregations']['date']['buckets']:
-            CountDict = {}
-            TypeList=['INFO','ERROR','WARN']
-            LogCount['date'].append(item['key'])
-            for item2 in item['LogType']['buckets']:
-                CountDict[item2['key']]=item2['doc_count']
-            for key in TypeList:
-                if key in CountDict.keys():
-                    if  LogCount['MaxCount']<CountDict[key]:
-                        LogCount['MaxCount']=CountDict[key]
-                    LogCount[key].append(CountDict[key])
-                else:
-                    LogCount[key].append(0)
     else:
         return HttpResponse(status=404)
     return HttpResponse(json.dumps(LogCount),content_type='application/json')
@@ -426,38 +422,107 @@ def nginxLog(request):
             parm['aggs']=aggsCityIP
         es = ElasticSearch()
         parm['query'] = query
+        print(json.dumps(parm))
+        respon = {'message': '', 'maxCount': 0, 'norReq': [], 'ErrReq': [], 'totalCount': '', 'date': []}
         try:
             result = es.logReq(parm, 'filebeat-nginx_access-*', size, scrollTime)
+            if postData['action'] == 'date':
+                respon['message'] = result['hits']['hits']
+                respon['ScrollId'] = result['_scroll_id']
+                respon['totalCount'] = result['hits']['total']
+                for item in result['aggregations']['date']['buckets']:
+                    ErrReq = 0
+                    norReq = 0
+                    respon['date'].append(item['key'])
+                    if item['doc_count'] > respon['maxCount']:
+                        respon['maxCount'] = item['doc_count']
+                    for item2 in item['status']['buckets']:
+                        if item2['key'] < 400:
+                            norReq += item2['doc_count']
+                        else:
+                            ErrReq += item2['doc_count']
+                    respon['norReq'].append(norReq)
+                    respon['ErrReq'].append(ErrReq)
+            elif postData['action'] == 'map':
+                respon = result['aggregations']['map']['buckets']
+            elif postData['action'] == 'CityIp':
+                respon = []
+                for item in result['aggregations']['cityip']['buckets']:
+                    cityName = item['key']
+                    for item2 in item['remote_addr']['buckets']:
+                        respon.append([cityName, item2['key'], item2['doc_count']])
+                respon.sort(key=lambda x: x[2], reverse=True)
+            return HttpResponse(json.dumps(respon), content_type='application/json')
         except Exception as e:
             logger.error("nginx日志获取失败" + str(e))
-            pass
-        if postData['action'] == 'date':
-            respon={'message':'','maxCount':0,'norReq':[],'ErrReq':[],'totalCount':'','date':[]}
-            respon['message']=result['hits']['hits']
-            respon['ScrollId'] = result['_scroll_id']
-            respon['totalCount'] = result['hits']['total']
-            for item in result['aggregations']['date']['buckets']:
-                ErrReq=0
-                norReq=0
-                respon['date'].append(item['key'])
-                if item['doc_count']>respon['maxCount']:
-                    respon['maxCount']=item['doc_count']
-                for item2 in item['status']['buckets']:
-                    if item2['key'] <400:
-                        norReq+=item2['doc_count']
-                    else:
-                        ErrReq+=item2['doc_count']
-                respon['norReq'].append(norReq)
-                respon['ErrReq'].append(ErrReq)
-        elif postData['action'] == 'map':
-            respon=result['aggregations']['map']['buckets']
-        elif postData['action'] == 'CityIp':
-            respon=[]
-            for item in result['aggregations']['cityip']['buckets']:
-                cityName=item['key']
-                for item2 in item['remote_addr']['buckets']:
-                    respon.append([cityName,item2['key'],item2['doc_count']])
-            respon.sort(key=lambda x:x[2],reverse=True)
-        return HttpResponse(json.dumps(respon),content_type='application/json')
+    else:
+        return HttpResponse(404)
+def customQuery(request):
+    parm={
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc",
+        "unmapped_type": "date"
+      }
+    }
+  ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "query_string": {
+            "query": "*"
+          }
+        },
+        {
+          "range": {
+            "@timestamp": {
+              "gte": 0,
+              "lte": 0,
+              "format": "epoch_millis"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "date": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "interval": "30s",
+        "time_zone": "Asia/Shanghai",
+        "min_doc_count": 1
+      }
+    }
+  }
+}
+    if request.method=='POST':
+        postData = json.loads(request.body.decode())
+        parm['query']['bool']['must'][0]['query_string']['query']=postData['queryStr']
+        parm['query']['bool']['must'][1]['range']['@timestamp']['gte'] = postData['startTime']
+        parm['query']['bool']['must'][1]['range']['@timestamp']['lte'] = postData['endTime']
+        parm['aggs']['date']['date_histogram']['interval']=str(postData['interVal'])+'s'
+        es = ElasticSearch()
+        LogCount = {'date': [], 'docNum': [], 'MaxCount': 0,'message':'','code':0}
+        try:
+            result=es.logReq(parm,postData['indexName'],'20','5m')
+            if result['_shards']['successful']!=0:
+                LogData = result['hits']
+                LogCount['TotalCount'] = LogData['total']
+                LogCount['LogMessage'] = LogData['hits']
+                LogCount['ScrollId'] = result['_scroll_id']
+                for item in result['aggregations']['date']['buckets']:
+                    if LogCount['MaxCount']<item['doc_count']:
+                        LogCount['MaxCount']=item['doc_count']
+                    LogCount['date'].append(item['key'])
+                    LogCount['docNum'].append(item['doc_count'])
+        except Exception as e:
+            print(json.dumps(parm))
+            LogCount['code'] = -1
+            LogCount['message'] = str(e)
+            logger.error("自定义日志获取失败" + str(e))
+        return HttpResponse(json.dumps(LogCount),content_type='application/json')
     else:
         return HttpResponse(404)

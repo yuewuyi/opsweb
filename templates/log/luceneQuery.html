@@ -1,0 +1,42 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'log/css/luceneCustom.css' %}">
+    <script src="{% static 'log/js/luceneQuery.js' %}"></script>
+<div class="page_container" id="customQuery" data-index="{{ indexList }}">
+    <div class="page_title">Toncat、Thrift日志</div>
+    <div class="page_hr"></div>
+    <div class="lunceneCustomSearchBox">
+         <div class="InputBox">
+            index  <input type="text" id="indexName" class="TextStyle MarginRight">
+            查询语句 <input type="text" id="queryStr" class="TextStyle">
+        </div>
+        <div class="SearchBoxHr"></div>
+        <div class="ButtonBox">
+            <div class="SearchButton ButtonStyle" onclick="searchLog()">搜索</div>
+            <div class="ResetButton ButtonStyle" onclick="window.location.href='{% url 'luceneQueryPage' %}'">重置</div>
+        </div>
+    </div>
+    <div class="LogGraph">
+        <div class="CountNum" id="CountNum">总计 0条</div>
+        <div id="luceneDate" class="DateDiv">
+                <span class="DateFontStyle"></span>
+        </div>
+        <div class="customLogGraph" id="customLogGraph"></div>
+    </div>
+    <div class="LogView">
+        <table class="LogTable" id="LogTable">
+            <tr class="BriefMessage">
+                <td>时间</td>
+                <td>主机名</td>
+                <td>IP地址</td>
+                <td>日志路径</td>
+                <td>日志类型</td>
+                <td>日志信息</td>
+                <td>详情</td>
+            </tr>
+        </table>
+    </div>
+    <div class="luceneCustomFooter"></div>
+</div>
+{% endblock %}

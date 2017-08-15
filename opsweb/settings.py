@@ -74,7 +74,8 @@ INSTALLED_APPS = [
     'home',
     'monitor',
     'api',
-    'log'
+    'log',
+    'deploy'
 ]
 
 MIDDLEWARE = [
@@ -118,7 +119,7 @@ DATABASES = {
         'NAME': 'opsweb',
         'USER': 'root',
         'PASSWORD': 'suyue123',
-        'HOST':'172.20.11.102',
+        'HOST':'172.20.11.94',
         'PORT':'3306',
     }
 }

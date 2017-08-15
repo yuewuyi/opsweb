@@ -58,8 +58,11 @@
                         {% if request.session.jurisdiction.is_show %}
                             <span class="link_cont" onclick="window.location.href='{% url 'TomcatThriftLog' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> tomcat thrift日志</span></span>
                         {% endif %}
-                         {% if request.session.jurisdiction.is_show %}
+                        {% if request.session.jurisdiction.is_show %}
                             <span class="link_cont" onclick="window.location.href='{% url 'nginxLogPage' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> nginx日志</span></span>
+                        {% endif %}
+                        {% if request.session.jurisdiction.is_show %}
+                            <span class="link_cont" onclick="window.location.href='{% url 'luceneQueryPage' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> lucene自定义查询</span></span>
                         {% endif %}
                         {% if request.session.jurisdiction.is_config %}
                             <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>

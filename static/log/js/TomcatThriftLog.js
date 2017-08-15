@@ -144,9 +144,9 @@ function searchTomcatLog() {
     date[1]=Date.parse(date[1])
     var interval=parseInt((date[1]-date[0])/(60*1000))
     var parm={
-        "hostName":hostName.toLocaleLowerCase(),
+        "hostName":hostName,
         "ipAddr":ipAddr,
-        "appName":appName.toLocaleLowerCase(),
+        "appName":appName,
         "appType":appType,
         "logType":logType.toLocaleLowerCase(),
         "startTime":date[0],
@@ -180,7 +180,6 @@ $(document).ready(function () {
                     }else {
                         alert('分页ID不存在或已过期')
                     }
-
                 })
 
         }

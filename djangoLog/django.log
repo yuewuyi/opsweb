@@ -185,3 +185,561 @@ UnboundLocalError: local variable 'result' referenced before assignment
 2017-08-07 17:30:00,758 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
 2017-08-07 17:30:00,759 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
 2017-08-07 17:31:08,492 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/zabbix_history_get/ HTTP/1.1" 500 59
+2017-08-08 14:31:27,257 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:31:27,272 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:33:22,651 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:33:22,652 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:36:54,141 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:36:54,142 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:42:45,079 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:42:45,081 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:44:26,834 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:44:26,835 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:46:36,370 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:46:36,371 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:48:28,725 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:48:28,726 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:48:51,084 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:48:51,085 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:49:29,225 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:49:29,227 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:49:55,891 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:49:55,892 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:53:35,088 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:53:35,089 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:57:06,337 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:57:06,339 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:57:51,114 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:57:51,117 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:58:10,287 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:58:10,290 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:59:09,693 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:59:09,694 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 14:59:59,782 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 14:59:59,783 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:00:00,841 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:00:00,842 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:00:12,734 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:00:12,735 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:00:20,187 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:00:20,188 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:01:11,774 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:01:11,775 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:01:23,553 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:01:23,554 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:01:39,326 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:01:39,327 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:01:58,819 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:01:58,820 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:02:38,807 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:02:38,808 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:03:46,130 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:03:46,135 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:03:47,550 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:03:47,551 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:03:48,169 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:03:48,170 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:04:22,523 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:04:22,524 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:04:23,447 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:04:23,449 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:04:24,067 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:04:24,068 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:04:35,277 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:04:35,278 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:04:42,240 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:04:42,243 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:05:01,260 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:05:01,261 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:05:36,352 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:05:36,354 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:05:48,108 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:05:48,110 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:06:08,799 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:06:08,801 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:06:18,389 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:06:18,390 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:08:40,604 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:08:40,606 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:09:26,625 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:09:26,626 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:12:51,993 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:12:51,994 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:13:34,334 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:13:34,336 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:13:45,696 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:13:45,697 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:22:43,358 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:22:43,359 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:43:31,253 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /log/esIndexGet
+2017-08-08 15:43:31,256 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /log/esIndexGet HTTP/1.1" 404 0
+2017-08-08 15:43:35,313 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /log/esIndexGet
+2017-08-08 15:43:35,319 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /log/esIndexGet HTTP/1.1" 404 0
+2017-08-08 15:45:08,844 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /api/esIndexGet/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\api\views.py", line 470, in esIndexInfo
+    indexList.append(result[i])
+KeyError: 0
+2017-08-08 15:45:10,855 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /api/esIndexGet/ HTTP/1.1" 500 70430
+2017-08-08 15:45:11,249 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:45:11,249 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:45:18,487 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /api/esIndexGet/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\api\views.py", line 470, in esIndexInfo
+    indexList.append(result[i])
+KeyError: 0
+2017-08-08 15:45:20,413 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /api/esIndexGet/ HTTP/1.1" 500 70304
+2017-08-08 15:46:08,200 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:46:08,203 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 15:49:30,883 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 15:49:30,884 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 16:01:41,424 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/esIndexGet/ HTTP/1.1" 500 59
+2017-08-08 16:01:41,851 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/esIndexGet/ HTTP/1.1" 500 59
+2017-08-08 16:01:42,738 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 16:01:42,740 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 16:11:02,936 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 16:11:02,940 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 16:51:13,672 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 16:51:13,674 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 17:32:03,875 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 17:32:03,878 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 17:52:37,348 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 17:52:37,349 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 17:57:07,748 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 17:57:07,750 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 17:58:23,103 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 17:58:23,104 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 17:59:29,196 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 17:59:29,197 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 17:59:45,849 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 17:59:45,850 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 18:00:50,260 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 18:00:50,261 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 18:01:08,981 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 18:01:08,982 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 18:01:25,738 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 18:01:25,739 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 18:01:33,337 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 18:01:33,338 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 18:01:40,796 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 18:01:40,799 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 18:04:24,157 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 18:04:24,160 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-08 18:08:38,629 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /api/zabbix_history_get/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 1318, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "C:\Program Files\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Program Files\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Program Files\Python36\lib\http\client.py", line 936, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "C:\Program Files\Python36\lib\socket.py", line 722, in create_connection
+    raise err
+  File "C:\Program Files\Python36\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\api\views.py", line 87, in zabbix_history_get
+    zabbix_data_get=zabbix_data()
+  File "D:\project\opsweb\utils\zabbix_public_invok.py", line 8, in __init__
+    self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0], user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 156, in __init__
+    self._login(user, password)
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 186, in _login
+    self.auth = self.user.login(user=user, password=password)
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 82, in fn
+    args or kwargs
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 236, in do_request
+    res = urlopen(req)
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "C:\Program Files\Python36\lib\site-packages\pyzabbix\api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 223, in urlopen
+    return opener.open(url, data, timeout)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 526, in open
+    response = self._open(req, data)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 544, in _open
+    '_open', req)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 504, in _call_chain
+    result = func(*args)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 1346, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "C:\Program Files\Python36\lib\urllib\request.py", line 1320, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。>
+2017-08-08 18:08:38,766 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/zabbix_history_get/ HTTP/1.1" 500 17706
+2017-08-08 18:08:38,775 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/zabbix_history_get/ HTTP/1.1" 500 59
+2017-08-08 18:14:56,213 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-08 18:14:56,214 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:49:25,061 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:49:25,062 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:50:23,305 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:50:23,306 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:55:43,422 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:55:43,423 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:56:11,657 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:56:11,659 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:56:21,824 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:56:21,826 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:56:38,919 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:56:38,920 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:56:49,990 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:56:49,992 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:57:13,489 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:57:13,491 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:58:19,126 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:58:19,127 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:59:33,063 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:59:33,064 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 09:59:51,393 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 09:59:51,394 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:00:33,579 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:00:33,580 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:01:30,167 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:01:30,168 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:01:54,806 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:01:54,808 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:04:21,999 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:04:22,000 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:05:03,054 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:05:03,055 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:05:47,634 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:05:47,636 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:06:14,912 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:06:14,913 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:06:32,535 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:06:32,536 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:07:10,797 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:07:10,798 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:07:25,591 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:07:25,592 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:08:55,905 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:08:55,906 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:09:06,251 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:09:06,253 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:09:22,530 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:09:22,531 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:14:16,419 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:14:16,420 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:15:04,195 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:15:04,196 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:16:29,781 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:16:29,783 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:19:54,747 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:19:54,748 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:20:22,395 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:20:22,396 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:20:51,247 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:20:51,248 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:24:06,825 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:24:06,827 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:27:15,689 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:27:15,698 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:32:35,435 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:32:35,437 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:33:08,828 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:33:08,829 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:33:18,101 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:33:18,103 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:34:43,861 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:34:43,863 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 10:44:33,472 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 10:44:33,479 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:16:44,355 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:16:44,357 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:17:10,301 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:17:10,302 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:17:20,678 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:17:20,679 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:17:50,636 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:17:50,638 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:18:10,283 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:18:10,286 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:25:05,473 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:25:05,475 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:26:18,819 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:26:18,821 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:27:02,658 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:27:02,659 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:27:34,988 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:27:34,989 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:39:52,515 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:39:52,517 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:40:02,534 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:40:02,536 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:40:11,608 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:40:11,611 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:40:56,943 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:40:56,944 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:41:10,524 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:41:10,525 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:41:17,563 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:41:17,566 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:41:34,395 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:41:34,396 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:41:52,161 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:41:52,163 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:41:54,059 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:41:54,061 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:42:09,598 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:42:09,600 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 11:51:03,165 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 11:51:03,166 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 14:51:02,237 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 14:51:02,239 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 15:21:52,967 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 15:21:52,969 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 15:36:56,016 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 15:36:56,018 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 15:48:23,646 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 15:48:23,647 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 15:48:26,856 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /api/customQuery/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\api\views.py", line 512, in customQuery
+    result=es.logReq(parm,postData['indexName'],'20','5m')
+  File "D:\project\opsweb\utils\ElsInvok.py", line 12, in logReq
+    return self.__ElscApi.search(index=index, body=parm,scroll=scrollTime,size=size)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\client\utils.py", line 73, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\client\__init__.py", line 623, in search
+    doc_type, '_search'), params=params, body=body)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\transport.py", line 312, in perform_request
+    status, headers, data = connection.perform_request(method, url, params, body, ignore=ignore, timeout=timeout)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 128, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\connection\base.py", line 125, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(status_code, error_message, additional_info)
+elasticsearch.exceptions.RequestError: TransportError(400, 'illegal_argument_exception', 'Trying to query 1391 shards, which is over the limit of 1000. This limit exists because querying many shards at the same time can make the job of the coordinating node very CPU and/or memory intensive. It is usually a better idea to have a smaller number of larger shards. Update [action.search.shard_count.limit] to a greater value if you really want to query that many shards at the same time.')
+2017-08-09 15:48:27,150 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/customQuery/ HTTP/1.1" 500 16416
+2017-08-09 16:14:19,568 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /log/luceneCustomQuery/ HTTP/1.1" 500 59
+2017-08-09 16:14:47,961 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /log/luceneCustomQuery/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Program Files\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Program Files\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Program Files\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Program Files\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 114, in perform_request
+    response = self.pool.urlopen(method, url, body, retries=False, headers=self.headers, **kw)
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 649, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\util\retry.py", line 333, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\packages\six.py", line 686, in reraise
+    raise value
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 388, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 308, in _raise_timeout
+    raise ReadTimeoutError(self, url, "Read timed out. (read timeout=%s)" % timeout_value)
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='10.168.157.75', port=9200): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\log\views.py", line 14, in luceneQuery
+    result = es.indexQuery('*')
+  File "D:\project\opsweb\utils\ElsInvok.py", line 16, in indexQuery
+    return self.__ElscApi.indices.get(index=index)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\client\utils.py", line 73, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\client\indices.py", line 135, in get
+    feature), params=params)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\transport.py", line 312, in perform_request
+    status, headers, data = connection.perform_request(method, url, params, body, ignore=ignore, timeout=timeout)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 122, in perform_request
+    raise ConnectionTimeout('TIMEOUT', str(e), e)
+elasticsearch.exceptions.ConnectionTimeout: ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='10.168.157.75', port=9200): Read timed out. (read timeout=30))
+2017-08-09 16:14:48,284 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /log/luceneCustomQuery/ HTTP/1.1" 500 156840
+2017-08-09 16:33:58,539 ERROR    D:\project\opsweb\api\views.py[line:247] 通过scrollId获取信息失败TransportError(404, 'search_phase_execution_exception', 'No search context found for id [560765]')
+2017-08-09 16:40:52,863 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 16:40:52,865 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:00:22,398 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /api/customQuery/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\api\views.py", line 511, in customQuery
+    result=es.logReq(parm,postData['indexName'],'20','5m')
+  File "D:\project\opsweb\utils\ElsInvok.py", line 12, in logReq
+    return self.__ElscApi.search(index=index, body=parm,scroll=scrollTime,size=size)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\client\utils.py", line 73, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\client\__init__.py", line 623, in search
+    doc_type, '_search'), params=params, body=body)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\transport.py", line 312, in perform_request
+    status, headers, data = connection.perform_request(method, url, params, body, ignore=ignore, timeout=timeout)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 128, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "C:\Program Files\Python36\lib\site-packages\elasticsearch\connection\base.py", line 125, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(status_code, error_message, additional_info)
+elasticsearch.exceptions.RequestError: TransportError(400, 'illegal_argument_exception', 'Trying to query 1391 shards, which is over the limit of 1000. This limit exists because querying many shards at the same time can make the job of the coordinating node very CPU and/or memory intensive. It is usually a better idea to have a smaller number of larger shards. Update [action.search.shard_count.limit] to a greater value if you really want to query that many shards at the same time.')
+2017-08-09 17:00:22,436 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/customQuery/ HTTP/1.1" 500 16416
+2017-08-09 17:30:02,905 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:30:02,906 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:32:42,209 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:32:42,210 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:34:40,348 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:34:40,349 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:35:11,046 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:35:11,048 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:35:23,948 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:35:23,950 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:36:33,050 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:36:33,051 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:37:12,764 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:37:12,765 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:43:03,932 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:43:03,934 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:43:50,236 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:43:50,237 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-09 17:50:00,305 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-09 17:50:00,307 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:42:50,082 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:42:50,084 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:45:03,625 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:45:03,626 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:46:50,282 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:46:50,284 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:52:06,188 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:52:06,189 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:53:56,090 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:53:56,091 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:54:16,688 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:54:16,689 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:54:33,075 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:54:33,077 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:54:47,761 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:54:47,762 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:54:54,176 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:54:54,177 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:54:59,882 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:54:59,884 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:55:06,815 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:55:06,817 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 09:57:37,638 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 09:57:37,640 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:12:22,146 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:12:22,146 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:13:46,737 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:13:46,737 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:14:44,485 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:14:44,486 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:15:15,195 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:15:15,196 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:15:44,436 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:15:44,437 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:16:17,114 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:16:17,114 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:17:00,049 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:17:00,049 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:17:33,502 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:17:33,502 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:17:58,848 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:17:58,850 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 10:20:58,565 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 10:20:58,565 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 11:42:29,414 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 11:42:29,415 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 11:42:48,565 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 11:42:48,566 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 11:48:19,839 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 11:48:19,841 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 11:57:33,047 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 11:57:33,048 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 14:18:39,877 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 14:18:39,878 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 14:19:08,846 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 14:19:08,846 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 14:35:38,813 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 14:35:38,813 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 14:38:32,876 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 14:38:32,876 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 14:42:55,981 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 14:42:55,983 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 14:48:23,941 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 14:48:23,942 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 15:04:55,934 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 15:04:55,936 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 15:22:20,089 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-10 15:22:20,091 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-10 15:22:46,251 ERROR    D:\project\opsweb\api\views.py[line:523] 自定义日志获取失败TransportError(400, 'search_phase_execution_exception', 'Failed to parse query [source:/var/log/message]')
+2017-08-10 15:32:21,218 ERROR    D:\project\opsweb\api\views.py[line:524] 自定义日志获取失败TransportError(400, 'search_phase_execution_exception', 'Failed to parse query [source:/var/log/message]')
+2017-08-10 16:36:45,234 ERROR    D:\project\opsweb\api\views.py[line:95] 字段历史获取失败<urlopen error [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。>
+2017-08-10 16:36:45,245 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py[line:124] Internal Server Error: /api/zabbix_history_get/
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\project\opsweb\api\views.py", line 97, in zabbix_history_get
+    for item in result:
+UnboundLocalError: local variable 'result' referenced before assignment
+2017-08-10 16:36:45,299 ERROR    C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "POST /api/zabbix_history_get/ HTTP/1.1" 500 14541
+2017-08-11 17:54:04,276 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-11 17:54:04,302 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-11 18:08:25,285 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-11 18:08:25,286 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
+2017-08-15 10:56:05,914 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\handlers\base.py[line:152] Not Found: /favicon.ico
+2017-08-15 10:56:05,926 WARNING  C:\Program Files\Python36\lib\site-packages\django\core\servers\basehttp.py[line:131] "GET /favicon.ico HTTP/1.1" 404 0
