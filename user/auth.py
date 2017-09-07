@@ -1,29 +1,29 @@
 from django.utils.deprecation import MiddlewareMixin
 from django.http import HttpResponse,HttpResponseRedirect
-from utils.jurisdiction import UserAuth
 from django.core.urlresolvers import reverse
 from user.models import User
 class UserAuthMiddleware(MiddlewareMixin):
 #url权限配置
     __auth_url_config={
-        '/':'show',
-        '/home/':'show',
-        '/user/':'none',
-        '/user/Login/':'none',
-        '/user/signOut/':'none',
-        '/monitor/':'show',
-        '/monitor/host_detailed/':'show',
-        '/monitor/config/':'config',
-        '/api/zabbix_history_get/':'show',
-        '/api/TomcatThriftLog/':'show',
-        '/monitor/Latest_Data/':'show',
-        '/monitor/history/':'show',
-        '/log/TomcatThrift/':'show',
-        '/api/logScroll/':'show',
-        '/log/nginx/':'show',
-        '/api/nginxLog/':'show',
-        '/log/luceneCustomQuery/':'show',
-        '/api/customQuery/':'show',
+        '/':2,
+        '/home/':2,
+        '/user/':0,
+        '/user/Login/':0,
+        '/user/signOut/':1,
+        '/monitor/':3,
+        '/monitor/host_detailed/':3,
+        '/monitor/config/':3,
+        '/api/zabbix_history_get/':3,
+        '/monitor/Latest_Data/':3,
+        '/monitor/history/':3,
+        '/api/TomcatThriftLog/': 2,
+        '/log/TomcatThrift/':2,
+        '/api/logScroll/':2,
+        '/log/nginx/':2,
+        '/api/nginxLog/':2,
+        '/log/luceneCustomQuery/':2,
+        '/api/customQuery/':2,
+        '/deploy/':4
     }
     def __init__(self,get_response):
         self.get_response = get_response
@@ -32,12 +32,14 @@ class UserAuthMiddleware(MiddlewareMixin):
         if not request.path in self.__auth_url_config.keys():
             response = HttpResponse(status=404)
 #判断是否为不需要验证的url
-        elif not self.__auth_url_config[request.path] == 'none':
+        elif not self.__auth_url_config[request.path] == 0:
+            #判断此用户是否登录
             try:
                 user=request.session['user']
-                if UserAuth(user,self.__auth_url_config[request.path]).GetValue():
+                level=User.objects.filter(user=user).values('level').first()['level']
+                if level>=self.__auth_url_config[request.path]:
 #附加用户权限到session
-                    request.session['jurisdiction'] = User.objects.filter(user=user).values('is_admin', 'is_config', 'is_show', 'is_up').first()
+                    request.session['level'] = level
                     response = self.get_response(request)
                 else:
                     response = HttpResponse(status=403)

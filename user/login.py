@@ -13,7 +13,7 @@ def login_post(request):
             else:
                 request.session.set_expiry(1209600);
             request.session['user'] = request.POST['user']
-            return   HttpResponseRedirect(reverse('MonitorIndex'))
+            return  HttpResponseRedirect(reverse('TomcatThriftLog'))
         else:
             firstmessage = form.errors.as_data()
             return render(request,'user/index.html',{'error':firstmessage['user'][0].messages[0]})

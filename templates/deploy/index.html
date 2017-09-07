@@ -1,0 +1,66 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'deploy/css/public.css' %}">
+    <link rel="stylesheet" href="{% static 'deploy/css/index.css' %}">
+    <script src="{% static 'deploy/js/index.js' %}"></script>
+    <div class="page_container">
+        <div class="page_title">主机概览</div>
+        <div class="page_hr"></div>
+        <div class="searchBox">
+            <form id='hostSearch' class="fromStyle">
+                主机名 <input type="text" class="inputStyle textStyle marginRight">
+                IP地址 <input type="text" class="inputStyle textStyle marginRight">
+                salt绑定 <select class="inputStyle selectStyle marginRight">
+                            <option value="3">全部</option>
+                            <option value="2">待绑定</option>
+                            <option value="1">已绑定</option>
+                            <option value="0">未绑定</option>
+                         </select>
+                salt状态 <select class="inputStyle selectStyle">
+                            <option value="2">全部</option>
+                            <option value="1">正常</option>
+                            <option value="0">异常</option>
+                        </select>
+            </form>
+            <div class="searchBoxHr"></div>
+             <div class="buttonCont">
+                <div class="SearchButton ButtonStyle" id="searchButton" onclick="searchSubmit()">搜索</div>
+                 <div class="ResetButton ButtonStyle">重置</div>
+             </div>
+        </div>
+        <div class="tableDiv">
+            <table class="viewTable">
+                <tr>
+                    <th>主机名</th>
+                    <th>IP地址</th>
+                    <th>salt是否绑定</th>
+                    <th>salt状态</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>dsadasdasdasdsadasdasdsadasd</td>
+                    <td>255.255.255.255</td>
+                    <td>未绑定</td>
+                    <td class="errorText"><span class="errorStatus"></span>异常</td>
+                    <td>mdzz</td>
+                </tr>
+                <tr>
+                    <td>dsadasdasdasdsadasdasdsadasd</td>
+                    <td>255.255.255.255</td>
+                    <td>未绑定</td>
+                    <td class="normalText"><span class="normalStatus"></span>正常</td>
+                    <td>mdzz</td>
+                </tr>
+                <tr>
+                    <td>dsadasdasdasdsadasdasdsadasd</td>
+                    <td>255.255.255.255</td>
+                    <td>待绑定</td>
+                    <td class="normalText"><span class="normalStatus"></span>正常</td>
+                    <td>mdzz</td>
+                </tr>
+            </table>
+        </div>
+{#        <div class="loader"></div>#}
+    </div>
+{% endblock %}

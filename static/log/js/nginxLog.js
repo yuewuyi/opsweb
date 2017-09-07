@@ -75,6 +75,7 @@ function searchNginxLog() {
     if(interval<1){
         alert('时间间隔太短')
     }else {
+        loading('add')
         sessionStorage.interval=interval
         nginxGraphs(parm)
         addPoint(parm)
@@ -87,9 +88,9 @@ function graphs_size() {
 }
 function nginxGraphs(parm) {
     parm['action']='date'
-
     $.when(req_ajax("/api/nginxLog/",parm,'graphLogData'))
         .done(function () {
+             loading('remove')
              $('#CountNum').html('总共 '+graphLogData['totalCount']+'条')
              sessionStorage.scroll=1
              sessionStorage.scrollId=graphLogData['ScrollId']
@@ -176,6 +177,10 @@ function nginxGraphs(parm) {
         }]
     });
         })
+        .fail(function () {
+            loading('remove')
+            alert('nginx日志获取失败')
+        })
 }
 function addPoint(parm) {
     parm['action']='map'
@@ -261,7 +266,7 @@ function ShowDetailed(obj){
     }
 }
 $(document).ready(function () {
-    date_select('#nginxLogDate')
+    log_date_select('#nginxLogDate')
     map = new AMap.Map('map', {
         resizeEnable: true,
         zoom:11,

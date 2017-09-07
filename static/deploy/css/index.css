@@ -1,0 +1,42 @@
+.viewTable tr th:nth-child(1),td:nth-child(1){
+    width: 20%;
+}
+.viewTable tr th:nth-child(2),td:nth-child(2){
+    width: 20%;
+}
+.viewTable tr th:nth-child(3),td:nth-child(3){
+    width: 10%;
+}
+.viewTable tr th:nth-child(4),td:nth-child(4){
+    width: 10%;
+}
+.viewTable tr th:nth-child(5),td:nth-child(5){
+    width: 10%;
+    border-right: 0px;
+}
+.normalText{
+    color: #5cb85c;
+}
+.errorText{
+    color: #FD0202;
+}
+.normalStatus{
+    background-color: #5cb85c;
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+    border-radius: 6px;
+    display: inline-block;
+}
+.errorStatus{
+    background-color: #FD0202;
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+
+
+

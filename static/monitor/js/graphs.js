@@ -177,24 +177,37 @@ function memory_graphs(id,alivable_data,total_data,units) {
 //请求CPU数据并赋值给图形
 function cpu_data_req() {
     //使用链式调用
+    $("#graphs_select").attr("disabled","disabled");
     var parm=get_host_key('cpu_util')
     $.when(req_ajax('/api/zabbix_history_get/',parm,'req_data'))
         .done(function () {
-          for (var key in req_data){
-              cpu_graphar("#hostid_"+key,req_data[key]['data'],parm['units'])
-          }
+             $("#graphs_select").removeAttr("disabled");
+             for (var key in req_data){
+                cpu_graphar("#hostid_"+key,req_data[key]['data'],parm['units'])
+             }
+        })
+         .fail(function () {
+                $("#graphs_select").removeAttr("disabled");
+                alert('cpu数据获取失败')
         })
 }
 //请求内存数据
 function memory_data_req() {
     var alivable_parm=get_host_key('alivable_mem')
     var total_parm=get_host_key('total_mem')
+    $("#graphs_select").attr("disabled","disabled");
     $.when(req_ajax('/api/zabbix_history_get/',alivable_parm,'req_data1'),req_ajax('/api/zabbix_history_get/',total_parm,'req_data2'))
         .done(function () {
+                $("#graphs_select").removeAttr("disabled");
                 for (var key in req_data){
                     memory_graphs("#hostid_"+key,req_data1[key]['data'],req_data2[key]['data'][req_data2[key]['data'].length-1][1],alivable_parm['units'])
                 }
         })
+        .fail(function () {
+                $("#graphs_select").removeAttr("disabled");
+                alert('内存数据获取失败')
+        })
+
 }
 function cpu_memory_change(value) {
     if(value=="cpu"){

@@ -4,6 +4,7 @@
 function TomcatThriftLogGraph(parm){
     $.when(req_ajax('/api/TomcatThriftLog/',parm,'GraphData'))
         .done(function () {
+             loading('remove')
              $('#CountNum').html('总共 '+GraphData['TotalCount']+'条')
              sessionStorage.scrollId=GraphData['ScrollId']
              sessionStorage.scroll=1
@@ -94,6 +95,10 @@ function TomcatThriftLogGraph(parm){
             $("#LogTable tr:not(:nth-child(1))").remove()
             AddTable(GraphData['LogMessage'])
         })
+        .fail(function () {
+            alert('日志获取失败')
+            loading('remove')
+        })
 }
 function graphs_size() {
      $('#TomcatThriftLogGraph').highcharts().reflow()
@@ -156,13 +161,14 @@ function searchTomcatLog() {
     if(interval<1){
         alert('时间间隔太短')
     }else {
+        loading('add')
         sessionStorage.interval=interval
         TomcatThriftLogGraph(parm)
     }
 
 }
 $(document).ready(function () {
-    date_select('#TomcatThriftDate')
+    log_date_select('#TomcatThriftDate')
     searchTomcatLog('')
     $("#appLog").scroll(function() {
         var scrollTop = $(this).scrollTop()

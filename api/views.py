@@ -422,7 +422,6 @@ def nginxLog(request):
             parm['aggs']=aggsCityIP
         es = ElasticSearch()
         parm['query'] = query
-        print(json.dumps(parm))
         respon = {'message': '', 'maxCount': 0, 'norReq': [], 'ErrReq': [], 'totalCount': '', 'date': []}
         try:
             result = es.logReq(parm, 'filebeat-nginx_access-*', size, scrollTime)
@@ -519,7 +518,6 @@ def customQuery(request):
                     LogCount['date'].append(item['key'])
                     LogCount['docNum'].append(item['doc_count'])
         except Exception as e:
-            print(json.dumps(parm))
             LogCount['code'] = -1
             LogCount['message'] = str(e)
             logger.error("自定义日志获取失败" + str(e))

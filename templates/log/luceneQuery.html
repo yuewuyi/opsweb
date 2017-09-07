@@ -2,9 +2,11 @@
 {% load staticfiles %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'log/css/luceneCustom.css' %}">
+    <link rel="stylesheet" href="{% static 'log/css/public.css' %}">
     <script src="{% static 'log/js/luceneQuery.js' %}"></script>
+    <script src="{% static 'log/js/public.js' %}"></script>
 <div class="page_container" id="customQuery" data-index="{{ indexList }}">
-    <div class="page_title">Toncat、Thrift日志</div>
+    <div class="page_title"> lucene自定义查询</div>
     <div class="page_hr"></div>
     <div class="lunceneCustomSearchBox">
          <div class="InputBox">
@@ -13,7 +15,7 @@
         </div>
         <div class="SearchBoxHr"></div>
         <div class="ButtonBox">
-            <div class="SearchButton ButtonStyle" onclick="searchLog()">搜索</div>
+            <div id="search" class="SearchButton ButtonStyle" onclick="searchLog()"><span>搜索</span></div>
             <div class="ResetButton ButtonStyle" onclick="window.location.href='{% url 'luceneQueryPage' %}'">重置</div>
         </div>
     </div>

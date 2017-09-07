@@ -31,6 +31,7 @@
 {#bootstrap面板#}
             <div id="accordion">
 {#面板一组#}
+                {% if request.session.level >= 3 %}
                 <div class="panel pan_group" class="show">
 {#面板父菜单，内部span依次为遮罩层，图标#}
                     <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#montior">
@@ -39,36 +40,44 @@
 {#面板子菜单，div内部第一行为显示父菜单名，后面则为子菜单，结构和父菜单的相似#}
                     <div id="montior" class="panel-collapse collapse">
                         <span  class="show_title" onMouseOver="mask('over','mon_mask')" onmouseout="mask('out','mon_mask')"><span class="show_mask"></span>监 控</span>
-                        {% if request.session.jurisdiction.is_show %}
+
                             <span class="link_cont" onclick="window.location.href='{% url 'MonitorIndex' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机一览</span></span>
                             <span class="link_cont" onclick="window.location.href='{% url 'LatestData' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 最新监控数据</span></span>
-                        {% endif %}
-                        {% if request.session.jurisdiction.is_config %}
-                            <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
-                        {% endif %}
+
+{#                        {% if request.session.jurisdiction.is_config %}#}
+{#                            <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>#}
+{#                        {% endif %}#}
                     </div>
                 </div>
+                {% endif %}
 {#面板二组#}
+                {% if request.session.level >= 2 %}
                 <div class="panel pan_group">
                     <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#log">
                         <span class="title_mask" id="log_mask"></span><span class="glyphicon glyphicon-book icon_style"> 日  志</span>
                     </div>
                     <div id="log" class="panel-collapse collapse">
                         <span  class="show_title" onMouseOver="mask('over','log_mask')" onmouseout="mask('out','log_mask')"><span class="show_mask"></span>日 志</span>
-                        {% if request.session.jurisdiction.is_show %}
-                            <span class="link_cont" onclick="window.location.href='{% url 'TomcatThriftLog' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> tomcat thrift日志</span></span>
-                        {% endif %}
-                        {% if request.session.jurisdiction.is_show %}
-                            <span class="link_cont" onclick="window.location.href='{% url 'nginxLogPage' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> nginx日志</span></span>
-                        {% endif %}
-                        {% if request.session.jurisdiction.is_show %}
-                            <span class="link_cont" onclick="window.location.href='{% url 'luceneQueryPage' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> lucene自定义查询</span></span>
-                        {% endif %}
-                        {% if request.session.jurisdiction.is_config %}
-                            <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>
-                        {% endif %}
+                        <span class="link_cont" onclick="window.location.href='{% url 'TomcatThriftLog' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> tomcat thrift日志</span></span>
+                        <span class="link_cont" onclick="window.location.href='{% url 'nginxLogPage' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> nginx日志</span></span>
+                        <span class="link_cont" onclick="window.location.href='{% url 'luceneQueryPage' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> lucene自定义查询</span></span>
+{#                        {% if request.session.jurisdiction.is_config %}#}
+{#                            <span class="link_cont"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 配  置</span></span>#}
+{#                        {% endif %}#}
                     </div>
                 </div>
+                {% endif %}
+                {% if request.session.level >= 4 %}
+                 <div class="panel pan_group">
+                    <div class="link_title" data-toggle="collapse" data-parent="#accordion" href="#deploy">
+                        <span class="title_mask" id="deploy_mask"></span><span class="glyphicon glyphicon-th-large icon_style"> 应用部署</span>
+                    </div>
+                    <div id="deploy" class="panel-collapse collapse">
+                        <span  class="show_title" onMouseOver="mask('over','deploy_mask')" onmouseout="mask('out','deploy_mask')"><span class="show_mask"></span>应用部署</span>
+                            <span class="link_cont" onclick="window.location.href='{% url 'deployIndex' %}'"><span class="title_mask"></span><span class="glyphicon glyphicon-star-empty icon_style"> 主机概览</span></span>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
 {#右边主体#}

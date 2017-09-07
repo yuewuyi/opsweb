@@ -1,7 +1,9 @@
 {% extends 'home/index.html' %}
 {% load staticfiles %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'log/css/public.css' %}">
     <link rel="stylesheet" href="{% static 'log/css/TomcatThrift.css' %}">
+    <script src="{% static 'log/js/public.js' %}"></script>
     <script src="{% static 'log/js/TomcatThriftLog.js' %}"></script>
 <div class="page_container" id="appLog">
     <div class="page_title">Toncat、Thrift日志</div>
@@ -25,7 +27,7 @@
         </div>
         <div class="SearchBoxHr"></div>
         <div class="ButtonBox">
-            <div class="SearchButton ButtonStyle" onclick="searchTomcatLog()">搜索</div>
+            <div class="SearchButton ButtonStyle" id='search' onclick="searchTomcatLog()"><span>搜索</span></div>
             <div class="ResetButton ButtonStyle" onclick="window.location.href='{% url 'TomcatThriftLog' %}'">重置</div>
         </div>
     </div>

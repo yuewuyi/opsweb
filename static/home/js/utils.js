@@ -55,6 +55,43 @@ function date_select(id) {
                                 }
                            });
 }
+function log_date_select(id) {
+        $(id+' span').html(moment().subtract(1,'hours').format('YYYY-MM-DD HH:mm:ss') + ' -- ' + moment().format('YYYY-MM-DD HH:mm:ss'));
+                    $(id).daterangepicker(
+                            {
+                                maxDate : moment(), //最大时间
+                                showDropdowns : true,
+                                timePicker : true, //是否显示小时和分钟
+                                timePickerIncrement : 1, //时间的增量，单位为分钟
+                                timePicker24Hour : true, //使用24小时制来显示时间
+                                dateLimit:{
+                                  day:7
+                                },
+                                ranges : {
+                                    '最近1小时': [moment().subtract(1,'hours'), moment()],
+                                    '最近2小时': [moment().subtract(2,'hours'), moment()],
+                                    '最近3小时': [moment().subtract(3,'hours'), moment()],
+                                    '今日': [moment().startOf('day'), moment()],
+                                    '昨日': [moment().subtract(1,'days').startOf('day'), moment().subtract(1,'days').endOf('day')],
+                                    '最近7日': [moment().subtract(7,'days'), moment()]
+                                },
+                                opens : 'left', //日期选择框的弹出位置
+                                locale : {
+                                    format: "YYYY-MM-DD HH:mm:ss",
+                                    applyLabel : '确定',
+                                    cancelLabel : '取消',
+                                    fromLabel : '起始时间',
+                                    toLabel : '结束时间',
+                                    customRangeLabel : '自定义',
+                                    daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+                                    monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                                            '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+                                    firstDay : 1
+                                }
+                            }, function(start, end) {//格式化日期显示框
+                                $(id+' span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' -- ' + end.format('YYYY-MM-DD HH:mm:ss'));
+                           });
+}
 //获取cookie
 var docCookies = {
   getItem: function (sKey) {
@@ -140,7 +177,7 @@ function req_ajax(url,data,var_name) {
             dtd.resolve()
         })
         .fail(function () {
-            alert('数据获取失败')
+            dtd.reject()
         })
     return dtd.promise();
 }

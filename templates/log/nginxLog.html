@@ -5,9 +5,11 @@
 <HTML>
 <HEAD>
     <link rel="stylesheet" href="{% static 'log/css/nginxLog.css' %}">
+    <link rel="stylesheet" href="{% static 'log/css/public.css' %}">
     <script src="http://webapi.amap.com/maps?v=1.3&key=d1808236607dc77b1171b39494a3ae82"></script>
     <script src="{% static 'log/js/geohash.js' %}"></script>
     <script src="{% static 'log/js/nginxLog.js' %}"></script>
+    <script src="{% static 'log/js/public.js' %}"></script>
 </HEAD>
 <BODY>
     <div class="page_container" id="nginxLog">
@@ -34,7 +36,7 @@
             </div>
             <div class="SearchBoxHr"></div>
             <div class="ButtonBox">
-                <div class="SearchButton ButtonStyle" onclick="searchNginxLog()">搜索</div>
+                <div id="search" class="SearchButton ButtonStyle" onclick="searchNginxLog()"><span>搜索</span></div>
                 <div class="ResetButton ButtonStyle" onclick="window.location.href='{% url 'nginxLogPage' %}'">重置</div>
             </div>
         </div>

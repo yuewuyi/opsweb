@@ -83,17 +83,24 @@ function searchLog() {
         alert('时间间隔太短')
     }else {
          sessionStorage.interval=interval
+         loading('add')
          $.when(req_ajax('/api/customQuery/',parm,'customData'))
         .done(function () {
             if(customData['code']==-1){
                 console.log(customData['message'])
                 $('#customLogGraph').html(customData['message'])
-                 $('#CountNum').html('总共 0 条')
+                $('#CountNum').html('总共 0 条')
+                loading('remove')
             }else {
                 graphsCustom(customData)
+                loading('remove')
             }
 
         })
+             .fail(function () {
+                 alert('日志数据获取失败')
+                 loading('remove')
+             })
     }
 
 }
