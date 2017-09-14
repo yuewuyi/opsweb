@@ -3,10 +3,10 @@ from utils.customField import UnixTimestampField
 # Create your models here.
 #host表
 class host(models.Model):
-    hostName=models.CharField(null=False,max_length=50)
-    ip=models.GenericIPAddressField(null=False)
-    isSaltStack=models.BooleanField(null=False,default=0,max_length=1)
-    status=models.BooleanField(null=False,default=0,max_length=1)
+    hostName=models.CharField(null=False,max_length=50,unique=True)
+    ip=models.GenericIPAddressField(null=False,unique=True)
+    isSaltStack=models.SmallIntegerField(null=False,default=0)
+    status=models.SmallIntegerField(null=False,default=0)
     class Meta:
         db_table = 'Host'
 class jids(models.Model):

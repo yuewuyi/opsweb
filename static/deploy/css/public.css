@@ -46,7 +46,7 @@
 .ButtonStyle{
     height: 19px;
     width: 45%;
-    border-radius: 2px;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
     text-align: center;
@@ -60,6 +60,16 @@
     background-color: #dd4b39;
     margin-left: 10%;
 }
+.addHostButton{
+    background-color: #367fa9;
+    float: right;
+    line-height: 25px;
+    height: 25px;
+    width: 65px;
+    margin: 4px 8px 4px;
+    font-size: 12px;
+    border-radius: 2px;
+}
 .viewTable{
     width: 100%;
 }
@@ -68,5 +78,39 @@
     border: 1px solid #dfe4e7;
     border-bottom: 2px solid #dfe4e7;
 }
-
-
+.modal_container{
+    width: 20%;
+    height: 200px;
+    margin: 100px auto;
+}
+.radius{
+    border-radius: 3px;
+}
+.modal_header{
+    width: 100%;
+    font-weight: bold;
+    font-family: 楷体;
+    margin: 2px auto;
+    text-indent: 2px;
+}
+.modal_body{
+    width: 80%;
+    margin: 8px auto;
+}
+.modalTextStyle{
+    height: 20px;
+    float: right;
+}
+.modal_footer{
+    width: 40%;
+    height: 20px;
+    margin: 5px auto;
+}
+.buttonClickDisable{
+    pointer-events: none;
+}
+#error_txt{
+    text-align: center;
+    color: red;
+    font-size: 12px;
+}

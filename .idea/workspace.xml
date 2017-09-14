@@ -2,35 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03dacc5e-dbe4-4e97-a552-eb03f551bd73" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deploy/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/deploy/css/index.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/deploy/css/public.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/deploy/js/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/log/css/public.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/log/js/public.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/customField.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/jurisdiction.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/views.py" afterPath="$PROJECT_DIR$/api/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deploy/models.py" afterPath="$PROJECT_DIR$/deploy/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deploy/views.py" afterPath="$PROJECT_DIR$/deploy/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoLog/django.log" afterPath="$PROJECT_DIR$/djangoLog/django.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opsweb/settings.py" afterPath="$PROJECT_DIR$/opsweb/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opsweb/urls.py" afterPath="$PROJECT_DIR$/opsweb/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/home/css/index.css" afterPath="$PROJECT_DIR$/static/home/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/home/js/utils.js" afterPath="$PROJECT_DIR$/static/home/js/utils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/log/js/TomcatThriftLog.js" afterPath="$PROJECT_DIR$/static/log/js/TomcatThriftLog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/log/js/luceneQuery.js" afterPath="$PROJECT_DIR$/static/log/js/luceneQuery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/log/js/nginxLog.js" afterPath="$PROJECT_DIR$/static/log/js/nginxLog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/monitor/css/index.css" afterPath="$PROJECT_DIR$/static/monitor/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/monitor/js/graphs.js" afterPath="$PROJECT_DIR$/static/monitor/js/graphs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/index.html" afterPath="$PROJECT_DIR$/templates/home/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/log/TomcatThriftLog.html" afterPath="$PROJECT_DIR$/templates/log/TomcatThriftLog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/log/luceneQuery.html" afterPath="$PROJECT_DIR$/templates/log/luceneQuery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/log/nginxLog.html" afterPath="$PROJECT_DIR$/templates/log/nginxLog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/auth.py" afterPath="$PROJECT_DIR$/user/auth.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/login.py" afterPath="$PROJECT_DIR$/user/login.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/models.py" afterPath="$PROJECT_DIR$/user/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/views.py" afterPath="$PROJECT_DIR$/monitor/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/deploy/css/index.css" afterPath="$PROJECT_DIR$/static/deploy/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/deploy/css/public.css" afterPath="$PROJECT_DIR$/static/deploy/css/public.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/deploy/js/index.js" afterPath="$PROJECT_DIR$/static/deploy/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/monitor/js/monitor.js" afterPath="$PROJECT_DIR$/static/monitor/js/monitor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/deploy/index.html" afterPath="$PROJECT_DIR$/templates/deploy/index.html" />
     </list>
     <ignored path="opsweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,41 +42,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/home/js/utils.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/deploy/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+            <state relative-caret-position="185">
+              <caret line="74" column="48" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TomcatThriftLog.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/log/js/TomcatThriftLog.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/deploy/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="170" column="4" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="19" />
+            <state relative-caret-position="266">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginxLog.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/log/js/nginxLog.js">
+      <file leaf-file-name="public.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/deploy/css/public.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="268" column="19" selection-start-line="268" selection-start-column="19" selection-end-line="268" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="luceneQuery.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/log/js/luceneQuery.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="190" column="15" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="15" />
+            <state relative-caret-position="337">
+              <caret line="114" column="19" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -118,13 +90,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/monitor/urls.py" />
-        <option value="$PROJECT_DIR$/opsweb/wsgi.ini.py" />
         <option value="$PROJECT_DIR$/opsweb/wsgi.ini" />
         <option value="$PROJECT_DIR$/templates/user/index.html" />
         <option value="$PROJECT_DIR$/static/log/css/nginxLog.css" />
-        <option value="$PROJECT_DIR$/monitor/views.py" />
-        <option value="$PROJECT_DIR$/templates/monitor/index.html" />
         <option value="$PROJECT_DIR$/log/urls.py" />
         <option value="$PROJECT_DIR$/utils/ElsInvok.py" />
         <option value="$PROJECT_DIR$/log/views.py" />
@@ -133,24 +101,16 @@
         <option value="$PROJECT_DIR$/static/user/css/login.css" />
         <option value="$PROJECT_DIR$/utils/unixTimestamp.py" />
         <option value="$PROJECT_DIR$/utils/customField.py" />
-        <option value="$PROJECT_DIR$/deploy/models.py" />
         <option value="$PROJECT_DIR$/opsweb/settings.py" />
         <option value="$PROJECT_DIR$/deploy/urls.py" />
-        <option value="$PROJECT_DIR$/deploy/views.py" />
         <option value="$PROJECT_DIR$/home/views.py" />
         <option value="$PROJECT_DIR$/static/home/css/index.css" />
-        <option value="$PROJECT_DIR$/api/views.py" />
         <option value="$PROJECT_DIR$/static/deploy/public.css" />
-        <option value="$PROJECT_DIR$/static/deploy/css/public.css" />
         <option value="$PROJECT_DIR$/zys.py" />
-        <option value="$PROJECT_DIR$/static/deploy/js/index.js" />
-        <option value="$PROJECT_DIR$/static/deploy/css/index.css" />
-        <option value="$PROJECT_DIR$/templates/deploy/index.html" />
         <option value="$PROJECT_DIR$/templates/log/TomcatThriftLog.html" />
         <option value="$PROJECT_DIR$/static/monitor/css/index.css" />
         <option value="$PROJECT_DIR$/static/monitor/js/graphs.js" />
         <option value="$PROJECT_DIR$/static/log/css/TomcatThrift.css" />
-        <option value="$PROJECT_DIR$/static/log/css/public.css" />
         <option value="$PROJECT_DIR$/templates/log/nginxLog.html" />
         <option value="$PROJECT_DIR$/templates/log/luceneQuery.html" />
         <option value="$PROJECT_DIR$/static/log/js/public.js" />
@@ -169,6 +129,18 @@
         <option value="$PROJECT_DIR$/static/log/js/TomcatThriftLog.js" />
         <option value="$PROJECT_DIR$/static/log/js/nginxLog.js" />
         <option value="$PROJECT_DIR$/static/log/js/luceneQuery.js" />
+        <option value="$PROJECT_DIR$/static/deploy/css/index.css" />
+        <option value="$PROJECT_DIR$/monitor/views.py" />
+        <option value="$PROJECT_DIR$/api/views.py" />
+        <option value="$PROJECT_DIR$/deploy/models.py" />
+        <option value="$PROJECT_DIR$/static/monitor/js/history.js" />
+        <option value="$PROJECT_DIR$/static/monitor/js/monitor.js" />
+        <option value="$PROJECT_DIR$/templates/monitor/index.html" />
+        <option value="$PROJECT_DIR$/deploy/views.py" />
+        <option value="$PROJECT_DIR$/static/log/css/public.css" />
+        <option value="$PROJECT_DIR$/static/deploy/css/public.css" />
+        <option value="$PROJECT_DIR$/templates/deploy/index.html" />
+        <option value="$PROJECT_DIR$/static/deploy/js/index.js" />
       </list>
     </option>
   </component>
@@ -179,10 +151,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1378" />
-    <option name="height" value="744" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -209,8 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -260,10 +230,6 @@
               <option name="myItemId" value="log" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -282,9 +248,15 @@
               <option name="myItemId" value="log" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -679,10 +651,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24051593" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26226994" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22422259" sideWeight="0.5121396" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -690,7 +662,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34042552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2782324" sideWeight="0.48786038" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17537943" sideWeight="0.48786038" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -741,143 +713,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/monitor/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="77" column="17" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monitor/Latest_Data.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/deploy/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/deploy/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="27" column="99" selection-start-line="27" selection-start-column="99" selection-end-line="27" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/log/css/luceneCustom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-958">
-          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="109" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/log/css/nginxLog.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3667">
-          <caret line="241" column="22" selection-start-line="241" selection-start-column="22" selection-end-line="241" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="85" column="1" selection-start-line="85" selection-start-column="1" selection-end-line="85" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/css/history.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-332">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/js/Latest_Data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/js/host_detailed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3591">
-          <caret line="189" column="34" selection-start-line="189" selection-start-column="34" selection-end-line="189" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monitor/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="31" column="45" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/js/history.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1530">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/js/graphs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="190" column="32" selection-start-line="190" selection-start-column="23" selection-end-line="190" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/log/TomcatThriftLog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/log/css/public.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monitor/js/monitor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/log/css/TomcatThrift.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/log/nginxLog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/log/js/public.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -895,24 +734,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/cs/urls.py" />
     <entry file="file://$PROJECT_DIR$/admin/site/urls.py" />
     <entry file="file://$PROJECT_DIR$/admin/views.py" />
-    <entry file="file://$PROJECT_DIR$/deploy/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/opsweb/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1444">
@@ -925,7 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -933,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,27 +767,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/jurisdiction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1520">
-          <caret line="80" column="18" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/jurisdiction.py" />
     <entry file="file://$PROJECT_DIR$/djangoLog/django.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6308">
           <caret line="332" column="19" selection-start-line="332" selection-start-column="19" selection-end-line="332" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -973,9 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -983,7 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -991,9 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1001,18 +800,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/cs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/cs.py" />
     <entry file="file://$PROJECT_DIR$/home/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -1033,9 +824,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#29#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,7 +839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-348">
           <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1068,7 +854,7 @@
         <state relative-caret-position="260">
           <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
           <folding>
-            <element signature="e#640#680#0" expanded="true" />
+            <element signature="e#640#680#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1078,39 +864,206 @@
         <state relative-caret-position="114">
           <caret line="6" column="19" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="19" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/home/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
+        <state relative-caret-position="1273">
           <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/log/js/nginxLog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5092">
+          <caret line="268" column="19" selection-start-line="268" selection-start-column="19" selection-end-line="268" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/log/js/luceneQuery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="187" column="45" selection-start-line="187" selection-start-column="45" selection-end-line="187" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/migrations/0003_auto_20170908_1158.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="274" column="21" selection-start-line="274" selection-start-column="21" selection-end-line="274" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/monitor/js/Latest_Data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/monitor/js/history.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="106" column="19" selection-start-line="106" selection-start-column="19" selection-end-line="106" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/monitor/js/host_detailed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="189" column="34" selection-start-line="189" selection-start-column="34" selection-end-line="189" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/monitor/js/graphs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="190" column="32" selection-start-line="190" selection-start-column="23" selection-end-line="190" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/monitor/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/monitor/js/monitor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="20" column="57" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/deploy/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/user/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/home/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1077">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/log/js/TomcatThriftLog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="170" column="4" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="19" />
+        <state relative-caret-position="-2275">
+          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/log/js/nginxLog.js">
+    <entry file="file://$PROJECT_DIR$/static/log/js/public.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="268" column="19" selection-start-line="268" selection-start-column="19" selection-end-line="268" selection-end-column="19" />
+        <state relative-caret-position="114">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/log/js/luceneQuery.js">
+    <entry file="file://$PROJECT_DIR$/deploy/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="190" column="15" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="15" />
+        <state relative-caret-position="76">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/log/css/public.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="42" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/deploy/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="74" column="48" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/deploy/css/public.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="114" column="19" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/deploy/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding />
         </state>
       </provider>

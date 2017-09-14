@@ -422,6 +422,7 @@ def nginxLog(request):
             parm['aggs']=aggsCityIP
         es = ElasticSearch()
         parm['query'] = query
+        print(parm)
         respon = {'message': '', 'maxCount': 0, 'norReq': [], 'ErrReq': [], 'totalCount': '', 'date': []}
         try:
             result = es.logReq(parm, 'filebeat-nginx_access-*', size, scrollTime)

@@ -5,7 +5,7 @@
 function monitor_search_form_submit() {
     hostname=$.trim($('#host_name').val())
     ipaddr=$.trim($('#ip_addr').val())
-    url='/monitor/?host_name='+hostname+'&ipaddr='+ipaddr
+    url=window.location.pathname+'?host_name='+hostname+'&ipaddr='+ipaddr
     location.href=encodeURI(url)
 }
 function warning_info_div(action,host) {

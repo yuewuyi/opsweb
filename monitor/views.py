@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from utils.config import app_config
 import re
 import time
-import json
 #监控一览视图
 def index(request):
     conf=app_config()
@@ -25,7 +24,6 @@ def index(request):
         params['search']={}
     zabbix_data_get = zabbix_data()
     result = zabbix_data_get.host_trigger_get(params)
-    # return HttpResponse(json.dumps(result))
     return  render(request, 'monitor/index.html', {"data": result,"zabbix_conf":[conf]})
 def config(request):
     params = {
