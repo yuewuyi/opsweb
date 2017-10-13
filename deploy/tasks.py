@@ -10,9 +10,9 @@ def HostKeyFind():
     keyList=SC.OperKey("key.list","unaccepted")[0]["data"]["return"]["minions_pre"]
     if len(keyList) !=0:
         hostList=list(host.objects.filter(Q(isSaltStack=0)|Q(isSaltStack=2)).values('ip','isSaltStack'))
-        for i in range(len(hostList)):
-            ip=hostList[i]['ip']
-            isSaltStack=hostList[i]['isSaltStack']
+        for item in hostList:
+            ip=item['ip']
+            isSaltStack=item['isSaltStack']
             if ip in keyList and isSaltStack==0:
                 host.objects.filter(ip=ip).update(isSaltStack=2)
             elif ip not in keyList and isSaltStack==2:
@@ -20,8 +20,21 @@ def HostKeyFind():
 @task
 def HostStatusCheck():
     salt=saltClient()
-    MinionStatus=salt.MinionStatus()
-    print(MinionStatus)
+    MinionStatus=salt.MinionStatus()[0]
+    hostList=list(host.objects.filter().values('ip','status'))
+    for item in hostList:
+        ip = item['ip']
+        status = item['status']
+        if ip in MinionStatus["up"] and status==0:
+            host.objects.filter(ip=ip).update(status=1)
+        elif ip in MinionStatus["down"] and status==1:
+            host.objects.filter(ip=ip).update(status=0)
+        elif ip not in MinionStatus["down"] and ip not in MinionStatus["up"] and status==1:
+            host.objects.filter(ip=ip).update(isSaltStack=0,status=0)
+
+
+
+
 
 
 

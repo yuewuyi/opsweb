@@ -13,12 +13,12 @@ def debug_task(self):
 app.conf.beat_schedule = {
     'hostKeyFind-10-seconds': {
         'task': 'deploy.tasks.HostKeyFind',
-        'schedule': 10.0,
+        'schedule': 30.0,
         'args': ()
     },
     'HostStatusCheck-10-seconds': {
         'task': 'deploy.tasks.HostStatusCheck',
-        'schedule': 10.0,
+        'schedule': 30.0,
         'args': ()
     }
 }

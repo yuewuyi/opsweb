@@ -79,16 +79,32 @@ function delHost() {
         })
 
 }
-function bindHost(){
+function bindHost(operType){
     var id=$("#delHostId").html()
     var ip=$("#delHostIp").html()
-    $.when(req_ajax('/api/bindHost/',{ip:ip,id:id},'result'))
+    if(operType=='accept'){
+        successTxt="绑定成功"
+        errorTxt="绑定失败"
+    }else{
+        successTxt="解绑成功"
+        errorTxt="解绑失败"
+    }
+    $.when(req_ajax('/api/bindHost/',{ip:ip,id:id,operType:operType},'result'))
     .done(function(){
-
+        if (result['code']==-1){
+                    $('#delHostErrorTxt').html(result['msg'])
+                    $("#delHostSubmit").removeClass('buttonClickDisable')
+            }else {
+                    $('#delHostErrorTxt').html('')
+                    $('#delHostSuccessTxt').html(successTxt)
+                    var url=window.location.href
+                    window.location.href=url
+            }
     }
     )
     .fail(function(){
-        alert("smart")
+            alert(errorTxt)
+            $("#delHostSubmit").removeClass('buttonClickDisable')
     })
 }
 //当前表格中的值显示在更新主机模态框中
@@ -109,11 +125,18 @@ function showValue(obj,modalName) {
         $('#delShowInfo').html("是否要删除主机:"+hostName)
     }else if (modalName=='bindHost'){
         $('#modal_title').html("绑定主机")
-        $('#delHostSubmit').attr("onclick","bindHost()")
+        $('#delHostSubmit').attr("onclick","bindHost('accept')")
         $('#delHostId').html(id)
         $('#delHostname').html(hostName)
         $('#delHostIp').html(ip)
         $('#delShowInfo').html("是否要将主机"+hostName+"和saltstack绑定")
+    }else if (modalName=='unbound'){
+        $('#modal_title').html("解除绑定")
+        $('#delHostSubmit').attr("onclick","bindHost('delete')")
+        $('#delHostId').html(id)
+        $('#delHostname').html(hostName)
+        $('#delHostIp').html(ip)
+        $('#delShowInfo').html("是否要将主机"+hostName+"和saltstack解除绑定")
     }
 }
 // 验证主机名和ip

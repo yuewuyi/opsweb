@@ -2990,3 +2990,67 @@ Traceback (most recent call last):
     "returned None instead." % (callback.__module__, view_name)
 ValueError: The view api.deploy.bindHost didn't return an HttpResponse object. It returned None instead.
 2017-10-12 17:13:46,780 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/bindHost/ HTTP/1.0" 500 27
+2017-10-13 14:34:23,732 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 14:34:23,734 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 15:39:29,072 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 15:39:29,074 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 15:39:49,255 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 15:39:49,256 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 15:42:27,875 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 15:42:27,877 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:17:07,409 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:17:07,412 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:09,797 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:09,798 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:10,404 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:10,407 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:11,171 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:11,173 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:12,130 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:12,131 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:12,837 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:12,841 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:13,515 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:13,516 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:14,212 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:14,214 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:15,026 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:15,028 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:15,581 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:15,582 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:16,146 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:16,147 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:53,445 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:53,446 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:54,040 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:54,041 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:18:54,583 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:18:54,584 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:19:37,948 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:19:37,949 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:19:38,574 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:19:38,575 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:19:39,090 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:19:39,091 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:19:39,800 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:19:39,802 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:19:40,314 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:19:40,315 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:20:37,812 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:20:37,813 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:20:38,698 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:20:38,698 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:22:59,609 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:22:59,612 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:23:00,221 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:23:00,222 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:23:01,013 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:23:01,014 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:23:01,724 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:23:01,726 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:23:02,382 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:23:02,383 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:23:02,928 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:23:02,929 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-13 17:41:09,104 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-13 17:41:09,106 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0

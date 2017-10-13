@@ -64,7 +64,7 @@
                             {% if item.isSaltStack == 2 %}
                                 <div class="hostModfiyButton bindButton" data-toggle="modal" data-target="#delHost" onclick="showValue(this,'bindHost')">绑定</div>
                             {% elif item.isSaltStack == 1 %}
-                                <div class="hostModfiyButton delBindButton">解绑</div>
+                                <div class="hostModfiyButton delBindButton" data-toggle="modal" data-target="#delHost" onclick="showValue(this,'unbound')">解绑</div>
                             {% endif %}
                     </td>
                 </tr>

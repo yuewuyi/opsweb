@@ -48,12 +48,22 @@ def bindHost(request):
         code=0
         msg=''
         salt=saltClient()
-        result=salt.OperKey('key.accept',postData['ip'])
-        if result[0]["data"]["return"]:
-            host.objects.filter(id=postData['id'],ip=postData['ip']).update(isSaltStack=1)
-        else:
+        if postData["operType"]=='accept':
+            saltFun="key.accept"
+        elif postData["operType"]=='delete':
+            saltFun="key.delete"
+        result=salt.OperKey(saltFun,postData['ip'])
+
+        if result[0]["data"]["return"] and postData["operType"]=='accept':
+            host.objects.filter(id=postData['id'],ip=postData['ip']).update(isSaltStack=1,status=1)
+        elif result[0]["data"]["return"] and postData["operType"]=='accept':
             code = -1
             msg = "绑定失败"
+        if not result[0]["data"]["return"] and postData["operType"]=='delete':
+            host.objects.filter(id=postData['id'],ip=postData['ip']).update(isSaltStack=0,status=0)
+        elif not result[0]["data"]["return"] and postData["operType"]=='delete':
+            code = -1
+            msg = "解绑失败"
         return HttpResponse(json.dumps({'code':code,'msg':msg}),content_type='application/json')
 
     else:
