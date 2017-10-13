@@ -16,7 +16,7 @@ class jids(models.Model):
         db_table='jids'
 class saltReturns(models.Model):
     fun=models.CharField(null=False,max_length=255)
-    jid = models.CharField(unique=True, max_length=191,null=False)
+    jid = models.CharField(max_length=191,null=False)
     minion_id = models.CharField(max_length=255,null=False)
     success=models.CharField(max_length=255)
     full_ret=models.TextField(null=False)

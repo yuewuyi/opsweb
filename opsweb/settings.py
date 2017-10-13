@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CELERY_BROKER_URL = 'redis://:suyue123@172.20.11.94:6379/0'#使用redis作为消息代理
+CELERY_ACCEPT_CONTENT = ['json']# 指定接受的内容类型
+CELERY_RESULT_BACKEND = 'django-db'# 使用数据库存储任务结果
+CELERY_TASK_SERIALIZER = 'json'#读取任务结果一般性能要求不高，所以使用了可读性更好的JSON
+#日志
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -56,7 +60,7 @@ LOGGING = {
 SECRET_KEY = 'xz%=cx+bqt^ux0jj*60w5nyr42i_c3i)#5n3yd_l$o-)3l3-4)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -75,7 +79,8 @@ INSTALLED_APPS = [
     'monitor',
     'api',
     'log',
-    'deploy'
+    'deploy',
+    'django_celery_results'
 ]
 
 MIDDLEWARE = [
@@ -152,7 +157,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -160,9 +165,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+# CELERY_TIMEZONE=TIME_ZONE
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (

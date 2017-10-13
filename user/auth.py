@@ -23,7 +23,11 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/api/nginxLog/':2,
         '/log/luceneCustomQuery/':2,
         '/api/customQuery/':2,
-        '/deploy/':4
+        '/deploy/':4,
+        '/api/addHost/':4,
+        '/api/updateHost/':4,
+        '/api/delHost/':4,
+        '/api/bindHost/':4
     }
     def __init__(self,get_response):
         self.get_response = get_response

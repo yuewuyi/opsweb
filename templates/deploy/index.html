@@ -46,21 +46,49 @@
                     <td>{{ item.id }}</td>
                     <td>{{ item.hostName }}</td>
                     <td>{{ item.ip }}</td>
-                    {% if item.isSaltStack %}
+                    {% if item.isSaltStack == 0 %}
+                        <td>未绑定</td>
+                    {% elif item.isSaltStack == 1 %}
                         <td>已绑定</td>
                     {% else %}
-                        <td>未绑定</td>
+                        <td>待绑定</td>
                     {% endif %}
                     {% if item.status %}
                         <td class="normalText"><span class="normalStatus"></span>正常</td>
                     {% else %}
                         <td class="errorText"><span class="errorStatus"></span>异常</td>
                     {% endif %}
-                    <td>mdzz</td>
+                    <td>
+                            <div class="hostModfiyButton updateButton" data-toggle="modal" data-target="#updateHost" onclick="showValue(this,'update')">更新</div>
+                            <div class="hostModfiyButton delButton" data-toggle="modal" data-target="#delHost" onclick="showValue(this,'del')">删除</div>
+                            {% if item.isSaltStack == 2 %}
+                                <div class="hostModfiyButton bindButton" data-toggle="modal" data-target="#delHost" onclick="showValue(this,'bindHost')">绑定</div>
+                            {% elif item.isSaltStack == 1 %}
+                                <div class="hostModfiyButton delBindButton">解绑</div>
+                            {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
+            {% if 1 < pageDit.pageList|length %}
+            <ul class="pagination  customPagination pagination-sm">
+                {% if pageDit.lt %}
+                <li><a href="javascript:void(0)" onclick="pageTurn({{ pageDit.pageId |add:-1 }})">&laquo;</a></li>
+                {% endif %}
+                {% for i in pageDit.pageList %}
+                    {% if i == pageDit.pageId %}
+                    <li class="active"><a href="javascript:void(0)" onclick="pageTurn({{ i }})">{{ i }}</a></li>
+                    {% else %}
+                    <li><a href="javascript:void(0)" onclick="pageTurn({{ i }})">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if pageDit.nt %}
+                <li><a href="javascript:void(0)" onclick="pageTurn({{ pageDit.pageId|add:1 }})">&raquo;</a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
         </div>
+        <div class="depLoyFooter"></div>
     </div>
 {#    添加主机模态框#}
     <div class="modal" id="addHost">
@@ -68,13 +96,14 @@
             <div class="modal-content radius">
                 <div class="modal_header">
                     添加主机
+                    <span class="success_txt" id="addHostSuccessTxt"></span>
                 </div>
                 <div class="page_hr"></div>
                 <div class="modal_body">
-                    主机名 <input id="addHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname')"><br/>
-                    <span id="error_txt"></span>
+                    主机名 <input id="addHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname','#addHostName','#addHostSubmit','#addHostErrorTxt')"><br/>
+                    <span class="error_txt" id="addHostErrorTxt"></span>
                     <br/>
-                    ip <input id="addIpAddr" type="text" class="modalTextStyle" onblur="textAuth('ip')">
+                    ip <input id="addIpAddr" type="text" class="modalTextStyle" onblur="textAuth('ip','#addIpAddr','#addHostSubmit','#addHostErrorTxt')">
                 </div>
                 <div class="page_hr"></div>
                 <div class="modal_footer">
@@ -83,6 +112,55 @@
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
+{#    更新主机模态框 #}
+    <div class="modal" id="updateHost">
+        <div class="modal_container">
+            <div class="modal-content radius">
+                <div class="modal_header">
+                    更新主机
+                    <span class="success_txt" id="updateHostSuccessTxt"></span>
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_body">
+                    id <input id="updateHostId" type="text" class="modalTextStyle readOnlyStyle" readonly="true"><br/>
+                    <br/>
+                    主机名 <input id="updateHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname','#updateHostName','#updateHostSubmit','#updateHostErrorTxt')"><br/>
+                    <span class="error_txt" id="updateHostErrorTxt"></span>
+                    <br/>
+                    ip <input id="updateIpAddr" type="text" class="modalTextStyle" onblur="textAuth('ip','#updateIpAddr','#updateHostSubmit','#updateHostErrorTxt')">
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_footer">
+                    <div class="ButtonStyle SearchButton" id='updateHostSubmit'onclick="updateHost()">更新</div>
+                    <div class="ButtonStyle ResetButton" data-dismiss="modal">关闭</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{#    公共提示模态框 #}
+    <div class="modal" id="delHost">
+        <div class="modal_container">
+            <div class="modal-content radius">
+                <div class="modal_header">
+                    <span id="modal_title"></span>
+                    <span class="success_txt" id="delHostSuccessTxt"></span>
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_body">
+                    <span id="delHostId" style="display: none;"></span>
+                    <span id="delHostname" style="display: none;"></span>
+                    <span id="delHostIp" style="display: none;"></span>
+                    <span class="showInfo" id="delShowInfo"></span>
+                    <span class="error_txt" id="delHostErrorTxt"></span>
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_footer">
+                    <div class="ButtonStyle SearchButton" id='delHostSubmit' onclick="">确定</div>
+                    <div class="ButtonStyle ResetButton" data-dismiss="modal">关闭</div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

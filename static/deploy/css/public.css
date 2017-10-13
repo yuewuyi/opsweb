@@ -11,7 +11,7 @@
      width: 98%;
      height: auto;
      background-color: white;
-     margin: 40px auto 0 auto;
+     margin: 20px auto 0 auto;
      border: 2px solid;
      border-color: #dfe4e7;
 }
@@ -77,9 +77,10 @@
     text-align: center;
     border: 1px solid #dfe4e7;
     border-bottom: 2px solid #dfe4e7;
+    height: 30px;
 }
 .modal_container{
-    width: 20%;
+    width: 22%;
     height: 200px;
     margin: 100px auto;
 }
@@ -109,8 +110,8 @@
 .buttonClickDisable{
     pointer-events: none;
 }
-#error_txt{
-    text-align: center;
-    color: red;
-    font-size: 12px;
+.readOnlyStyle{
+    background-color: #E5E5E5;
+    border: 1px solid;
+    border-color: #A9A9A9;
 }

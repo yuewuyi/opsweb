@@ -245,7 +245,7 @@ def logScroll(request):
             code=-1
         return HttpResponse(json.dumps({"message":message,"code":code}), content_type='application/json')
     else:
-        return HttpResponse(404)
+        return HttpResponse(status=404)
 #获取nginx日志
 def nginxLog(request):
     aggsCityIP={
@@ -422,7 +422,6 @@ def nginxLog(request):
             parm['aggs']=aggsCityIP
         es = ElasticSearch()
         parm['query'] = query
-        print(parm)
         respon = {'message': '', 'maxCount': 0, 'norReq': [], 'ErrReq': [], 'totalCount': '', 'date': []}
         try:
             result = es.logReq(parm, 'filebeat-nginx_access-*', size, scrollTime)
@@ -456,7 +455,7 @@ def nginxLog(request):
         except Exception as e:
             logger.error("nginx日志获取失败" + str(e))
     else:
-        return HttpResponse(404)
+        return HttpResponse(status=404)
 def customQuery(request):
     parm={
   "sort": [
@@ -524,4 +523,4 @@ def customQuery(request):
             logger.error("自定义日志获取失败" + str(e))
         return HttpResponse(json.dumps(LogCount),content_type='application/json')
     else:
-        return HttpResponse(404)
+        return HttpResponse(status=404)
