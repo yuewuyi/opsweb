@@ -39,25 +39,6 @@
     border-radius: 6px;
     display: inline-block;
 }
-.error_txt{
-    text-align: center;
-    color: red;
-    font-size: 12px;
-}
-.success_txt{
-    text-align: center;
-    color: #59db8f;
-    font-size: 12px;
-    float: right;
-    font-family: none;
-    margin: 0 4px 0 0;
-}
-.hostModfiyButton{
-    float: left;
-    border-radius: 2px;
-    width: 20%;
-    cursor:pointer;
-}
 .updateButton{
     background-color: #367fa9;
     margin-left: 10%;
@@ -74,17 +55,4 @@
     background-color: #a179c2;
     margin-left: 10%;
 }
-.showInfo{
-    font-weight: bold;
-    width:100%;
-    text-align:center;
-    display: inline-block;
-}
-.customPagination{
-    margin: 0 0 0 0;
-    float: right;
-}
-.depLoyFooter{
-    width: 100%;
-    height: 50px;
-}
+

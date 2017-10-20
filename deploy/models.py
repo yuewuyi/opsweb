@@ -3,12 +3,25 @@ from utils.customField import UnixTimestampField
 # Create your models here.
 #host表
 class host(models.Model):
+    #主机名
     hostName=models.CharField(null=False,max_length=50,unique=True)
+    #ip
     ip=models.GenericIPAddressField(null=False,unique=True)
+    #是否已经和salt绑定 0-未绑定 1-已绑定 2-待绑定
     isSaltStack=models.SmallIntegerField(null=False,default=0)
+    #saltMinion状态 0-异常 1-正常
     status=models.SmallIntegerField(null=False,default=0)
     class Meta:
         db_table = 'Host'
+class appTemplate(models.Model):
+    #应用名
+    appName=models.CharField(null=False,max_length=50,unique=True)
+    #启动命令
+    startCmd=models.CharField(max_length=255)
+    #停止命令
+    stopCmd=models.CharField(max_length=255)
+    class Meta:
+        db_table='appTemplate'
 class jids(models.Model):
     jid=models.CharField(unique=True,max_length=191,null=False)
     load=models.TextField(null=False)

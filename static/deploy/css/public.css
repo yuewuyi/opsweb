@@ -115,3 +115,44 @@
     border: 1px solid;
     border-color: #A9A9A9;
 }
+.hostModfiyButton{
+    float: left;
+    border-radius: 2px;
+    width: 20%;
+    cursor:pointer;
+}
+.updateButton{
+    background-color: #367fa9;
+    margin-left: 10%;
+}
+.delButton{
+    background-color: #d64d55;
+    margin-left: 10%;
+}
+.green{
+    color: #59db8f;
+}
+.red{
+    color: red;
+}
+.show_mesg{
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    font-family: none;
+    margin: 0 4px 0 0;
+}
+.customPagination{
+    margin: 0 0 0 0;
+    float: right;
+}
+.depLoyFooter{
+    width: 100%;
+    height: 50px;
+}
+.showInfo{
+    font-weight: bold;
+    width:100%;
+    text-align:center;
+    display: inline-block;
+}

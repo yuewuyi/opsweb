@@ -3,10 +3,11 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'deploy/css/public.css' %}">
     <link rel="stylesheet" href="{% static 'deploy/css/index.css' %}">
+    <script src="{% static 'deploy/js/public.js' %}"></script>
     <script src="{% static 'deploy/js/index.js' %}"></script>
     <div class="page_container">
         <div class="page_title">主机概览
-            <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#addHost">添加主机</div>
+            <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#addHost">创建主机</div>
         </div>
         <div class="page_hr"></div>
         <div class="searchBox">
@@ -59,7 +60,7 @@
                         <td class="errorText"><span class="errorStatus"></span>异常</td>
                     {% endif %}
                     <td>
-                            <div class="hostModfiyButton updateButton" data-toggle="modal" data-target="#updateHost" onclick="showValue(this,'update')">更新</div>
+                            <div class="hostModfiyButton updateButton" data-toggle="modal" data-target="#updateHost" onclick="showValue(this,'update')">修改</div>
                             <div class="hostModfiyButton delButton" data-toggle="modal" data-target="#delHost" onclick="showValue(this,'del')">删除</div>
                             {% if item.isSaltStack == 2 %}
                                 <div class="hostModfiyButton bindButton" data-toggle="modal" data-target="#delHost" onclick="showValue(this,'bindHost')">绑定</div>
@@ -96,14 +97,13 @@
             <div class="modal-content radius">
                 <div class="modal_header">
                     添加主机
-                    <span class="success_txt" id="addHostSuccessTxt"></span>
+                    <span class="show_mesg" id="addHostSuccessTxt"></span>
                 </div>
                 <div class="page_hr"></div>
                 <div class="modal_body">
-                    主机名 <input id="addHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname','#addHostName','#addHostSubmit','#addHostErrorTxt')"><br/>
-                    <span class="error_txt" id="addHostErrorTxt"></span>
-                    <br/>
-                    ip <input id="addIpAddr" type="text" class="modalTextStyle" onblur="textAuth('ip','#addIpAddr','#addHostSubmit','#addHostErrorTxt')">
+                    主机名 <input id="addHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname','#addHostName','#addHostSubmit','#addHostSuccessTxt')">
+                    <br/><br/>
+                    ip <input id="addIpAddr" type="text" class="modalTextStyle" onblur="textAuth('ip','#addIpAddr','#addHostSubmit','#addHostSuccessTxt')">
                 </div>
                 <div class="page_hr"></div>
                 <div class="modal_footer">
@@ -119,16 +119,15 @@
         <div class="modal_container">
             <div class="modal-content radius">
                 <div class="modal_header">
-                    更新主机
-                    <span class="success_txt" id="updateHostSuccessTxt"></span>
+                    修改主机信息
+                    <span id="updateHostSuccessTxt" class="show_mesg"></span>
                 </div>
                 <div class="page_hr"></div>
                 <div class="modal_body">
-                    id <input id="updateHostId" type="text" class="modalTextStyle readOnlyStyle" readonly="true"><br/>
-                    <br/>
-                    主机名 <input id="updateHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname','#updateHostName','#updateHostSubmit','#updateHostErrorTxt')"><br/>
-                    <span class="error_txt" id="updateHostErrorTxt"></span>
-                    <br/>
+                    id <input id="updateHostId" type="text" class="modalTextStyle readOnlyStyle" readonly="true">
+                    <br/><br/>
+                    主机名 <input id="updateHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname','#updateHostName','#updateHostSubmit','#updateHostErrorTxt')">
+                    <br/><br/>
                     ip <input id="updateIpAddr" type="text" class="modalTextStyle" onblur="textAuth('ip','#updateIpAddr','#updateHostSubmit','#updateHostErrorTxt')">
                 </div>
                 <div class="page_hr"></div>
@@ -140,12 +139,12 @@
         </div>
     </div>
 {#    公共提示模态框 #}
-    <div class="modal" id="delHost">
+    <div class="modal" id="delHost" class="show_mesg">
         <div class="modal_container">
             <div class="modal-content radius">
                 <div class="modal_header">
                     <span id="modal_title"></span>
-                    <span class="success_txt" id="delHostSuccessTxt"></span>
+                    <span id="delHostSuccessTxt" class="show_mesg"></span>
                 </div>
                 <div class="page_hr"></div>
                 <div class="modal_body">
@@ -153,7 +152,6 @@
                     <span id="delHostname" style="display: none;"></span>
                     <span id="delHostIp" style="display: none;"></span>
                     <span class="showInfo" id="delShowInfo"></span>
-                    <span class="error_txt" id="delHostErrorTxt"></span>
                 </div>
                 <div class="page_hr"></div>
                 <div class="modal_footer">

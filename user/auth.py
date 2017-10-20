@@ -6,6 +6,7 @@ class UserAuthMiddleware(MiddlewareMixin):
 #url权限配置
     __auth_url_config={
         '/':2,
+        '/favicon.ico':0,
         '/home/':2,
         '/user/':0,
         '/user/Login/':0,
@@ -27,14 +28,16 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/api/addHost/':4,
         '/api/updateHost/':4,
         '/api/delHost/':4,
-        '/api/bindHost/':4
+        '/api/bindHost/':4,
+        '/deploy/appTemplate/':4,
+        '/api/template/':4
     }
     def __init__(self,get_response):
         self.get_response = get_response
     def __call__(self, request):
 #判断是否存在
         if not request.path in self.__auth_url_config.keys():
-            response = HttpResponse(status=404)
+            response = HttpResponse(status=403)
 #判断是否为不需要验证的url
         elif not self.__auth_url_config[request.path] == 0:
             #判断此用户是否登录

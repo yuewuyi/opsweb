@@ -3,12 +3,11 @@
  */
 
 function searchSubmit(){
-    var hostName=$.trim($("#hostName").val())
-    var ipAddr=$.trim($("#ipAddr").val())
+    var hostName=escape($.trim($("#hostName").val()))
+    var ipAddr=escape($.trim($("#ipAddr").val()))
     var saltBind=$("#saltBind").select().val()
     var saltStatus=$("#saltStatus").select().val()
-    var url=window.location.pathname+'?hostName='+hostName+'&ipAddr='+ipAddr+'&saltBind='+saltBind+'&saltStatus='+saltStatus
-    location.href=encodeURI(url)
+    location.href=window.location.pathname+'?hostName='+hostName+'&ipAddr='+ipAddr+'&saltBind='+saltBind+'&saltStatus='+saltStatus
 }
 function addHost() {
     if (textAuth('hostname','#addHostName','#addHostSubmit','#addHostErrorTxt') && textAuth('ip','#addIpAddr','#addHostSubmit','#addHostErrorTxt')){
@@ -18,11 +17,10 @@ function addHost() {
         $.when(req_ajax('/api/addHost/',{hostName:hostName,ip:ip},'result'))
             .done(function () {
                 if (result['code']==-1){
-                    $('#addHostErrorTxt').html(result['msg'])
+                    showMesage('#addHostSuccessTxt','error',result['msg'])
                     $("#addHostSubmit").removeClass('buttonClickDisable')
                 }else {
-                    $('#addHostErrorTxt').html('')
-                    $('#addHostSuccessTxt').html('添加成功')
+                    showMesage('#addHostSuccessTxt','success',"添加成功")
                     var url=window.location.href
                     window.location.href=url
                 }
@@ -43,13 +41,11 @@ function updateHost() {
          $.when(req_ajax('/api/updateHost/',{hostName:hostName,ip:ip,id:id},'result'))
              .done(function () {
                 if (result['code']==-1){
-                    $('#updateHostErrorTxt').html(result['msg'])
+                    showMesage('#updateHostSuccessTxt','error',result['msg'])
                     $("#updateHostSubmit").removeClass('buttonClickDisable')
                 }else {
-                    $('#updateHostErrorTxt').html('')
-                    $('#updateHostSuccessTxt').html('更新成功')
-                    var url=window.location.href
-                    window.location.href=url
+                    showMesage('#updateHostSuccessTxt','success','更新成功')
+                    location.reload()
                 }
              })
              .fail(function () {
@@ -64,13 +60,11 @@ function delHost() {
     $.when(req_ajax('/api/delHost/',{hostName:hostName,id:id},'result'))
         .done(function () {
             if (result['code']==-1){
-                    $('#delHostErrorTxt').html(result['msg'])
+                    showMesage('#delHostSuccessTxt','error',result['msg'])
                     $("#delHostSubmit").removeClass('buttonClickDisable')
             }else {
-                    $('#delHostErrorTxt').html('')
-                    $('#delHostSuccessTxt').html('删除成功')
-                    var url=window.location.href
-                    window.location.href=url
+                    showMesage('#delHostSuccessTxt','success','删除成功')
+                    location.reload()
             }
         })
         .fail(function () {
@@ -92,13 +86,11 @@ function bindHost(operType){
     $.when(req_ajax('/api/bindHost/',{ip:ip,id:id,operType:operType},'result'))
     .done(function(){
         if (result['code']==-1){
-                    $('#delHostErrorTxt').html(result['msg'])
+                    showMesage('#delHostSuccessTxt','error',result['msg'])
                     $("#delHostSubmit").removeClass('buttonClickDisable')
             }else {
-                    $('#delHostErrorTxt').html('')
-                    $('#delHostSuccessTxt').html(successTxt)
-                    var url=window.location.href
-                    window.location.href=url
+                    showMesage('#delHostSuccessTxt','success',successTxt)
+                    location.reload()
             }
     }
     )
@@ -109,6 +101,7 @@ function bindHost(operType){
 }
 //当前表格中的值显示在更新主机模态框中
 function showValue(obj,modalName) {
+    $("#delHostSuccessTxt").html('')
     var th=$(obj).parent().parent()
     var id=th.children().eq(0).html()
     var hostName=th.children().eq(1).html()
@@ -147,34 +140,21 @@ function textAuth(type,textId,buttonId,errorTxtID) {
         var hostName=$.trim($(textId).val())
         if (hostNameReg.test(hostName)){
             $(buttonId).removeClass('buttonClickDisable')
-            $(errorTxtID).html('')
+            showMesage(errorTxtID,'error','')
         }else {
             $(buttonId).addClass('buttonClickDisable')
-             $(errorTxtID).html('主机名格式错误，主机名由数字、字母、-、_、组成')
+            showMesage(errorTxtID,'error','主机名格式错误，主机名由数字、字母、-、_、组成')
         }
         return hostNameReg.test(hostName)
     }else if (type=='ip'){
         var ip=$.trim($(textId).val())
         if (ipReg.test(ip)){
             $(buttonId).removeClass('buttonClickDisable')
-            $(errorTxtID).html('')
+            showMesage(errorTxtID,'error','')
         }else {
             $(buttonId).addClass('buttonClickDisable')
-            $(errorTxtID).html('ip格式错误')
+            showMesage(errorTxtID,'error','ip格式错误')
         }
         return ipReg.test(ip)
-    }
-}
-//翻页
-function pageTurn(pageId) {
-    var url=window.location.href
-    var StringReg=/pageId=[0-9]{1,4}/
-    if(getQueryString('pageId')){
-        url=url.replace(StringReg,'pageId='+pageId)
-        window.location.href=url
-    }else if(window.location.search){
-        window.location.href=url+"&pageId="+pageId
-    }else {
-        window.location.href=url+"?pageId="+pageId
     }
 }

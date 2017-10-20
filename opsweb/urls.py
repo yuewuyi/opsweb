@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include,url
 from log import views
+from django.views.generic.base import RedirectView
 urlpatterns = [
     url(r'^$',views.TomcatThriftLog),
     url(r'^user/',include('user.urls')),
@@ -22,5 +23,6 @@ urlpatterns = [
     url(r'^monitor/',include('monitor.urls')),
     url(r'^api/',include('api.urls')),
     url(r'^log/',include('log.urls')),
-    url(r'^deploy/',include('deploy.urls'))
+    url(r'^deploy/',include('deploy.urls')),
+    url(r'^favicon.ico$',RedirectView.as_view(url=r'static/home/images/favicon.ico')),
 ]

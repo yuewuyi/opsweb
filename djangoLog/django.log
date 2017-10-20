@@ -3054,3 +3054,349 @@ ValueError: The view api.deploy.bindHost didn't return an HttpResponse object. I
 2017-10-13 17:23:02,929 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
 2017-10-13 17:41:09,104 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
 2017-10-13 17:41:09,106 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-16 15:38:46,308 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-16 15:38:46,310 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-16 15:48:25,827 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:48:25,849 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:48:56,415 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:48:56,416 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:48:56,559 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:48:56,560 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:48:56,641 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-16 15:48:56,642 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-16 15:48:58,580 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:48:58,581 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:04,827 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:04,830 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:05,023 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:05,026 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:05,212 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:05,213 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:05,360 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:05,361 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:05,598 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:05,604 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:05,705 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:05,714 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:05,887 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:05,889 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:06,008 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:06,009 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:06,048 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-16 15:52:06,050 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-16 15:52:48,018 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:48,019 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:50,035 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:50,037 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:51,946 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:51,947 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:52:52,151 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:52:52,160 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:53:02,582 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:53:02,587 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:53:49,819 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:53:49,821 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:53:49,989 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:53:49,991 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:53:50,089 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-16 15:53:50,091 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-16 15:53:50,686 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:53:50,687 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:53:50,832 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:53:50,833 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:53:50,891 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-16 15:53:50,893 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-16 15:54:07,782 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /404.html
+2017-10-16 15:54:07,786 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 404 0
+2017-10-16 15:56:26,666 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc44c39ee10>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc44c39ee10>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-16 15:56:26,667 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-16 15:56:26,671 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc44c39ebe0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc44c39ebe0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-16 15:56:26,745 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-16 15:56:26,674 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc44c39ec18>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc44c39ec18>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-16 15:56:26,746 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-16 15:56:26,774 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-16 15:56:26,775 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-16 15:56:26,777 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-16 16:20:44,443 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc44c37c668>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc44c37c668>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-16 16:44:43,601 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-16 16:44:43,602 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 09:51:19,490 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 09:51:19,548 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 09:53:19,804 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f57b9c7b748>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f57b9c7b748>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-17 10:11:46,701 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 10:11:46,702 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 10:11:48,774 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 10:11:48,775 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 10:12:48,417 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 10:12:48,418 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 10:12:49,196 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 10:12:49,197 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 10:13:17,917 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 10:13:17,922 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 10:19:02,499 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 10:19:02,501 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:12:50,246 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f51c8b3e8d0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f51c8b3e8d0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-17 11:12:56,490 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f51c8b3e9e8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f51c8b3e9e8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-17 11:12:56,491 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-17 11:12:56,532 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f51c8b3eac8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f51c8b3eac8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-17 11:12:56,532 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-17 11:12:56,547 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-17 11:12:56,548 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-17 11:12:56,550 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f51c8b3eba8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f51c8b3eba8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-17 11:12:56,550 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-17 11:12:56,551 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-17 11:37:37,120 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 11:37:37,122 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:38:02,176 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 11:38:02,177 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:38:53,326 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 11:38:53,328 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:38:54,189 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 11:38:54,190 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:38:55,029 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 11:38:55,030 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:40:18,642 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 11:40:18,643 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:46:28,111 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 11:46:28,114 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:46:50,327 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /favicon.ico
+2017-10-17 11:46:50,328 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 404 0
+2017-10-17 11:49:20,390 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 403 0
+2017-10-17 11:49:21,841 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 403 0
+2017-10-17 11:50:39,188 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 403 0
+2017-10-17 11:50:40,385 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /favicon.ico HTTP/1.0" 403 0
+2017-10-17 14:30:53,410 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f7dd007f390>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f7dd007f390>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-17 14:30:53,413 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-17 14:30:53,461 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f7dd007f4a8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f7dd007f4a8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-17 14:30:53,462 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f7dd007f518>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f7dd007f518>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-17 14:30:53,633 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-17 14:30:53,634 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-17 14:30:53,802 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-17 14:30:53,805 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-17 14:30:53,810 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-17 14:32:43,898 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f7dd0088f28>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f7dd0088f28>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-18 16:07:26,291 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 403 0
+2017-10-18 16:07:38,192 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 403 0
+2017-10-18 16:08:26,193 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 403 0
+2017-10-18 16:11:30,864 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 403 0
+2017-10-18 16:11:57,410 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/template/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/deprecation.py", line 142, in __call__
+    response = self.process_response(request, response)
+  File "/usr/local/lib/python3.5/dist-packages/django/middleware/clickjacking.py", line 32, in process_response
+    if response.get('X-Frame-Options') is not None:
+AttributeError: 'appTemplate' object has no attribute 'get'
+2017-10-18 16:11:58,358 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 500 27
+2017-10-18 16:12:07,846 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/template/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/deprecation.py", line 142, in __call__
+    response = self.process_response(request, response)
+  File "/usr/local/lib/python3.5/dist-packages/django/middleware/clickjacking.py", line 32, in process_response
+    if response.get('X-Frame-Options') is not None:
+AttributeError: 'appTemplate' object has no attribute 'get'
+2017-10-18 16:12:07,848 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 500 27
+2017-10-18 16:15:38,727 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/template/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 83, in template
+    host.objects.create(appName=postData['templateName'],startCmd=postData['startCmd'],stopCmd=postData['stopCmd'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 572, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'appName' is an invalid keyword argument for this function
+2017-10-18 16:15:38,918 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 500 27
+2017-10-18 16:17:41,594 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/template/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 83, in template
+    host.objects.create({"appName":postData['templateName'],'startCmd':postData['startCmd'],'stopCmd':postData['stopCmd']})
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+TypeError: create() takes 1 positional argument but 2 were given
+2017-10-18 16:17:41,598 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 500 27
+2017-10-18 16:19:06,744 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/template/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 83, in template
+    host.objects.create(appName=postData['templateName'],startCmd=postData['startCmd'],stopCmd=postData['stopCmd'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 572, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'stopCmd' is an invalid keyword argument for this function
+2017-10-18 16:19:06,759 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 500 27
+2017-10-18 16:20:56,175 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/template/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 84, in template
+    host.objects.create(appName=postData['templateName'],startCmd=postData['startCmd'],stopCmd=postData['stopCmd'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 572, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'stopCmd' is an invalid keyword argument for this function
+2017-10-18 16:20:56,193 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 500 27
+2017-10-18 16:25:57,331 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/template/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 84, in template
+    host.objects.create(appName=postData['templateName'],startCmd=postData['startCmd'],stopCmd=postData['stopCmd'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 572, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'startCmd' is an invalid keyword argument for this function
+2017-10-18 16:25:57,338 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 500 27
+2017-10-18 16:29:28,937 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/template/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 84, in template
+    host.objects.create(appName='dsa',startCmd='dsa',stopCmd='dsa')
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 572, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'stopCmd' is an invalid keyword argument for this function
+2017-10-18 16:29:28,950 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/template/ HTTP/1.0" 500 27
+2017-10-18 17:04:03,186 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 13, in index
+    limitStart,limitEnd=pageFun.calcPageNum()
+  File "/root/opsweb/utils/pageCalc.py", line 8, in calcPageNum
+    Start = (self.pageId - 1) * self.__pageSize
+AttributeError: 'page' object has no attribute '_page__pageSize'
+2017-10-18 17:04:03,197 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/?pageId=2 HTTP/1.0" 500 27
+2017-10-19 15:24:43,722 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7ff1b0233b70>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7ff1b0233b70>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-19 15:25:01,546 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7ff1b12e64e0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7ff1b12e64e0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-19 15:25:01,547 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-19 15:25:01,556 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7ff1b12e6588>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7ff1b12e6588>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-19 15:25:01,638 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-19 15:25:01,560 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7ff1b12e6710>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7ff1b12e6710>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-19 15:25:01,641 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-19 15:25:01,698 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-19 15:25:01,702 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-19 15:25:01,703 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-19 17:43:20,522 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fbf20f65898>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fbf20f65898>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))

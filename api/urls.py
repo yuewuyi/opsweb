@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^addHost/$',deploy.addHost,name='addHost'),
     url(r'^updateHost/$',deploy.updateHost,name='updateHost'),
     url(r'^delHost/$',deploy.delHost,name='delHost'),
-    url(r'^bindHost/$',deploy.bindHost,name='bindHost')
+    url(r'^bindHost/$',deploy.bindHost,name='bindHost'),
+    url(r'^template/$',deploy.template,name='appTemplate')
 ]

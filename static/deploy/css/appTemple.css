@@ -1,0 +1,34 @@
+.fromStyle{
+    width: 50%;
+}
+.textStyle{
+    width: 20.2%;
+}
+.searchBoxHr{
+    width: 51%;
+}
+.viewTable tr th:nth-child(1),td:nth-child(1){
+    width: 6%;
+}
+.viewTable tr th:nth-child(2),td:nth-child(2){
+    width: 20%;
+}
+.viewTable tr th:nth-child(3),td:nth-child(3){
+    width: 32%;
+}
+.viewTable tr th:nth-child(4),td:nth-child(4){
+    width: 32%;
+}
+.viewTable tr th:nth-child(5),td:nth-child(5){
+    width: 10%;
+    border-right: 0px;
+}
+.hostModfiyButton{
+    width: 40%;
+}
+.updateButton{
+    margin-left: 6.5%;
+}
+.delButton{
+    margin-left: 6.5%;
+}

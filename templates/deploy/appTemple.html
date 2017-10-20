@@ -1,0 +1,137 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'deploy/css/public.css' %}">
+    <link rel="stylesheet" href="{% static 'deploy/css/appTemple.css' %}">
+    <script src="{% static 'deploy/js/public.js' %}"></script>
+    <script src="{% static 'deploy/js/appTemple.js' %}"></script>
+    <div class="page_container">
+         <div class="page_title">应用模板
+            <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#addTemplate">添加模板</div>
+        </div>
+        <div class="page_hr"></div>
+        <div class="searchBox">
+            <form id='appTemplateSearch' class="fromStyle">
+                 模板名 <input type="text" id="appTemplate" class="inputStyle textStyle marginRight">
+                 启动命令 <input type="text" id="startFileName" class="inputStyle textStyle marginRight">
+                 停止命令 <input type="text" id="startFileName" class="inputStyle textStyle">
+            </form>
+            <div class="searchBoxHr"></div>
+            <div class="buttonCont">
+                <div class="SearchButton ButtonStyle" id="searchButton" onclick="searchSubmit()">搜索</div>
+                 <div class="ResetButton ButtonStyle">重置</div>
+             </div>
+        </div>
+         <div class="tableDiv">
+            <table class="viewTable">
+                <tr>
+                    <th>模板id</th>
+                    <th>模板名</th>
+                    <th>启动命令</th>
+                    <th>停止命令</th>
+                    <th>操作</th>
+                </tr>
+                {% for item in template %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.appName }}</td>
+                    <td>{{ item.startCmd }}</td>
+                    <td>{{ item.stopCmd }}</td>
+                    <td>
+                        <div class="hostModfiyButton updateButton" data-toggle="modal" data-target="#updateTemplate" onclick="showValue(this,'update')">更新</div>
+                        <div class="hostModfiyButton delButton" data-toggle="modal" data-target="#delTemplate" onclick="showValue(this,'del')">删除</div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% if 1 < pageDit.pageList|length %}
+            <ul class="pagination  customPagination pagination-sm">
+                {% if pageDit.lt %}
+                <li><a href="javascript:void(0)" onclick="pageTurn({{ pageDit.pageId |add:-1 }})">&laquo;</a></li>
+                {% endif %}
+                {% for i in pageDit.pageList %}
+                    {% if i == pageDit.pageId %}
+                    <li class="active"><a href="javascript:void(0)" onclick="pageTurn({{ i }})">{{ i }}</a></li>
+                    {% else %}
+                    <li><a href="javascript:void(0)" onclick="pageTurn({{ i }})">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if pageDit.nt %}
+                <li><a href="javascript:void(0)" onclick="pageTurn({{ pageDit.pageId|add:1 }})">&raquo;</a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+         </div>
+
+    </div>
+    <div class="modal" id="addTemplate">
+        <div class="modal_container">
+            <div class="modal-content radius">
+                <div class="modal_header">
+                    添加主机
+                    <span class="show_mesg" id="addTemplateSeccussTxt"></span>
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_body">
+                    模板名 <input type="text" id="templateName" class="modalTextStyle" onblur="textAuth('TemplateName','#templateName','#addTepmlateSubmit','#addTemplateSeccussTxt')">
+                    <br/><br/>
+                    启动命令 <input type="text" id="startCmd" class="modalTextStyle">
+                    <br/><br/>
+                    停止命令 <input type="text"  id="stopCmd" class="modalTextStyle">
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_footer">
+                    <div class="ButtonStyle SearchButton" id='addTepmlateSubmit' onclick="addTemplate()">添加</div>
+                    <div class="ButtonStyle ResetButton" data-dismiss="modal">关闭</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="updateTemplate">
+        <div class="modal_container">
+            <div class="modal-content radius">
+                <div class="modal_header">
+                    修改模板信息
+                    <span id="updateTemplateSuccessTxt" class="show_mesg"></span>
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_body">
+                    id <input id="updateTemplateId" type="text" class="modalTextStyle readOnlyStyle" readonly="true">
+                    <br/><br/>
+                    主机名 <input id="updateTemplateName" type="text" class="modalTextStyle" onblur="textAuth('TemplateName','#updateTemplateName','#updateTemplateSubmit','#updateTemplateSuccessTxt')">
+                    <br/><br/>
+                    启动命令 <input id="updateStartCmd" type="text" class="modalTextStyle">
+                    <br/><br/>
+                    停止命令 <input id="updateStopCmd" type="text" class="modalTextStyle">
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_footer">
+                    <div class="ButtonStyle SearchButton" id='updateTemplateSubmit' onclick="updateTemplate()">修改</div>
+                    <div class="ButtonStyle ResetButton" data-dismiss="modal">关闭</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="delTemplate">
+        <div class="modal_container">
+            <div class="modal-content radius">
+                <div class="modal_header">
+                    <span id="modal_title"></span>
+                    <span id="delTemplateSuccessTxt" class="show_mesg"></span>
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_body">
+                    <span id="delTemplateId" style="display: none;"></span>
+                    <span id="delTemplateName" style="display: none;"></span>
+                    <span class="showInfo" id="delShowInfo"></span>
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_footer">
+                    <div class="ButtonStyle SearchButton" id='delTemplateSubmit' onclick="">确定</div>
+                    <div class="ButtonStyle ResetButton" data-dismiss="modal">关闭</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
