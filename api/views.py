@@ -306,8 +306,8 @@ def nginxLog(request):
                 {
                     "range": {
                         "@timestamp": {
-                            "gte": 1500780440052,
-                            "lte": 1500885240052,
+                            "gte": 0,
+                            "lte": 0,
                             "format": "epoch_millis"
                         }
                     }

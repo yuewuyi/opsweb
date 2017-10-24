@@ -1,0 +1,46 @@
+.appContainer{
+    width: 250px;
+    height: 200px;
+    border-radius:4px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.appContainerTitle{
+    text-align: center;
+    width: 100%;
+    height: 10%;
+    font-weight: bold;
+    color: white;
+}
+.appContainerBody{
+    height: 75%;
+    width: 100%;
+}
+.appContainerHr{
+    width: 100%;
+    height: 2px;
+    background-color: white;
+}
+.webAppName{
+    margin: 3px;
+    display: inline-block;
+    color: white;
+    border: 3px solid white;
+    border-radius: 40px;
+    letter-spacing: 2px;
+    text-indent: 2px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.appContainerFooter{
+    height: 15%;
+    width: 100%;
+    text-align: center;
+    margin: 4px auto;
+}
+.appButton{
+    display: inline-block;
+    width: 20%;
+    border-radius: 4px;
+}
+

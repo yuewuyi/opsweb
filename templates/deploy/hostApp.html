@@ -1,0 +1,24 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'deploy/css/public.css' %}">
+    <link rel="stylesheet" href="{% static 'deploy/css/hostApp.css' %}">
+<div class="page_container">
+    <div class="page_title">{{ hostName }}应用详情</div>
+    <div class="page_hr"></div>
+    <div class="appContainer stopColor">
+        <div class="appContainerTitle">tomcat-app1</div>
+        <div class="appContainerHr"></div>
+        <div class="appContainerBody">
+            <span class="webAppName">pcService</span>
+            <span class="webAppName">pharService</span>
+            <span class="webAppName">appService</span>
+        </div>
+        <div class="appContainerHr"></div>
+        <div class="appContainerFooter">
+            <span class="appButton runColor">启动</span>
+            <span class="appButton updateButton">部署</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

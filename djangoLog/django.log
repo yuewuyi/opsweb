@@ -3400,3 +3400,111 @@ ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It
 2017-10-19 15:25:01,702 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
 2017-10-19 15:25:01,703 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
 2017-10-19 17:43:20,522 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fbf20f65898>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fbf20f65898>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-20 17:51:52,600 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 62, in hostApp
+    return render('deploy/hostApp.html')
+TypeError: render() missing 1 required positional argument: 'template_name'
+2017-10-20 17:51:52,725 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=36 HTTP/1.0" 500 27
+2017-10-20 17:52:11,507 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 62, in hostApp
+    return render('deploy/hostApp.html')
+TypeError: render() missing 1 required positional argument: 'template_name'
+2017-10-20 17:52:11,510 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=36 HTTP/1.0" 500 27
+2017-10-23 11:24:06,145 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f80904b78d0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f80904b78d0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-10-23 11:45:42,271 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 69, in hostApp
+    hostName=host.objects.filter(id=hostId).first().value('hostName')
+AttributeError: 'host' object has no attribute 'value'
+2017-10-23 11:45:42,344 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=36 HTTP/1.0" 500 27
+2017-10-23 11:45:55,257 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 69, in hostApp
+    hostName=host.objects.filter(id=hostId).first('hostName')
+TypeError: first() takes 1 positional argument but 2 were given
+2017-10-23 11:45:55,267 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=36 HTTP/1.0" 500 27
+2017-10-23 15:33:23,493 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-10-23 15:33:23,674 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-10-23 15:33:24,862 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-10-23 15:33:25,960 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-10-23 15:33:29,738 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-10-24 14:38:14,429 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='121.41.23.54', port=9000): Read timed out. (read timeout=30))
+2017-10-24 14:38:14,431 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='121.41.23.54', port=9000): Read timed out. (read timeout=30))
+2017-10-24 14:38:14,432 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='121.41.23.54', port=9000): Read timed out. (read timeout=30))
+2017-10-24 14:38:14,445 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-24 14:38:14,446 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-24 14:38:14,447 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-24 14:38:14,458 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-24 14:38:14,459 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-24 14:38:14,461 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-24 14:42:15,517 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='121.41.23.54', port=9000): Read timed out. (read timeout=30))
+2017-10-24 14:42:15,519 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-24 14:42:15,520 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-24 14:42:15,540 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='121.41.23.54', port=9000): Read timed out. (read timeout=30))
+2017-10-24 14:42:15,541 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-24 14:42:15,542 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2017-10-24 14:42:15,575 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='121.41.23.54', port=9000): Read timed out. (read timeout=30))
+2017-10-24 14:42:15,575 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2017-10-24 14:42:15,577 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27

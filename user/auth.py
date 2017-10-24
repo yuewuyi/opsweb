@@ -30,7 +30,8 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/api/delHost/':4,
         '/api/bindHost/':4,
         '/deploy/appTemplate/':4,
-        '/api/template/':4
+        '/api/template/':4,
+        '/deploy/hostApp/':4,
     }
     def __init__(self,get_response):
         self.get_response = get_response

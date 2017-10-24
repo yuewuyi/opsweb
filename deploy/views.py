@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from deploy.models import host,appTemplate
 from utils.pageCalc import page
 import urllib
@@ -58,3 +59,13 @@ def tempPage(request):
     tmplate=list(appTemplate.objects.filter(**queryParm).values()[limitStart:limitEnd])
     pageDit=pageFun.calcPage(pageCount)
     return render(request,'deploy/appTemple.html',{'template':tmplate,'pageDit':pageDit})
+def hostApp(request):
+    try:
+        hostId = int(request.GET['hostId'])
+        if not host.objects.filter(id=hostId).count():
+            return HttpResponse(status=404)
+    except:
+        return HttpResponse(status=404)
+    hostName=host.objects.filter(id=hostId).first().hostName
+
+    return render(request,'deploy/hostApp.html',{'hostName':hostName})

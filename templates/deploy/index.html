@@ -62,6 +62,7 @@
                     <td>
                             <div class="hostModfiyButton updateButton" data-toggle="modal" data-target="#updateHost" onclick="showValue(this,'update')">修改</div>
                             <div class="hostModfiyButton delButton" data-toggle="modal" data-target="#delHost" onclick="showValue(this,'del')">删除</div>
+                            <div class="hostModfiyButton deployButton" onclick="window.location.href='{% url 'deployHostApp' %}?hostId={{ item.id }}'">部署</div>
                             {% if item.isSaltStack == 2 %}
                                 <div class="hostModfiyButton bindButton" data-toggle="modal" data-target="#delHost" onclick="showValue(this,'bindHost')">绑定</div>
                             {% elif item.isSaltStack == 1 %}

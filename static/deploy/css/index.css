@@ -41,18 +41,21 @@
 }
 .updateButton{
     background-color: #367fa9;
-    margin-left: 10%;
+    margin-left: 4.5%;
 }
 .delButton{
     background-color: #d64d55;
-    margin-left: 10%;
+    margin-left: 4.5%;
 }
 .bindButton{
     background-color: #47a4e9;
-    margin-left: 10%;
+    margin-left: 4.5%;
 }
 .delBindButton{
     background-color: #a179c2;
-    margin-left: 10%;
+    margin-left: 4.5%;
 }
-
+.deployButton{
+    background-color: #22a2ab;
+    margin-left: 4.5%;
+}

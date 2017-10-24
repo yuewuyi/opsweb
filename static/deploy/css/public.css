@@ -156,3 +156,9 @@
     text-align:center;
     display: inline-block;
 }
+.runColor{
+    background-color: #00AF7C;
+}
+.stopColor{
+    background-color: #D24A52;
+}
