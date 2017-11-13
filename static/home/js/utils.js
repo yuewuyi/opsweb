@@ -257,3 +257,67 @@ Date.replaceChars = {
     r: function() { return this.toString(); },
     U: function() { return this.getTime() / 1000; }
 };
+function strReplace(str) {
+    var strList1=['*','.','-']
+    var strList2=['\\*','\\.','\\-']
+    for (var i=0;i<strList1.length;i++){
+        str=str.replace(strList1[i],strList2[i])
+    }
+    return str
+}
+function listenText(textId,data) {
+    $(textId).keyup(function () {
+        var indexList=data.sort()
+        var indexName=$(textId).val()
+        var regList=[]
+        if (indexName==''){
+            regList=indexList.slice(0,9)
+        }else {
+            indexName=strReplace(indexName)
+            var reg=new RegExp("^"+indexName)
+            for (i=0;i<indexList.length;i++){
+                if (reg.test(indexList[i])){
+                    regList.push(indexList[i])
+                }
+                if (regList.length>=10){
+                    break
+                }
+            }
+        }
+        if ($("#indexSelect").length > 0){
+            $('#indexSelect').remove()
+        }
+        if(regList.length>0){
+            createDiv(regList,textId)
+        }
+    })
+    $(textId).blur(function () {
+        if ($("#indexSelect").length > 0){
+            setTimeout("$('#indexSelect').remove()",150)
+        }
+    })
+}
+function getVale(obj,textId) {
+    $(textId).val(obj.innerHTML)
+}
+
+function createDiv(regList,textId) {
+    var inner='<ul class="select_box">'
+    for (i=0;i<regList.length;i++){
+        inner+="<li onclick='getVale(this,\""+textId+"\")'>"+regList[i]+"</li>"
+    }
+    inner+="</ul>"
+    var offset=$(textId).offset()
+    var width=$(textId).width()+2
+    var Div = document.createElement('div')
+    Div.style.left = offset['left'] + 'px'
+    Div.style.top = offset['top']+20 + 'px'
+    Div.style.border = '1px solid #e0e5e8'
+    Div.style.background = '#ffffff'
+    Div.style.width=width+'px'
+    Div.style.position = 'absolute'
+    Div.style.zIndex=1000
+    Div.id = "indexSelect"
+    Div.innerHTML=inner
+    document.body.appendChild(Div)
+}

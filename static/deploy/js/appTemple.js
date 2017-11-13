@@ -5,7 +5,6 @@ function addTemplate() {
         var startCmd=$.trim($('#startCmd').val())
         var stopCmd=$.trim($('#stopCmd').val())
         $("#addTepmlateSubmit").addClass('buttonClickDisable')
-
         $.when(req_ajax('/api/template/',{templateName:templateName,startCmd:startCmd,stopCmd:stopCmd,method:'add',},'result'))
             .done(function () {
                 if (result['code']==-1){

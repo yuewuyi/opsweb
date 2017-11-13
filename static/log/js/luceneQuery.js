@@ -1,70 +1,6 @@
 /**
  * Created by suyue on 2017/8/8.
  */
-function strReplace(str) {
-    var strList1=['*','.','-']
-    var strList2=['\\*','\\.','\\-']
-    for (var i=0;i<strList1.length;i++){
-        str=str.replace(strList1[i],strList2[i])
-    }
-    return str
-}
-function listenText() {
-    $('#indexName').keyup(function () {
-        var indexList=$("#customQuery").data('index')
-        indexList=indexList.sort()
-        var indexName=$('#indexName').val()
-        var regList=[]
-        if (indexName==''){
-            regList=indexList.slice(0,9)
-        }else {
-            indexName=strReplace(indexName)
-            var reg=new RegExp("^"+indexName)
-            for (i=0;i<indexList.length;i++){
-                if (reg.test(indexList[i])){
-                    regList.push(indexList[i])
-                }
-                if (regList.length>=10){
-                    break
-                }
-            }
-        }
-        if ($("#indexSelect").length > 0){
-            $('#indexSelect').remove()
-        }
-        if(regList.length>0){
-            createDiv(regList)
-        }
-    })
-    $('#indexName').blur(function () {
-        if ($("#indexSelect").length > 0){
-            setTimeout("$('#indexSelect').remove()",150)
-        }
-    })
-}
-function getVale(obj) {
-    $('#indexName').val(obj.innerHTML)
-}
-
-function createDiv(regList) {
-    var inner='<ul class="select_box">'
-    for (i=0;i<regList.length;i++){
-        inner+="<li onclick='getVale(this)'>"+regList[i]+"</li>"
-    }
-    inner+="</ul>"
-    var offset=$('#indexName').offset()
-    var width=$('#indexName').width()+2
-    var Div = document.createElement('div')
-    Div.style.left = offset['left'] + 'px'
-    Div.style.top = offset['top']+20 + 'px'
-    Div.style.border = '1px solid #e0e5e8'
-    Div.style.background = '#ffffff'
-    Div.style.width=width+'px'
-    Div.style.position = 'absolute'
-    Div.id = "indexSelect"
-    Div.innerHTML=inner
-    document.body.appendChild(Div)
-}
 function searchLog() {
     var date=($("#luceneDate").find('span').html()).split(" -- ")
     var queryStr=$.trim($('#queryStr').val())
@@ -189,7 +125,8 @@ function graphsCustom(GraphData){
 }
 $(document).ready(function () {
     date_select('#luceneDate')
-    listenText()
+    var indexList=$("#customQuery").data('index')
+    listenText('#indexName',indexList)
     $("#customQuery").scroll(function() {
         var scrollTop = $(this).scrollTop()
 　　    var documentHeight = $(this).height()

@@ -3,6 +3,8 @@ from utils.customField import UnixTimestampField
 # Create your models here.
 #host表
 class host(models.Model):
+    #主机ID
+    id=models.AutoField(primary_key=True)
     #主机名
     hostName=models.CharField(null=False,max_length=50,unique=True)
     #ip
@@ -12,16 +14,55 @@ class host(models.Model):
     #saltMinion状态 0-异常 1-正常
     status=models.SmallIntegerField(null=False,default=0)
     class Meta:
-        db_table = 'Host'
+        db_table = 'host'
+#应用模板表
 class appTemplate(models.Model):
+    # 应用模板ID
+    id = models.AutoField(primary_key=True)
     #应用名
-    appName=models.CharField(null=False,max_length=50,unique=True)
+    appTemplateName=models.CharField(null=False,max_length=50,unique=True)
     #启动命令
     startCmd=models.CharField(max_length=255)
     #停止命令
     stopCmd=models.CharField(max_length=255)
     class Meta:
         db_table='appTemplate'
+#web模板表
+class webTemplate(models.Model):
+    #web模板ID
+    id = models.AutoField(primary_key=True)
+    #应用名
+    webTemplateName=models.CharField(null=False,max_length=50,unique=True)
+    class Meta:
+        db_table='webTemplate'
+#host应用表
+class hostApplication(models.Model):
+    #主机应用ID
+    id = models.AutoField(primary_key=True)
+    #应用名
+    hostAppName=models.CharField(null=False,max_length=50,default='')
+    #关联host表ID
+    hostId=models.ForeignKey(host,to_field='id',db_column="hostId")
+    #关联appTemplate表ID
+    appTempId=models.ForeignKey(appTemplate,to_field='id',db_column="appTempId")
+    #应用路径
+    appPath=models.CharField(max_length=255,null=False)
+    #应用端口
+    appPort=models.IntegerField()
+    #应用状态 0-异常 1-正常
+    status=models.IntegerField(null=False,default=0)
+    class Meta:
+        db_table='hostApplication'
+#web应用表
+class webApplication(models.Model):
+    # web应用ID
+    id = models.AutoField(primary_key=True)
+    # 关联webTemplate表ID
+    webTempId=models.ForeignKey(webTemplate,to_field='id',db_column="webTempId")
+    # 关联hostApplication表ID
+    hostAppId=models.ForeignKey(hostApplication,to_field='id',db_column="hostAppId")
+    class Meta:
+        db_table='webApplication'
 class jids(models.Model):
     jid=models.CharField(unique=True,max_length=191,null=False)
     load=models.TextField(null=False)

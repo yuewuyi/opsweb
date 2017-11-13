@@ -12,39 +12,34 @@ function pageTurn(pageId) {
     }
 }
 function textAuth(type,textId,buttonId,errorTxtID) {
-    var hostNameReg=/^[a-zA-Z0-9_\-]{1,20}$/
+    var nameReg=/^[a-zA-Z0-9_\-]{1,20}$/
     var ipReg=/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/
+    var numReg=/^[0-9]{1,30}$/
+    var auText=$.trim($(textId).val())
     if (type=='hostname'){
-        var hostName=$.trim($(textId).val())
-        if (hostNameReg.test(hostName)){
-            $(buttonId).removeClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','')
-        }else {
-            $(buttonId).addClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','主机名格式错误，主机名由数字、字母、-、_、组成')
-        }
-        return hostNameReg.test(hostName)
-    }else if (type=='ip'){
-        var ip=$.trim($(textId).val())
-        if (ipReg.test(ip)){
-            $(buttonId).removeClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','')
-        }else {
-            $(buttonId).addClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','ip格式错误')
-        }
-        return ipReg.test(ip)
+        var errorMesg="主机名格式错误，主机名由数字、字母、-、_、组成"
+        var reg=nameReg
     }else if(type=='TemplateName'){
-        var TemltateName=$.trim($(textId).val())
-        if(hostNameReg.test(TemltateName)){
-            $(buttonId).removeClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','')
-        }else {
-            $(buttonId).addClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','模板名格式错误，模板名由数字、字母、-、_、组成')
-        }
-        return hostNameReg.test(TemltateName)
+        var errorMesg="模板名格式错误，模板名由数字、字母、-、_、组成"
+        var reg=nameReg
+    }else if(type=='ip'){
+        var errorMesg="ip格式错误"
+        var reg=ipReg
+    }else if(type=='appName'){
+        var errorMesg="应用名格式错误，模板名由数字、字母、-、_、组成"
+        var reg=nameReg
+    }else if(type=='port'){
+        var errorMesg="端口格式错误"
+        var reg=numReg
     }
+    if (reg.test(auText)){
+        $(buttonId).removeClass('buttonClickDisable')
+        showMesage(errorTxtID,'error','')
+    }else{
+        $(buttonId).addClass('buttonClickDisable')
+        showMesage(errorTxtID,'error',errorMesg)
+    }
+    return reg.test(auText)
 }
 function showMesage(id,type,msg) {
     if(type=='error'){

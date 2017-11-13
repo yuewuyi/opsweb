@@ -13,5 +13,8 @@ urlpatterns = [
     url(r'^updateHost/$',deploy.updateHost,name='updateHost'),
     url(r'^delHost/$',deploy.delHost,name='delHost'),
     url(r'^bindHost/$',deploy.bindHost,name='bindHost'),
-    url(r'^template/$',deploy.template,name='appTemplate')
+    url(r'^template/$',deploy.modTemplate,name='appTemplate'),
+    url(r'^getTemplate/$',deploy.getTemplate,name='getTemplate'),
+    url(r'^modApplication/$',deploy.modApplication,name='modApplicationApi'),
+    url(r'^getApplication/$',deploy.getAapplication,name='getApplications')
 ]

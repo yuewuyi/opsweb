@@ -33,7 +33,7 @@ function addHost() {
 }
 // 更新主机信息
 function updateHost() {
-    if(textAuth('hostname','#updateHostName','#updateHostSubmit','#updateHostErrorTxt') && textAuth('ip','#updateIpAddr','#updateHostSubmit','#updateHostErrorTxt')){
+    if(textAuth('hostname','#updateHostName','#updateHostSubmit','#updateHostSuccessTxt') && textAuth('ip','#updateIpAddr','#updateHostSubmit','#updateHostSuccessTxt')){
         $("#updateHostSubmit").addClass('buttonClickDisable')
         var hostName=$.trim($("#updateHostName").val())
         var ip=$.trim($("#updateIpAddr").val())
@@ -57,6 +57,7 @@ function updateHost() {
 function delHost() {
     var id=$("#delHostId").html()
     var hostName=$("#delHostname").html()
+    $("#delHostSubmit").addClass('buttonClickDisable')
     $.when(req_ajax('/api/delHost/',{hostName:hostName,id:id},'result'))
         .done(function () {
             if (result['code']==-1){
@@ -76,6 +77,7 @@ function delHost() {
 function bindHost(operType){
     var id=$("#delHostId").html()
     var ip=$("#delHostIp").html()
+    $("#delHostSubmit").addClass('buttonClickDisable')
     if(operType=='accept'){
         successTxt="绑定成功"
         errorTxt="绑定失败"
@@ -130,31 +132,5 @@ function showValue(obj,modalName) {
         $('#delHostname').html(hostName)
         $('#delHostIp').html(ip)
         $('#delShowInfo').html("是否要将主机"+hostName+"和saltstack解除绑定")
-    }
-}
-// 验证主机名和ip
-function textAuth(type,textId,buttonId,errorTxtID) {
-    var hostNameReg=/^[a-zA-Z0-9_\-]{1,20}$/
-    var ipReg=/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/
-    if (type=='hostname'){
-        var hostName=$.trim($(textId).val())
-        if (hostNameReg.test(hostName)){
-            $(buttonId).removeClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','')
-        }else {
-            $(buttonId).addClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','主机名格式错误，主机名由数字、字母、-、_、组成')
-        }
-        return hostNameReg.test(hostName)
-    }else if (type=='ip'){
-        var ip=$.trim($(textId).val())
-        if (ipReg.test(ip)){
-            $(buttonId).removeClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','')
-        }else {
-            $(buttonId).addClass('buttonClickDisable')
-            showMesage(errorTxtID,'error','ip格式错误')
-        }
-        return ipReg.test(ip)
     }
 }

@@ -113,7 +113,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 {#    更新主机模态框 #}
     <div class="modal" id="updateHost">
@@ -127,9 +126,9 @@
                 <div class="modal_body">
                     id <input id="updateHostId" type="text" class="modalTextStyle readOnlyStyle" readonly="true">
                     <br/><br/>
-                    主机名 <input id="updateHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname','#updateHostName','#updateHostSubmit','#updateHostErrorTxt')">
+                    主机名 <input id="updateHostName" type="text" class="modalTextStyle" onblur="textAuth('hostname','#updateHostName','#updateHostSubmit','#updateHostSuccessTxt')">
                     <br/><br/>
-                    ip <input id="updateIpAddr" type="text" class="modalTextStyle" onblur="textAuth('ip','#updateIpAddr','#updateHostSubmit','#updateHostErrorTxt')">
+                    ip <input id="updateIpAddr" type="text" class="modalTextStyle" onblur="textAuth('ip','#updateIpAddr','#updateHostSubmit','#updateHostSuccessTxt')">
                 </div>
                 <div class="page_hr"></div>
                 <div class="modal_footer">

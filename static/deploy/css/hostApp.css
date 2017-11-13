@@ -4,13 +4,14 @@
     border-radius:4px;
     margin-left: 30px;
     margin-top: 20px;
+    display: inline-block;
 }
-.appContainerTitle{
-    text-align: center;
+.appTitleContainer{
     width: 100%;
     height: 10%;
     font-weight: bold;
     color: white;
+    text-indent: 4px;
 }
 .appContainerBody{
     height: 75%;
@@ -30,7 +31,14 @@
     letter-spacing: 2px;
     text-indent: 2px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 10px;
+}
+.appInfo{
+    color: white;
+    word-wrap:break-word;
+    font-weight: bold;
+    text-indent: 2px;
+    display: inline-block;
 }
 .appContainerFooter{
     height: 15%;
@@ -43,4 +51,8 @@
     width: 20%;
     border-radius: 4px;
 }
-
+.iconStyle{
+    float: right;
+    letter-spacing:3px;
+    cursor: pointer;
+}

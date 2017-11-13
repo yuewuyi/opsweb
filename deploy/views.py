@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from deploy.models import host,appTemplate
+from deploy.models import *
 from utils.pageCalc import page
 import urllib
+import json
 # Create your views here.
 #主机页面
 def index(request):
@@ -33,7 +34,6 @@ def index(request):
     pageCount=host.objects.filter(**queryParm).count()
     Host=list(host.objects.filter(**queryParm).values()[limitStart:limitEnd])
     pageDit=pageFun.calcPage(pageCount)
-    #判断是否是第一页或最后一页
     return render(request,'deploy/index.html',{"allHostInfo":Host,"pageDit":pageDit})
 def tempPage(request):
     try:
@@ -48,7 +48,7 @@ def tempPage(request):
         startCmd=urllib.parse.unquote(request.GET['startCmd'])
         stopCmd=urllib.parse.unquote(request.GET['stopCmd'])
         if appName:
-            queryParm['appName_contains']=appName
+            queryParm['appTemplateName_contains']=appName
         if startCmd:
             queryParm['startCmd_contains']=startCmd
         if stopCmd:
@@ -58,6 +58,7 @@ def tempPage(request):
     pageCount = appTemplate.objects.filter(**queryParm).count()
     tmplate=list(appTemplate.objects.filter(**queryParm).values()[limitStart:limitEnd])
     pageDit=pageFun.calcPage(pageCount)
+
     return render(request,'deploy/appTemple.html',{'template':tmplate,'pageDit':pageDit})
 def hostApp(request):
     try:
@@ -67,5 +68,4 @@ def hostApp(request):
     except:
         return HttpResponse(status=404)
     hostName=host.objects.filter(id=hostId).first().hostName
-
     return render(request,'deploy/hostApp.html',{'hostName':hostName})

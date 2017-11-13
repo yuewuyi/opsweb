@@ -79,21 +79,6 @@
     cursor: pointer;
     text-align: center;
 }
-.select_box{
-    border-radius: 0;
-    min-width: 45px;
-    padding:0;
-    margin:0;
-}
-.select_box li{
-    list-style: none;
-    font-size: 12px;
-}
-.select_box li:hover{
-    background-color: #2a6496;
-    color: white;
-
-}
 .customLogGraph{
     width: 100%;
     height: 200px;

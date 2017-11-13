@@ -107,3 +107,18 @@ html, body {
     height: 30px;
     background-color: #0f0f0f;
 }
+
+.select_box{
+    border-radius: 0;
+    min-width: 45px;
+    padding:0;
+    margin:0;
+}
+.select_box li{
+    list-style: none;
+    font-size: 12px;
+}
+.select_box li:hover{
+    background-color: #2a6496;
+    color: white;
+}

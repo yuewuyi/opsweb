@@ -1,8 +1,9 @@
 import json
-from deploy.models import host,appTemplate
+from deploy.models import *
 from django.db.models import Q
 from utils.salt_Client import saltClient
 from django.http import HttpResponse
+from utils.raw_sql import *
 def addHost(request):
     if request.method=='POST':
         postData = json.loads(request.body.decode())
@@ -73,26 +74,26 @@ def bindHost(request):
 
     else:
         return HttpResponse(status=403)
-def template(request):
+def modTemplate(request):
     if request.method=='POST':
         code=0
         msg=''
         postData=json.loads(request.body.decode())
         if postData['method']=='add':
-            if not appTemplate.objects.filter(appName=postData['templateName']):
-                appTemplate.objects.create(appName=postData['templateName'],startCmd=postData['startCmd'],stopCmd=postData['stopCmd'])
+            if not appTemplate.objects.filter(appTemplateName=postData['templateName']):
+                appTemplate.objects.create(appTemplateName=postData['templateName'],startCmd=postData['startCmd'],stopCmd=postData['stopCmd'])
             else:
                 code=-1
                 msg='模板名已存在'
         elif postData['method']=='update':
-            if not appTemplate.objects.filter(~Q(id=postData['id']),appName=postData['templateName']):
-                appTemplate.objects.filter(id=postData['id']).update(appName=postData['templateName'],startCmd=postData['startCmd'],stopCmd=postData['stopCmd'])
+            if not appTemplate.objects.filter(~Q(id=postData['id']),appTemplateName=postData['templateName']):
+                appTemplate.objects.filter(id=postData['id']).update(appTemplateName=postData['templateName'],startCmd=postData['startCmd'],stopCmd=postData['stopCmd'])
             else:
                 code=-1
                 msg='模板名已存在'
         elif postData['method']=='del':
-            if appTemplate.objects.filter(id=postData['id'],appName=postData['templateName']):
-                appTemplate.objects.filter(id=postData['id'],appName=postData['templateName']).delete()
+            if appTemplate.objects.filter(id=postData['id'],appTemplateName=postData['templateName']):
+                appTemplate.objects.filter(id=postData['id'],appTemplateName=postData['templateName']).delete()
             else:
                 code=-1
                 msg='删除失败'
@@ -101,3 +102,79 @@ def template(request):
 
     else:
         return  HttpResponse(status=403)
+def getTemplate(request):
+    if request.method=='POST':
+        appTemp=list(appTemplate.objects.all().values_list('appTemplateName'))
+        return HttpResponse(json.dumps(appTemp),content_type='application/json')
+    else:
+        return HttpResponse(status=403)
+def getAapplication(request):
+    if request.method=='POST':
+        postData=json.loads(request.body.decode())
+        hostApp=rawQuerytoList(hostApplication.objects.raw(getsql('hostAppsql'),postData))
+        return HttpResponse(json.dumps(hostApp),content_type='application/json')
+    else:
+        return HttpResponse(status=403)
+
+def modApplication(request):
+    if request.method=='POST':
+        postData=json.loads(request.body.decode())
+        rep={'code':0,'msg':''}
+        if postData['method']=='add':
+            hostInfo = host.objects.get(id=postData['hostId'])
+            try:
+                template = appTemplate.objects.get(appTemplateName=postData['appTempName'])
+            except:
+                template = ''
+            app=hostApplication.objects.filter(Q(hostId=postData['hostId']),
+                                               Q(hostAppName=postData['appName'])
+                                               |Q(appPath=postData['appPath'])
+                                               |Q(appPort=postData['appPort']))
+            if template:
+                if not app:
+                    hostApplication.objects.create(hostAppName=postData['appName'],
+                                                   hostId=hostInfo,
+                                                   appPath=postData['appPath'],
+                                                   appPort=postData['appPort'],
+                                                   appTempId=template)
+                else:
+                    rep['code']=-1
+                    rep['msg']='应用名或应用端口、应用路径重复'
+
+            else:
+                rep['code']=-1
+                rep['msg']='没有这个应用模板'
+        elif postData['method']=='modify':
+            try:
+                template = appTemplate.objects.get(appTemplateName=postData['appTempName'])
+            except:
+                template = ''
+            app = hostApplication.objects.filter(~Q(id=postData['id']),
+                                                 Q(hostId=postData['hostId']),
+                                                 Q(hostAppName=postData['appName'])
+                                                 |Q(appPath=postData['appPath'])
+                                                 |Q(appPort=postData['appPort']))
+            if template:
+                if not app:
+                    hostApplication.objects.filter(id=postData['id']).update(
+                                                    appTempId=template,
+                                                    hostAppName=postData['appName'],
+                                                    appPath=postData['appPath'],
+                                                    appPort=postData['appPort'],
+                                                    )
+                else:
+                    rep['code'] = -1
+                    rep['msg'] = '应用名或应用端口、应用路径重复'
+            else:
+                rep['code'] = -1
+                rep['msg'] = '没有这个应用模板'
+        elif postData['method']=='del':
+            app=hostApplication.objects.filter(id=postData['id'])
+            if app:
+                hostApplication.objects.filter(id=postData['id']).delete()
+            else:
+                rep['code'] = -1
+                rep['msg'] = '没有这个应用'
+        return HttpResponse(json.dumps(rep),content_type='application/json')
+    else:
+        return HttpResponse(status=403)
