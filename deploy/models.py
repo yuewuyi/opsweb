@@ -49,7 +49,7 @@ class hostApplication(models.Model):
     appPath=models.CharField(max_length=255,null=False)
     #应用端口
     appPort=models.IntegerField()
-    #应用状态 0-异常 1-正常
+    #应用状态 0-异常 1-正常 3-启动中 4-停止中
     status=models.IntegerField(null=False,default=0)
     class Meta:
         db_table='hostApplication'

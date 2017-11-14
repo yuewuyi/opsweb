@@ -23,9 +23,11 @@ function createModal(head,body) {
     $(".page_container").after(modalOb.join(''))
     $("#customModal").modal("show")
 }
+
 function  addModal(type,appid) {
     if (type=='add'){
         var titleName="添加应用"
+        var onclick="modApplications('"+type+"')"
         var body=[
             '应用名 <input id="appName" type="text" class="modalTextStyle" onblur="textAuth(\'appName\',\'#appName\',\'#submitButton\',\'#showMsg\')"><br/><br/>',
             '应用路径 <input id="appPath" type="text" class="modalTextStyle"><br/><br/>',
@@ -45,6 +47,7 @@ function  addModal(type,appid) {
         var appPort=$.trim($("#appPort"+appid).html().split(':')[1])
         var appName=$.trim($("#appName"+appid).html())
         var titleName="修改应用"
+        var onclick="modApplications('"+type+"')"
         var body=[
             '应用id <input id="appId" type="text" value="'+appid+'" class="modalTextStyle readOnlyStyle" readonly="true"><br/><br/>',
             '应用名 <input id="appName" type="text" value="'+appName+'" class="modalTextStyle" onblur="textAuth(\'appName\',\'#appName\',\'#submitButton\',\'#showMsg\')"><br/><br/>',
@@ -54,14 +57,28 @@ function  addModal(type,appid) {
         ]
     }else if(type=='del'){
         var appName=$.trim($("#appName"+appid).html())
+        var onclick="modApplications('"+type+"')"
         var titleName="删除应用"
         var body=[
             '<span id="appId" style="display: none;">'+appid+'</span>',
             '<span class="showInfo">是否删除应用'+appName+'</span>'
         ]
 
+    }else if (type=='addWeb'){
+        var onclick="modApplications('"+type+"')"
+        var titleName="添加web"
+        var body=[
+            '<span id="appId" style="display: none;">'+appid+'</span>',
+            '应用模板名 <input id="webTempName" type="text" class="modalTextStyle" autocomplete="off">',
+        ]
+        $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
+            .done(function () {
+                listenText('#webTempName',appTemp)
+            })
+        .fail(function () {
+            alert('web模板请求失败')
+        })
     }
-    var onclick="modApplications('"+type+"')"
     createModal(titleName,body)
     $('#submitButton').attr("onclick",onclick)
 
@@ -70,7 +87,6 @@ function modApplications(method) {
     var data={}
     if (method=='add'){
         if(textAuth('appName','#appName','#submitButton','#showMsg') && textAuth('port','#appPort','#submitButton','#showMsg')){
-
             data['appName']=$.trim($("#appName").val())
             data['appPath']=$.trim($("#appPath").val())
             data['appPort']=parseInt($("#appPort").val())
@@ -79,6 +95,7 @@ function modApplications(method) {
             data['hostId']=parseInt(sessionStorage.hostId)
             var alertmsg="添加应用失败"
             var successTxt="添加应用成功"
+            var url='/api/modApplication/'
         }
     }else if(method=='modify'){
         if(textAuth('appName','#appName','#submitButton','#showMsg') && textAuth('port','#appPort','#submitButton','#showMsg')){
@@ -91,14 +108,23 @@ function modApplications(method) {
             data['hostId']=parseInt(sessionStorage.hostId)
             var alertmsg="修改应用失败"
             var successTxt="修改应用成功"
+            var url='/api/modApplication/'
         }
     }else if(method=='del'){
             data['id']=parseInt($("#appId").html())
             data['method']=method
             var alertmsg="删除应用失败"
             var successTxt="删除应用成功"
+            var url='/api/modApplication/'
+    }else if(method=='addWeb'){
+            data['appId']=parseInt($("#appId").html())
+            data['webAppName']=$.trim($("#webTempName").val())
+            data['method']=method
+            var alertmsg="添加WEB应用失败"
+            var successTxt="添加WEB应用成功"
+            var url='/api/modWebApplication/'
     }
-    var url='/api/modApplication/'
+
     $("#submitButton").addClass('buttonClickDisable')
     $.when(req_ajax(url,data,'result'))
         .done(function () {
@@ -122,7 +148,7 @@ function createApp(data){
         var appColor='runColor'
     }
     var appOb=[
-        '<span class="appContainer '+appColor+'" id="app"'+data['id']+'>',
+        '<span class="appContainer '+appColor+'" id="app'+data['id']+'">',
 '        <div class="appTitleContainer">',
 '            <span id="appName'+data['id']+'">'+data['hostAppName']+'</span>',
 '            <span id="appTemplate'+data['id']+'" style="display: none;">'+data['appTemplateName']+'</span>',
@@ -144,6 +170,14 @@ function createApp(data){
 '</span>',
     ]
     $(".page_container").append(appOb.join(''))
+    if (data['appTemplateName']=='tomcat'){
+        var webapp=''
+        for(var i=0;i<data['webApp'].length;i++){
+            webapp+='<span class="webAppName">'+data['webApp'][i]['webTemplateName']+'</span>'
+        }
+        webapp+='<span class="glyphicon glyphicon-plus-sign addIcon" onclick="addModal(\'addWeb\','+data['id']+')"></span>'
+        $("#app"+data['id']+' .appContainerBody').append(webapp)
+    }
 }
 // 页面初始化是请求应用
 function loadApp() {

@@ -35,6 +35,8 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/api/getTemplate/':4,
         '/api/modApplication/':4,
         '/api/getApplication/':4,
+        '/api/getWebTemplate/':4,
+        '/api/modWebApplication/':4,
     }
     def __init__(self,get_response):
         self.get_response = get_response

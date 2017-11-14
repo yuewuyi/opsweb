@@ -56,3 +56,8 @@
     letter-spacing:3px;
     cursor: pointer;
 }
+.addIcon{
+    color: white;
+    cursor: pointer;
+    text-indent: 2px;
+}

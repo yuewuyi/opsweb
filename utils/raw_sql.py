@@ -12,7 +12,19 @@ def getsql(sqlName):
         on h.appTempId=a.id
         where hostId=%(hId)s
     """
+    #查询web应用
+    webAppSql="""
+        SELECT
+	  w.`id`,
+	  t.`webTemplateName`
+    FROM
+	  webApplication AS w
+    LEFT JOIN webTemplate AS t ON t.id = w.webTempId
+    WHERE
+	  hostAppId = %(aId)s
+    """
     sqldit['hostAppsql']=hostAppsql
+    sqldit['webAppSql'] = webAppSql
     return sqldit[sqlName]
 def rawQuerytoList(rawQuerySet):
     Qlist=[]
@@ -21,5 +33,4 @@ def rawQuerytoList(rawQuerySet):
         del(dit['_state'])
         Qlist.append(dit)
     return Qlist
-
 

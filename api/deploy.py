@@ -108,14 +108,46 @@ def getTemplate(request):
         return HttpResponse(json.dumps(appTemp),content_type='application/json')
     else:
         return HttpResponse(status=403)
+def getWebTemplate(request):
+    if request.method=='POST':
+        webTemp=list(webTemplate.objects.all().values_list('webTemplateName'))
+        return  HttpResponse(json.dumps(webTemp),content_type='application/json')
+    else:
+        return HttpResponse(status=403)
 def getAapplication(request):
     if request.method=='POST':
         postData=json.loads(request.body.decode())
         hostApp=rawQuerytoList(hostApplication.objects.raw(getsql('hostAppsql'),postData))
+        for i in range(0,len(hostApp)):
+            hostApp[i]['webApp']=rawQuerytoList(webApplication.objects.raw(getsql('webAppSql'),{'aId':hostApp[i]['id']}))
         return HttpResponse(json.dumps(hostApp),content_type='application/json')
     else:
         return HttpResponse(status=403)
-
+def modWebApplication(request):
+    if request.method=='POST':
+        postData = json.loads(request.body.decode())
+        rep = {'code': 0, 'msg': ''}
+        if postData['method']=='addWeb':
+            try:
+                hostApp=hostApplication.objects.get(id=postData['appId'])
+            except:
+                rep['code']=-1
+                rep['msg']="应用不存在"
+                return HttpResponse(json.dumps(rep), content_type='application/json')
+            try:
+                webTemp=webTemplate.objects.get(webTemplateName=postData['webAppName'])
+            except:
+                rep['code'] = -1
+                rep['msg'] = "web模板不存在"
+                return HttpResponse(json.dumps(rep), content_type='application/json')
+            if webApplication.objects.filter(webTempId=webTemp.id,hostAppId=hostApp.id):
+                rep['code'] = -1
+                rep['msg'] = "应用已存在"
+                return HttpResponse(json.dumps(rep), content_type='application/json')
+            webApplication.objects.create(webTempId=webTemp,hostAppId=hostApp)
+        return HttpResponse(json.dumps(rep), content_type='application/json')
+    else:
+        return HttpResponse(status=403)
 def modApplication(request):
     if request.method=='POST':
         postData=json.loads(request.body.decode())
