@@ -78,6 +78,19 @@ function  addModal(type,appid) {
         .fail(function () {
             alert('web模板请求失败')
         })
+    }else if(type=='delWeb'){
+        var onclick="modApplications('"+type+"')"
+        var titleName="删除web"
+        var appName=$.trim($("#webAppName"+appid).html())
+        var body=[
+            '<span id="appId" style="display: none;">'+appid+'</span>',
+            '<span class="showInfo">是否删除web应用'+appName+'</span>'
+        ]
+        event.stopPropagation()
+
+    }else if(type=='deploy'){
+        alert(type)
+        return false
     }
     createModal(titleName,body)
     $('#submitButton').attr("onclick",onclick)
@@ -122,6 +135,12 @@ function modApplications(method) {
             data['method']=method
             var alertmsg="添加WEB应用失败"
             var successTxt="添加WEB应用成功"
+            var url='/api/modWebApplication/'
+    }else if(method=='delWeb'){
+            data['appId']=parseInt($("#appId").html())
+            data['method']=method
+            var alertmsg="删除WEB应用失败"
+            var successTxt="删除WEB应用成功"
             var url='/api/modWebApplication/'
     }
 
@@ -173,7 +192,10 @@ function createApp(data){
     if (data['appTemplateName']=='tomcat'){
         var webapp=''
         for(var i=0;i<data['webApp'].length;i++){
-            webapp+='<span class="webAppName">'+data['webApp'][i]['webTemplateName']+'</span>'
+            webapp+='<span class="webAppName" onclick="addModal(\'deploy\','+data['webApp'][i]['id']+')">'
+            webapp+='<span id="webAppName'+data['webApp'][i]['id']+'">'+data['webApp'][i]['webTemplateName']+'</span>'
+            webapp+='<span class="glyphicon glyphicon-remove-sign removeIcon" onclick="addModal(\'delWeb\','+data['webApp'][i]['id']+')"></span>'
+            webapp+='</span>'
         }
         webapp+='<span class="glyphicon glyphicon-plus-sign addIcon" onclick="addModal(\'addWeb\','+data['id']+')"></span>'
         $("#app"+data['id']+' .appContainerBody').append(webapp)

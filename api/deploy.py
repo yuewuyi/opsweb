@@ -142,9 +142,16 @@ def modWebApplication(request):
                 return HttpResponse(json.dumps(rep), content_type='application/json')
             if webApplication.objects.filter(webTempId=webTemp.id,hostAppId=hostApp.id):
                 rep['code'] = -1
-                rep['msg'] = "应用已存在"
+                rep['msg'] = "web应用已存在"
                 return HttpResponse(json.dumps(rep), content_type='application/json')
             webApplication.objects.create(webTempId=webTemp,hostAppId=hostApp)
+        elif postData['method']=='delWeb':
+            webApp=webApplication.objects.filter(id=postData['appId'])
+            if webApp:
+                webApplication.objects.filter(id=postData['appId']).delete()
+            else:
+                rep['code'] = -1
+                rep['msg'] = "web应用不存在"
         return HttpResponse(json.dumps(rep), content_type='application/json')
     else:
         return HttpResponse(status=403)

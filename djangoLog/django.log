@@ -5244,3 +5244,210 @@ Traceback (most recent call last):
 TypeError: %d format: a number is required, not str
 2017-11-14 16:33:26,544 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getApplication/ HTTP/1.0" 500 27
 2017-11-14 17:34:06,276 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f3c7f3127b8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f3c7f3127b8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-15 09:59:43,075 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f50dcb7db38>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f50dcb7db38>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-15 10:19:38,871 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /log/luceneCustomQuery/
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 137, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 91, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 81, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/connection/http_urllib3.py", line 114, in perform_request
+    response = self.pool.urlopen(method, url, body, retries=False, headers=self.headers, **kw)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 610, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 224, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/lib/python3/dist-packages/six.py", line 686, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 560, in urlopen
+    body=body, headers=headers)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 162, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 142, in _new_conn
+    (self.host, self.timeout))
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x7f56deac8a20>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/log/views.py", line 14, in luceneQuery
+    result = es.indexQuery('*')
+  File "/root/opsweb/utils/ElsInvok.py", line 16, in indexQuery
+    return self.__ElscApi.indices.get(index=index)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/client/utils.py", line 73, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/client/indices.py", line 135, in get
+    feature), params=params)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/transport.py", line 312, in perform_request
+    status, headers, data = connection.perform_request(method, url, params, body, ignore=ignore, timeout=timeout)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/connection/http_urllib3.py", line 123, in perform_request
+    raise ConnectionError('N/A', str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f56deac8a20>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f56deac8a20>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-15 10:19:39,037 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /log/luceneCustomQuery/ HTTP/1.0" 500 27
+2017-11-15 10:23:26,289 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /log/luceneCustomQuery/
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 137, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 91, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 81, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/connection/http_urllib3.py", line 114, in perform_request
+    response = self.pool.urlopen(method, url, body, retries=False, headers=self.headers, **kw)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 610, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 224, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/lib/python3/dist-packages/six.py", line 686, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 560, in urlopen
+    body=body, headers=headers)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 162, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 142, in _new_conn
+    (self.host, self.timeout))
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x7f56ddfeea20>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/log/views.py", line 14, in luceneQuery
+    result = es.indexQuery('*')
+  File "/root/opsweb/utils/ElsInvok.py", line 16, in indexQuery
+    return self.__ElscApi.indices.get(index=index)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/client/utils.py", line 73, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/client/indices.py", line 135, in get
+    feature), params=params)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/transport.py", line 312, in perform_request
+    status, headers, data = connection.perform_request(method, url, params, body, ignore=ignore, timeout=timeout)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/connection/http_urllib3.py", line 123, in perform_request
+    raise ConnectionError('N/A', str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f56ddfeea20>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f56ddfeea20>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-15 10:23:26,294 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /log/luceneCustomQuery/ HTTP/1.0" 500 27
+2017-11-15 10:23:28,539 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /log/luceneCustomQuery/
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 137, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 91, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 81, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/connection/http_urllib3.py", line 114, in perform_request
+    response = self.pool.urlopen(method, url, body, retries=False, headers=self.headers, **kw)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 610, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 224, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/lib/python3/dist-packages/six.py", line 686, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 560, in urlopen
+    body=body, headers=headers)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 162, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 142, in _new_conn
+    (self.host, self.timeout))
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x7f56ddfee198>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/log/views.py", line 14, in luceneQuery
+    result = es.indexQuery('*')
+  File "/root/opsweb/utils/ElsInvok.py", line 16, in indexQuery
+    return self.__ElscApi.indices.get(index=index)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/client/utils.py", line 73, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/client/indices.py", line 135, in get
+    feature), params=params)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/transport.py", line 312, in perform_request
+    status, headers, data = connection.perform_request(method, url, params, body, ignore=ignore, timeout=timeout)
+  File "/usr/local/lib/python3.5/dist-packages/elasticsearch/connection/http_urllib3.py", line 123, in perform_request
+    raise ConnectionError('N/A', str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f56ddfee198>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f56ddfee198>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-15 10:23:28,541 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /log/luceneCustomQuery/ HTTP/1.0" 500 27
+2017-11-15 10:23:45,879 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f56ddfeeb38>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f56ddfeeb38>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-15 15:39:28,690 ERROR    /root/opsweb/api/views.py[line:95] 字段历史获取失败<urlopen error [Errno 110] Connection timed out>
+2017-11-15 15:39:28,801 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/zabbix_history_get/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/views.py", line 97, in zabbix_history_get
+    for item in result:
+UnboundLocalError: local variable 'result' referenced before assignment
+2017-11-15 15:39:29,240 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/zabbix_history_get/ HTTP/1.0" 500 27
