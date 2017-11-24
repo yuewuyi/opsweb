@@ -5451,3 +5451,232 @@ Traceback (most recent call last):
     for item in result:
 UnboundLocalError: local variable 'result' referenced before assignment
 2017-11-15 15:39:29,240 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/zabbix_history_get/ HTTP/1.0" 500 27
+2017-11-16 10:46:53,547 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败TransportError(400, 'illegal_argument_exception', 'Trying to query 1070 shards, which is over the limit of 1000. This limit exists because querying many shards at the same time can make the job of the coordinating node very CPU and/or memory intensive. It is usually a better idea to have a smaller number of larger shards. Update [action.search.shard_count.limit] to a greater value if you really want to query that many shards at the same time.')
+2017-11-16 14:08:14,748 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败TransportError(400, 'illegal_argument_exception', 'Trying to query 1070 shards, which is over the limit of 1000. This limit exists because querying many shards at the same time can make the job of the coordinating node very CPU and/or memory intensive. It is usually a better idea to have a smaller number of larger shards. Update [action.search.shard_count.limit] to a greater value if you really want to query that many shards at the same time.')
+2017-11-17 11:34:33,759 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:34:33,900 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:34:37,599 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:35:59,323 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:35:59,526 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:36:00,522 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:36:00,701 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:49:47,692 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:49:47,818 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:10,047 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:10,257 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:11,422 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:11,496 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:21,496 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:21,632 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:22,328 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:22,388 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:31,017 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:31,085 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:31,829 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-17 11:50:31,890 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-11-24 10:13:12,226 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fbbca3c4da0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fbbca3c4da0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-24 18:09:33,535 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f676036c438>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f676036c438>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-24 18:31:52,114 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 282, in startStopApp
+    cmd_type=0
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 572, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'stat' is an invalid keyword argument for this function
+2017-11-24 18:31:52,232 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-24 18:32:42,325 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 283, in startStopApp
+    cmd_type=0
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 572, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'stat' is an invalid keyword argument for this function
+2017-11-24 18:32:43,875 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-24 18:37:47,286 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 285, in startStopApp
+    cmd_type=0
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 807, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 837, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 923, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 962, in _do_insert
+    using=using, raw=raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1106, in execute_sql
+    for sql, params in self.as_sql():
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1059, in as_sql
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1059, in <listcomp>
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1058, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 998, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "/root/opsweb/utils/customField.py", line 35, in get_db_prep_value
+    return strftime('%Y-%m-%d %H:%M:%S',value.timetuple())
+AttributeError: 'str' object has no attribute 'timetuple'
+2017-11-24 18:37:47,373 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-24 18:38:58,386 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 286, in startStopApp
+    cmd_type=0
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 807, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 837, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 923, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 962, in _do_insert
+    using=using, raw=raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1106, in execute_sql
+    for sql, params in self.as_sql():
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1059, in as_sql
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1059, in <listcomp>
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1058, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 998, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "/root/opsweb/utils/customField.py", line 35, in get_db_prep_value
+    return strftime('%Y-%m-%d %H:%M:%S',value.timetuple())
+AttributeError: 'str' object has no attribute 'timetuple'
+2017-11-24 18:38:58,403 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-24 18:39:33,635 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 286, in startStopApp
+    cmd_type=0
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 807, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 837, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 923, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 962, in _do_insert
+    using=using, raw=raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1106, in execute_sql
+    for sql, params in self.as_sql():
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1059, in as_sql
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1059, in <listcomp>
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1058, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 998, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "/root/opsweb/utils/customField.py", line 35, in get_db_prep_value
+    return strftime('%Y-%m-%d %H:%M:%S',value.timetuple())
+AttributeError: 'str' object has no attribute 'timetuple'
+2017-11-24 18:39:33,636 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-24 18:40:17,061 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 286, in startStopApp
+    cmd_type=0
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 807, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 837, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 923, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 962, in _do_insert
+    using=using, raw=raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1106, in execute_sql
+    for sql, params in self.as_sql():
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1059, in as_sql
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1059, in <listcomp>
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1058, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 998, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "/root/opsweb/utils/customField.py", line 35, in get_db_prep_value
+    return strftime('%Y-%m-%d %H:%M:%S',value.timetuple())
+AttributeError: 'str' object has no attribute 'timetuple'
+2017-11-24 18:40:17,080 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27

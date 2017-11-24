@@ -14,17 +14,27 @@ class saltClient:
         parm["password"] = self.__config_dit["salt_api_user"][1]
         reslut=self.__request("/login",parm,20)
         return reslut[0]["token"]
+#minion状态
     def MinionStatus(self):
         parm={"fun":"manage.status"}
         parm["client"]="runner"
         return self.__request("/",parm,60)
+#key操作
     def OperKey(self,oper_type,match,):
         parm = {"fun": oper_type}
         parm["client"]="wheel"
         parm["match"]=match
         result=self.__request("/",parm,60)
         return result
-
+# 异步执行命令
+    def AsyncCmd(self,match,arg):
+        parm={"fun":"cmd.run"}
+        parm["client"]="local_async"
+        parm["tgt"]=match
+        parm["arg"]=arg
+        result = self.__request("/", parm, 60)
+        return result
+#命令请求
     def __request(self,path,parm,timeout):
         headers = {'content-type': 'application/json',"X-Auth-Token":self.__tokenId}
         url=self.__config_dit["salt_api_url"][0]+":"+self.__config_dit["salt_api_url"][1]+path

@@ -17,16 +17,16 @@ function textAuth(type,textId,buttonId,errorTxtID) {
     var numReg=/^[0-9]{1,30}$/
     var auText=$.trim($(textId).val())
     if (type=='hostname'){
-        var errorMesg="主机名格式错误，主机名由数字、字母、-、_、组成"
+        var errorMesg="主机名格式错误，主机名由数字、字母、-、_、组成，长度为1-20"
         var reg=nameReg
     }else if(type=='TemplateName'){
-        var errorMesg="模板名格式错误，模板名由数字、字母、-、_、组成"
+        var errorMesg="模板名格式错误，模板名由数字、字母、-、_、组成，长度为1-20"
         var reg=nameReg
     }else if(type=='ip'){
         var errorMesg="ip格式错误"
         var reg=ipReg
     }else if(type=='appName'){
-        var errorMesg="应用名格式错误，模板名由数字、字母、-、_、组成"
+        var errorMesg="应用名格式错误，模板名由数字、字母、-、_、组成，长度为1-20"
         var reg=nameReg
     }else if(type=='port'){
         var errorMesg="端口格式错误"

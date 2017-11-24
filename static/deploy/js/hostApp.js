@@ -1,3 +1,4 @@
+//创建Modal
 function createModal(head,body) {
     $('#customModal').remove()
     var modalOb=['<div class="modal" id="customModal">',
@@ -23,11 +24,11 @@ function createModal(head,body) {
     $(".page_container").after(modalOb.join(''))
     $("#customModal").modal("show")
 }
-
+//动态modal
 function  addModal(type,appid) {
+    var onclick="modApplications('"+type+"')"
     if (type=='add'){
         var titleName="添加应用"
-        var onclick="modApplications('"+type+"')"
         var body=[
             '应用名 <input id="appName" type="text" class="modalTextStyle" onblur="textAuth(\'appName\',\'#appName\',\'#submitButton\',\'#showMsg\')"><br/><br/>',
             '应用路径 <input id="appPath" type="text" class="modalTextStyle"><br/><br/>',
@@ -47,7 +48,6 @@ function  addModal(type,appid) {
         var appPort=$.trim($("#appPort"+appid).html().split(':')[1])
         var appName=$.trim($("#appName"+appid).html())
         var titleName="修改应用"
-        var onclick="modApplications('"+type+"')"
         var body=[
             '应用id <input id="appId" type="text" value="'+appid+'" class="modalTextStyle readOnlyStyle" readonly="true"><br/><br/>',
             '应用名 <input id="appName" type="text" value="'+appName+'" class="modalTextStyle" onblur="textAuth(\'appName\',\'#appName\',\'#submitButton\',\'#showMsg\')"><br/><br/>',
@@ -57,7 +57,6 @@ function  addModal(type,appid) {
         ]
     }else if(type=='del'){
         var appName=$.trim($("#appName"+appid).html())
-        var onclick="modApplications('"+type+"')"
         var titleName="删除应用"
         var body=[
             '<span id="appId" style="display: none;">'+appid+'</span>',
@@ -65,7 +64,6 @@ function  addModal(type,appid) {
         ]
 
     }else if (type=='addWeb'){
-        var onclick="modApplications('"+type+"')"
         var titleName="添加web"
         var body=[
             '<span id="appId" style="display: none;">'+appid+'</span>',
@@ -79,7 +77,6 @@ function  addModal(type,appid) {
             alert('web模板请求失败')
         })
     }else if(type=='delWeb'){
-        var onclick="modApplications('"+type+"')"
         var titleName="删除web"
         var appName=$.trim($("#webAppName"+appid).html())
         var body=[
@@ -87,17 +84,24 @@ function  addModal(type,appid) {
             '<span class="showInfo">是否删除web应用'+appName+'</span>'
         ]
         event.stopPropagation()
-
     }else if(type=='deploy'){
         alert(type)
         return false
+    }else if (type=='start'){
+        var titleName="启动应用"
+        var appName=$.trim($("#appName"+appid).html())
+        var body=[
+            '<span id="appId" style="display: none;">'+appid+'</span>',
+            '<span class="showInfo">是否启动应用'+appName+'</span>'
+        ]
     }
     createModal(titleName,body)
     $('#submitButton').attr("onclick",onclick)
-
 }
+// 应用操作
 function modApplications(method) {
     var data={}
+    //添加应用
     if (method=='add'){
         if(textAuth('appName','#appName','#submitButton','#showMsg') && textAuth('port','#appPort','#submitButton','#showMsg')){
             data['appName']=$.trim($("#appName").val())
@@ -109,8 +113,13 @@ function modApplications(method) {
             var alertmsg="添加应用失败"
             var successTxt="添加应用成功"
             var url='/api/modApplication/'
+        }else {
+            return false
         }
-    }else if(method=='modify'){
+
+    }
+    //修改应用
+    else if(method=='modify'){
         if(textAuth('appName','#appName','#submitButton','#showMsg') && textAuth('port','#appPort','#submitButton','#showMsg')){
             data['id']=parseInt($("#appId").val())
             data['method']=method
@@ -122,28 +131,46 @@ function modApplications(method) {
             var alertmsg="修改应用失败"
             var successTxt="修改应用成功"
             var url='/api/modApplication/'
+        }else {
+            return false
         }
-    }else if(method=='del'){
+
+    }
+    //删除应用
+    else if(method=='del'){
             data['id']=parseInt($("#appId").html())
             data['method']=method
             var alertmsg="删除应用失败"
             var successTxt="删除应用成功"
             var url='/api/modApplication/'
-    }else if(method=='addWeb'){
+
+    }
+    //启动应用
+    else if(method=='start'){
+            data['id']=parseInt($("#appId").html())
+            data['method']=method
+            var alertmsg="应用启动失败"
+            var successTxt="应用启动操作成功"
+            var url='/api/startStopApp/'
+    }
+    //添加web应用
+    else if(method=='addWeb'){
             data['appId']=parseInt($("#appId").html())
             data['webAppName']=$.trim($("#webTempName").val())
             data['method']=method
             var alertmsg="添加WEB应用失败"
             var successTxt="添加WEB应用成功"
             var url='/api/modWebApplication/'
-    }else if(method=='delWeb'){
+
+    }
+    //删除web应用
+    else if(method=='delWeb'){
             data['appId']=parseInt($("#appId").html())
             data['method']=method
             var alertmsg="删除WEB应用失败"
             var successTxt="删除WEB应用成功"
             var url='/api/modWebApplication/'
     }
-
     $("#submitButton").addClass('buttonClickDisable')
     $.when(req_ajax(url,data,'result'))
         .done(function () {
@@ -160,36 +187,69 @@ function modApplications(method) {
             $("#submitButton").removeClass('buttonClickDisable')
         })
     }
+// 创建应用
 function createApp(data){
+    var modApp=[]
+    var body=[]
+    var loader=[]
     if (data['status']==0){
         var appColor='stopColor'
+        var button='<span class="appButton runColor">启动</span>'
+        var modApp=[
+            '<span class="glyphicon glyphicon-remove iconStyle" onclick="addModal(\'del\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-pencil iconStyle" onclick="addModal(\'modify\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-play iconStyle" onclick="addModal(\'start\','+data['id']+')"></span>',
+        ]
+        var body=[
+            '<span class="appInfo" id="appPort'+data['id']+'">端口: '+data['appPort']+'</span>',
+            '<div class="appContainerHr"></div>',
+            '<span class="appInfo" id="appPath'+data['id']+'">路径: '+data['appPath']+'</span>',
+            '<div class="appContainerHr"></div>',
+        ]
     }else if(data['status']==1){
         var appColor='runColor'
+        var body=[
+            '<span class="appInfo" id="appPort'+data['id']+'">端口: '+data['appPort']+'</span>',
+            '<div class="appContainerHr"></div>',
+            '<span class="appInfo" id="appPath'+data['id']+'">路径: '+data['appPath']+'</span>',
+            '<div class="appContainerHr"></div>',
+        ]
+        var modApp=[
+            '<span class="glyphicon glyphicon-stop iconStyle" onclick="addModal(\'stop\','+data['id']+')"></span>',
+        ]
+    }else if(data['status']==2){
+        var appColor='startingColor'
+        var loader=[
+            '<div class="loader"></div>',
+            '<div class="stateMesg">应用启动中</div>'
+        ]
+    }else if(data['status']==3){
+        var appColor='stopingColor'
+        var loader=[
+            '<div class="loader"></div>',
+            '<div class="stateMesg">应用停止中</div>'
+        ]
+
+    }else if(data['status']==4){
+        var appColor='deployingColor'
+        var loader=[
+            '<div class="loader"></div>',
+            '<div class="stateMesg">应用部署中</div>'
+        ]
     }
     var appOb=[
         '<span class="appContainer '+appColor+'" id="app'+data['id']+'">',
-'        <div class="appTitleContainer">',
-'            <span id="appName'+data['id']+'">'+data['hostAppName']+'</span>',
-'            <span id="appTemplate'+data['id']+'" style="display: none;">'+data['appTemplateName']+'</span>',
-'            <span class="glyphicon glyphicon-remove iconStyle" onclick="addModal(\'del\','+data['id']+')"></span>',
-'            <span class="glyphicon glyphicon-pencil iconStyle" onclick="addModal(\'modify\','+data['id']+')"></span>',
-'        </div>',
-'        <div class="appContainerHr"></div>',
-'        <div class="appContainerBody">',
-'            <span class="appInfo" id="appPort'+data['id']+'">端口: '+data['appPort']+'</span>',
-'            <div class="appContainerHr"></div>',
-'            <span class="appInfo" id="appPath'+data['id']+'">路径: '+data['appPath']+'</span>',
-'            <div class="appContainerHr"></div>',
-'        </div>',
-'        <div class="appContainerHr"></div>',
-'        <div class="appContainerFooter">',
-'            <span class="appButton runColor">启动</span>',
-'            <span class="appButton updateButton">部署</span>',
-'        </div>',
-'</span>',
+            '<div class="appTitleContainer">',
+            '<span id="appName'+data['id']+'">'+data['hostAppName']+'</span>',
+            '<span id="appTemplate'+data['id']+'" style="display: none;">'+data['appTemplateName']+'</span>'+modApp.join(''),
+            '</div>',
+            '<div class="appContainerHr"></div>',
+            '<div class="appContainerBody">'+body.join('')+loader.join(''),
+            '</div>',
+        '</span>',
     ]
     $(".page_container").append(appOb.join(''))
-    if (data['appTemplateName']=='tomcat'){
+    if (data['appTemplateName']=='tomcat' && data['status']==0){
         var webapp=''
         for(var i=0;i<data['webApp'].length;i++){
             webapp+='<span class="webAppName" onclick="addModal(\'deploy\','+data['webApp'][i]['id']+')">'
@@ -198,6 +258,12 @@ function createApp(data){
             webapp+='</span>'
         }
         webapp+='<span class="glyphicon glyphicon-plus-sign addIcon" onclick="addModal(\'addWeb\','+data['id']+')"></span>'
+        $("#app"+data['id']+' .appContainerBody').append(webapp)
+    }else if(data['appTemplateName']=='tomcat' && data['status']==1){
+        var webapp=''
+        for(var i=0;i<data['webApp'].length;i++){
+            webapp+='<span class="webAppName">'+data['webApp'][i]['webTemplateName']+'</span>'
+        }
         $("#app"+data['id']+' .appContainerBody').append(webapp)
     }
 }

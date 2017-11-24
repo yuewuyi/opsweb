@@ -3,8 +3,8 @@ from celery import task
 from utils.salt_Client import saltClient
 from deploy.models import host
 from django.db.models import Q
-@task
 #发现salt key和修改salt绑定状态
+@task
 def HostKeyFind():
     SC = saltClient()
     keyList=SC.OperKey("key.list","unaccepted")[0]["data"]["return"]["minions_pre"]

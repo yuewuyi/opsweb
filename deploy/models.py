@@ -27,6 +27,7 @@ class appTemplate(models.Model):
     stopCmd=models.CharField(max_length=255)
     class Meta:
         db_table='appTemplate'
+
 #web模板表
 class webTemplate(models.Model):
     #web模板ID
@@ -35,6 +36,7 @@ class webTemplate(models.Model):
     webTemplateName=models.CharField(null=False,max_length=50,unique=True)
     class Meta:
         db_table='webTemplate'
+
 #host应用表
 class hostApplication(models.Model):
     #主机应用ID
@@ -49,7 +51,7 @@ class hostApplication(models.Model):
     appPath=models.CharField(max_length=255,null=False)
     #应用端口
     appPort=models.IntegerField()
-    #应用状态 0-异常 1-正常 3-启动中 4-停止中
+    #应用状态 0-停止 1-运行 2-启动中 3-停止中 4-部署中
     status=models.IntegerField(null=False,default=0)
     class Meta:
         db_table='hostApplication'
@@ -63,6 +65,26 @@ class webApplication(models.Model):
     hostAppId=models.ForeignKey(hostApplication,to_field='id',db_column="hostAppId")
     class Meta:
         db_table='webApplication'
+#任务执行表
+class taskState(models.Model):
+    #任务ID
+    id = models.AutoField(primary_key=True)
+    #salt任务ID
+    jid=models.CharField(max_length=255,null=False,db_index=True)
+    #应用ID 0-为自定义命令 0以上则为应用命令
+    appId=models.IntegerField(null=False,db_index=True)
+    #开始时间
+    start_time=UnixTimestampField(auto_created=True,null=False,db_index=True)
+    #结束时间
+    end_time=UnixTimestampField()
+    #命令
+    cmd=models.CharField(max_length=255)
+    #命令状态 0-执行中 1-执行成功 2-执行失败 3-执行异常
+    status=models.IntegerField(default=None)
+    #命令类型 0-应用启动命令 1-应用停止命令
+    cmd_type=models.IntegerField(default=None)
+    class Meta:
+        db_table='taskState'
 class jids(models.Model):
     jid=models.CharField(unique=True,max_length=191,null=False)
     load=models.TextField(null=False)
@@ -70,7 +92,7 @@ class jids(models.Model):
         db_table='jids'
 class saltReturns(models.Model):
     fun=models.CharField(null=False,max_length=255)
-    jid = models.CharField(max_length=191,null=False)
+    jid = models.CharField(max_length=255,null=False)
     minion_id = models.CharField(max_length=255,null=False)
     success=models.CharField(max_length=255)
     full_ret=models.TextField(null=False)

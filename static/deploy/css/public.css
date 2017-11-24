@@ -162,6 +162,15 @@
 .stopColor{
     background-color: #D24A52;
 }
+.startingColor{
+    background-color: #04d598;
+}
+.stopingColor{
+    background-color: #f35760;
+}
+.deployingColor{
+    background-color: #3da6e2;
+}
 #customModal{
     z-index: 1;
 }
