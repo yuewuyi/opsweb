@@ -19,7 +19,7 @@ class UnixTimestampField(models.DateTimeField):
         if self.isnull:
             typ += ['NULL']
         if self.auto_created:
-            typ += ['default CURRENT_TIMESTAMP']
+            typ += ['DEFAULT CURRENT_TIMESTAMP']
         return ' '.join(typ)
 
     def to_python(self, value):

@@ -74,9 +74,9 @@ class taskState(models.Model):
     #应用ID 0-为自定义命令 0以上则为应用命令
     appId=models.IntegerField(null=False,db_index=True)
     #开始时间
-    start_time=UnixTimestampField(auto_created=True,null=False,db_index=True)
+    start_time=models.DateTimeField(auto_now=True)
     #结束时间
-    end_time=UnixTimestampField()
+    end_time=models.DateTimeField(null=True)
     #命令
     cmd=models.CharField(max_length=255)
     #命令状态 0-执行中 1-执行成功 2-执行失败 3-执行异常

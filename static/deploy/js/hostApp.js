@@ -94,6 +94,13 @@ function  addModal(type,appid) {
             '<span id="appId" style="display: none;">'+appid+'</span>',
             '<span class="showInfo">是否启动应用'+appName+'</span>'
         ]
+    }else if (type=='stop'){
+        var titleName="停止应用"
+        var appName=$.trim($("#appName"+appid).html())
+        var body=[
+            '<span id="appId" style="display: none;">'+appid+'</span>',
+            '<span class="showInfo">是否停止应用'+appName+'</span>'
+        ]
     }
     createModal(titleName,body)
     $('#submitButton').attr("onclick",onclick)
@@ -151,6 +158,14 @@ function modApplications(method) {
             data['method']=method
             var alertmsg="应用启动失败"
             var successTxt="应用启动操作成功"
+            var url='/api/startStopApp/'
+    }
+    //停止应用
+    else if(method=='stop'){
+            data['id']=parseInt($("#appId").html())
+            data['method']=method
+            var alertmsg="应用停止失败"
+            var successTxt="应用停止操作成功"
             var url='/api/startStopApp/'
     }
     //添加web应用

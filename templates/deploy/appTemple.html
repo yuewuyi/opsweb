@@ -35,8 +35,8 @@
                 <tr>
                     <td>{{ item.id }}</td>
                     <td>{{ item.appTemplateName }}</td>
-                    <td>{{ item.startCmd }}</td>
-                    <td>{{ item.stopCmd }}</td>
+                    <td>{{ item.startCmd|safe }}</td>
+                    <td>{{ item.stopCmd|safe }}</td>
                     <td>
                         <div class="hostModfiyButton updateButton" data-toggle="modal" data-target="#updateTemplate" onclick="showValue(this,'update')">更新</div>
                         <div class="hostModfiyButton delButton" data-toggle="modal" data-target="#delTemplate" onclick="showValue(this,'del')">删除</div>

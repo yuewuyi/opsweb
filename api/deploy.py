@@ -98,6 +98,9 @@ def modTemplate(request):
             else:
                 code=-1
                 msg='删除失败'
+        else:
+            code = -1
+            msg = '未知操作'
 
         return HttpResponse(json.dumps({'code':code,'msg':msg}),content_type='application/json')
 
@@ -158,6 +161,9 @@ def modWebApplication(request):
             else:
                 rep['code'] = -1
                 rep['msg'] = "web应用不存在"
+        else:
+            rep['code'] = -1
+            rep['msg'] = '未知操作'
         return HttpResponse(json.dumps(rep), content_type='application/json')
     else:
         return HttpResponse(status=403)
@@ -232,6 +238,9 @@ def modApplication(request):
             else:
                 rep['code'] = -1
                 rep['msg'] = '没有这个应用'
+        else:
+            rep['code'] = -1
+            rep['msg'] = '未知操作'
         return HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return HttpResponse(status=403)
@@ -271,7 +280,26 @@ def startStopApp(request):
             cmd=appTemp.startCmd.replace("{{path}}",app.appPath)
             result=salt.AsyncCmd(hostInfo.ip,cmd)
             if 'jid' not in result[0].keys():
-                print(result)
+                rep['code'] = -1
+                rep['msg'] = '应用启动失败'
+                return HttpResponse(json.dumps(rep), content_type='application/json')
+            else:
+                for item in result:
+                    a=taskState.objects.create(jid=item['jid'],
+                                             appId=app.id,
+                                             cmd=cmd,
+                                             status=0,
+                                             cmd_type=0
+                                             )
+                hostApplication.objects.filter(id=postData['id']).update(status=2)
+        elif postData["method"]=='stop':
+            if app.status!=1:
+                rep['code'] = -1
+                rep['msg'] = '应用不在启动状态'
+                return HttpResponse(json.dumps(rep), content_type='application/json')
+            cmd=appTemp.stopCmd.replace("{{path}}",app.appPath)
+            result = salt.AsyncCmd(hostInfo.ip,cmd)
+            if 'jid' not in result[0].keys():
                 rep['code'] = -1
                 rep['msg'] = '应用启动失败'
                 return HttpResponse(json.dumps(rep), content_type='application/json')
@@ -281,10 +309,12 @@ def startStopApp(request):
                                              appId=app.id,
                                              cmd=cmd,
                                              status=0,
-                                             start_time=datetime.now(),
-                                             cmd_type=0
+                                             cmd_type=1
                                              )
-                hostApplication.objects.filter(id=postData['id']).update(status=2)
+                hostApplication.objects.filter(id=postData['id']).update(status=3)
+        else:
+            rep['code'] = -1
+            rep['msg'] = '未知操作'
         return HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return  HttpResponse(status=403)

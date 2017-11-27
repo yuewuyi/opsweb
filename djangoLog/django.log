@@ -5680,3 +5680,372 @@ Traceback (most recent call last):
     return strftime('%Y-%m-%d %H:%M:%S',value.timetuple())
 AttributeError: 'str' object has no attribute 'timetuple'
 2017-11-24 18:40:17,080 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-27 14:06:27,382 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f7b9dd87550>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f7b9dd87550>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-11-27 14:41:42,962 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 274, in startStopApp
+    salt = saltClient()
+  File "/root/opsweb/utils/salt_Client.py", line 9, in __init__
+    self.__tokenId=self.__login()
+  File "/root/opsweb/utils/salt_Client.py", line 16, in __login
+    return reslut[0]["token"]
+TypeError: 'NoneType' object is not subscriptable
+2017-11-27 14:41:42,982 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-27 15:31:00,022 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /deploy/hostApp/
+2017-11-27 15:31:00,024 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 404 0
+2017-11-27 15:31:13,214 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /deploy/hostApp/
+2017-11-27 15:31:13,216 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 404 0
+2017-11-27 15:32:02,458 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 38, in taskCheck
+    taskList=list(taskState.objects.filter(status=0,start_time_gte=today).values())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'start_time_gte' into field. Choices are: appId, cmd, cmd_type, end_time, id, jid, start_time, status
+2017-11-27 15:32:03,129 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 16:04:19,194 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 38, in taskCheck
+    taskList=list(taskState.objects.filter(status=0,start_time_gte=today).values())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'start_time_gte' into field. Choices are: appId, cmd, cmd_type, end_time, id, jid, start_time, status
+2017-11-27 16:04:19,207 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 16:25:36,210 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 38, in taskCheck
+    taskList=taskState.objects.filter(status=0,start_time_gte=today)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'start_time_gte' into field. Choices are: appId, cmd, cmd_type, end_time, id, jid, start_time, status
+2017-11-27 16:25:36,309 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 16:38:46,717 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 39, in taskCheck
+    print(taskList.query)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 233, in __str__
+    sql, params = self.sql_with_params()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 241, in sql_with_params
+    return self.get_compiler(DEFAULT_DB_ALIAS).as_sql()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 436, in as_sql
+    where, w_params = self.compile(self.where) if self.where is not None else ("", [])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/where.py", line 79, in as_sql
+    sql, params = compiler.compile(child)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 170, in as_sql
+    rhs_sql, rhs_params = self.process_rhs(compiler, connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 103, in process_rhs
+    return self.get_db_prep_lookup(value, connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 196, in get_db_prep_lookup
+    [get_db_prep_value(value, connection, prepared=True)]
+TypeError: get_db_prep_value() got an unexpected keyword argument 'prepared'
+2017-11-27 16:38:46,825 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 17:08:16,458 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 294, in startStopApp
+    print(a.query)
+AttributeError: 'taskState' object has no attribute 'query'
+2017-11-27 17:08:16,465 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-27 17:18:06,834 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 294, in startStopApp
+    print(a.query)
+AttributeError: 'taskState' object has no attribute 'query'
+2017-11-27 17:18:06,842 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+2017-11-27 18:07:38,950 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 40, in taskCheck
+    saltTaskList=list(saltReturns.objects.filter(jid=item['jid']).first())
+TypeError: 'saltReturns' object is not iterable
+2017-11-27 18:07:38,967 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:08:32,653 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 41, in taskCheck
+    print(saltTask.query())
+AttributeError: 'saltReturns' object has no attribute 'query'
+2017-11-27 18:08:32,665 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:08:44,748 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 41, in taskCheck
+    print(saltTask.query())
+AttributeError: 'saltReturns' object has no attribute 'query'
+2017-11-27 18:08:44,749 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:10:29,350 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 41, in taskCheck
+    print(saltTask.recode)
+AttributeError: 'saltReturns' object has no attribute 'recode'
+2017-11-27 18:10:29,366 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:20:09,419 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/usr/local/lib/python3.5/dist-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/usr/local/lib/python3.5/dist-packages/celery/app/task.py", line 380, in __call__
+    return self.run(*args, **kwargs)
+  File "/root/opsweb/deploy/tasks.py", line 42, in taskCheck
+    taskState.objects.filter(id=item['id']).update(status=1,cmd_type=datetime.datetime.now())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 647, in update
+    rows = query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1199, in execute_sql
+    cursor = super(SQLUpdateCompiler, self).execute_sql(result_type)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 871, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1165, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 762, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1853, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'datetime.datetime'
+2017-11-27 18:20:09,523 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:20:20,594 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 42, in taskCheck
+    taskState.objects.filter(id=item['id']).update(status=1,cmd_type=datetime.datetime.now())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 647, in update
+    rows = query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1199, in execute_sql
+    cursor = super(SQLUpdateCompiler, self).execute_sql(result_type)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 871, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1165, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 762, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1853, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'datetime.datetime'
+2017-11-27 18:20:20,607 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:22:28,571 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/root/opsweb/deploy/tasks.py", line 42, in taskCheck
+    taskState.objects.filter(id=item['id']).update(status=1,cmd_type=datetime.datetime.now())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 647, in update
+    rows = query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1199, in execute_sql
+    cursor = super(SQLUpdateCompiler, self).execute_sql(result_type)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 871, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1165, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 762, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1853, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'datetime.datetime'
+2017-11-27 18:22:28,583 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:25:09,278 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/usr/local/lib/python3.5/dist-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/usr/local/lib/python3.5/dist-packages/celery/app/task.py", line 380, in __call__
+    return self.run(*args, **kwargs)
+  File "/root/opsweb/deploy/tasks.py", line 40, in taskCheck
+    TaskRetCode=list(saltReturns.objects.filter(jid=item['jid']).values('retcode'))[0]
+IndexError: list index out of range
+2017-11-27 18:25:09,344 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:33:26,913 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /deploy/hostApp/
+2017-11-27 18:33:26,914 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 404 0
+2017-11-27 18:33:44,069 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py[line:152] Not Found: /deploy/hostApp/
+2017-11-27 18:33:44,070 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 404 0
+2017-11-27 18:34:18,786 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/usr/local/lib/python3.5/dist-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/usr/local/lib/python3.5/dist-packages/celery/app/task.py", line 380, in __call__
+    return self.run(*args, **kwargs)
+  File "/root/opsweb/deploy/tasks.py", line 40, in taskCheck
+    TaskRetCode=list(saltReturns.objects.filter(jid=item['jid']).values('retcode'))[0]
+IndexError: list index out of range
+2017-11-27 18:34:18,793 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27
+2017-11-27 18:34:52,928 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/hostApp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 65, in hostApp
+    taskCheck()
+  File "/usr/local/lib/python3.5/dist-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/usr/local/lib/python3.5/dist-packages/celery/app/task.py", line 380, in __call__
+    return self.run(*args, **kwargs)
+  File "/root/opsweb/deploy/tasks.py", line 40, in taskCheck
+    TaskRetCode=list(saltReturns.objects.filter(jid=item['jid']).values('retcode'))[0]
+IndexError: list index out of range
+2017-11-27 18:34:52,935 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/hostApp/?hostId=2 HTTP/1.0" 500 27

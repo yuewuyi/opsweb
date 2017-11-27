@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from deploy.models import *
 from utils.pageCalc import page
 import urllib
+from .tasks import *
 import json
 # Create your views here.
 #主机页面

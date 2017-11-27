@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
+from datetime import timedelta
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'opsweb.settings')
 app = Celery('opsweb')
 #自动搜索所有已注册app内的tasks文件
@@ -10,12 +11,17 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.beat_schedule = {
     'hostKeyFind-10-seconds': {
         'task': 'deploy.tasks.HostKeyFind',
-        'schedule': 30.0,
+        'schedule': timedelta(seconds=30),
         'args': ()
     },
     'HostStatusCheck-10-seconds': {
         'task': 'deploy.tasks.HostStatusCheck',
-        'schedule': 30.0,
+        'schedule': timedelta(seconds=30),
         'args': ()
+    },
+    'TaskCheck-1-seconds':{
+        'task':'deploy.tasks.TaskCheck',
+        'schedule':timedelta(seconds=1),
+        'args':()
     }
 }

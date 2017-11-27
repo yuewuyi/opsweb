@@ -31,8 +31,8 @@ function showValue(obj,operType){
     var th =$(obj).parent().parent()
     var id =th.children().eq(0).html()
     var appName=th.children().eq(1).html()
-    var startCmd=th.children().eq(2).html()
-    var stopCmd=th.children().eq(3).html()
+    var startCmd=th.children().eq(2).text()
+    var stopCmd=th.children().eq(3).text()
     if(operType=='update'){
         $("#updateTemplateId").val(id)
         $("#updateTemplateName").val(appName)
