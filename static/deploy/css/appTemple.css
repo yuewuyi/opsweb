@@ -32,3 +32,46 @@
 .delButton{
     margin-left: 6.5%;
 }
+.webTable{
+    width: 100%;
+    border: none;
+    text-align: center;
+
+}
+.webTable tr td{
+    border: 1px solid #DFE4E7;
+
+}
+.webTable tr td:nth-child(1){
+    width: 80%;
+
+}
+.webTable tr td:nth-child(2){
+    width: 20%;
+
+}
+.webaddButton{
+    display: inline-block;
+    float: right;
+    width: 15%;
+    border-radius: 5px;
+    background-color: #2a6496;
+    text-align: center;
+    color: white;
+    margin-left: 10px;
+    margin-right: 3px;
+}
+.webText{
+    height: 20px;
+    width: 40%;
+    float: right;
+    font-weight: 100;
+}
+#manageWebTemplate{
+    z-index: 1;
+}
+.modal_body_custom{
+    height: 200px;
+    overflow-y:auto;
+
+}

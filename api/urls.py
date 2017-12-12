@@ -19,5 +19,8 @@ urlpatterns = [
     url(r'^getApplication/$',deploy.getAapplication,name='getApplications'),
     url(r'^getWebTemplate/$',deploy.getWebTemplate,name='getWebTemplate'),
     url(r'^modWebApplication/$',deploy.modWebApplication,name='getWebTemplate'),
-    url(r'^startStopApp/$',deploy.startStopApp,name='startStopApp')
+    url(r'^startStopApp/$',deploy.startStopApp,name='startStopApp'),
+    url(r'^managerFileAppApi/$',deploy.managerAppFile,name='managerAppFileApi'),
+    url(r'^modWebTemplate/$',deploy.modWebTemplate,name='modWebTeplate'),
+    url(r'^modAppFile/$',deploy.modAppFile,name='modAppFile')
 ]

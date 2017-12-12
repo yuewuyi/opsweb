@@ -1,0 +1,144 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'deploy/css/public.css' %}">
+    <link rel="stylesheet" href="{% static 'deploy/css/managerFile.css' %}">
+    <script src="{% static 'deploy/js/public.js' %}"></script>
+    <script src="{% static 'plupload/js/plupload.full.min.js' %}"></script>
+    <script src="{% static 'deploy/js/manageFile.js' %}"></script>
+    <div class="page_container">
+        <div class="page_title">文件管理
+            <div class="ButtonStyle addHostButton" onclick="addModal('add','')">创建文件</div>
+        </div>
+        <div class="page_hr"></div>
+        <div class="tabHeader">
+            <div class="tableTitle active" id="fileViewTab" onclick="tabChange('fileViewTab')"><a href="#fileView" data-toggle="tab">文件浏览</a></div>
+            <div class="tableTitle" id="fileUploadTab" onclick="tabChange('fileUploadTab')"><a href="#fileUpload" data-toggle="tab">文件上传</a></div>
+        </div>
+        <div id="myTabContent" class="tab-content tab_content">
+            <div id="fileView" class="tab-pane fade in active">
+                <div class="searchBox" style="background-color: white;">
+                    <form class="fromStyle">
+                        <div class="inputBox">
+                            应用模板名 <input type="text" id="appTemplate" class="inputStyle textStyle marginRight">
+                        版本 <input type="text" id="version" class="inputStyle textStyle marginRight">
+                        文件包类型 <select class="inputStyle selectStyle" id="filePackType">
+                            <option value="2" selected="selected">全部</option>
+                            <option value="1">补丁包</option>
+                            <option value="0">完整包</option>
+                         </select>
+                        </div>
+                    </form>
+                    <div class="searchBoxHr"></div>
+                    <div class="buttonCont">
+                        <div class="SearchButton ButtonStyle" id="searchButton" onclick="searchSubmit()">搜索</div>
+                        <div class="ResetButton ButtonStyle">重置</div>
+                    </div>
+                </div>
+                <div class="tableDiv">
+                    <table class="viewTable">
+                        <tr>
+                            <th>id</th>
+                            <th>文件名</th>
+                            <th>文件包类型</th>
+                            <th>应用类型</th>
+                            <th>应用模板名</th>
+                            <th>文件版本</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                        {% for item in fileList %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                {% if not item.fileName %}
+                                    <td style="color: red;">无文件</td>
+                                {% else %}
+                                    <td>{{ item.fileName }}</td>
+                                {% endif %}
+                                {% if item.filePackType == 0 %}
+                                    <td>完整包</td>
+                                {% elif item.filePackType == 1 %}
+                                    <td>补丁包</td>
+                                {% endif %}
+                                {% if item.type == 0 %}
+                                    <td>普通应用</td>
+                                {% elif item.type == 1 %}
+                                    <td>web应用</td>
+                                {% endif %}
+                                <td>{{ item.appTemplateName }}</td>
+                                <td>{{ item.version }}</td>
+                                <td>{{ item.create_date|date:"Y-m-d H:i:s" }}</td>
+                                {% if not item.fileName %}
+                                    <td>
+                                        <div class="hostModfiyButton updateButton">修改</div>
+                                        <div class="hostModfiyButton delButton">删除</div>
+                                        <div class="hostModfiyButton fileUploadButton">文件上传</div>
+                                    </td>
+                                {% else %}
+                                     <td>
+                                        <div class="hostModfiyButton updateButton">修改</div>
+                                        <div class="hostModfiyButton delButton">删除</div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% if 1 < pageDit.pageList|length %}
+                        <ul class="pagination  customPagination pagination-sm">
+                            {% if pageDit.lt %}
+                            <li><a href="javascript:void(0)" onclick="pageTurn({{ pageDit.pageId |add:-1 }})">&laquo;</a></li>
+                            {% endif %}
+                            {% for i in pageDit.pageList %}
+                                {% if i == pageDit.pageId %}
+                                <li class="active"><a href="javascript:void(0)" onclick="pageTurn({{ i }})">{{ i }}</a></li>
+                                {% else %}
+                                <li><a href="javascript:void(0)" onclick="pageTurn({{ i }})">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if pageDit.nt %}
+                            <li><a href="javascript:void(0)" onclick="pageTurn({{ pageDit.pageId|add:1 }})">&raquo;</a></li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div id="fileUpload" class="tab-pane fade">文件上传</div>
+        </div>
+{#    <p>#}
+{#        <button id="browse">选择文件</button>#}
+{#        <button id="start_upload">开始上传</button>#}
+{#        <div id="progress"></div>#}
+{#    </p>#}
+{#    <script>#}
+{#    //实例化一个plupload上传对象#}
+{#    var uploader = new plupload.Uploader({#}
+{#        chunk_size:'1MB',#}
+{#        browse_button : 'browse',#}
+{#        url : '/api/managerFileAppApi/',#}
+{#        headers:{"X-CSRFToken":docCookies.getItem('csrftoken')},#}
+{#        unique_names:true#}
+{#    });#}
+{##}
+{#    //在实例对象上调用init()方法进行初始化#}
+{#    uploader.init();#}
+{##}
+{#    //绑定各种事件，并在事件监听函数中做你想做的事#}
+{#    uploader.bind('FilesAdded',function(uploader,files){#}
+{#        //每个事件监听函数都会传入一些很有用的参数，#}
+{#        //我们可以利用这些参数提供的信息来做比如更新UI，提示上传进度等操作#}
+{#    });#}
+{#    uploader.bind('UploadProgress',function(uploader,file,total){#}
+{#        $("#progress").html(file.name+file.percent)#}
+{#        console.log(uploader.total.bytesPerSec)#}
+{#    });#}
+{#    //......#}
+{#    //......#}
+{##}
+{#    //最后给"开始上传"按钮注册事件#}
+{#    document.getElementById('start_upload').onclick = function(){#}
+{#        uploader.start(); //调用实例对象的start()方法开始上传文件，当然你也可以在其他地方调用该方法#}
+{#    }#}
+{##}
+{#    </script>#}
+    </div>
+{% endblock %}

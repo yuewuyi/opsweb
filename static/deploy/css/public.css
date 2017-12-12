@@ -102,6 +102,10 @@
     height: 20px;
     float: right;
 }
+.modalSelectStyle{
+    float: right;
+    width: 66%;
+}
 .modal_footer{
     width: 40%;
     height: 20px;
@@ -172,5 +176,5 @@
     background-color: #3da6e2;
 }
 #customModal{
-    z-index: 1;
+    z-index: 2;
 }

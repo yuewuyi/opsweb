@@ -8,6 +8,7 @@
     <div class="page_container">
          <div class="page_title">应用模板
             <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#addTemplate">添加模板</div>
+             <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#manageWebTemplate" onclick="showWebTemp()">web模板</div>
         </div>
         <div class="page_hr"></div>
         <div class="searchBox">
@@ -83,6 +84,22 @@
                 <div class="modal_footer">
                     <div class="ButtonStyle SearchButton" id='addTepmlateSubmit' onclick="addTemplate()">添加</div>
                     <div class="ButtonStyle ResetButton" data-dismiss="modal">关闭</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="manageWebTemplate">
+        <div class="modal_container">
+            <div class="modal-content radius">
+                <div class="modal_header">
+                    web模板管理
+                    <div class="webaddButton" onclick="addModal('add','')">添加</div>
+                    <input type="text" class="webText" id="webTempName">
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_body modal_body_custom">
+                    <table class="webTable" id="webTable">
+                    </table>
                 </div>
             </div>
         </div>

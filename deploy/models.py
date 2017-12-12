@@ -85,6 +85,24 @@ class taskState(models.Model):
     cmd_type=models.IntegerField(default=None)
     class Meta:
         db_table='taskState'
+#应用管理表
+class appVersionManage(models.Model):
+    #ID
+    id = models.AutoField(primary_key=True)
+    #版本
+    version=models.CharField(max_length=255,null=False)
+    #路径
+    fileName=models.TextField(null=True)
+    #应用类型 0-普通应用 1-web应用
+    type=models.IntegerField(null=False)
+    #应用模板名
+    appTemplateName=models.CharField(max_length=255,null=False)
+    #文件包类型 0-完整包 1-补丁包
+    filePackType=models.IntegerField()
+    #创建时间
+    create_date=models.DateTimeField(auto_now=True)
+    class Meta:
+        db_table='appVersionManage'
 class jids(models.Model):
     jid=models.CharField(unique=True,max_length=191,null=False)
     load=models.TextField(null=False)

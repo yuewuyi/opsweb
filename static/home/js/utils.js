@@ -274,7 +274,7 @@ function listenText(textId,data) {
             regList=indexList.slice(0,9)
         }else {
             indexName=strReplace(indexName)
-            var reg=new RegExp("^"+indexName)
+            var reg=new RegExp(indexName)
             for (i=0;i<indexList.length;i++){
                 if (reg.test(indexList[i])){
                     regList.push(indexList[i])

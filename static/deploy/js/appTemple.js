@@ -89,3 +89,121 @@ function delTemplate() {
         })
 
 }
+function showWebTemp() {
+    $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
+        .done(function () {
+            sessionStorage.webTemplateName=appTemp
+            flushWebTable(appTemp)
+            listenNameInput()
+            })
+        .fail(function () {
+            alert('web模板请求失败')
+        })
+}
+function flushWebTable(webApp) {
+    $("#webTable").html('')
+    var tbody=''
+    for (var i=0;i<webApp.length;i++){
+        tbody+='<tr>'
+        tbody+='<td>'+webApp[i]+'</td>'
+        tbody+='<td><a onclick="addModal(\'del\',\''+webApp[i]+'\')">删除</a></td>'
+        tbody+='</tr>'
+    }
+    $("#webTable").append(tbody)
+}
+function createModal(head,body) {
+    $('#customModal').remove()
+    var modalOb=['<div class="modal" id="customModal">',
+                        '<div class="modal_container">',
+                            '<div class="modal-content radius">',
+                                '<div class="modal_header">',
+                                    '<span id="showMsg" class="show_mesg"></span>',
+                                '</div>',
+                                '<div class="page_hr"></div>',
+                                '<div class="modal_body">',
+                                '</div>',
+                                '<div class="page_hr"></div>',
+                                '<div class="modal_footer">',
+                                    '<div class="ButtonStyle SearchButton" id="submitButton" onclick="">确定</div>',
+                                    '<div class="ButtonStyle ResetButton" data-dismiss="modal">关闭</div>',
+                                '</div>',
+                            '</div>',
+                        '</div>',
+                    '</div>'
+                    ]
+    modalOb[3]=modalOb[3]+head
+    modalOb[7]=modalOb[7]+body.join('')
+    $(".page_container").after(modalOb.join(''))
+    $("#customModal").modal("show")
+}
+function addModal(method,tName){
+    if (method=='add'){
+        var tName=$.trim($("#webTempName").val())
+        var titleName="添加web模板"
+        var body=[
+            '<span id="tName" style="display: none;">'+tName+'</span>',
+            '是否要添加web模板:'+tName
+        ]
+    }else if(method=='del'){
+        var titleName="删除web模板"
+        var body=[
+            '<span id="tName" style="display: none;">'+tName+'</span>',
+            '是否要删除web模板:'+tName
+        ]
+    }
+    var onclick="modWebTemplate('"+method+"')"
+    createModal(titleName,body)
+    $('#submitButton').attr("onclick",onclick)
+}
+function modWebTemplate(method) {
+    var data={}
+    if (method=='add'){
+        var url="/api/modWebTemplate/"
+        data['method']=method
+        data['name']=$("#tName").html()
+        var successTxt="添加成功"
+        var alertmsg="添加失败"
+    }else if(method=='del'){
+        var url="/api/modWebTemplate/"
+        data['method']=method
+        data['name']=$("#tName").html()
+        var successTxt="删除成功"
+        var alertmsg="删除失败"
+    }
+    $("#submitButton").addClass('buttonClickDisable')
+    $.when(req_ajax(url,data,'result'))
+        .done(function () {
+            if (result['code']==-1){
+                showMesage('#showMsg','error',result['msg'])
+                $("#submitButton").removeClass('buttonClickDisable')
+            }else {
+                showMesage('#showMsg','success',successTxt)
+                sessionStorage.webTemplateName=result['result']
+                $("#submitButton").removeClass('buttonClickDisable')
+                setTimeout(function(){
+                    $("#customModal").modal("hide")
+                    flushWebTable(result['result'])
+                },1000)
+
+            }
+        })
+        .fail(function () {
+            alert(alertmsg)
+            $("#submitButton").removeClass('buttonClickDisable')
+        })
+}
+function  listenNameInput() {
+    $("#webTempName").keyup(function () {
+        var data=sessionStorage.webTemplateName.split(',')
+        var textName=$("#webTempName").val()
+        var inputList=[]
+        for (var i=0;i<data.length;i++){
+            var reg=new RegExp(textName)
+            if(reg.test(data[i])){
+                inputList.push(data[i])
+            }
+        }
+        flushWebTable(inputList)
+    })
+
+}

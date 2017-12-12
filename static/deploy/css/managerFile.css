@@ -1,0 +1,41 @@
+.tableTitle{
+    display: inline-block;
+    height: 30px;
+    border-radius: 5px 5px 0 0;
+}
+.tabHeader{
+    width: 100%;
+    height: 30px;
+}
+.tableTitle a{
+    text-decoration:none;
+    out-line: none;
+    color: #000000;
+    line-height: 30px;
+}
+.tabHeader .active{
+    background-color: white;
+}
+.tab_content{
+    background-color: white;
+    width: 100%;
+    height: 700px;
+}
+.searchBox{
+    margin: 0 auto;
+    text-align: center;
+}
+.inputBox{
+    display: inline-block;
+}
+.selectStyle{
+    width: 12%;
+}
+.viewTable tr th:nth-child(8),td:nth-child(8){
+    border-right: 0px;
+}
+.fileUploadButton{
+    background-color: #22a2ab;
+    width: 30%;
+    margin-left: 10%;
+}

@@ -70,3 +70,27 @@ def hostApp(request):
         return HttpResponse(status=404)
     hostName=host.objects.filter(id=hostId).first().hostName
     return render(request,'deploy/hostApp.html',{'hostName':hostName})
+def manageAppFile(request):
+    try:
+        pageId=int(request.GET['pageId'])
+    except:
+        pageId=1
+    pageFun = page(pageId=pageId, pageSize=13)
+    limitStart, limitEnd = pageFun.calcPageNum()
+    queryParm = {}
+    try:
+        templateName=urllib.parse.unquote(request.GET['templateName'])
+        version=urllib.parse.unquote(request.GET['version'])
+        packType=int(request.GET['packType'])
+        if templateName:
+            queryParm['appTemplateName__contains']=templateName
+        if version:
+            queryParm['version__contains']=version
+        if packType:
+            queryParm['filePackType'] =packType
+    except:
+        pass
+    pageCount = appVersionManage.objects.filter(**queryParm).count()
+    fileList = list(appVersionManage.objects.filter(**queryParm).values()[limitStart:limitEnd])
+    pageDit = pageFun.calcPage(pageCount)
+    return render(request,'deploy/manageAppFile.html',{'fileList':fileList,'pageDit':pageDit})

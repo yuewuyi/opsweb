@@ -118,6 +118,30 @@ def getWebTemplate(request):
         return  HttpResponse(json.dumps(webTemp),content_type='application/json')
     else:
         return HttpResponse(status=403)
+def modWebTemplate(request):
+    if request.method=='POST':
+        postData=json.loads(request.body.decode())
+        rep = {'code': 0, 'msg': '','result':[]}
+        if postData['method']=='add':
+            if webTemplate.objects.get_or_create(webTemplateName=postData['name'])[1]:
+                webTemplateName=list(webTemplate.objects.all().values('webTemplateName'))
+                for item in webTemplateName:
+                    rep['result'].append(item['webTemplateName'])
+            else:
+                rep['code']=-1
+                rep['msg']='模板名已存在'
+        elif postData['method']=='del':
+            try:
+                webTemplate.objects.filter(webTemplateName=postData['name']).delete()
+                webTemplateName = list(webTemplate.objects.all().values('webTemplateName'))
+                for item in webTemplateName:
+                    rep['result'].append(item['webTemplateName'])
+            except:
+                rep['code'] = -1
+                rep['msg'] = '删除失败'
+        return HttpResponse(json.dumps(rep),content_type="application/json")
+    else:
+        return  HttpResponse(status=403)
 def getAapplication(request):
     if request.method=='POST':
         postData=json.loads(request.body.decode())
@@ -132,17 +156,13 @@ def modWebApplication(request):
     if request.method=='POST':
         postData = json.loads(request.body.decode())
         rep = {'code': 0, 'msg': ''}
-        try:
-            hostApp = hostApplication.objects.get(id=postData['appId'])
-            if hostApp.status !=0:
-                rep['code'] = -1
-                rep['msg'] = "应用不是停止状态不能操作"
-                return HttpResponse(json.dumps(rep), content_type='application/json')
-        except:
-            rep['code'] = -1
-            rep['msg'] = "应用不存在"
-            return HttpResponse(json.dumps(rep), content_type='application/json')
         if postData['method']=='addWeb':
+            try:
+                hostApp=hostApplication.objects.get(id=postData['appId'])
+            except:
+                rep['code'] = -1
+                rep['msg'] = "没有这个应用"
+                return HttpResponse(json.dumps(rep), content_type='application/json')
             try:
                 webTemp=webTemplate.objects.get(webTemplateName=postData['webAppName'])
             except:
@@ -316,5 +336,45 @@ def startStopApp(request):
             rep['code'] = -1
             rep['msg'] = '未知操作'
         return HttpResponse(json.dumps(rep),content_type='application/json')
+    else:
+        return  HttpResponse(status=403)
+def managerAppFile(request):
+    if request.method=='POST':
+       filename=request.POST.get('name', '')
+       chunks=request.POST.get('chunks', '')
+       chunk=request.POST.get('chunk', '')
+       print(request.FILES)
+       print("文件名:%s,上传完成第%s片,总共%s片"%(filename,chunk,chunks))
+       return HttpResponse('mdzz')
+    else:
+        return HttpResponse(status=403)
+def modAppFile(request):
+    if request.method=='POST':
+        postData=json.loads(request.body.decode())
+        rep = {'code': 0, 'msg': ''}
+        print(postData)
+        if postData['method']=='add':
+            #判断是否有这个模板名
+            if postData['type']==0:
+                try:
+                    appTemplate.objects.get(appTemplateName=postData['appTemplate'])
+                except:
+                    rep['code'] = -1
+                    rep['msg'] = '没有这个应用模板'
+                    return  HttpResponse(json.dumps(rep),content_type="application/json")
+            elif postData['type']==1:
+                try:
+                    webTemplate.objects.get(webTemplateName=postData['appTemplate'])
+                except:
+                    rep['code'] = -1
+                    rep['msg'] = '没有这个web应用模板'
+                    return HttpResponse(json.dumps(rep), content_type="application/json")
+            appVersionManage.objects.create(version=postData['version'],
+                                            type=postData['type'],
+                                            appTemplateName=postData['appTemplate'],
+                                            filePackType=postData['packType'],)
+            return HttpResponse(json.dumps(rep), content_type="application/json")
+
+
     else:
         return  HttpResponse(status=403)

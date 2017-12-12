@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='deployIndex'),
     url(r'^appTemplate/$',views.tempPage,name='deployAppTemplate'),
-    url(r'^hostApp/$',views.hostApp,name='deployHostApp')
+    url(r'^hostApp/$',views.hostApp,name='deployHostApp'),
+    url(r'^manageAppFile/$',views.manageAppFile,name='deployManageAppFile')
 ]

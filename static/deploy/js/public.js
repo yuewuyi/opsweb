@@ -1,3 +1,29 @@
+//创建Modal
+function createModal(head,body) {
+    $('#customModal').remove()
+    var modalOb=['<div class="modal" id="customModal">',
+                        '<div class="modal_container">',
+                            '<div class="modal-content radius">',
+                                '<div class="modal_header">',
+                                    '<span id="showMsg" class="show_mesg"></span>',
+                                '</div>',
+                                '<div class="page_hr"></div>',
+                                '<div class="modal_body">',
+                                '</div>',
+                                '<div class="page_hr"></div>',
+                                '<div class="modal_footer">',
+                                    '<div class="ButtonStyle SearchButton" id="submitButton" onclick="">确定</div>',
+                                    '<div class="ButtonStyle ResetButton" data-dismiss="modal">关闭</div>',
+                                '</div>',
+                            '</div>',
+                        '</div>',
+                    '</div>'
+                    ]
+    modalOb[3]=modalOb[3]+head
+    modalOb[7]=modalOb[7]+body.join('')
+    $(".page_container").after(modalOb.join(''))
+    $("#customModal").modal("show")
+}
 //翻页
 function pageTurn(pageId) {
     var url=window.location.href
