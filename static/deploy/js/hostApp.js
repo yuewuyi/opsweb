@@ -74,7 +74,7 @@ function  addModal(type,appid) {
                 listenText('#webTempName',appTemp)
             })
         .fail(function () {
-            alert('web模板请求失败')
+            alert('web模板请求失败')d
         })
     }else if(type=='delWeb'){
         var titleName="删除web"

@@ -70,14 +70,14 @@
                                 <td>{{ item.create_date|date:"Y-m-d H:i:s" }}</td>
                                 {% if not item.fileName %}
                                     <td>
-                                        <div class="hostModfiyButton updateButton">修改</div>
-                                        <div class="hostModfiyButton delButton">删除</div>
+                                        <div class="hostModfiyButton updateButton" onclick="addModal('modify',this)">修改</div>
+                                        <div class="hostModfiyButton delButton" onclick="addModal('del',this)">删除</div>
                                         <div class="hostModfiyButton fileUploadButton">文件上传</div>
                                     </td>
                                 {% else %}
                                      <td>
-                                        <div class="hostModfiyButton updateButton">修改</div>
-                                        <div class="hostModfiyButton delButton">删除</div>
+                                        <div class="hostModfiyButton updateButton" onclick="addModal('modify',this)">修改</div>
+                                        <div class="hostModfiyButton delButton" onclick="addModal('del',this)">删除</div>
                                     </td>
                                 {% endif %}
                             </tr>

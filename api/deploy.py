@@ -352,28 +352,56 @@ def modAppFile(request):
     if request.method=='POST':
         postData=json.loads(request.body.decode())
         rep = {'code': 0, 'msg': ''}
-        print(postData)
-        if postData['method']=='add':
-            #判断是否有这个模板名
-            if postData['type']==0:
+        if postData['method']=='add' or postData['method']=='modify':
+            # 判断是否有这个模板名
+            if postData['type'] == 0:
                 try:
                     appTemplate.objects.get(appTemplateName=postData['appTemplate'])
                 except:
                     rep['code'] = -1
                     rep['msg'] = '没有这个应用模板'
-                    return  HttpResponse(json.dumps(rep),content_type="application/json")
-            elif postData['type']==1:
+                    return HttpResponse(json.dumps(rep), content_type="application/json")
+            elif postData['type'] == 1:
                 try:
                     webTemplate.objects.get(webTemplateName=postData['appTemplate'])
                 except:
                     rep['code'] = -1
                     rep['msg'] = '没有这个web应用模板'
                     return HttpResponse(json.dumps(rep), content_type="application/json")
+
+        if postData['method']=='add':
+            # 判断应用版本是否重复
+            if appVersionManage.objects.filter(version=postData['version'],
+                                               appTemplateName=postData['appTemplate']).count() != 0:
+                rep['code'] = -1
+                rep['msg'] = '同一应用版本不能重复'
+                return HttpResponse(json.dumps(rep), content_type="application/json")
             appVersionManage.objects.create(version=postData['version'],
                                             type=postData['type'],
                                             appTemplateName=postData['appTemplate'],
-                                            filePackType=postData['packType'],)
+                                            filePackType=postData['packType'])
             return HttpResponse(json.dumps(rep), content_type="application/json")
+        elif postData['method']=='modify':
+            # 判断应用版本是否重复
+            if appVersionManage.objects.filter(Q(version=postData['version']),
+                                               Q(appTemplateName=postData['appTemplate']),~Q(id=postData['id'])).count() != 0:
+                rep['code'] = -1
+                rep['msg'] = '同一应用版本不能重复'
+                return HttpResponse(json.dumps(rep), content_type="application/json")
+            appVersionManage.objects.filter(id=postData['id']).update(
+                version=postData['version'],
+                type=postData['type'],
+                appTemplateName=postData['appTemplate'],
+                filePackType=postData['packType'])
+            return HttpResponse(json.dumps(rep), content_type="application/json")
+        elif postData['method']=='del':
+            appVersionManage.objects.filter(id=postData['id']).delete()
+            return HttpResponse(json.dumps(rep), content_type="application/json")
+        else:
+            return HttpResponse(status=403)
+
+
+
 
 
     else:

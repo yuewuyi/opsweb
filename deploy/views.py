@@ -86,11 +86,11 @@ def manageAppFile(request):
             queryParm['appTemplateName__contains']=templateName
         if version:
             queryParm['version__contains']=version
-        if packType:
+        if packType !=2:
             queryParm['filePackType'] =packType
     except:
         pass
     pageCount = appVersionManage.objects.filter(**queryParm).count()
-    fileList = list(appVersionManage.objects.filter(**queryParm).values()[limitStart:limitEnd])
+    fileList = list(appVersionManage.objects.filter(**queryParm).values().order_by('-create_date')[limitStart:limitEnd])
     pageDit = pageFun.calcPage(pageCount)
     return render(request,'deploy/manageAppFile.html',{'fileList':fileList,'pageDit':pageDit})

@@ -33,6 +33,7 @@
 }
 .viewTable tr th:nth-child(8),td:nth-child(8){
     border-right: 0px;
+    width: 17%;
 }
 .fileUploadButton{
     background-color: #22a2ab;

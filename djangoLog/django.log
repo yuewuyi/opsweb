@@ -6713,3 +6713,49 @@ Traceback (most recent call last):
     raise errorclass(errno, errval)
 django.db.utils.IntegrityError: (1048, "Column 'create_date' cannot be null")
 2017-12-12 18:14:40,888 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/modAppFile/ HTTP/1.0" 500 27
+2017-12-13 10:05:44,107 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f09d9d706d8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f09d9d706d8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-12-13 10:30:02,301 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/manageAppFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 94, in manageAppFile
+    print(pageCount.query)
+AttributeError: 'int' object has no attribute 'query'
+2017-12-13 10:30:02,452 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/manageAppFile/?templateName=a&version=a&packType=2 HTTP/1.0" 500 27
+2017-12-13 15:15:39,213 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/modAppFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.deploy.modAppFile didn't return an HttpResponse object. It returned None instead.
+2017-12-13 15:15:39,639 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/modAppFile/ HTTP/1.0" 500 27
+2017-12-13 15:16:31,958 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/modAppFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.deploy.modAppFile didn't return an HttpResponse object. It returned None instead.
+2017-12-13 15:16:31,968 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/modAppFile/ HTTP/1.0" 500 27
+2017-12-13 15:16:42,230 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/modAppFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.deploy.modAppFile didn't return an HttpResponse object. It returned None instead.
+2017-12-13 15:16:42,232 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/modAppFile/ HTTP/1.0" 500 27
+2017-12-13 15:17:33,618 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/modAppFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.deploy.modAppFile didn't return an HttpResponse object. It returned None instead.
+2017-12-13 15:17:33,625 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/modAppFile/ HTTP/1.0" 500 27
+2017-12-13 16:28:33,956 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f8494051208>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f8494051208>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
