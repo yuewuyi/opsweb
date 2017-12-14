@@ -21,6 +21,8 @@ function  addModal(type,id) {
         var titleName="添加文件"
         var body=[
             '版本 <input id="fileVersion" type="text" onblur="textAuth(\'version\',\'#fileVersion\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
+            '创建人 <input id="createName" type="text" onblur="textAuth(\'name\',\'#createName\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
+            '备注 <input id="remark" type="text" class="modalTextStyle"><br/><br/>',
             '应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0">普通应用</option></select><br/><br/>',
             '应用模板名 <input id="appTempName" type="text" class="modalTextStyle" autocomplete="off"><br/><br/>',
             '文件包类型 <select id="packtype" class="modalSelectStyle"><option value="1">补丁包</option><option value="0">完整包</option></select><br/><br/>',
@@ -41,9 +43,13 @@ function  addModal(type,id) {
         var type=th.children().eq(3).html()
         var templateName=th.children().eq(4).html()
         var fileVersion=th.children().eq(5).html()
+        var name=th.children().eq(7).html()
+        var remark=th.children().eq(8).html()
         var body=[
             'id <input id="fileId" class="modalTextStyle readOnlyStyle" value="'+id+'" type="text" readonly><br/><br/>',
             '版本 <input id="fileVersion" type="text" onblur="textAuth(\'version\',\'#fileVersion\',\'#submitButton\',\'#showMsg\')" value="'+fileVersion+'" class="modalTextStyle"><br/><br/>',
+            '创建人 <input id="createName" type="text" value="'+name+'" onblur="textAuth(\'name\',\'#createName\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
+            '备注 <input id="remark" type="text" value="'+remark+'" class="modalTextStyle"><br/><br/>',
             '',
             '应用模板名 <input id="appTempName" type="text" value="'+templateName+'" class="modalTextStyle" autocomplete="off"><br/><br/>',
             '',
@@ -55,9 +61,9 @@ function  addModal(type,id) {
             body[4]='文件包类型 <select id="packType" class="modalSelectStyle"><option value="1"  selected="selected">补丁包</option><option value="0">完整包</option></select><br/><br/>'
         }
         if (type=='普通应用'){
-            body[2]='应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0" selected="selected">普通应用</option></select><br/><br/>'
+            body[6]='应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0" selected="selected">普通应用</option></select><br/><br/>'
         }else if(type=='web应用'){
-            body[2]='应用类型 <select id="type" class="modalSelectStyle"><option value="1" selected="selected">web应用</option><option value="0">普通应用</option></select><br/><br/>'
+            body[6]='应用类型 <select id="type" class="modalSelectStyle"><option value="1" selected="selected">web应用</option><option value="0">普通应用</option></select><br/><br/>'
         }
         $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
             .done(function () {
@@ -85,19 +91,21 @@ function modFileInfo(type) {
     var parm={}
     var url='/api/modAppFile/'
     if(type=="add"){
-         if (!textAuth('version','#fileVersion','#submitButton','#showMsg')){
+         if (!textAuth('version','#fileVersion','#submitButton','#showMsg') || !textAuth('name','#createName','#submitButton','#showMsg')){
             return false
          }
          parm['version']=$.trim($("#fileVersion").val())
          parm['type']=parseInt($("#type").select().val())
          parm['packType']=parseInt($("#packtype").select().val())
          parm['appTemplate']=$.trim($("#appTempName").val())
+         parm['name']=$.trim($("#createName").val())
+         parm['remark']=$.trim($("#remark").val())
          parm['method']='add'
          var successTxt="添加成功"
          var alertmsg="添加失败"
 
     }else if(type=='modify'){
-        if (!textAuth('version','#fileVersion','#submitButton','#showMsg')){
+        if (!textAuth('version','#fileVersion','#submitButton','#showMsg') || !textAuth('name','#createName','#submitButton','#showMsg')){
             return false
         }
         var successTxt="修改成功"
@@ -108,6 +116,8 @@ function modFileInfo(type) {
         parm['packType']=parseInt($("#packType").select().val())
         parm['type']=parseInt($("#type").select().val())
         parm['appTemplate']=$.trim($("#appTempName").val())
+        parm['name']=$.trim($("#createName").val())
+        parm['remark']=$.trim($("#remark").val())
 
     }else if(type=='del'){
         var successTxt="删除成功"
@@ -149,3 +159,33 @@ function appTypeChange() {
          })
     })
 }
+//文件上传函数
+function fileupload(id) {
+    var uploader = new plupload.Uploader({
+        chunk_size:'1MB',
+        browse_button : id,
+        url : '/api/managerFileAppApi/',
+        headers:{"X-CSRFToken":docCookies.getItem('csrftoken')},
+        unique_names:true
+    });
+
+    //在实例对象上调用init()方法进行初始化
+    uploader.init();
+
+    //绑定各种事件，并在事件监听函数中做你想做的事
+    uploader.bind('FilesAdded',function(uploader,files){
+        uploader.start();
+        //每个事件监听函数都会传入一些很有用的参数，
+        //我们可以利用这些参数提供的信息来做比如更新UI，提示上传进度等操作
+    });
+    uploader.bind('UploadProgress',function(uploader,file,total){
+        $("#progress").html(file.name+file.percent)
+        console.log(uploader.total.bytesPerSec)
+    });
+}
+$(document).ready(function () {
+    //绑定文件上传按钮
+    $( ".fileUploadButton" ).each( function() {
+        fileupload($(this).attr('id'))
+    })
+})

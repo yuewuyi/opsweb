@@ -379,7 +379,9 @@ def modAppFile(request):
             appVersionManage.objects.create(version=postData['version'],
                                             type=postData['type'],
                                             appTemplateName=postData['appTemplate'],
-                                            filePackType=postData['packType'])
+                                            filePackType=postData['packType'],
+                                            name=postData['name'],
+                                            remark=postData['remark'])
             return HttpResponse(json.dumps(rep), content_type="application/json")
         elif postData['method']=='modify':
             # 判断应用版本是否重复
@@ -399,10 +401,5 @@ def modAppFile(request):
             return HttpResponse(json.dumps(rep), content_type="application/json")
         else:
             return HttpResponse(status=403)
-
-
-
-
-
     else:
         return  HttpResponse(status=403)

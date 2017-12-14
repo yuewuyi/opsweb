@@ -42,6 +42,7 @@ function textAuth(type,textId,buttonId,errorTxtID) {
     var ipReg=/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/
     var numReg=/^[0-9]{1,30}$/
     var verReg=/^[a-zA-Z0-9_\-\.]{1,20}$/
+    var chReg=/^[\u4e00-\u9fa5]{2,20}/;
     var auText=$.trim($(textId).val())
     if (type=='hostname'){
         var errorMesg="主机名只能由数字、字母、-、_、组成，长度为1-20"
@@ -61,6 +62,9 @@ function textAuth(type,textId,buttonId,errorTxtID) {
     }else if(type=='version'){
         var errorMesg="版本名只能由数字、字母、-、_、.、组成，长度为1-20"
         var reg=verReg
+    }else if(type=='name'){
+        var errorMesg="姓名只能由中文组成，长度为2-20"
+        var reg=chReg
     }
     if (reg.test(auText)){
         $(buttonId).removeClass('buttonClickDisable')

@@ -1,7 +1,6 @@
 .tableTitle{
     display: inline-block;
     height: 30px;
-    border-radius: 5px 5px 0 0;
 }
 .tabHeader{
     width: 100%;
@@ -31,10 +30,35 @@
 .selectStyle{
     width: 12%;
 }
+.viewTable tr th:nth-child(2),td:nth-child(2){
+    width:15%;
+}
+.viewTable tr th:nth-child(3),td:nth-child(3){
+    width: 7%;
+}
+.viewTable tr th:nth-child(4),td:nth-child(4){
+    width: 6%;
+}
+.viewTable tr th:nth-child(5),td:nth-child(5){
+    width: 6%;
+}
+.viewTable tr th:nth-child(6),td:nth-child(6){
+    width: 6%;
+}
+.viewTable tr th:nth-child(7),td:nth-child(7){
+    width: 13%;
+}
 .viewTable tr th:nth-child(8),td:nth-child(8){
+    width: 5%;
+}
+.viewTable tr td:nth-child(9){
+    text-align: left;
+}
+.viewTable tr th:nth-child(10),td:nth-child(10){
     border-right: 0px;
     width: 17%;
 }
+
 .fileUploadButton{
     background-color: #22a2ab;
     width: 30%;

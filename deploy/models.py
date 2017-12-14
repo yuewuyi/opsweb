@@ -90,7 +90,11 @@ class appVersionManage(models.Model):
     #ID
     id = models.AutoField(primary_key=True)
     #版本
-    version=models.CharField(max_length=255,null=False)
+    version=models.CharField(max_length=255,null=False,default='')
+    #创建人
+    name=models.CharField(max_length=255,null=False,default='')
+    #备注
+    remark=models.CharField(max_length=255,null=False,default='')
     #路径
     fileName=models.TextField(null=True)
     #应用类型 0-普通应用 1-web应用
