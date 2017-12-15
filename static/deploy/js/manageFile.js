@@ -161,27 +161,41 @@ function appTypeChange() {
 }
 //文件上传函数
 function fileupload(id) {
-    var uploader = new plupload.Uploader({
+    var fid=id.split('fileUploadButton')[1]
+    var uploaderObject = new plupload.Uploader({
         chunk_size:'1MB',
         browse_button : id,
         url : '/api/managerFileAppApi/',
         headers:{"X-CSRFToken":docCookies.getItem('csrftoken')},
-        unique_names:true
+        unique_names:true,
+        multi_selection:false,
+    })
+    uploaderObject.init()
+    uploaderObject.bind('FilesAdded',function(uploader,files){
+        var fname=files[0].name
+        uploaderObject.disableBrowse(true)
+        $("#"+id).addClass('buttonClickDisable')
+        $("#"+id).html('上传中')
+        addprogress(fname,fid)
+        uploaderObject.start()
     });
-
-    //在实例对象上调用init()方法进行初始化
-    uploader.init();
-
-    //绑定各种事件，并在事件监听函数中做你想做的事
-    uploader.bind('FilesAdded',function(uploader,files){
-        uploader.start();
-        //每个事件监听函数都会传入一些很有用的参数，
-        //我们可以利用这些参数提供的信息来做比如更新UI，提示上传进度等操作
-    });
-    uploader.bind('UploadProgress',function(uploader,file,total){
-        $("#progress").html(file.name+file.percent)
-        console.log(uploader.total.bytesPerSec)
-    });
+    uploaderObject.bind('BeforeChunkUpload',function (uploader,file,POST,currentf,currentb) {
+        uploaderObject.pa('fileChecksum',md5(currentb))
+    })
+    uploaderObject.bind('UploadProgress',function(uploader,file){
+        var percent=file.percent+'%'
+        var upSpeed=unit_format(uploader.total.bytesPerSec,'B','float')
+        $("#fileprogress"+fid+" .progress .progress-bar").width(percent)
+        $("#fileprogress"+fid+" .progress .progress-bar").html(percent+','+upSpeed+'/s')
+    })
+}
+function addprogress(fname,fid) {
+    var pro='<div id="fileprogress'+fid+'">'
+    pro+=fname
+    pro+='<div class="progress progress-striped active">'
+    pro+='<div class="progress-bar progress-bar-success" style="width:0%;color: #0f0f0f;">0%,0B/s</div>'
+    pro+='</div></div>'
+    $("#fileUpload").append(pro)
 }
 $(document).ready(function () {
     //绑定文件上传按钮

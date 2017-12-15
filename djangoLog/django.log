@@ -6760,3 +6760,39 @@ ValueError: The view api.deploy.modAppFile didn't return an HttpResponse object.
 2017-12-13 15:17:33,625 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/modAppFile/ HTTP/1.0" 500 27
 2017-12-13 16:28:33,956 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f8494051208>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f8494051208>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
 2017-12-14 11:15:11,227 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f3be80f1b38>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f3be80f1b38>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-12-15 10:18:42,195 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f54c2d7e860>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f54c2d7e860>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-12-15 12:00:09,791 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc9144c86a0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc9144c86a0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-12-15 16:56:24,858 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/managerFileAppApi/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 345, in managerAppFile
+    print(settings.uploadFilePath)
+  File "/usr/local/lib/python3.5/dist-packages/django/conf/__init__.py", line 57, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'uploadFilePath'
+2017-12-15 16:56:25,010 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/managerFileAppApi/ HTTP/1.0" 500 27
+2017-12-15 17:39:37,034 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-12-15 17:48:23,765 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-12-15 17:50:52,581 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-12-15 17:52:20,686 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/managerFileAppApi/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 349, in managerAppFile
+    postData=json.loads(request.body.decode())
+  File "/usr/local/lib/python3.5/dist-packages/django/http/request.py", line 264, in body
+    raise RawPostDataException("You cannot access body after reading from request's data stream")
+django.http.request.RawPostDataException: You cannot access body after reading from request's data stream
+2017-12-15 17:52:20,751 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/managerFileAppApi/ HTTP/1.0" 500 27
+2017-12-15 17:52:36,852 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-12-15 17:52:45,434 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-12-15 17:52:56,735 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0

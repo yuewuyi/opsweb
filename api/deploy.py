@@ -5,6 +5,8 @@ from utils.salt_Client import saltClient
 from django.http import HttpResponse
 from utils.raw_sql import *
 from datetime import datetime
+import os
+from django.conf import settings
 def addHost(request):
     if request.method=='POST':
         postData = json.loads(request.body.decode())
@@ -340,12 +342,14 @@ def startStopApp(request):
         return  HttpResponse(status=403)
 def managerAppFile(request):
     if request.method=='POST':
+        # 文件夹按天数
+       filePath=settings.UPLOADFILEPATH+datetime.strftime(datetime.now(),'%Y-%m-%d')
+       if not os.path.exists(filePath):
+           os.makedirs(filePath)
        filename=request.POST.get('name', '')
        chunks=request.POST.get('chunks', '')
        chunk=request.POST.get('chunk', '')
-       print(request.FILES)
-       print("文件名:%s,上传完成第%s片,总共%s片"%(filename,chunk,chunks))
-       return HttpResponse('mdzz')
+       return HttpResponse('')
     else:
         return HttpResponse(status=403)
 def modAppFile(request):
