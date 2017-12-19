@@ -22,10 +22,10 @@ function  addModal(type,id) {
         var body=[
             '版本 <input id="fileVersion" type="text" onblur="textAuth(\'version\',\'#fileVersion\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
             '创建人 <input id="createName" type="text" onblur="textAuth(\'name\',\'#createName\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
-            '备注 <input id="remark" type="text" class="modalTextStyle"><br/><br/>',
             '应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0">普通应用</option></select><br/><br/>',
             '应用模板名 <input id="appTempName" type="text" class="modalTextStyle" autocomplete="off"><br/><br/>',
             '文件包类型 <select id="packtype" class="modalSelectStyle"><option value="1">补丁包</option><option value="0">完整包</option></select><br/><br/>',
+            '备注 <textarea id="remark" rows="6" class="modalTextarea"></textarea><br/><br/><br/><br/><br/><br/>',
         ]
         $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
             .done(function () {
@@ -44,26 +44,25 @@ function  addModal(type,id) {
         var templateName=th.children().eq(4).html()
         var fileVersion=th.children().eq(5).html()
         var name=th.children().eq(7).html()
-        var remark=th.children().eq(8).html()
+        var remark=th.children().eq(8).children().eq(1).text()
         var body=[
             'id <input id="fileId" class="modalTextStyle readOnlyStyle" value="'+id+'" type="text" readonly><br/><br/>',
             '版本 <input id="fileVersion" type="text" onblur="textAuth(\'version\',\'#fileVersion\',\'#submitButton\',\'#showMsg\')" value="'+fileVersion+'" class="modalTextStyle"><br/><br/>',
             '创建人 <input id="createName" type="text" value="'+name+'" onblur="textAuth(\'name\',\'#createName\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
-            '备注 <input id="remark" type="text" value="'+remark+'" class="modalTextStyle"><br/><br/>',
             '',
             '应用模板名 <input id="appTempName" type="text" value="'+templateName+'" class="modalTextStyle" autocomplete="off"><br/><br/>',
             '',
+            '备注 <textarea id="remark" rows="6" class="modalTextarea">'+remark+'</textarea><br/><br/><br/><br/><br/><br/>',
         ]
         if (packType==='完整包'){
-
-            body[4]='文件包类型 <select id="packType" class="modalSelectStyle"><option value="1">补丁包</option><option value="0" selected="selected">完整包</option></select><br/><br/>'
+            body[3]='文件包类型 <select id="packType" class="modalSelectStyle"><option value="1">补丁包</option><option value="0" selected="selected">完整包</option></select><br/><br/>'
         }else if(packType=='补丁包'){
-            body[4]='文件包类型 <select id="packType" class="modalSelectStyle"><option value="1"  selected="selected">补丁包</option><option value="0">完整包</option></select><br/><br/>'
+            body[3]='文件包类型 <select id="packType" class="modalSelectStyle"><option value="1"  selected="selected">补丁包</option><option value="0">完整包</option></select><br/><br/>'
         }
         if (type=='普通应用'){
-            body[6]='应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0" selected="selected">普通应用</option></select><br/><br/>'
+            body[5]='应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0" selected="selected">普通应用</option></select><br/><br/>'
         }else if(type=='web应用'){
-            body[6]='应用类型 <select id="type" class="modalSelectStyle"><option value="1" selected="selected">web应用</option><option value="0">普通应用</option></select><br/><br/>'
+            body[5]='应用类型 <select id="type" class="modalSelectStyle"><option value="1" selected="selected">web应用</option><option value="0">普通应用</option></select><br/><br/>'
         }
         $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
             .done(function () {
@@ -165,10 +164,11 @@ function fileupload(id) {
     var uploaderObject = new plupload.Uploader({
         chunk_size:'1MB',
         browse_button : id,
-        url : '/api/managerFileAppApi/',
+        url : '/api/uploadFile/',
         headers:{"X-CSRFToken":docCookies.getItem('csrftoken')},
         unique_names:true,
         multi_selection:false,
+        multipart_params:{upDate:new Date().format("Y-m-d")}
     })
     uploaderObject.init()
     uploaderObject.bind('FilesAdded',function(uploader,files){
@@ -179,14 +179,22 @@ function fileupload(id) {
         addprogress(fname,fid)
         uploaderObject.start()
     });
-    uploaderObject.bind('BeforeChunkUpload',function (uploader,file,POST,currentf,currentb) {
-        uploaderObject.pa('fileChecksum',md5(currentb))
-    })
     uploaderObject.bind('UploadProgress',function(uploader,file){
         var percent=file.percent+'%'
         var upSpeed=unit_format(uploader.total.bytesPerSec,'B','float')
         $("#fileprogress"+fid+" .progress .progress-bar").width(percent)
         $("#fileprogress"+fid+" .progress .progress-bar").html(percent+','+upSpeed+'/s')
+    })
+    uploaderObject.bind('FileUploaded',function (uploader,file) {
+        var Nfile=file.getNative()
+        var spark = new SparkMD5()
+        var reader=new FileReader()
+        reader.readAsBinaryString(Nfile)
+        reader.onload=function () {
+            spark.appendBinary(reader.result)
+            console.log(spark.end())
+        }
+
     })
 }
 function addprogress(fname,fid) {
@@ -196,6 +204,22 @@ function addprogress(fname,fid) {
     pro+='<div class="progress-bar progress-bar-success" style="width:0%;color: #0f0f0f;">0%,0B/s</div>'
     pro+='</div></div>'
     $("#fileUpload").append(pro)
+}
+function showRemark(obj) {
+    var txt=$(obj).next().text().replace(/\n/g,'<br/>')
+    $('#remarkModal').remove()
+    var modalOb=['<div class="modal" id="remarkModal">',
+                        '<div class="modal_container">',
+                            '<div class="modal-content radius">',
+                                '<div class="modal_header">备注</div>',
+                                '<div class="page_hr"></div>',
+                                '<div class="modal_body modal_body_custom">'+txt,
+                                '</div>',
+                        '</div>',
+                    '</div>'
+                    ]
+    $(".page_container").after(modalOb.join(''))
+    $("#remarkModal").modal("show")
 }
 $(document).ready(function () {
     //绑定文件上传按钮

@@ -7,6 +7,7 @@ from utils.raw_sql import *
 from datetime import datetime
 import os
 from django.conf import settings
+import hashlib
 def addHost(request):
     if request.method=='POST':
         postData = json.loads(request.body.decode())
@@ -340,16 +341,34 @@ def startStopApp(request):
         return HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return  HttpResponse(status=403)
-def managerAppFile(request):
+#文件上传完成后的处理接口
+def fileManager(request):
     if request.method=='POST':
-        # 文件夹按天数
-       filePath=settings.UPLOADFILEPATH+datetime.strftime(datetime.now(),'%Y-%m-%d')
-       if not os.path.exists(filePath):
-           os.makedirs(filePath)
-       filename=request.POST.get('name', '')
-       chunks=request.POST.get('chunks', '')
-       chunk=request.POST.get('chunk', '')
-       return HttpResponse('')
+        postData=json.loads(request.body.decode())
+        if postData['method']=='checkSum':
+            f=open(settings.UPLOADFILEPATH+postData['filePath']+'/'+postData['fileName']+'.filetemp')
+            fdata=f.read()
+            f.close()
+            fmd5=hashlib.md5()
+            fmd5.update(fdata)
+            print(fmd5.hexdigest())
+            print(postData['fileMd5'])
+            return HttpResponse('asd')
+    else:
+        return HttpResponse(status=403)
+#文件接收接口
+def uploadFile(request):
+    if  request.method=='POST':
+        filename = request.POST.get('name', '')
+        upDate=request.POST.get('upDate')
+        filePath=settings.UPLOADFILEPATH+upDate
+        if not os.path.exists(filePath):
+            os.makedirs(filePath)
+        blob=request.FILES['file'].read()
+        file=open(filePath+'/'+filename+'.filetemp','ab+')
+        file.write(blob)
+        file.close()
+        return HttpResponse('')
     else:
         return HttpResponse(status=403)
 def modAppFile(request):

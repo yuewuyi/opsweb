@@ -94,9 +94,11 @@ class appVersionManage(models.Model):
     #创建人
     name=models.CharField(max_length=255,null=False,default='')
     #备注
-    remark=models.CharField(max_length=255,null=False,default='')
-    #路径
-    fileName=models.TextField(null=True)
+    remark=models.TextField(null=False,default='')
+    #文件名
+    fileName=models.CharField(max_length=255,null=True)
+    #文件路径
+    filePath=models.TextField(null=True)
     #应用类型 0-普通应用 1-web应用
     type=models.IntegerField(null=False)
     #应用模板名

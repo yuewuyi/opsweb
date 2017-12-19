@@ -178,3 +178,12 @@
 #customModal{
     z-index: 2;
 }
+.modalTextarea{
+    float: right;
+    resize:none;
+}
+.modal_body_custom{
+    height: 400px;
+    overflow-y:auto;
+    word-break: break-all;
+}

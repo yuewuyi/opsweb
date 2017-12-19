@@ -16,6 +16,7 @@
             <div class="tableTitle active" id="fileViewTab" onclick="tabChange('fileViewTab')"><a href="#fileView" data-toggle="tab">文件浏览</a></div>
             <div class="tableTitle" id="fileUploadTab" onclick="tabChange('fileUploadTab')"><a href="#fileUpload" data-toggle="tab">文件上传</a></div>
         </div>
+
         <div id="myTabContent" class="tab-content tab_content">
             <div id="fileView" class="tab-pane fade in active">
                 <div class="searchBox" style="background-color: white;">
@@ -72,7 +73,9 @@
                                 <td>{{ item.version }}</td>
                                 <td>{{ item.create_date|date:"Y-m-d H:i:s" }}</td>
                                 <td>{{ item.name }}</td>
-                                <td>{{ item.remark }}</td>
+                                <td><a onclick="showRemark(this)">查看</a>
+                                    <div style="display: none;">{{ item.remark }}</div>
+                                </td>
                                 {% if not item.fileName %}
                                     <td>
                                         <div class="hostModfiyButton updateButton" onclick="addModal('modify',this)">修改</div>

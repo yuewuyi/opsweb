@@ -70,8 +70,3 @@
 #manageWebTemplate{
     z-index: 1;
 }
-.modal_body_custom{
-    height: 200px;
-    overflow-y:auto;
-
-}

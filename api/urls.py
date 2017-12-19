@@ -20,7 +20,8 @@ urlpatterns = [
     url(r'^getWebTemplate/$',deploy.getWebTemplate,name='getWebTemplate'),
     url(r'^modWebApplication/$',deploy.modWebApplication,name='getWebTemplate'),
     url(r'^startStopApp/$',deploy.startStopApp,name='startStopApp'),
-    url(r'^managerFileAppApi/$',deploy.managerAppFile,name='managerAppFileApi'),
+    url(r'^uploadFile/$',deploy.uploadFile,name='uploadFileApi'),
     url(r'^modWebTemplate/$',deploy.modWebTemplate,name='modWebTeplate'),
-    url(r'^modAppFile/$',deploy.modAppFile,name='modAppFile')
+    url(r'^modAppFile/$',deploy.modAppFile,name='modAppFile'),
+    url(r'^fileManager/$',deploy.fileManager,name='fileManagerApi')
 ]
