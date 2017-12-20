@@ -23,7 +23,7 @@ function  addModal(type,id) {
             '版本 <input id="fileVersion" type="text" onblur="textAuth(\'version\',\'#fileVersion\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
             '创建人 <input id="createName" type="text" onblur="textAuth(\'name\',\'#createName\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
             '应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0">普通应用</option></select><br/><br/>',
-            '应用模板名 <input id="appTempName" type="text" class="modalTextStyle" autocomplete="off"><br/><br/>',
+            '应用模板 <input id="appTempName" type="text" class="modalTextStyle" autocomplete="off"><br/><br/>',
             '文件包类型 <select id="packtype" class="modalSelectStyle"><option value="1">补丁包</option><option value="0">完整包</option></select><br/><br/>',
             '备注 <textarea id="remark" rows="6" class="modalTextarea"></textarea><br/><br/><br/><br/><br/><br/>',
         ]
@@ -50,7 +50,7 @@ function  addModal(type,id) {
             '版本 <input id="fileVersion" type="text" onblur="textAuth(\'version\',\'#fileVersion\',\'#submitButton\',\'#showMsg\')" value="'+fileVersion+'" class="modalTextStyle"><br/><br/>',
             '创建人 <input id="createName" type="text" value="'+name+'" onblur="textAuth(\'name\',\'#createName\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
             '',
-            '应用模板名 <input id="appTempName" type="text" value="'+templateName+'" class="modalTextStyle" autocomplete="off"><br/><br/>',
+            '应用模板 <input id="appTempName" type="text" value="'+templateName+'" class="modalTextStyle" autocomplete="off"><br/><br/>',
             '',
             '备注 <textarea id="remark" rows="6" class="modalTextarea">'+remark+'</textarea><br/><br/><br/><br/><br/><br/>',
         ]
