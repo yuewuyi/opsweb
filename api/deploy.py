@@ -345,15 +345,30 @@ def startStopApp(request):
 def fileManager(request):
     if request.method=='POST':
         postData=json.loads(request.body.decode())
+        rep={'code':0,'msg':''}
         if postData['method']=='checkSum':
-            f=open(settings.UPLOADFILEPATH+postData['filePath']+'/'+postData['fileName']+'.filetemp')
+            file=settings.UPLOADFILEPATH+postData['upDate']+'/'+postData['fileName']+'.filetemp'
+            if not os.path.exists(file):
+                rep['code'] = -1
+                rep['msg'] = '文件不存在'
+                return  HttpResponse(json.dumps(rep),content_type='application/json')
+            f=open(file,'rb')
             fdata=f.read()
             f.close()
             fmd5=hashlib.md5()
             fmd5.update(fdata)
-            print(fmd5.hexdigest())
-            print(postData['fileMd5'])
-            return HttpResponse('asd')
+            if postData['checkSum']==fmd5.hexdigest():
+                if appVersionManage.objects.filter(id=postData['id']):
+                    appVersionManage.objects.filter(id=postData['id']).update(fileName=postData['fileName'],filePath=settings.UPLOADFILEPATH+postData['upDate']+'/')
+                    os.rename(file,settings.UPLOADFILEPATH+postData['upDate']+'/'+postData['fileName'])
+                else:
+                    rep['code'] = -1
+                    rep['msg'] = '文件id不存在'
+                    return HttpResponse(json.dumps(rep), content_type='application/json')
+            else:
+                rep['code']=-1
+                rep['msg']='检验码不正确'
+            return HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return HttpResponse(status=403)
 #文件接收接口
@@ -420,6 +435,15 @@ def modAppFile(request):
                 filePackType=postData['packType'])
             return HttpResponse(json.dumps(rep), content_type="application/json")
         elif postData['method']=='del':
+            try:
+                file=appVersionManage.objects.get(id=postData['id'])
+                file=file.filePath+file.fileName
+            except Exception as e:
+                rep['code'] = -1
+                rep['msg'] = '文件不存在'
+                return HttpResponse(json.dumps(rep), content_type="application/json")
+            if os.path.exists(file):
+                os.remove(file)
             appVersionManage.objects.filter(id=postData['id']).delete()
             return HttpResponse(json.dumps(rep), content_type="application/json")
         else:

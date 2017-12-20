@@ -158,6 +158,31 @@ function appTypeChange() {
          })
     })
 }
+//生成文件md5
+function createFileMd5(file) {
+    var dtd = $.Deferred()
+    var chunkSize=2097152
+    var chunks=Math.ceil(file.size / chunkSize)
+    var currChunk=0
+    var fileReader = new FileReader()
+    var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice
+    var spark = new SparkMD5()
+    fileReader.onload=function () {
+        spark.appendBinary(fileReader.result)
+        if (currChunk<chunks){
+            currChunk++
+            readNext()
+        }else {
+            dtd.resolve(spark.end())
+            return dtd.promise()
+        }
+    }
+    function readNext() {
+        fileReader.readAsBinaryString(blobSlice.call(file,chunkSize*currChunk,chunkSize*(currChunk+1)))
+    }
+    readNext()
+    return dtd.promise()
+}
 //文件上传函数
 function fileupload(id) {
     var fid=id.split('fileUploadButton')[1]
@@ -186,14 +211,45 @@ function fileupload(id) {
         $("#fileprogress"+fid+" .progress .progress-bar").html(percent+','+upSpeed+'/s')
     })
     uploaderObject.bind('FileUploaded',function (uploader,file) {
-        var Nfile=file.getNative()
-        var spark = new SparkMD5()
-        var reader=new FileReader()
-        reader.readAsBinaryString(Nfile)
-        reader.onload=function () {
-            spark.appendBinary(reader.result)
-            console.log(spark.end())
+        var parm={}
+        var th=$('#'+id).parent().parent()
+        var fname=(file.name).split('.')
+        var suffix=''
+        if (fname.length>1){
+            suffix=fname[fname.length-1]
         }
+        $("#fileprogress"+fid+" .progress .progress-bar").html('文件校验中')
+        parm['upDate']=uploader.getOption('multipart_params')['upDate']
+        parm['fileName']=file.id+'.'+suffix
+        parm['method']='checkSum'
+        parm['id']=parseInt(fid)
+        $.when(createFileMd5(file.getNative()))
+            .done(function (fmd5) {
+                parm['checkSum']=fmd5
+                $.when(req_ajax('/api/fileManager/',parm,'result'))
+                    .done(function () {
+                        if(result['code']==-1){
+                            $("#fileprogress"+fid+" .progress .progress-bar").html('文件校验失败,'+result['msg'])
+                            uploaderObject.disableBrowse(false)
+                            $("#"+id).removeClass('buttonClickDisable')
+                            $("#"+id).html('上传文件')
+                        }else{
+                            $("#fileprogress"+fid+" .progress .progress-bar").html('上传成功')
+                            th.children().eq(1).css('color','black')
+                            th.children().eq(1).html(parm['fileName'])
+                            $("#"+id).remove()
+                        }
+                    })
+                    .fail(function () {
+                        alert("请求失败")
+                        $("#fileprogress"+fid+" .progress .progress-bar").html('文件校验失败,请重试')
+                        uploaderObject.disableBrowse(false)
+                        $("#"+id).removeClass('buttonClickDisable')
+                        $("#"+id).html('上传文件')
+                    })
+
+
+            })
 
     })
 }

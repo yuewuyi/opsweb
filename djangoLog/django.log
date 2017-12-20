@@ -7070,3 +7070,16 @@ ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It
 2017-12-19 16:56:50,935 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
 2017-12-19 16:56:51,731 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
 2017-12-19 16:56:52,407 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /404.html HTTP/1.0" 403 0
+2017-12-20 09:52:42,171 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f2724252e10>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f2724252e10>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-12-20 16:41:59,916 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/fileManager/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 360, in fileManager
+    print('js:'+postData['checkSum'])
+KeyError: 'checkSum'
+2017-12-20 16:42:00,119 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/fileManager/ HTTP/1.0" 500 27
