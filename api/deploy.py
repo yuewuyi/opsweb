@@ -151,6 +151,10 @@ def getAapplication(request):
         hostApp=rawQuerytoList(hostApplication.objects.raw(getsql('hostAppsql'),postData))
         for i in range(0,len(hostApp)):
             hostApp[i]['webApp']=rawQuerytoList(webApplication.objects.raw(getsql('webAppSql'),{'aId':hostApp[i]['id']}))
+            if hostApp[i]['status']==5 or hostApp[i]['status']==6 or hostApp[i]['status']==7:
+                hostApp[i]['msg']=saltReturns.objects.filter(jid=hostApp[i]['jid']).first().returns
+            else:
+                hostApp[i]['msg']=''
         return HttpResponse(json.dumps(hostApp),content_type='application/json')
     else:
         return HttpResponse(status=403)
@@ -307,14 +311,7 @@ def startStopApp(request):
                 rep['msg'] = '应用启动失败'
                 return HttpResponse(json.dumps(rep), content_type='application/json')
             else:
-                for item in result:
-                    a=taskState.objects.create(jid=item['jid'],
-                                             appId=app.id,
-                                             cmd=cmd,
-                                             status=0,
-                                             cmd_type=0
-                                             )
-                hostApplication.objects.filter(id=postData['id']).update(status=2)
+                hostApplication.objects.filter(id=postData['id']).update(status=2,jid=result[0]['jid'],jidState=1)
         elif postData["method"]=='stop':
             if app.status!=1:
                 rep['code'] = -1
@@ -334,7 +331,15 @@ def startStopApp(request):
                                              status=0,
                                              cmd_type=1
                                              )
-                hostApplication.objects.filter(id=postData['id']).update(status=3)
+                hostApplication.objects.filter(id=postData['id']).update(status=3, jid=result[0]['jid'], jidState=1)
+        elif postData['method']=='reset':
+            proCheckCmd = "ps axu|grep "+app.appPath+"|grep -v 'grep'|wc -l"
+            ip = hostInfo.ip
+            num = int(salt.syncCmd(ip, proCheckCmd)[0][ip])
+            if num >0:
+                hostApplication.objects.filter(id=postData['id']).update(status=1)
+            elif num==0:
+                hostApplication.objects.filter(id=postData['id']).update(status=0)
         else:
             rep['code'] = -1
             rep['msg'] = '未知操作'
@@ -406,7 +411,6 @@ def modAppFile(request):
                     rep['code'] = -1
                     rep['msg'] = '没有这个web应用模板'
                     return HttpResponse(json.dumps(rep), content_type="application/json")
-
         if postData['method']=='add':
             # 判断应用版本是否重复
             if appVersionManage.objects.filter(version=postData['version'],

@@ -19,9 +19,9 @@ app.conf.beat_schedule = {
         'schedule': timedelta(seconds=30),
         'args': ()
     },
-    'TaskCheck-1-seconds':{
+    'TaskCheck-2-seconds':{
         'task':'deploy.tasks.TaskCheck',
-        'schedule':timedelta(seconds=1),
+        'schedule':timedelta(seconds=2),
         'args':()
     }
 }

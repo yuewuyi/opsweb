@@ -48,11 +48,15 @@ class hostApplication(models.Model):
     #关联appTemplate表ID
     appTempId=models.ForeignKey(appTemplate,to_field='id',db_column="appTempId")
     #应用路径
-    appPath=models.CharField(max_length=255,null=False)
+    appPath=models.CharField(max_length=255,null=False,default='')
     #应用端口
     appPort=models.IntegerField()
-    #应用状态 0-停止 1-运行 2-启动中 3-停止中 4-部署中
+    #应用状态 0-停止 1-运行 2-启动中 3-停止中 4-部署中 5-启动失败 6-停止失败 7-命令执行成功,程序没反应
     status=models.IntegerField(null=False,default=0)
+    #salt任务id
+    jid=models.CharField(max_length=255,null=False,db_index=True,default='')
+    #salt任务状态 0-已执行 1-执行中
+    jidState=models.IntegerField(null=False,default=0)
     class Meta:
         db_table='hostApplication'
 #web应用表

@@ -34,6 +34,14 @@ class saltClient:
         parm["arg"]=arg
         result = self.__request("/", parm, 60)
         return result
+# 同步执行命令
+    def syncCmd(self,match,arg):
+        parm = {"fun": "cmd.run"}
+        parm["client"] = "local"
+        parm["tgt"] = match
+        parm["arg"] = arg
+        result = self.__request("/", parm, 60)
+        return result
 #命令请求
     def __request(self,path,parm,timeout):
         headers = {'content-type': 'application/json',"X-Auth-Token":self.__tokenId}

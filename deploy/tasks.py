@@ -18,6 +18,7 @@ def HostKeyFind():
                 host.objects.filter(ip=ip).update(isSaltStack=2)
             elif ip not in keyList and isSaltStack==2:
                 host.objects.filter(ip=ip).update(isSaltStack=0)
+#检查minion的状态
 @task
 def HostStatusCheck():
     salt=saltClient()
@@ -32,25 +33,32 @@ def HostStatusCheck():
             host.objects.filter(ip=ip).update(status=0)
         elif ip not in MinionStatus["down"] and ip not in MinionStatus["up"] and status==1:
             host.objects.filter(ip=ip).update(isSaltStack=0,status=0)
+
 @task
 def TaskCheck():
-    today=datetime.date.today()
-    taskList=list(taskState.objects.filter(status=0,start_time__gte=today).values('id','jid','cmd_type','appId'))
+    taskList=list(hostApplication.objects.filter(jidState=1).values('id','hostId','appPath','status','jid'))
+    salt = saltClient()
     for item in taskList:
-        TaskRetCode=list(saltReturns.objects.filter(jid=item['jid']).values('retcode'))
-        if TaskRetCode:
-            TaskRetCode=TaskRetCode[0]
-            if TaskRetCode!=0:
-                taskState.objects.filter(id=item['id']).update(status=1,end_time=datetime.datetime.now())
+        proCheckCmd = "ps axu|grep "+item['appPath']+"|grep -v 'grep'|wc -l"
+        ip=host.objects.filter(id=item['hostId']).first().ip
+        num = int(salt.syncCmd(ip,proCheckCmd)[0][ip])
+        TaskInfo = saltReturns.objects.filter(jid=item['jid']).first()
+        if not TaskInfo:
+            continue
+        if item['status']==2:
+            if TaskInfo.retcode==0 and num>0:
+                hostApplication.objects.filter(id=item['id']).update(status=1,jidState=0)
+            elif TaskInfo.retcode==0 and num==0:
+                hostApplication.objects.filter(id=item['id']).update(status=7, jidState=0)
             else:
-                taskState.objects.filter(id=item['id']).update(status=2,end_time=datetime.datetime.now())
-            if item['cmd_type']==0:
-                hostApplication.objects.filter(id=item['appId']).update(status=1)
-            elif item['cmd_type']==1:
-                hostApplication.objects.filter(id=item['appId']).update(status=0)
-
-
-
+                hostApplication.objects.filter(id=item['id']).update(status=5,jidState=0)
+        elif item['status']==3:
+            if TaskInfo.retcode==0 and num==0:
+                hostApplication.objects.filter(id=item['id']).update(status=0,jidState=0)
+            elif TaskInfo.retcode==0 and num>1:
+                hostApplication.objects.filter(id=item['id']).update(status=7, jidState=0)
+            else:
+                hostApplication.objects.filter(id=item['id']).update(status=6,jidState=0)
 
 
 

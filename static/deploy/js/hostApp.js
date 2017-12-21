@@ -74,7 +74,7 @@ function  addModal(type,appid) {
                 listenText('#webTempName',appTemp)
             })
         .fail(function () {
-            alert('web模板请求失败')d
+            alert('web模板请求失败')
         })
     }else if(type=='delWeb'){
         var titleName="删除web"
@@ -100,6 +100,19 @@ function  addModal(type,appid) {
         var body=[
             '<span id="appId" style="display: none;">'+appid+'</span>',
             '<span class="showInfo">是否停止应用'+appName+'</span>'
+        ]
+    }else if(type=='reset'){
+        var titleName="停止应用"
+        var appName=$.trim($("#appName"+appid).html())
+        var body=[
+            '<span id="appId" style="display: none;">'+appid+'</span>',
+            '<span class="showInfo">是否重置应用'+appName+'</span>'
+        ]
+    }else if(type=='showCmdinfo'){
+        var titleName="命令执行情况详情"
+        var cmdInfo=$.trim($("#cmdInfo"+appid).html())
+        var body=[
+            '<span class="showInfo">'+cmdInfo+'</span>'
         ]
     }
     createModal(titleName,body)
@@ -167,6 +180,14 @@ function modApplications(method) {
             var alertmsg="应用停止失败"
             var successTxt="应用停止操作成功"
             var url='/api/startStopApp/'
+    }
+    //重置应用
+    else if(method=='reset'){
+        data['id']=parseInt($("#appId").html())
+        data['method']=method
+        var alertmsg="应用重置失败"
+        var successTxt="应用重置成功"
+        var url='/api/startStopApp/'
     }
     //添加web应用
     else if(method=='addWeb'){
@@ -244,12 +265,41 @@ function createApp(data){
             '<div class="loader"></div>',
             '<div class="stateMesg">应用停止中</div>'
         ]
-
     }else if(data['status']==4){
         var appColor='deployingColor'
         var loader=[
             '<div class="loader"></div>',
             '<div class="stateMesg">应用部署中</div>'
+        ]
+    }else if(data['status']==5){
+        var appColor='startingColor'
+        var modApp=[
+            '<span class="glyphicon glyphicon-repeat iconStyle" onclick="addModal(\'reset\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-list-alt iconStyle" onclick="addModal(\'showCmdinfo\','+data['id']+')"></span>',
+        ]
+        var loader=[
+            '<div class="stateMesg">命令执行成功,但程序没响应</div>',
+            '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
+        ]
+    }else if(data['status']==6){
+        var appColor='stopingColor'
+        var modApp=[
+            '<span class="glyphicon glyphicon-repeat iconStyle" onclick="addModal(\'reset\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-list-alt iconStyle" onclick="addModal(\'showCmdinfo\','+data['id']+')"></span>',
+        ]
+        var loader=[
+            '<div class="stateMesg">命令执行成功,但程序没响应</div>',
+            '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
+        ]
+    }else if(data['status']==7){
+        var appColor='stopingColor'
+        var modApp=[
+            '<span class="glyphicon glyphicon-repeat iconStyle" onclick="addModal(\'reset\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-list-alt iconStyle" onclick="addModal(\'showCmdinfo\','+data['id']+')"></span>',
+        ]
+        var loader=[
+            '<div class="stateMesg">命令执行成功,但程序没响应</div>',
+            '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
         ]
     }
     var appOb=[

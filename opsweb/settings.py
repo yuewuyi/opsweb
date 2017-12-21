@@ -118,26 +118,26 @@ WSGI_APPLICATION = 'opsweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'opsweb',
-        'USER': 'root',
-        'PASSWORD': 'suyue123',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
-    }
-}
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'opsweb',
 #         'USER': 'root',
 #         'PASSWORD': 'suyue123',
-#         'HOST':'172.20.11.94',
+#         'HOST':'127.0.0.1',
 #         'PORT':'3306',
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'opsweb',
+        'USER': 'root',
+        'PASSWORD': 'suyue123',
+        'HOST':'172.20.11.94',
+        'PORT':'3306',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 CACHES = {

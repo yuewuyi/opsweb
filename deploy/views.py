@@ -4,7 +4,7 @@ from deploy.models import *
 from utils.pageCalc import page
 import urllib
 from .tasks import *
-import json
+from utils.salt_Client import saltClient
 # Create your views here.
 #主机页面
 def index(request):
@@ -59,7 +59,6 @@ def tempPage(request):
     pageCount = appTemplate.objects.filter(**queryParm).count()
     tmplate=list(appTemplate.objects.filter(**queryParm).values()[limitStart:limitEnd])
     pageDit=pageFun.calcPage(pageCount)
-
     return render(request,'deploy/appTemple.html',{'template':tmplate,'pageDit':pageDit})
 def hostApp(request):
     try:

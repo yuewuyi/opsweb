@@ -7,7 +7,8 @@ def getsql(sqlName):
         h.`appPath`,
         h.`appPort`,
         a.`appTemplateName`,
-        h.`status`
+        h.`status`,
+        h.jid
         from hostApplication as h LEFT JOIN appTemplate as a
         on h.appTempId=a.id
         where hostId=%(hId)s
