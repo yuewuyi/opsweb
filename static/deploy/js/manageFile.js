@@ -24,16 +24,24 @@ function  addModal(type,id) {
             '创建人 <input id="createName" type="text" onblur="textAuth(\'name\',\'#createName\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
             '应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0">普通应用</option></select><br/><br/>',
             '应用模板 <input id="appTempName" type="text" class="modalTextStyle" autocomplete="off"><br/><br/>',
+            '应用组 <input id="appGroupName" type="text" class="modalTextStyle" autocomplete="off"><br/><br/>',
             '文件包类型 <select id="packtype" class="modalSelectStyle"><option value="1">补丁包</option><option value="0">完整包</option></select><br/><br/>',
             '备注 <textarea id="remark" rows="6" class="modalTextarea"></textarea><br/><br/><br/><br/><br/><br/>',
         ]
-        $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
+        $.when(req_ajax('/api/getWebTemplate/',{method:'web'},'appTemp'))
             .done(function () {
                 listenText('#appTempName',appTemp)
                 appTypeChange()
             })
         .fail(function () {
             alert('模板请求失败')
+        })
+        $.when(req_ajax('/api/getWebTemplate/',{method:'appGroup'},'appGroup'))
+            .done(function () {
+                listenText('#appGroupName',appGroup)
+            })
+        .fail(function () {
+            alert('应用组请求失败')
         })
     }else if(type=='modify'){
         var titleName="修改信息"
@@ -42,15 +50,17 @@ function  addModal(type,id) {
         var packType=th.children().eq(2).html()
         var type=th.children().eq(3).html()
         var templateName=th.children().eq(4).html()
-        var fileVersion=th.children().eq(5).html()
+        var appGroupName=th.children().eq(4).html()
+        var fileVersion=th.children().eq(6).html()
         var name=th.children().eq(7).html()
-        var remark=th.children().eq(8).children().eq(1).text()
+        var remark=th.children().eq(9).children().eq(1).text()
         var body=[
             'id <input id="fileId" class="modalTextStyle readOnlyStyle" value="'+id+'" type="text" readonly><br/><br/>',
             '版本 <input id="fileVersion" type="text" onblur="textAuth(\'version\',\'#fileVersion\',\'#submitButton\',\'#showMsg\')" value="'+fileVersion+'" class="modalTextStyle"><br/><br/>',
             '创建人 <input id="createName" type="text" value="'+name+'" onblur="textAuth(\'name\',\'#createName\',\'#submitButton\',\'#showMsg\')" class="modalTextStyle"><br/><br/>',
             '',
             '应用模板 <input id="appTempName" type="text" value="'+templateName+'" class="modalTextStyle" autocomplete="off"><br/><br/>',
+            '应用组 <input id="appGroupName" type="text" value="'+appGroupName+'" class="modalTextStyle" autocomplete="off"><br/><br/>',
             '',
             '备注 <textarea id="remark" rows="6" class="modalTextarea">'+remark+'</textarea><br/><br/><br/><br/><br/><br/>',
         ]
@@ -60,17 +70,24 @@ function  addModal(type,id) {
             body[3]='文件包类型 <select id="packType" class="modalSelectStyle"><option value="1"  selected="selected">补丁包</option><option value="0">完整包</option></select><br/><br/>'
         }
         if (type=='普通应用'){
-            body[5]='应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0" selected="selected">普通应用</option></select><br/><br/>'
+            body[6]='应用类型 <select id="type" class="modalSelectStyle"><option value="1">web应用</option><option value="0" selected="selected">普通应用</option></select><br/><br/>'
         }else if(type=='web应用'){
-            body[5]='应用类型 <select id="type" class="modalSelectStyle"><option value="1" selected="selected">web应用</option><option value="0">普通应用</option></select><br/><br/>'
+            body[6]='应用类型 <select id="type" class="modalSelectStyle"><option value="1" selected="selected">web应用</option><option value="0">普通应用</option></select><br/><br/>'
         }
-        $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
+        $.when(req_ajax('/api/getWebTemplate/',{method:'web'},'appTemp'))
             .done(function () {
                 listenText('#appTempName',appTemp)
                 appTypeChange()
             })
         .fail(function () {
             alert('模板请求失败')
+        })
+        $.when(req_ajax('/api/getWebTemplate/',{method:'appGroup'},'appGroup'))
+            .done(function () {
+                listenText('#appGroupName',appGroup)
+            })
+        .fail(function () {
+            alert('应用组请求失败')
         })
     }else if(type=='del'){
         var titleName="删除文件"
@@ -97,6 +114,7 @@ function modFileInfo(type) {
          parm['type']=parseInt($("#type").select().val())
          parm['packType']=parseInt($("#packtype").select().val())
          parm['appTemplate']=$.trim($("#appTempName").val())
+         parm['appGroup']=$.trim($("#appGroupName").val())
          parm['name']=$.trim($("#createName").val())
          parm['remark']=$.trim($("#remark").val())
          parm['method']='add'
@@ -115,6 +133,7 @@ function modFileInfo(type) {
         parm['packType']=parseInt($("#packType").select().val())
         parm['type']=parseInt($("#type").select().val())
         parm['appTemplate']=$.trim($("#appTempName").val())
+        parm['appGroup']=$.trim($("#appGroupName").val())
         parm['name']=$.trim($("#createName").val())
         parm['remark']=$.trim($("#remark").val())
 
@@ -149,7 +168,7 @@ function appTypeChange() {
         }else if(selectVal==1){
             var url="/api/getWebTemplate/"
         }
-        $.when(req_ajax(url,'','appTemp'))
+        $.when(req_ajax(url,{method:'web'},'appTemp'))
         .done(function () {
                 listenText('#appTempName',appTemp)
             })

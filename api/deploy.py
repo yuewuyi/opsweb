@@ -117,8 +117,12 @@ def getTemplate(request):
         return HttpResponse(status=403)
 def getWebTemplate(request):
     if request.method=='POST':
-        webTemp=list(webTemplate.objects.all().values_list('webTemplateName'))
-        return  HttpResponse(json.dumps(webTemp),content_type='application/json')
+        postData=json.loads(request.body.decode())
+        if postData['method']=='web':
+            data=list(webTemplate.objects.all().values_list('webTemplateName'))
+        elif postData['method']=='appGroup':
+            data = list(app_group.objects.all().values_list('group_name'))
+        return  HttpResponse(json.dumps(data),content_type='application/json')
     else:
         return HttpResponse(status=403)
 def modWebTemplate(request):
@@ -140,6 +144,24 @@ def modWebTemplate(request):
                 for item in webTemplateName:
                     rep['result'].append(item['webTemplateName'])
             except:
+                rep['code'] = -1
+                rep['msg'] = '删除失败'
+        elif postData['method']=='addGroup':
+            if app_group.objects.get_or_create(group_name=postData['name'])[1]:
+                webTemplateName=list(app_group.objects.all().values('group_name'))
+                for item in webTemplateName:
+                    rep['result'].append(item['group_name'])
+            else:
+                rep['code']=-1
+                rep['msg']='模板名已存在'
+        elif postData['method']=='delGroup':
+            try:
+                app_group.objects.filter(group_name=postData['name']).delete()
+                webTemplateName = list(app_group.objects.all().values('group_name'))
+                for item in webTemplateName:
+                    rep['result'].append(item['group_name'])
+            except Exception as e:
+                print(e)
                 rep['code'] = -1
                 rep['msg'] = '删除失败'
         return HttpResponse(json.dumps(rep),content_type="application/json")
@@ -334,18 +356,22 @@ def startStopApp(request):
                 hostApplication.objects.filter(id=postData['id']).update(status=3, jid=result[0]['jid'], jidState=1)
         elif postData['method']=='reset':
             proCheckCmd = "ps axu|grep "+app.appPath+"|grep -v 'grep'|wc -l"
-            ip = hostInfo.ip
-            num = int(salt.syncCmd(ip, proCheckCmd)[0][ip])
-            if num >0:
-                hostApplication.objects.filter(id=postData['id']).update(status=1)
-            elif num==0:
-                hostApplication.objects.filter(id=postData['id']).update(status=0)
+            ip = host.objects.filter(id=app.hostId).first().ip
+            print(ip)
+            # num = int(salt.syncCmd(ip, proCheckCmd)[0][ip])
+            # if num >0:
+            #     hostApplication.objects.first(id=postData['id']).update(status=0)
+            # elif num==0:
+            #     hostApplication.objects.first(id=postData['id']).update(status=1)
         else:
             rep['code'] = -1
             rep['msg'] = '未知操作'
         return HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return  HttpResponse(status=403)
+
+
+
 #文件上传完成后的处理接口
 def fileManager(request):
     if request.method=='POST':
@@ -376,6 +402,9 @@ def fileManager(request):
             return HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return HttpResponse(status=403)
+
+
+
 #文件接收接口
 def uploadFile(request):
     if  request.method=='POST':
@@ -391,6 +420,10 @@ def uploadFile(request):
         return HttpResponse('')
     else:
         return HttpResponse(status=403)
+
+
+
+#文件信息增删改
 def modAppFile(request):
     if request.method=='POST':
         postData=json.loads(request.body.decode())
@@ -411,6 +444,12 @@ def modAppFile(request):
                     rep['code'] = -1
                     rep['msg'] = '没有这个web应用模板'
                     return HttpResponse(json.dumps(rep), content_type="application/json")
+            try:
+                app_group.objects.get(group_name=postData['appGroup'])
+            except:
+                rep['code'] = -1
+                rep['msg'] = '没有这个应用组'
+                return HttpResponse(json.dumps(rep), content_type="application/json")
         if postData['method']=='add':
             # 判断应用版本是否重复
             if appVersionManage.objects.filter(version=postData['version'],
@@ -422,6 +461,7 @@ def modAppFile(request):
                                             type=postData['type'],
                                             appTemplateName=postData['appTemplate'],
                                             filePackType=postData['packType'],
+                                            appGroupName=postData['appGroup'],
                                             name=postData['name'],
                                             remark=postData['remark'])
             return HttpResponse(json.dumps(rep), content_type="application/json")
@@ -435,19 +475,25 @@ def modAppFile(request):
             appVersionManage.objects.filter(id=postData['id']).update(
                 version=postData['version'],
                 type=postData['type'],
+                appGroupName=postData['appGroup'],
                 appTemplateName=postData['appTemplate'],
                 filePackType=postData['packType'])
             return HttpResponse(json.dumps(rep), content_type="application/json")
         elif postData['method']=='del':
             try:
+
                 file=appVersionManage.objects.get(id=postData['id'])
-                file=file.filePath+file.fileName
+                if file.filePath and file.fileName:
+                    filename = file.filePath +file.fileName
+                else:
+                    filename=''
             except Exception as e:
+                print(e)
                 rep['code'] = -1
                 rep['msg'] = '文件不存在'
                 return HttpResponse(json.dumps(rep), content_type="application/json")
-            if os.path.exists(file):
-                os.remove(file)
+            if os.path.exists(filename):
+                os.remove(filename)
             appVersionManage.objects.filter(id=postData['id']).delete()
             return HttpResponse(json.dumps(rep), content_type="application/json")
         else:

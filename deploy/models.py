@@ -37,6 +37,14 @@ class webTemplate(models.Model):
     class Meta:
         db_table='webTemplate'
 
+# web模板表
+class app_group(models.Model):
+    # web模板ID
+    id = models.AutoField(primary_key=True)
+    # 应用名
+    group_name = models.CharField(null=False, max_length=50, unique=True)
+    class Meta:
+        db_table = 'app_group'
 #host应用表
 class hostApplication(models.Model):
     #主机应用ID
@@ -106,9 +114,11 @@ class appVersionManage(models.Model):
     #应用类型 0-普通应用 1-web应用
     type=models.IntegerField(null=False)
     #应用模板名
-    appTemplateName=models.CharField(max_length=255,null=False)
+    appTemplateName=models.CharField(max_length=255,null=False,default='')
     #文件包类型 0-完整包 1-补丁包
     filePackType=models.IntegerField()
+    #应用组
+    appGroupName=models.CharField(max_length=255,null=False,default='')
     #创建时间
     create_date=models.DateTimeField(auto_now=True)
     class Meta:

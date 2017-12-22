@@ -7,8 +7,10 @@
     <script src="{% static 'deploy/js/appTemple.js' %}"></script>
     <div class="page_container">
          <div class="page_title">应用模板
-            <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#addTemplate">添加模板</div>
-             <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#manageWebTemplate" onclick="showWebTemp()">web模板</div>
+            <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#addTemplate">应用模板</div>
+             <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#manageWebTemplate" onclick="showWebTemp('web')">web模板</div>
+             <div class="ButtonStyle addHostButton" data-toggle="modal" data-target="#appGroup" onclick="showWebTemp('appGroup')">应用组</div>
+
         </div>
         <div class="page_hr"></div>
         <div class="searchBox">
@@ -99,6 +101,22 @@
                 <div class="page_hr"></div>
                 <div class="modal_body modal_body_custom">
                     <table class="webTable" id="webTable">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="appGroup">
+        <div class="modal_container">
+            <div class="modal-content radius">
+                <div class="modal_header">
+                    应用组
+                    <div class="webaddButton" onclick="addModal('addGroup','')">添加</div>
+                    <input type="text" class="webText" id="appGroupName">
+                </div>
+                <div class="page_hr"></div>
+                <div class="modal_body modal_body_custom">
+                    <table class="webTable" id="appGroupTable">
                     </table>
                 </div>
             </div>

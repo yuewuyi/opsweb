@@ -27,6 +27,9 @@
 .inputBox{
     display: inline-block;
 }
+.inputStyle{
+    width: 13%;
+}
 .selectStyle{
     width: 12%;
 }
@@ -39,19 +42,19 @@
 .viewTable tr th:nth-child(4),td:nth-child(4){
     width: 6%;
 }
-.viewTable tr th:nth-child(6),td:nth-child(6){
+.viewTable tr th:nth-child(7),td:nth-child(7){
     width: 6%;
 }
-.viewTable tr th:nth-child(7),td:nth-child(7){
+.viewTable tr th:nth-child(8),td:nth-child(8){
     width: 13%;
 }
-.viewTable tr th:nth-child(8),td:nth-child(8){
+.viewTable tr th:nth-child(9),td:nth-child(9){
     width: 5%;
 }
-.viewTable tr td:nth-child(9){
+.viewTable tr td:nth-child(10){
     width: 5%;
 }
-.viewTable tr th:nth-child(10),td:nth-child(10){
+.viewTable tr th:nth-child(11),td:nth-child(11){
     border-right: 0px;
     width: 17%;
 }

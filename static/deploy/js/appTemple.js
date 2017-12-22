@@ -89,27 +89,53 @@ function delTemplate() {
         })
 
 }
-function showWebTemp() {
-    $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
+function showWebTemp(type) {
+    if (type=='web'){
+        $.when(req_ajax('/api/getWebTemplate/',{'method':type},'appTemp'))
         .done(function () {
             sessionStorage.webTemplateName=appTemp
-            flushWebTable(appTemp)
-            listenNameInput()
+            flushWebTable(type,appTemp)
+            listenNameInput(type)
             })
         .fail(function () {
             alert('web模板请求失败')
         })
-}
-function flushWebTable(webApp) {
-    $("#webTable").html('')
-    var tbody=''
-    for (var i=0;i<webApp.length;i++){
-        tbody+='<tr>'
-        tbody+='<td>'+webApp[i]+'</td>'
-        tbody+='<td><a onclick="addModal(\'del\',\''+webApp[i]+'\')">删除</a></td>'
-        tbody+='</tr>'
+    }else if(type=='appGroup'){
+        $.when(req_ajax('/api/getWebTemplate/',{'method':type},'appGroup'))
+        .done(function () {
+            sessionStorage.appGroup=appGroup
+            flushWebTable(type,appGroup)
+            listenNameInput(type)
+            })
+        .fail(function () {
+            alert('web模板请求失败')
+        })
     }
-    $("#webTable").append(tbody)
+
+}
+function flushWebTable(type,webApp) {
+    if (type=='web'){
+        $("#webTable").html('')
+        var tbody=''
+        for (var i=0;i<webApp.length;i++){
+            tbody+='<tr>'
+            tbody+='<td>'+webApp[i]+'</td>'
+            tbody+='<td><a onclick="addModal(\'del\',\''+webApp[i]+'\')">删除</a></td>'
+            tbody+='</tr>'
+        }
+        $("#webTable").append(tbody)
+    }else if(type=='appGroup'){
+        $("#appGroupTable").html('')
+        var tbody=''
+        for (var i=0;i<webApp.length;i++){
+            tbody+='<tr>'
+            tbody+='<td>'+webApp[i]+'</td>'
+            tbody+='<td><a onclick="addModal(\'delGroup\',\''+webApp[i]+'\')">删除</a></td>'
+            tbody+='</tr>'
+        }
+        $("#appGroupTable").append(tbody)
+    }
+
 }
 function createModal(head,body) {
     $('#customModal').remove()
@@ -150,6 +176,19 @@ function addModal(method,tName){
             '<span id="tName" style="display: none;">'+tName+'</span>',
             '是否要删除web模板:'+tName
         ]
+    }else if(method=='addGroup'){
+        var tName=$.trim($("#appGroupName").val())
+        var titleName="添加应用组"
+        var body=[
+            '<span id="tName" style="display: none;">'+tName+'</span>',
+            '是否要添加应用组:'+tName
+        ]
+    }else if(method=='delGroup'){
+        var titleName="删除应用组"
+        var body=[
+            '<span id="tName" style="display: none;">'+tName+'</span>',
+            '是否要删除应用组:'+tName
+        ]
     }
     var onclick="modWebTemplate('"+method+"')"
     createModal(titleName,body)
@@ -169,6 +208,18 @@ function modWebTemplate(method) {
         data['name']=$("#tName").html()
         var successTxt="删除成功"
         var alertmsg="删除失败"
+    }else if(method=='addGroup'){
+        var url="/api/modWebTemplate/"
+        data['method']=method
+        data['name']=$("#tName").html()
+        var successTxt="添加成功"
+        var alertmsg="添加失败"
+    }else if(method=='delGroup'){
+        var url="/api/modWebTemplate/"
+        data['method']=method
+        data['name']=$("#tName").html()
+        var successTxt="删除成功"
+        var alertmsg="删除失败"
     }
     $("#submitButton").addClass('buttonClickDisable')
     $.when(req_ajax(url,data,'result'))
@@ -178,12 +229,21 @@ function modWebTemplate(method) {
                 $("#submitButton").removeClass('buttonClickDisable')
             }else {
                 showMesage('#showMsg','success',successTxt)
-                sessionStorage.webTemplateName=result['result']
-                $("#submitButton").removeClass('buttonClickDisable')
-                setTimeout(function(){
+                if(method=='add' || method=='del'){
+                    sessionStorage.webTemplateName=result['result']
+                    setTimeout(function(){
                     $("#customModal").modal("hide")
-                    flushWebTable(result['result'])
-                },1000)
+                    flushWebTable('web',result['result'])
+                    },1000)
+                }else if(method=='addGroup' || method=='delGroup'){
+                    sessionStorage.appGroup=result['result']
+                    setTimeout(function(){
+                    $("#customModal").modal("hide")
+                    flushWebTable('appGroup',result['result'])
+                    },1000)
+                }
+                $("#submitButton").removeClass('buttonClickDisable')
+
 
             }
         })
@@ -192,8 +252,9 @@ function modWebTemplate(method) {
             $("#submitButton").removeClass('buttonClickDisable')
         })
 }
-function  listenNameInput() {
-    $("#webTempName").keyup(function () {
+function  listenNameInput(type) {
+    if(type=='web'){
+       $("#webTempName").keyup(function () {
         var data=sessionStorage.webTemplateName.split(',')
         var textName=$("#webTempName").val()
         var inputList=[]
@@ -203,7 +264,20 @@ function  listenNameInput() {
                 inputList.push(data[i])
             }
         }
-        flushWebTable(inputList)
+        flushWebTable(type,inputList)
     })
-
+    }else if(type=='appGroup'){
+        $("#appGroupName").keyup(function () {
+        var data=sessionStorage.appGroup.split(',')
+        var textName=$("#appGroupName").val()
+        var inputList=[]
+        for (var i=0;i<data.length;i++){
+            var reg=new RegExp(textName)
+            if(reg.test(data[i])){
+                inputList.push(data[i])
+            }
+        }
+        flushWebTable(type,inputList)
+    })
+    }
 }
