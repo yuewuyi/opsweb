@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03dacc5e-dbe4-4e97-a552-eb03f551bd73" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/deploy.py" afterPath="$PROJECT_DIR$/api/deploy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deploy/models.py" afterPath="$PROJECT_DIR$/deploy/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deploy/views.py" afterPath="$PROJECT_DIR$/deploy/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoLog/django.log" afterPath="$PROJECT_DIR$/djangoLog/django.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/deploy/css/appTemple.css" afterPath="$PROJECT_DIR$/static/deploy/css/appTemple.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/deploy/css/managerFile.css" afterPath="$PROJECT_DIR$/static/deploy/css/managerFile.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/deploy/js/appTemple.js" afterPath="$PROJECT_DIR$/static/deploy/js/appTemple.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/deploy/js/manageFile.js" afterPath="$PROJECT_DIR$/static/deploy/js/manageFile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/deploy/appTemple.html" afterPath="$PROJECT_DIR$/templates/deploy/appTemple.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/deploy/manageAppFile.html" afterPath="$PROJECT_DIR$/templates/deploy/manageAppFile.html" />
     </list>
     <ignored path="opsweb.iws" />
@@ -47,19 +41,21 @@
       <file leaf-file-name="manageAppFile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/deploy/manageAppFile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="74" column="56" lean-forward="false" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
+            <state relative-caret-position="160">
+              <caret line="25" column="55" lean-forward="true" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="managerFile.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/deploy/css/managerFile.css">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/deploy/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="51" column="14" lean-forward="true" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="108">
+              <caret line="81" column="63" lean-forward="false" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="63" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,11 +63,11 @@
       <file leaf-file-name="manageFile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/deploy/js/manageFile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="135" column="48" lean-forward="false" selection-start-line="135" selection-start-column="48" selection-end-line="135" selection-end-column="48" />
+            <state relative-caret-position="270">
+              <caret line="15" column="140" lean-forward="false" selection-start-line="15" selection-start-column="140" selection-end-line="15" selection-end-column="140" />
               <folding>
-                <marker date="1513935174151" expanded="true" signature="5316:5330" ph="..." />
-                <marker date="1513935174151" expanded="true" signature="12188:12212" ph="..." />
+                <marker date="1514193821680" expanded="true" signature="5399:5413" ph="..." />
+                <marker date="1514193821680" expanded="true" signature="12271:12295" ph="..." />
               </folding>
             </state>
           </provider>
@@ -81,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/api/deploy.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="92">
-              <caret line="448" column="19" lean-forward="true" selection-start-line="448" selection-start-column="19" selection-end-line="448" selection-end-column="19" />
+              <caret line="448" column="19" lean-forward="false" selection-start-line="448" selection-start-column="19" selection-end-line="448" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -90,7 +86,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deploy/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1676">
+            <state relative-caret-position="218">
               <caret line="120" column="4" lean-forward="true" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="16" />
               <folding />
             </state>
@@ -161,7 +157,6 @@
         <option value="$PROJECT_DIR$/monitor/models.py" />
         <option value="$PROJECT_DIR$/opsweb/settings.py" />
         <option value="$PROJECT_DIR$/utils/salt_Client.py" />
-        <option value="$PROJECT_DIR$/deploy/views.py" />
         <option value="$PROJECT_DIR$/opsweb/celery.py" />
         <option value="$PROJECT_DIR$/utils/raw_sql.py" />
         <option value="$PROJECT_DIR$/deploy/tasks.py" />
@@ -172,9 +167,10 @@
         <option value="$PROJECT_DIR$/static/deploy/js/appTemple.js" />
         <option value="$PROJECT_DIR$/deploy/models.py" />
         <option value="$PROJECT_DIR$/api/deploy.py" />
-        <option value="$PROJECT_DIR$/static/deploy/js/manageFile.js" />
-        <option value="$PROJECT_DIR$/templates/deploy/manageAppFile.html" />
         <option value="$PROJECT_DIR$/static/deploy/css/managerFile.css" />
+        <option value="$PROJECT_DIR$/templates/deploy/manageAppFile.html" />
+        <option value="$PROJECT_DIR$/static/deploy/js/manageFile.js" />
+        <option value="$PROJECT_DIR$/deploy/views.py" />
       </list>
     </option>
   </component>
@@ -220,20 +216,7 @@
             <path>
               <item name="opsweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="opsweb" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opsweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opsweb" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="deploy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opsweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opsweb" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="deploy" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -682,7 +665,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32817337" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33977455" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3018576" sideWeight="0.47280967" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36996904" sideWeight="0.47280967" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1087,16 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="36" column="39" lean-forward="false" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1113,46 +1086,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/models.py">
+    <entry file="file://$PROJECT_DIR$/static/deploy/css/managerFile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1676">
-          <caret line="120" column="4" lean-forward="true" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/deploy/js/manageFile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="135" column="48" lean-forward="false" selection-start-line="135" selection-start-column="48" selection-end-line="135" selection-end-column="48" />
-          <folding>
-            <marker date="1513935174151" expanded="true" signature="5316:5330" ph="..." />
-            <marker date="1513935174151" expanded="true" signature="12188:12212" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/deploy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="448" column="19" lean-forward="true" selection-start-line="448" selection-start-column="19" selection-end-line="448" selection-end-column="19" />
+        <state relative-caret-position="828">
+          <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/deploy/manageAppFile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="74" column="56" lean-forward="false" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
+        <state relative-caret-position="160">
+          <caret line="25" column="55" lean-forward="true" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/deploy/css/managerFile.css">
+    <entry file="file://$PROJECT_DIR$/deploy/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="51" column="14" lean-forward="true" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+        <state relative-caret-position="218">
+          <caret line="120" column="4" lean-forward="true" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/deploy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="448" column="19" lean-forward="false" selection-start-line="448" selection-start-column="19" selection-end-line="448" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/deploy/js/manageFile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="140" lean-forward="false" selection-start-line="15" selection-start-column="140" selection-end-line="15" selection-end-column="140" />
+          <folding>
+            <marker date="1514193821680" expanded="true" signature="5399:5413" ph="..." />
+            <marker date="1514193821680" expanded="true" signature="12271:12295" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="81" column="63" lean-forward="false" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -79,15 +79,19 @@ def manageAppFile(request):
     queryParm = {}
     try:
         templateName=urllib.parse.unquote(request.GET['templateName'])
+        appGroupName=urllib.parse.unquote(request.GET['appGroup'])
         version=urllib.parse.unquote(request.GET['version'])
         packType=int(request.GET['packType'])
         if templateName:
             queryParm['appTemplateName__contains']=templateName
         if version:
             queryParm['version__contains']=version
+        if appGroupName:
+            queryParm['appGroupName__contains']=appGroupName
         if packType !=2:
             queryParm['filePackType'] =packType
-    except:
+    except Exception as e:
+        print(e)
         pass
     pageCount = appVersionManage.objects.filter(**queryParm).count()
     fileList = list(appVersionManage.objects.filter(**queryParm).values().order_by('-create_date')[limitStart:limitEnd])

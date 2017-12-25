@@ -5,15 +5,15 @@ function tabChange(id) {
     }else if(id=='fileUploadTab'){
         $("#fileViewTab").removeClass('active')
         $("#fileUploadTab").addClass('active')
-
     }
 
 }
 function searchSubmit(){
     var templateName=escape($.trim($("#appTemplate").val()))
+    var appGroupName=escape($.trim($("#appGroup").val()))
     var version=escape($.trim($("#version").val()))
     var packType=$("#filePackType").select().val()
-    location.href=window.location.pathname+'?templateName='+templateName+'&version='+version+'&packType='+packType
+    location.href=window.location.pathname+'?templateName='+templateName+'&version='+version+'&packType='+packType+'&appGroup='+appGroupName
 }
 function  addModal(type,id) {
     var onclick="modFileInfo('"+type+"')"
@@ -301,4 +301,11 @@ $(document).ready(function () {
     $( ".fileUploadButton" ).each( function() {
         fileupload($(this).attr('id'))
     })
+    $.when(req_ajax('/api/getWebTemplate/',{method:'appGroup'},'appGroup'))
+        .done(function () {
+                listenText('#appGroup',appGroup)
+            })
+        .fail(function () {
+            alert('应用组请求失败')
+        })
 })
