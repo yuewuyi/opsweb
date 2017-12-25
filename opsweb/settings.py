@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CELERY_BROKER_URL = 'redis://:suyue123@172.20.11.94:6379/0'#使用redis作为消息代理
+# CELERY_BROKER_URL = 'redis://:suyue123@172.20.11.94:6379/0'
+CELERY_BROKER_URL = 'redis://:suyue123@127.0.0.1:6379/0'#使用redis作为消息代理
 CELERY_ACCEPT_CONTENT = ['json']# 指定接受的内容类型
 CELERY_RESULT_BACKEND = 'django-db'# 使用数据库存储任务结果
 CELERY_TASK_SERIALIZER = 'json'#读取任务结果一般性能要求不高，所以使用了可读性更好的JSON
@@ -118,26 +119,26 @@ WSGI_APPLICATION = 'opsweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'opsweb',
-#         'USER': 'root',
-#         'PASSWORD': 'suyue123',
-#         'HOST':'127.0.0.1',
-#         'PORT':'3306',
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'opsweb',
         'USER': 'root',
         'PASSWORD': 'suyue123',
-        'HOST':'172.20.11.94',
+        'HOST':'127.0.0.1',
         'PORT':'3306',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'opsweb',
+#         'USER': 'root',
+#         'PASSWORD': 'suyue123',
+#         'HOST':'172.20.11.94',
+#         'PORT':'3306',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 CACHES = {

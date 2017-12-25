@@ -91,7 +91,6 @@ def manageAppFile(request):
         if packType !=2:
             queryParm['filePackType'] =packType
     except Exception as e:
-        print(e)
         pass
     pageCount = appVersionManage.objects.filter(**queryParm).count()
     fileList = list(appVersionManage.objects.filter(**queryParm).values().order_by('-create_date')[limitStart:limitEnd])
