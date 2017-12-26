@@ -9,9 +9,9 @@ function tabChange(id) {
 
 }
 function searchSubmit(){
-    var templateName=escape($.trim($("#appTemplate").val()))
-    var appGroupName=escape($.trim($("#appGroup").val()))
-    var version=escape($.trim($("#version").val()))
+    var templateName=encodeURIComponent($.trim($("#appTemplate").val()))
+    var appGroupName=encodeURIComponent($.trim($("#appGroup").val()))
+    var version=encodeURIComponent($.trim($("#version").val()))
     var packType=$("#filePackType").select().val()
     location.href=window.location.pathname+'?templateName='+templateName+'&version='+version+'&packType='+packType+'&appGroup='+appGroupName
 }
