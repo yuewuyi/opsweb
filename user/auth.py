@@ -17,6 +17,7 @@ class UserAuthMiddleware(MiddlewareMixin):
         '/api/zabbix_history_get/':3,
         '/monitor/Latest_Data/':3,
         '/monitor/history/':3,
+        '/monitor/abnormal/':3,
         '/api/TomcatThriftLog/': 2,
         '/log/TomcatThrift/':2,
         '/api/logScroll/':2,
