@@ -41,6 +41,9 @@
 .viewTable tr th:nth-child(4),td:nth-child(4){
     width: 6%;
 }
+.viewTable tr th:nth-child(6),td:nth-child(6){
+    width: 6%;
+}
 .viewTable tr th:nth-child(7),td:nth-child(7){
     width: 6%;
 }
@@ -55,7 +58,7 @@
 }
 .viewTable tr th:nth-child(11),td:nth-child(11){
     border-right: 0px;
-    width: 17%;
+    width: 20%;
 }
 
 .fileUploadButton{

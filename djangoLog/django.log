@@ -7800,3 +7800,154 @@ Traceback (most recent call last):
 NameError: name 'distEclud' is not defined
 2017-12-26 21:53:50,556 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
 >>>>>>> origin/master
+2017-12-27 11:50:41,638 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /user/Login/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 916, in connect
+    **kwargs)
+  File "/usr/lib/python3.5/socket.py", line 711, in create_connection
+    raise err
+  File "/usr/lib/python3.5/socket.py", line 702, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/base/base.py", line 213, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/base/base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/mysql/base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/__init__.py", line 90, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 706, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 963, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '172.20.11.94' (timed out)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/user/login.py", line 10, in login_post
+    if form.is_valid():
+  File "/usr/local/lib/python3.5/dist-packages/django/forms/forms.py", line 183, in is_valid
+    return self.is_bound and not self.errors
+  File "/usr/local/lib/python3.5/dist-packages/django/forms/forms.py", line 175, in errors
+    self.full_clean()
+  File "/usr/local/lib/python3.5/dist-packages/django/forms/forms.py", line 384, in full_clean
+    self._clean_fields()
+  File "/usr/local/lib/python3.5/dist-packages/django/forms/forms.py", line 405, in _clean_fields
+    value = getattr(self, 'clean_%s' % name)()
+  File "/root/opsweb/user/form.py", line 15, in clean_user
+    User.objects.get(user=user,pwd=pwd)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 374, in get
+    num = len(clone)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 232, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1118, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 871, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 436, in as_sql
+    where, w_params = self.compile(self.where) if self.where is not None else ("", [])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/where.py", line 79, in as_sql
+    sql, params = compiler.compile(child)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 169, in as_sql
+    lhs_sql, params = self.process_lhs(compiler, connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 162, in process_lhs
+    db_type = self.lhs.output_field.db_type(connection=connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 644, in db_type
+    return connection.data_types[self.get_internal_type()] % data
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/mysql/base.py", line 174, in data_types
+    if self.features.supports_microsecond_precision:
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/mysql/features.py", line 53, in supports_microsecond_precision
+    return self.connection.mysql_version >= (5, 6, 4) and Database.version_info >= (1, 2, 5)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/mysql/base.py", line 385, in mysql_version
+    with self.temporary_connection() as cursor:
+  File "/usr/lib/python3.5/contextlib.py", line 59, in __enter__
+    return next(self.gen)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/base/base.py", line 591, in temporary_connection
+    cursor = self.cursor()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/base/base.py", line 254, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/base/base.py", line 229, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/base/base.py", line 213, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/base/base.py", line 213, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/base/base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/mysql/base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/__init__.py", line 90, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 706, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 963, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '172.20.11.94' (timed out)")
+2017-12-27 11:50:41,690 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /user/Login/ HTTP/1.0" 500 27
+2017-12-27 15:59:33,548 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fda7f1aee80>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fda7f1aee80>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-12-27 16:16:16,217 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getWebTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 121, in getWebTemplate
+    if postData['method']=='web':
+TypeError: string indices must be integers
+2017-12-27 16:16:16,314 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getWebTemplate/ HTTP/1.0" 500 27
+2017-12-27 16:18:35,141 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getWebTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 121, in getWebTemplate
+    if postData['method']=='web':
+TypeError: string indices must be integers
+2017-12-27 16:18:35,147 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getWebTemplate/ HTTP/1.0" 500 27
+2017-12-27 16:20:23,937 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getWebTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 121, in getWebTemplate
+    if postData['method']=='web':
+TypeError: string indices must be integers
+2017-12-27 16:20:23,940 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getWebTemplate/ HTTP/1.0" 500 27

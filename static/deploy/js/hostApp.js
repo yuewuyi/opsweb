@@ -69,7 +69,7 @@ function  addModal(type,appid) {
             '<span id="appId" style="display: none;">'+appid+'</span>',
             '应用模板名 <input id="webTempName" type="text" class="modalTextStyle" autocomplete="off">',
         ]
-        $.when(req_ajax('/api/getWebTemplate/','','appTemp'))
+        $.when(req_ajax('/api/getWebTemplate/',{method:'web'},'appTemp'))
             .done(function () {
                 listenText('#webTempName',appTemp)
             })
@@ -235,6 +235,7 @@ function createApp(data){
             '<span class="glyphicon glyphicon-remove iconStyle" onclick="addModal(\'del\','+data['id']+')"></span>',
             '<span class="glyphicon glyphicon-pencil iconStyle" onclick="addModal(\'modify\','+data['id']+')"></span>',
             '<span class="glyphicon glyphicon-play iconStyle" onclick="addModal(\'start\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-tasks iconStyle" onclick="addModal(\'deploy\','+data['id']+')"></span>',
         ]
         var body=[
             '<span class="appInfo" id="appPort'+data['id']+'">端口: '+data['appPort']+'</span>',
