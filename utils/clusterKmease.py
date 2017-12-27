@@ -17,6 +17,7 @@ class cluster:
         n=shape(dataSet)[1]
         #初始化k行n列的矩阵
         centroids=mat(zeros((k,n)))
+        #遍历每列
         for j in range(n):
             #获取特征列中的最小距离
             minJ=min(dataSet[:,j])
@@ -49,14 +50,14 @@ class cluster:
                     if distJI <minDist:
                         minDist=distJI
                         minIndex=j
-                #当索引不再改变时跳出循环
+                #当所有索引不再改变时跳出循环
                 if clusterAssment[i,0] !=minIndex:
                     clusterChanged=True
                 clusterAssment[i]=minIndex,minDist**2
             for cent in range(k):
                 #得到相应簇心中的所有点
-                ptsInClust=dataSet[nonzero(clusterAssment[:,0].A==cent)[0]]
-                #根据簇心的平均值重新计算质心
+                ptsInClust=dataSet[nonzero(clusterAssment[:,0]==cent)[0]]
+                #求每列的平均值重新计算质心
                 centroids[cent]=mean(ptsInClust,axis=0)
         return centroids,clusterAssment
     def biKmeans(self,dataSet,k):
@@ -73,23 +74,23 @@ class cluster:
         while(len(centList) <k ):
             lowestSSE=inf
             for i in range(len(centList)):
-                ptsInCurrCluster=dataSet[nonzero(clusterAssment[:,0].A==i)[0]]
+                ptsInCurrCluster=dataSet[nonzero(clusterAssment[:,0]==i)[0]]
                 #把每个簇分成两份
                 centroidMat,splitClustAss=self.kMeans(ptsInCurrCluster,2)
                 #一分为2后的总误差
                 sseSplit=sum(splitClustAss[:,1])
                 #总误差
-                sseNotSpit=sum(clusterAssment[nonzero(clusterAssment[:,0].A!=i)[0],1])
+                sseNotSpit=sum(clusterAssment[nonzero(clusterAssment[:,0]!=i)[0],1])
                 if (sseNotSpit+sseSplit)<lowestSSE:
                     bestCentToSplit=i
                     bestNewCents=centroidMat
                     bestClustAss=splitClustAss.copy()
                     lowestSSE=sseNotSpit+sseSplit
-            bestClustAss[nonzero(bestClustAss[:,0].A==1)[0],0]=len(centList)
-            bestClustAss[nonzero(bestClustAss[:,0].A == 0)[0], 0] = bestCentToSplit
+            bestClustAss[nonzero(bestClustAss[:,0]==1)[0],0]=len(centList)
+            bestClustAss[nonzero(bestClustAss[:,0] == 0)[0], 0] = bestCentToSplit
             centList[bestCentToSplit]=bestNewCents[0]
             centList.append(bestNewCents[1])
-            clusterAssment[nonzero(clusterAssment[:,0].A==bestCentToSplit)[0]]=bestClustAss
+            clusterAssment[nonzero(clusterAssment[:,0]==bestCentToSplit)[0]]=bestClustAss
         return centList,clusterAssment
     def calcCluster(self):
         return self.biKmeans(self.__data,3)

@@ -127,6 +127,7 @@ def history(request):
 def abnormal(request):
     bikCluster=cluster([1,2,3,3,4,5,5,6,6,1,1,2,3,100])
     centList,clusterAssment=bikCluster.calcCluster()
+    print(clusterAssment)
     # print("cnetList")
     # print(centList)
     # print("clusterAssmen")

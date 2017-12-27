@@ -7951,3 +7951,5 @@ Traceback (most recent call last):
     if postData['method']=='web':
 TypeError: string indices must be integers
 2017-12-27 16:20:23,940 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getWebTemplate/ HTTP/1.0" 500 27
+2017-12-27 21:22:30,842 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 59
+2017-12-27 21:22:33,458 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 59
