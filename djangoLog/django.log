@@ -7501,7 +7501,12 @@ TypeError: string indices must be integers
 2017-12-25 15:27:03,662 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fbdfd213cc0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fbdfd213cc0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
 2017-12-25 20:59:53,039 ERROR    /home/suyue/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f10bca7d320>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f10bca7d320>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
 2017-12-26 10:49:01,999 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f573012e0b8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f573012e0b8>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+<<<<<<< HEAD
 2017-12-27 10:13:31,202 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+=======
+2017-12-26 21:25:04,280 ERROR    /home/suyue/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc14c066e80>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc14c066e80>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2017-12-26 21:28:06,587 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+>>>>>>> origin/master
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
@@ -7509,6 +7514,7 @@ Traceback (most recent call last):
     response = self.process_exception_by_middleware(e, request)
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/root/opsweb/api/deploy.py", line 359, in startStopApp
     ip = host.objects.filter(id=app.hostId).first().ip
   File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
@@ -7534,6 +7540,13 @@ Traceback (most recent call last):
 TypeError: int() argument must be a string, a bytes-like object or a number, not 'host'
 2017-12-27 10:13:31,435 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
 2017-12-27 10:14:14,790 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+=======
+  File "/home/suyue/opsweb/monitor/views.py", line 128, in abnormal
+    bikCluster=cluster([1,2,3,4])
+TypeError: __init__() takes 1 positional argument but 2 were given
+2017-12-26 21:28:06,700 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:28:32,923 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+>>>>>>> origin/master
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
@@ -7541,6 +7554,7 @@ Traceback (most recent call last):
     response = self.process_exception_by_middleware(e, request)
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/root/opsweb/api/deploy.py", line 359, in startStopApp
     ip = host.objects.filter(id=app.hostId).first().ip
   File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
@@ -7567,6 +7581,13 @@ TypeError: int() argument must be a string, a bytes-like object or a number, not
 2017-12-27 10:14:14,793 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
 2017-12-27 10:15:10,405 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc1773461d0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc1773461d0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
 2017-12-27 10:16:16,270 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+=======
+  File "/home/suyue/opsweb/monitor/views.py", line 128, in abnormal
+    bikCluster=cluster([1,2,3,4])
+TypeError: __init__() takes 1 positional argument but 2 were given
+2017-12-26 21:28:32,949 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:39:10,471 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+>>>>>>> origin/master
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
@@ -7574,6 +7595,7 @@ Traceback (most recent call last):
     response = self.process_exception_by_middleware(e, request)
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/root/opsweb/api/deploy.py", line 359, in startStopApp
     ip = host.objects.filter(id=app.hostId).first().ip
   File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
@@ -7599,6 +7621,15 @@ Traceback (most recent call last):
 TypeError: int() argument must be a string, a bytes-like object or a number, not 'host'
 2017-12-27 10:16:16,273 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
 2017-12-27 10:18:49,727 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+=======
+  File "/home/suyue/opsweb/monitor/views.py", line 128, in abnormal
+    bikCluster=cluster([[1,2],[1,2],[1,2],[1,]])
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 5, in __init__
+    m,n=shape(data)
+ValueError: not enough values to unpack (expected 2, got 1)
+2017-12-26 21:39:10,484 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:46:43,706 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+>>>>>>> origin/master
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
@@ -7606,6 +7637,7 @@ Traceback (most recent call last):
     response = self.process_exception_by_middleware(e, request)
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/root/opsweb/api/deploy.py", line 360, in startStopApp
     ip = host.objects.filter(id=app.hostId).first().ip
   File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
@@ -7631,6 +7663,15 @@ Traceback (most recent call last):
 TypeError: int() argument must be a string, a bytes-like object or a number, not 'host'
 2017-12-27 10:18:49,750 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
 2017-12-27 10:24:14,360 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+=======
+  File "/home/suyue/opsweb/monitor/views.py", line 128, in abnormal
+    bikCluster=cluster([1,2,3,3,4,5,5,6,6,100,1,2,3,4])
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 10, in __init__
+    centList,cluster=biKmeans(mat(data),3)
+NameError: name 'biKmeans' is not defined
+2017-12-26 21:46:43,729 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:47:34,333 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+>>>>>>> origin/master
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
@@ -7638,6 +7679,7 @@ Traceback (most recent call last):
     response = self.process_exception_by_middleware(e, request)
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/root/opsweb/api/deploy.py", line 360, in startStopApp
     ip = host.objects.filter(id=app.hostId).first().ip
   File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
@@ -7663,6 +7705,15 @@ Traceback (most recent call last):
 TypeError: int() argument must be a string, a bytes-like object or a number, not 'host'
 2017-12-27 10:24:14,370 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
 2017-12-27 10:31:19,475 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/startStopApp/
+=======
+  File "/home/suyue/opsweb/monitor/views.py", line 128, in abnormal
+    bikCluster=cluster([1,2,3,3,4,5,5,6,6,100,1,2,3,4])
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 10, in __init__
+    centList,cluster=self.biKmeans(mat(data),3)
+TypeError: biKmeans() takes 2 positional arguments but 3 were given
+2017-12-26 21:47:34,357 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:48:19,754 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+>>>>>>> origin/master
 Traceback (most recent call last):
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
@@ -7670,9 +7721,82 @@ Traceback (most recent call last):
     response = self.process_exception_by_middleware(e, request)
   File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+<<<<<<< HEAD
   File "/root/opsweb/api/deploy.py", line 364, in startStopApp
     hostApplication.objects.first(id=postData['id']).update(status=1)
   File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
 TypeError: first() got an unexpected keyword argument 'id'
 2017-12-27 10:31:19,498 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/startStopApp/ HTTP/1.0" 500 27
+=======
+  File "/home/suyue/opsweb/monitor/views.py", line 128, in abnormal
+    bikCluster=cluster([1,2,3,3,4,5,5,6,6,100,1,2,3,4])
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 10, in __init__
+    centList,cluster=self.biKmeans(mat(data),3)
+TypeError: biKmeans() takes 2 positional arguments but 3 were given
+2017-12-26 21:48:19,757 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:48:28,109 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 128, in abnormal
+    bikCluster=cluster([1,2,3,3,4,5,5,6,6,100,1,2,3,4])
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 10, in __init__
+    centList,cluster=self.biKmeans(mat(data),3)
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 72, in biKmeans
+    clusterAssment[i,1]=distEclud(mat([centroid0]),dataSet[i])**2
+NameError: name 'distEclud' is not defined
+2017-12-26 21:48:28,126 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:52:37,955 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    bikCluster.calcCluster()
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 96, in calcCluster
+    self.biKmeans(self.__data,3)
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 72, in biKmeans
+    clusterAssment[i,1]=distEclud(mat([centroid0]),dataSet[i])**2
+NameError: name 'distEclud' is not defined
+2017-12-26 21:52:37,977 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:52:39,327 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    bikCluster.calcCluster()
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 96, in calcCluster
+    self.biKmeans(self.__data,3)
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 72, in biKmeans
+    clusterAssment[i,1]=distEclud(mat([centroid0]),dataSet[i])**2
+NameError: name 'distEclud' is not defined
+2017-12-26 21:52:39,328 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2017-12-26 21:53:50,543 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    bikCluster.calcCluster()
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 96, in calcCluster
+    self.biKmeans(self.__data,3)
+  File "/home/suyue/opsweb/utils/clusterKmease.py", line 72, in biKmeans
+    clusterAssment[i,1]=distEclud(mat([centroid0]),dataSet[i])**2
+NameError: name 'distEclud' is not defined
+2017-12-26 21:53:50,556 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+>>>>>>> origin/master

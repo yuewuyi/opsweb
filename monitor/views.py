@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from utils.config import app_config
 import re
 import time
+from utils.clusterKmease import cluster
 #监控一览视图
 def index(request):
     conf=app_config()
@@ -122,3 +123,12 @@ def Latest_Data(request):
 #监控字段历史页面
 def history(request):
     return  render(request,'monitor/history.html')
+#异常监控数据
+def abnormal(request):
+    bikCluster=cluster([1,2,3,3,4,5,5,6,6,1,1,2,3,100])
+    centList,clusterAssment=bikCluster.calcCluster()
+    # print("cnetList")
+    # print(centList)
+    # print("clusterAssmen")
+    # print(clusterAssment)
+    return  render(request,'monitor/abnormal.html')

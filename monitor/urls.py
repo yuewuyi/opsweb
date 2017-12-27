@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^host_detailed/$',views.host_info_detailed,name="MonitorHostDetailed"),
     url(r'^config/$',views.config,name='MonitorConfig'),
     url(r'^Latest_Data/$',views.Latest_Data,name='LatestData'),
-    url(r'history/$',views.history,name='MonitorHistory')
+    url(r'^history/$',views.history,name='MonitorHistory'),
+    url(r'^abnormal/$',views.abnormal,name='MonitorAbNormal')
 ]
