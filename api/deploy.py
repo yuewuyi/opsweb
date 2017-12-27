@@ -356,13 +356,13 @@ def startStopApp(request):
                 hostApplication.objects.filter(id=postData['id']).update(status=3, jid=result[0]['jid'], jidState=1)
         elif postData['method']=='reset':
             proCheckCmd = "ps axu|grep "+app.appPath+"|grep -v 'grep'|wc -l"
-            ip = host.objects.filter(id=app.hostId).first().ip
-            print(ip)
-            # num = int(salt.syncCmd(ip, proCheckCmd)[0][ip])
-            # if num >0:
-            #     hostApplication.objects.first(id=postData['id']).update(status=0)
-            # elif num==0:
-            #     hostApplication.objects.first(id=postData['id']).update(status=1)
+            ip = host.objects.filter(id=app.hostId_id).first().ip
+            num = int(salt.syncCmd(ip, proCheckCmd)[0][ip])
+            print(num)
+            if num >0:
+                hostApplication.objects.filter(id=postData['id']).update(status=1)
+            elif num==0:
+                hostApplication.objects.filter(id=postData['id']).update(status=0)
         else:
             rep['code'] = -1
             rep['msg'] = '未知操作'
