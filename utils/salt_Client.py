@@ -40,7 +40,7 @@ class saltClient:
         parm["client"] = "local"
         parm["tgt"] = match
         parm["arg"] = arg
-        result = self.__request("/", parm, 60)
+        result = self.__request("/", parm, 600)
         return result
 #命令请求
     def __request(self,path,parm,timeout):
