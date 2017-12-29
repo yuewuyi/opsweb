@@ -50,9 +50,9 @@ function  addModal(type,id) {
         var packType=th.children().eq(2).html()
         var type=th.children().eq(3).html()
         var templateName=th.children().eq(4).html()
-        var appGroupName=th.children().eq(4).html()
+        var appGroupName=th.children().eq(5).html()
         var fileVersion=th.children().eq(6).html()
-        var name=th.children().eq(7).html()
+        var name=th.children().eq(8).html()
         var remark=th.children().eq(9).children().eq(1).text()
         var body=[
             'id <input id="fileId" class="modalTextStyle readOnlyStyle" value="'+id+'" type="text" readonly><br/><br/>',
