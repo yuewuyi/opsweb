@@ -308,4 +308,11 @@ $(document).ready(function () {
         .fail(function () {
             alert('应用组请求失败')
         })
+    $.when(req_ajax('/api/getWebTemplate/',{method:'webApp'},'webpp'))
+        .done(function () {
+                listenText('#appTemplate',webpp)
+            })
+        .fail(function () {
+            alert('模板请求失败')
+        })
 })

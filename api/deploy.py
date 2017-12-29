@@ -122,6 +122,9 @@ def getWebTemplate(request):
             data=list(webTemplate.objects.all().values_list('webTemplateName'))
         elif postData['method']=='appGroup':
             data = list(app_group.objects.all().values_list('group_name'))
+        elif postData['method']=='webApp':
+            data = list(webTemplate.objects.all().values_list('webTemplateName'))
+            data +=list(appTemplate.objects.all().values_list('appTemplateName'))
         return  HttpResponse(json.dumps(data),content_type='application/json')
     else:
         return HttpResponse(status=403)
