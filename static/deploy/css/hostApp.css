@@ -125,3 +125,42 @@
 .marginLeft{
     margin-left: 10%;
 }
+.deploy_modal_body{
+    width: 100%;
+    margin: 0 0 0 0;
+}
+.deploy_modal_container{
+    width: 30%;
+    height: 200px;
+    margin: 100px auto;
+}
+.modalTabTitle{
+    text-align: center;
+    width: 100%;
+    background-color: #EAEDEF;
+}
+.modalTabTitle a{
+    text-decoration:none;
+    out-line: none;
+    color: #000000;
+    width: 100%;
+    display: block;
+}
+.modalTabDiv{
+    display: inline-block;
+    width: 49.3%;
+    background-color: #EAEDEF;
+}
+.modalTabTitle .active{
+    background-color: white;
+}
+.fileMtable{
+    width: 100%;
+    border: none;
+    text-align: center;
+
+}
+.fileMtable tr td{
+    border: 1px solid #DFE4E7;
+
+}

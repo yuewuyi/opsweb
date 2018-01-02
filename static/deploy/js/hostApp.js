@@ -235,7 +235,7 @@ function createApp(data){
             '<span class="glyphicon glyphicon-remove iconStyle" onclick="addModal(\'del\','+data['id']+')"></span>',
             '<span class="glyphicon glyphicon-pencil iconStyle" onclick="addModal(\'modify\','+data['id']+')"></span>',
             '<span class="glyphicon glyphicon-play iconStyle" onclick="addModal(\'start\','+data['id']+')"></span>',
-            '<span class="glyphicon glyphicon-tasks iconStyle" onclick="addModal(\'deploy\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-tasks iconStyle" onclick="showDeplotModal(0,'+data['id']+')"></span>',
         ]
         var body=[
             '<span class="appInfo" id="appPort'+data['id']+'">端口: '+data['appPort']+'</span>',
@@ -318,7 +318,7 @@ function createApp(data){
     if (data['appTemplateName']=='tomcat' && data['status']==0){
         var webapp=''
         for(var i=0;i<data['webApp'].length;i++){
-            webapp+='<span class="webAppName" onclick="addModal(\'deploy\','+data['webApp'][i]['id']+')">'
+            webapp+='<span class="webAppName" onclick="showDeplotModal(1,'+data['webApp'][i]['id']+')">'
             webapp+='<span id="webAppName'+data['webApp'][i]['id']+'">'+data['webApp'][i]['webTemplateName']+'</span>'
             webapp+='<span class="glyphicon glyphicon-remove-sign removeIcon" onclick="addModal(\'delWeb\','+data['webApp'][i]['id']+')"></span>'
             webapp+='</span>'
@@ -332,6 +332,20 @@ function createApp(data){
         }
         $("#app"+data['id']+' .appContainerBody').append(webapp)
     }
+}
+function tabChange(id) {
+    if(id=='appDeployButton'){
+        $("#appDeployButton").addClass('active')
+        $("#appReButton").removeClass('active')
+    }else if(id=='appReButton'){
+        $("#appDeployButton").removeClass('active')
+        $("#appReButton").addClass('active')
+    }
+
+}
+//显示部署模态框
+function showDeplotModal(type,id) {
+    $('#hostDeploy').modal('show')
 }
 // 页面初始化是请求应用
 function loadApp() {

@@ -45,6 +45,19 @@ class app_group(models.Model):
     group_name = models.CharField(null=False, max_length=50, unique=True)
     class Meta:
         db_table = 'app_group'
+#应用备份表
+class app_backup(models.Model):
+    #web备份表id
+    id=models.AutoField(primary_key=True)
+    #应用名
+    appName=models.CharField(null=False,max_length=255,default='')
+    #文件名和路径
+    fileName=models.CharField(null=False,max_length=255,default='')
+    #创建时间
+    create_time=models.DateTimeField()
+    class Meta:
+        db_table='app_backup'
+
 #host应用表
 class hostApplication(models.Model):
     #主机应用ID

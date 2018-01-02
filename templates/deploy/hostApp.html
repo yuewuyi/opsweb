@@ -10,6 +10,46 @@
         <div class="ButtonStyle addHostButton" style="text-align: center;" onclick="addModal('add','')">创建应用</div>
     </div>
     <div class="page_hr"></div>
-
 </div>
+{#    部署模态框 #}
+    <div class="modal" id="hostDeploy">
+        <div class="deploy_modal_container">
+            <div class="modal-content radius">
+                <div class="modal_header">
+                    部署应用
+                    <span class="glyphicon glyphicon-floppy-disk iconStyle" ></span>
+                </div>
+                <div class="page_hr"></div>
+                <div class="deploy_modal_body">
+                    <div class="modalTabTitle">
+                        <div id="appDeployButton" onclick="tabChange('appDeployButton')" class="modalTabDiv active"><a href="#appDeploy" data-toggle="tab">部署</a></div>
+                        <div id="appReButton" onclick="tabChange('appReButton')" class="modalTabDiv"><a href="#appRe" data-toggle="tab">还原</a></div>
+                    </div>
+                    <div class="tab-content">
+                        <div id="appDeploy"  class="tab-pane fade in active">
+                            <table id="deployTable" class="fileMtable">
+                                <tr>
+                                    <th>id</th>
+                                    <th>文件版本</th>
+                                    <th>创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="appRe"  class="tab-pane fade">
+                            <table id="reTable" class="fileMtable">
+                                <tr>
+                                    <th>id</th>
+                                    <th>文件版本</th>
+                                    <th>创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="page_hr"></div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
