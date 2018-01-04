@@ -8171,3 +8171,1172 @@ Traceback (most recent call last):
     raise ConnectionError('N/A', str(e), e)
 elasticsearch.exceptions.ConnectionError: ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fa7037ca080>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fa7037ca080>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
 2018-01-02 17:38:50,338 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /log/luceneCustomQuery/ HTTP/1.0" 500 27
+2018-01-04 14:11:46,739 ERROR    /root/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f8a55b1be80>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f8a55b1be80>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2018-01-04 15:56:45,948 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 514, in getFileInfo
+    tempName=webTemplate.objects.get(id=tempId).webTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'webTemplate'
+2018-01-04 15:56:45,955 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 514, in getFileInfo
+    tempName=webTemplate.objects.get(id=tempId).webTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'webTemplate'
+2018-01-04 15:56:46,144 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 15:56:46,153 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 15:57:20,578 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 512, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 15:57:20,581 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 512, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 15:57:20,625 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 15:57:20,635 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:01:40,657 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:01:40,644 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:01:40,682 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:01:40,686 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:01:57,694 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:01:57,696 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:01:57,717 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:01:57,726 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:02:28,361 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:02:28,365 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:02:28,410 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:02:28,424 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:03:12,793 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 512, in getFileInfo
+    print(tempId.appTempId)
+AttributeError: 'appTemplate' object has no attribute 'appTempId'
+2018-01-04 16:03:12,825 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 512, in getFileInfo
+    print(tempId.appTempId)
+AttributeError: 'appTemplate' object has no attribute 'appTempId'
+2018-01-04 16:03:12,834 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:03:12,832 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:03:32,946 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:03:32,950 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:03:33,036 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:03:33,044 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:03:44,207 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:03:44,216 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:03:44,221 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:03:44,276 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:04:48,928 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:04:48,950 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:04:48,952 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:04:48,954 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:06:57,200 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'appTemplate'
+2018-01-04 16:06:57,224 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:07:35,066 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'hostApplication'
+2018-01-04 16:07:35,073 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:08:04,312 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 513, in getFileInfo
+    tempName=appTemplate.objects.get(id=tempId).appTemplateName
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'hostApplication'
+2018-01-04 16:08:04,340 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:15:06,603 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 519, in getFileInfo
+    return HttpResponse(json.dumps(fileInfo),content_type='application/json')
+  File "/usr/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: datetime.datetime(2017, 12, 18, 9, 0) is not JSON serializable
+2018-01-04 16:15:06,685 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:15:52,676 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 519, in getFileInfo
+    return HttpResponse(json.dumps(fileInfo),content_type='application/json')
+  File "/usr/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: datetime.datetime(2017, 12, 18, 9, 0) is not JSON serializable
+2018-01-04 16:15:52,683 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:16:12,848 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 519, in getFileInfo
+    return HttpResponse(json.dumps(fileInfo),content_type='application/json')
+  File "/usr/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: datetime.datetime(2017, 12, 18, 9, 0) is not JSON serializable
+2018-01-04 16:16:12,853 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:19:28,432 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 519, in getFileInfo
+    return HttpResponse(json.dumps(fileInfo),content_type='application/json')
+  File "/usr/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: datetime.datetime(2017, 12, 18, 9, 0) is not JSON serializable
+2018-01-04 16:19:28,436 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:20:45,777 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 519, in getFileInfo
+    return HttpResponse(json.dumps(fileInfo),content_type='application/json')
+  File "/usr/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: datetime.datetime(2017, 12, 18, 9, 0) is not JSON serializable
+2018-01-04 16:20:45,798 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 16:21:23,887 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/getFile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 519, in getFileInfo
+    return HttpResponse(json.dumps(fileInfo),content_type='application/json')
+  File "/usr/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: datetime.datetime(2017, 12, 18, 9, 0) is not JSON serializable
+2018-01-04 16:21:23,893 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/getFile/ HTTP/1.0" 500 27
+2018-01-04 17:48:52,674 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 61, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:48:52,685 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:49:14,103 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 61, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:49:14,105 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:49:43,049 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 61, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:49:43,052 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:49:44,890 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 61, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:49:44,916 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:50:24,940 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 61, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'startCmd_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:50:24,960 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:51:11,791 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 61, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'startCmd_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:51:11,793 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:51:14,969 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 83, in __getitem__
+    list_ = super(MultiValueDict, self).__getitem__(key)
+KeyError: 'appName'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 47, in tempPage
+    print(request.GET['appName'])
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+django.utils.datastructures.MultiValueDictKeyError: "'appName'"
+2018-01-04 17:51:15,007 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/ HTTP/1.0" 500 27
+2018-01-04 17:51:17,828 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 83, in __getitem__
+    list_ = super(MultiValueDict, self).__getitem__(key)
+KeyError: 'appName'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 47, in tempPage
+    print(request.GET['appName'])
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+django.utils.datastructures.MultiValueDictKeyError: "'appName'"
+2018-01-04 17:51:17,829 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/ HTTP/1.0" 500 27
+2018-01-04 17:51:36,473 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 60, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:51:36,481 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:52:08,136 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 60, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:52:08,140 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:52:11,138 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 60, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:52:11,140 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:52:18,341 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 60, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:52:18,344 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:52:23,746 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 60, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:52:23,748 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=%5Bobject%20Object%5D&startCmd=%5Bobject%20Object%5D&stopCmd=%5Bobject%20Object%5D HTTP/1.0" 500 27
+2018-01-04 17:53:43,318 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /deploy/appTemplate/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/deploy/views.py", line 60, in tempPage
+    pageCount = appTemplate.objects.filter(**queryParm).count()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'appTemplateName_contains' into field. Choices are: appTemplateName, hostapplication, id, startCmd, stopCmd
+2018-01-04 17:53:43,324 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /deploy/appTemplate/?appName=tomcat&startCmd=&stopCmd= HTTP/1.0" 500 27

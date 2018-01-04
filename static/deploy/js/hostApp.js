@@ -341,10 +341,21 @@ function tabChange(id) {
         $("#appDeployButton").removeClass('active')
         $("#appReButton").addClass('active')
     }
+''
+}
+function  showTable(id,data,type) {
 
 }
 //显示部署模态框
 function showDeplotModal(type,id) {
+    $.when(req_ajax('/api/getFile/',{id:id,type:type,fileType:0},'deployFile') && req_ajax('/api/getFile/',{id:id,type:type,fileType:1},'backFile'))
+        .done(function () {
+            alert("mdzz")
+        })
+        .fail(function () {
+            alert("获取数据失败")
+        })
+
     $('#hostDeploy').modal('show')
 }
 // 页面初始化是请求应用

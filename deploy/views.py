@@ -49,11 +49,11 @@ def tempPage(request):
         startCmd=urllib.parse.unquote(request.GET['startCmd'])
         stopCmd=urllib.parse.unquote(request.GET['stopCmd'])
         if appName:
-            queryParm['appTemplateName_contains']=appName
+            queryParm['appTemplateName__contains']=appName
         if startCmd:
-            queryParm['startCmd_contains']=startCmd
+            queryParm['startCmd__contains']=startCmd
         if stopCmd:
-            queryParm['stopCmd_contains']=stopCmd
+            queryParm['stopCmd__contains']=stopCmd
     except:
         pass
     pageCount = appTemplate.objects.filter(**queryParm).count()

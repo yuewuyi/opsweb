@@ -1,5 +1,4 @@
 function addTemplate() {
-    console.log(textAuth('TemplateName','#templateName','#addTepmlateSubmit','#addTemplateSeccussTxt'))
     if(textAuth('TemplateName','#templateName','#addTepmlateSubmit','#addTemplateSeccussTxt')){
         var templateName=$.trim($('#templateName').val())
         var startCmd=$.trim($('#startCmd').val())
@@ -22,10 +21,10 @@ function addTemplate() {
     }
 }
 function searchSubmit() {
-    var appName=escape($.trim($('#appTemplate')))
-    var startCmd=escape($.trim($('#startCmd')))
-    var stopCmd=escape($.trim($('#stopCmd')))
-    location.href=window.location.pathname+'?appName='+appName+'&startCmd'+startCmd+'&stopCmd'+stopCmd
+    var appName=encodeURIComponent($.trim($('#sTemplate').val()))
+    var startCmd=encodeURIComponent($.trim($('#sStartCmd').val()))
+    var stopCmd=encodeURIComponent($.trim($('#sStopCmd').val()))
+    location.href=window.location.pathname+'?appName='+appName+'&startCmd='+startCmd+'&stopCmd='+stopCmd
 }
 function showValue(obj,operType){
     var th =$(obj).parent().parent()

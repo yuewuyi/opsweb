@@ -491,7 +491,6 @@ def modAppFile(request):
                 else:
                     filename=''
             except Exception as e:
-                print(e)
                 rep['code'] = -1
                 rep['msg'] = '文件不存在'
                 return HttpResponse(json.dumps(rep), content_type="application/json")
@@ -503,3 +502,20 @@ def modAppFile(request):
             return HttpResponse(status=403)
     else:
         return  HttpResponse(status=403)
+#获取相应的文件信息
+def getFileInfo(request):
+    if request.method=='POST':
+        postData=json.loads(request.body.decode())
+        if postData['type']==0:
+            tempId=hostApplication.objects.get(id=postData['id']).appTempId_id
+            tempName=appTemplate.objects.get(id=tempId).appTemplateName
+        elif postData['type']==1:
+            tempId = webApplication.objects.get(id=postData['id']).webTempId_id
+            tempName=webTemplate.objects.get(id=tempId).webTemplateName
+        if postData['fileType']==0:
+            fileInfo=list(appVersionManage.objects.filter(appTemplateName=tempName,fileName__isnull=False).values())
+        elif postData['fileType']==1:
+            fileInfo=list(app_backup.objects.filter(appName=tempName).values())
+        return HttpResponse(json.dumps(fileInfo),content_type='application/json')
+    else:
+        return HttpResponse(status=403)
