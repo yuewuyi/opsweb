@@ -52,9 +52,11 @@ class app_backup(models.Model):
     #应用名
     appName=models.CharField(null=False,max_length=255,default='')
     #文件名和路径
-    fileName=models.CharField(null=False,max_length=255,default='')
+    fileName=models.TextField(null=False,default='')
+    #文件版本
+    version=models.CharField(null=False,max_length=255,default=255)
     #创建时间
-    create_time=models.DateTimeField()
+    create_date=models.DateTimeField()
     class Meta:
         db_table='app_backup'
 

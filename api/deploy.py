@@ -513,9 +513,11 @@ def getFileInfo(request):
             tempId = webApplication.objects.get(id=postData['id']).webTempId_id
             tempName=webTemplate.objects.get(id=tempId).webTemplateName
         if postData['fileType']==0:
-            fileInfo=list(appVersionManage.objects.filter(appTemplateName=tempName,fileName__isnull=False).values())
+            fileInfo=list(appVersionManage.objects.filter(appTemplateName=tempName,fileName__isnull=False).values('id','version','create_date'))
         elif postData['fileType']==1:
-            fileInfo=list(app_backup.objects.filter(appName=tempName).values())
+            fileInfo=list(app_backup.objects.filter(appName=tempName).values('id','version','create_date'))
+        for i in range(len(fileInfo)):
+            fileInfo[i]['create_date']=datetime.strftime(fileInfo[i]['create_date'],'%Y-%m-%s %H:%M:%S')
         return HttpResponse(json.dumps(fileInfo),content_type='application/json')
     else:
         return HttpResponse(status=403)
