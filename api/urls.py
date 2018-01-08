@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^modWebTemplate/$',deploy.modWebTemplate,name='modWebTeplate'),
     url(r'^modAppFile/$',deploy.modAppFile,name='modAppFile'),
     url(r'^fileManager/$',deploy.fileManager,name='fileManagerApi'),
-    url(r'^getFile/$',deploy.getFileInfo,name='getFileApi')
+    url(r'^getFile/$',deploy.getFileInfo,name='getFileApi'),
+    url(r'^deployBackUp/$',deploy.deployOrBackUp,name='deployAndBackupApi')
 ]

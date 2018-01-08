@@ -114,6 +114,12 @@ function  addModal(type,appid) {
         var body=[
             '<span class="showInfo">'+cmdInfo+'</span>'
         ]
+    }else if(type=='backup'){
+        var titleName="备份应用"
+        var body=[
+            '<span class="showInfo">是否要备份此应用</span>'
+        ]
+
     }
     createModal(titleName,body)
     $('#submitButton').attr("onclick",onclick)
@@ -189,7 +195,7 @@ function modApplications(method) {
         var successTxt="应用重置成功"
         var url='/api/startStopApp/'
     }
-    //添加web应用
+    //添加web应用)
     else if(method=='addWeb'){
             data['appId']=parseInt($("#appId").html())
             data['webAppName']=$.trim($("#webTempName").val())
@@ -206,6 +212,18 @@ function modApplications(method) {
             var alertmsg="删除WEB应用失败"
             var successTxt="删除WEB应用成功"
             var url='/api/modWebApplication/'
+    }
+    //备份应用
+    else if(method=='backup'){
+        data['appId']=parseInt($("#dappId").html())
+        data['appType']=parseInt($("#dappType").html())
+        if (data['appType']==1){
+               data['webId']=parseInt($("#dwebId").html())
+        }
+        data['method']=method
+        var successTxt="备份请求成功"
+        var alertmsg="备份请求失败"
+        var url='/api/deployBackUp/'
     }
     $("#submitButton").addClass('buttonClickDisable')
     $.when(req_ajax(url,data,'result'))
@@ -235,7 +253,7 @@ function createApp(data){
             '<span class="glyphicon glyphicon-remove iconStyle" onclick="addModal(\'del\','+data['id']+')"></span>',
             '<span class="glyphicon glyphicon-pencil iconStyle" onclick="addModal(\'modify\','+data['id']+')"></span>',
             '<span class="glyphicon glyphicon-play iconStyle" onclick="addModal(\'start\','+data['id']+')"></span>',
-            '<span class="glyphicon glyphicon-tasks iconStyle" onclick="showDeplotModal(0,'+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-tasks iconStyle" onclick="showDeplotModal(0,'+data['id']+',\'\')"></span>',
         ]
         var body=[
             '<span class="appInfo" id="appPort'+data['id']+'">端口: '+data['appPort']+'</span>',
@@ -318,7 +336,7 @@ function createApp(data){
     if (data['appTemplateName']=='tomcat' && data['status']==0){
         var webapp=''
         for(var i=0;i<data['webApp'].length;i++){
-            webapp+='<span class="webAppName" onclick="showDeplotModal(1,'+data['webApp'][i]['id']+')">'
+            webapp+='<span class="webAppName" onclick="showDeplotModal(1,'+data['id']+','+data['webApp'][i]['id']+')">'
             webapp+='<span id="webAppName'+data['webApp'][i]['id']+'">'+data['webApp'][i]['webTemplateName']+'</span>'
             webapp+='<span class="glyphicon glyphicon-remove-sign removeIcon" onclick="addModal(\'delWeb\','+data['webApp'][i]['id']+')"></span>'
             webapp+='</span>'
@@ -344,18 +362,34 @@ function tabChange(id) {
 ''
 }
 function  showTable(id,data,type) {
-
+    var body=''
+    for (var i=0;i< data.length;i++){
+        body+='<tr><td>'+data[i]['id']+'</td>'
+        body+='<td>'+data[i]['version']+'</td>'
+        body+='<td>'+data[i]['create_date']+'</td>'
+        body+='<td><div class="ButtonStyle deployButton SearchButton">部署</div></td></tr>'
+    }
+    $(id).append(body)
 }
 //显示部署模态框
-function showDeplotModal(type,id) {
-    $.when(req_ajax('/api/getFile/',{id:id,type:type,fileType:0},'deployFile') && req_ajax('/api/getFile/',{id:id,type:type,fileType:1},'backFile'))
+function showDeplotModal(type,id,webid) {
+    $("#dappId").html(id)
+    $("#dappType").html(type)
+    $("#dwebId").html(webid)
+    $('#deployTable tr:not(:nth-child(1))').remove()
+    $('#reTable tr:not(:nth-child(1))').remove()
+    var qid=id
+    if (type==1){
+        qid=webid
+    }
+    $.when(req_ajax('/api/getFile/',{id:qid,type:type,fileType:0},'deployFile'),req_ajax('/api/getFile/',{id:qid,type:type,fileType:1},'backFile'))
         .done(function () {
-            alert("mdzz")
+            showTable('#deployTable',deployFile,0)
+            showTable('#reTable',backFile,1)
         })
         .fail(function () {
             alert("获取数据失败")
         })
-
     $('#hostDeploy').modal('show')
 }
 // 页面初始化是请求应用

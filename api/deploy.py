@@ -517,7 +517,31 @@ def getFileInfo(request):
         elif postData['fileType']==1:
             fileInfo=list(app_backup.objects.filter(appName=tempName).values('id','version','create_date'))
         for i in range(len(fileInfo)):
-            fileInfo[i]['create_date']=datetime.strftime(fileInfo[i]['create_date'],'%Y-%m-%s %H:%M:%S')
+            fileInfo[i]['create_date']=datetime.strftime(fileInfo[i]['create_date'],'%Y-%m-%d %H:%M:%S')
         return HttpResponse(json.dumps(fileInfo),content_type='application/json')
+    else:
+        return HttpResponse(status=403)
+def deployOrBackUp(request):
+    if request.method=='POST':
+        postData=json.loads(request.body.decode())
+        rep = {'code': 0, 'msg': ''}
+        try:
+            if postData['appType']==0:
+                app=hostApplication.objects.get(id=postData['appId'])
+            elif postData['appType']==1:
+                app=hostApplication.objects.get(id=postData['appId'])
+                webapp=webApplication.objects.get(id=postData['webId'])
+        except Exception as e:
+            print(e)
+            rep['code']=-1
+            rep['msg']='应用不存在'
+            return  HttpResponse(json.dumps(rep),content_type='application/json')
+        # if postData['method']=='backup':
+        #     if postData['appType']==0:
+        #
+        #     elif postData['appType']==1:
+
+
+        return  HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return HttpResponse(status=403)
