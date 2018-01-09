@@ -49,6 +49,8 @@ class app_group(models.Model):
 class app_backup(models.Model):
     #web备份表id
     id=models.AutoField(primary_key=True)
+    #主机id
+    hostId=models.ForeignKey(host,to_field='id',db_column="hostId",default='')
     #应用名
     appName=models.CharField(null=False,max_length=255,default='')
     #文件名和路径
@@ -57,6 +59,10 @@ class app_backup(models.Model):
     version=models.CharField(null=False,max_length=255,default=255)
     #创建时间
     create_date=models.DateTimeField()
+    #备份时的jid
+    jid=models.CharField(max_length=255,null=False,db_index=True,default='')
+    #备份状态 0-备份中 1-备份完成
+    backState=models.IntegerField(null=False,default=0)
     class Meta:
         db_table='app_backup'
 
@@ -74,7 +80,7 @@ class hostApplication(models.Model):
     appPath=models.CharField(max_length=255,null=False,default='')
     #应用端口
     appPort=models.IntegerField()
-    #应用状态 0-停止 1-运行 2-启动中 3-停止中 4-部署中 5-启动失败 6-停止失败 7-命令执行成功,程序没反应
+    #应用状态 0-停止 1-运行 2-启动中 3-停止中 4-部署中 5-启动失败 6-停止失败 7-命令执行成功,程序没反应 8-备份中 9-备份失败 10-部署失败
     status=models.IntegerField(null=False,default=0)
     #salt任务id
     jid=models.CharField(max_length=255,null=False,db_index=True,default='')

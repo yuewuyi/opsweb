@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from utils.raw_sql import *
 from datetime import datetime
 import os
+import random
 from django.conf import settings
 import hashlib
 def addHost(request):
@@ -176,7 +177,7 @@ def getAapplication(request):
         hostApp=rawQuerytoList(hostApplication.objects.raw(getsql('hostAppsql'),postData))
         for i in range(0,len(hostApp)):
             hostApp[i]['webApp']=rawQuerytoList(webApplication.objects.raw(getsql('webAppSql'),{'aId':hostApp[i]['id']}))
-            if hostApp[i]['status']==5 or hostApp[i]['status']==6 or hostApp[i]['status']==7:
+            if hostApp[i]['status']==5 or hostApp[i]['status']==6 or hostApp[i]['status']==7 or hostApp[i]['status']==9 or hostApp[i]['status']==10:
                 hostApp[i]['msg']=saltReturns.objects.filter(jid=hostApp[i]['jid']).first().returns
             else:
                 hostApp[i]['msg']=''
@@ -536,12 +537,30 @@ def deployOrBackUp(request):
             rep['code']=-1
             rep['msg']='应用不存在'
             return  HttpResponse(json.dumps(rep),content_type='application/json')
-        # if postData['method']=='backup':
-        #     if postData['appType']==0:
-        #
-        #     elif postData['appType']==1:
-
-
+        if app.status !=0:
+            rep['code'] = -1
+            rep['msg'] = '应用不在停止状态'
+            return HttpResponse(json.dumps(rep), content_type='application/json')
+        date=datetime.strftime(datetime.today(),'%Y%m%d%H%M%S')+str(random.randint(0,10000))
+        if postData['method']=='backup':
+            hostInfo = host.objects.get(id=app.hostId_id)
+            if postData['appType']==0:
+                templateName=appTemplate.objects.get(id=app.appTempId_id).appTemplateName
+                fileName=templateName+'-'+date+'.zip'
+                cmd="cd "+app.appPath+' && zip -r /server/backup/'+fileName+' ./*'
+            elif postData['appType']==1:
+                templateName=webTemplate.objects.get(id=webApplication.objects.get(hostAppId=postData['appId']).webTempId_id).webTemplateName
+                fileName = templateName + '-' + date + '.zip'
+                cmd = "cd " + app.appPath + '/webapps/'+templateName+' && zip -r /server/backup/' + fileName + ' ./*'
+            salt = saltClient()
+            result = salt.AsyncCmd(hostInfo.ip, cmd)[0]['jid']
+            app_backup.objects.create(hostId=hostInfo,
+                                      appName=templateName,
+                                      fileName='/server/backup/' + fileName,
+                                      version=datetime.strftime(datetime.today(), '%Y%m%d%H%M%S'),
+                                      create_date=datetime.today(),
+                                      jid=result)
+            hostApplication.objects.filter(id=postData['appId']).update(status=8, jid=result, jidState=1)
         return  HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return HttpResponse(status=403)

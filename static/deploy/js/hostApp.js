@@ -297,7 +297,7 @@ function createApp(data){
             '<span class="glyphicon glyphicon-list-alt iconStyle" onclick="addModal(\'showCmdinfo\','+data['id']+')"></span>',
         ]
         var loader=[
-            '<div class="stateMesg">命令执行成功,但程序没响应</div>',
+            '<div class="stateMesg">启动失败</div>',
             '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
         ]
     }else if(data['status']==6){
@@ -307,7 +307,7 @@ function createApp(data){
             '<span class="glyphicon glyphicon-list-alt iconStyle" onclick="addModal(\'showCmdinfo\','+data['id']+')"></span>',
         ]
         var loader=[
-            '<div class="stateMesg">命令执行成功,但程序没响应</div>',
+            '<div class="stateMesg">停止失败</div>',
             '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
         ]
     }else if(data['status']==7){
@@ -318,6 +318,22 @@ function createApp(data){
         ]
         var loader=[
             '<div class="stateMesg">命令执行成功,但程序没响应</div>',
+            '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
+        ]
+    }else if(data['status']==8){
+        var appColor='deployingColor'
+        var loader=[
+            '<div class="loader"></div>',
+            '<div class="stateMesg">应用备份中</div>'
+        ]
+    }else if(data['status']==9){
+        var appColor='stopingColor'
+        var modApp=[
+            '<span class="glyphicon glyphicon-repeat iconStyle" onclick="addModal(\'reset\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-list-alt iconStyle" onclick="addModal(\'showCmdinfo\','+data['id']+')"></span>',
+        ]
+        var loader=[
+            '<div class="stateMesg">备份失败</div>',
             '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
         ]
     }
