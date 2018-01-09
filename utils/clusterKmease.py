@@ -65,7 +65,7 @@ class cluster:
         m=shape(dataSet)[0]
         #生成m行2列的矩阵
         clusterAssment=mat(zeros((m,2)))
-        #根据平均值创建一个初始簇
+        #根据平均值创建一个初始簇心
         centroid0=mean(dataSet,axis=0).tolist()[0]
         centList=[centroid0]
         #计算每个点到初始簇心的距离
@@ -77,9 +77,9 @@ class cluster:
                 ptsInCurrCluster=dataSet[nonzero(clusterAssment[:,0]==i)[0]]
                 #把每个簇分成两份
                 centroidMat,splitClustAss=self.kMeans(ptsInCurrCluster,2)
-                #一分为2后的总误差
+                #一分为2后的误差
                 sseSplit=sum(splitClustAss[:,1])
-                #总误差
+                #非当前簇的未划分的误差
                 sseNotSpit=sum(clusterAssment[nonzero(clusterAssment[:,0]!=i)[0],1])
                 if (sseNotSpit+sseSplit)<lowestSSE:
                     bestCentToSplit=i
@@ -87,7 +87,7 @@ class cluster:
                     bestClustAss=splitClustAss.copy()
                     lowestSSE=sseNotSpit+sseSplit
             bestClustAss[nonzero(bestClustAss[:,0]==1)[0],0]=len(centList)
-            bestClustAss[nonzero(bestClustAss[:,0] == 0)[0], 0] = bestCentToSplit
+            bestClustAss[nonzero(bestClustAss[:,0] == 0)[0],0] = bestCentToSplit
             centList[bestCentToSplit]=bestNewCents[0]
             centList.append(bestNewCents[1])
             clusterAssment[nonzero(clusterAssment[:,0]==bestCentToSplit)[0]]=bestClustAss

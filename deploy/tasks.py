@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from celery import task
 from utils.salt_Client import saltClient
 from deploy.models import host,taskState,saltReturns,hostApplication,app_backup

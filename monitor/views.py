@@ -4,7 +4,9 @@ from django.http import HttpResponse
 from utils.config import app_config
 import re
 import time
+import json
 from utils.clusterKmease import cluster
+import multiprocessing
 #监控一览视图
 def index(request):
     conf=app_config()
@@ -125,11 +127,21 @@ def history(request):
     return  render(request,'monitor/history.html')
 #异常监控数据
 def abnormal(request):
-    bikCluster=cluster([1,2,3,3,4,5,5,6,6,1,1,2,3,100])
+    bikCluster=cluster([1.0,2.0,3.0,3.0,4.0,5.0,5.0,6.0,6.0,1.0,1.0,2.0,3.0,100.0])
     centList,clusterAssment=bikCluster.calcCluster()
-    print(clusterAssment)
-    # print("cnetList")
-    # print(centList)
-    # print("clusterAssmen")
-    # print(clusterAssment)
-    return  render(request,'monitor/abnormal.html')
+    queryItem=["CPU_util",'disk_read_Bps','disk_write_Bps','vailable_memory']
+    itemdata=[]
+    for item in queryItem:
+        parm = {
+            "output":['name','itemid','lastvalue','lastclock','units','value_type'],
+            "selectHosts": ["host","status"],
+            "search": {
+                "name": item,
+            },
+        }
+        zabbix_data_get = zabbix_data()
+        itemdata+=zabbix_data_get.item_get(parm)
+    pool=multiprocessing.Pool(processes=30)
+
+    return  HttpResponse(json.dumps(itemdata))
+    # return  render(request,'monitor/abnormal.html')
