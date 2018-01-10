@@ -97,3 +97,322 @@ KeyError: 'filePath'
 2018-01-10 18:06:57,619 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
 2018-01-10 18:06:58,221 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
 2018-01-10 18:07:21,401 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 19:27:23,638 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 157, in abnormal
+    print(time.mktime(time.time()))
+TypeError: Tuple or struct_time argument required
+2018-01-10 19:27:23,789 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 21:04:00,222 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 25, in valueCheck
+    print("总共耗时%d"%int(time.time())-s)
+TypeError: unsupported operand type(s) for -: 'str' and 'int'
+2018-01-10 21:04:00,257 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 21:06:43,833 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(self.__historyGet,item)
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 21:06:43,978 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 21:07:43,689 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(self.__historyGet,(item))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 21:07:43,726 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 21:08:01,995 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(self.__historyGet,(item,))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 21:08:02,014 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 21:08:29,901 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(self.__historyGet,(item,))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 21:08:29,919 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 21:25:20,074 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 29, in valueCheck
+    print(res.get())
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 608, in get
+    raise self._value
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 385, in _handle_tasks
+    put(task)
+  File "/usr/lib/python3.5/multiprocessing/connection.py", line 206, in send
+    self._send_bytes(ForkingPickler.dumps(obj))
+  File "/usr/lib/python3.5/multiprocessing/reduction.py", line 50, in dumps
+    cls(buf, protocol).dump(obj)
+TypeError: 'ZabbixAPIObjectClass' object is not callable
+2018-01-10 21:25:20,131 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 21:47:27,019 ERROR    /home/suyue/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f7e9c543da0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f7e9c543da0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2018-01-10 22:09:31,029 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 27, in valueCheck
+    pool.join(10)
+TypeError: join() takes 1 positional argument but 2 were given
+2018-01-10 22:09:31,074 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:34:59,966 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:35:00,131 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:35:07,112 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:35:07,118 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:35:13,849 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:35:13,852 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:35:20,735 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:35:20,738 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:35:28,208 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:35:28,223 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:35:31,670 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:35:31,675 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:36:01,792 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:36:01,804 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:36:42,746 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:36:42,771 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:41:22,255 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:41:22,279 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:42:19,131 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    pool.apply_async(historyGet,(item,itemdata))
+  File "/usr/lib/python3.5/multiprocessing/pool.py", line 322, in apply_async
+    raise ValueError("Pool not running")
+ValueError: Pool not running
+2018-01-10 22:42:19,135 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:55:27,329 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 22, in valueCheck
+    itemdata += zabbix_data_get.item_get(parm)
+  File "/home/suyue/opsweb/utils/zabbix_public_invok.py", line 33, in item_get
+    result = self.__zapi.do_request("item.get", params)["result"]
+AttributeError: 'str' object has no attribute 'do_request'
+2018-01-10 22:55:27,359 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-10 22:55:29,025 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 22, in valueCheck
+    itemdata += zabbix_data_get.item_get(parm)
+  File "/home/suyue/opsweb/utils/zabbix_public_invok.py", line 33, in item_get
+    result = self.__zapi.do_request("item.get", params)["result"]
+AttributeError: 'str' object has no attribute 'do_request'
+2018-01-10 22:55:29,030 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
