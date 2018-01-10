@@ -53,8 +53,12 @@ class app_backup(models.Model):
     hostId=models.ForeignKey(host,to_field='id',db_column="hostId",default='')
     #应用名
     appName=models.CharField(null=False,max_length=255,default='')
+    #所属模板
+    appTemplate=models.CharField(null=False,max_length=255,default='')
     #文件名和路径
     fileName=models.TextField(null=False,default='')
+    #文件包类型
+    type = models.IntegerField(null=False,default=0)
     #文件版本
     version=models.CharField(null=False,max_length=255,default=255)
     #创建时间

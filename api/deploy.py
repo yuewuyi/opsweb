@@ -9,6 +9,7 @@ import os
 import random
 from django.conf import settings
 import hashlib
+from utils.config import app_config
 def addHost(request):
     if request.method=='POST':
         postData = json.loads(request.body.decode())
@@ -514,9 +515,9 @@ def getFileInfo(request):
             tempId = webApplication.objects.get(id=postData['id']).webTempId_id
             tempName=webTemplate.objects.get(id=tempId).webTemplateName
         if postData['fileType']==0:
-            fileInfo=list(appVersionManage.objects.filter(appTemplateName=tempName,fileName__isnull=False).values('id','version','create_date'))
+            fileInfo=list(appVersionManage.objects.filter(appTemplateName=tempName,fileName__isnull=False).values('id','version','create_date','filePackType','type'))
         elif postData['fileType']==1:
-            fileInfo=list(app_backup.objects.filter(appName=tempName).values('id','version','create_date'))
+            fileInfo=list(app_backup.objects.filter(appTemplate=tempName,hostId=postData['hostId'],backState=1).values('id','version','create_date','appName','type'))
         for i in range(len(fileInfo)):
             fileInfo[i]['create_date']=datetime.strftime(fileInfo[i]['create_date'],'%Y-%m-%d %H:%M:%S')
         return HttpResponse(json.dumps(fileInfo),content_type='application/json')
@@ -524,6 +525,8 @@ def getFileInfo(request):
         return HttpResponse(status=403)
 def deployOrBackUp(request):
     if request.method=='POST':
+        conf = app_config()
+        conf_dit=conf.get_config_value()
         postData=json.loads(request.body.decode())
         rep = {'code': 0, 'msg': ''}
         try:
@@ -542,8 +545,8 @@ def deployOrBackUp(request):
             rep['msg'] = '应用不在停止状态'
             return HttpResponse(json.dumps(rep), content_type='application/json')
         date=datetime.strftime(datetime.today(),'%Y%m%d%H%M%S')+str(random.randint(0,10000))
+        hostInfo = host.objects.get(id=app.hostId_id)
         if postData['method']=='backup':
-            hostInfo = host.objects.get(id=app.hostId_id)
             if postData['appType']==0:
                 templateName=appTemplate.objects.get(id=app.appTempId_id).appTemplateName
                 fileName=templateName+'-'+date+'.zip'
@@ -555,12 +558,32 @@ def deployOrBackUp(request):
             salt = saltClient()
             result = salt.AsyncCmd(hostInfo.ip, cmd)[0]['jid']
             app_backup.objects.create(hostId=hostInfo,
-                                      appName=templateName,
+                                      appTemplate=templateName,
+                                      appName=app.hostAppName,
                                       fileName='/server/backup/' + fileName,
                                       version=datetime.strftime(datetime.today(), '%Y%m%d%H%M%S'),
                                       create_date=datetime.today(),
+                                      type=postData['appType'],
                                       jid=result)
             hostApplication.objects.filter(id=postData['appId']).update(status=8, jid=result, jidState=1)
+        elif postData['method']=='deployApp':
+            cmd=''
+            try:
+                fileInfo=appVersionManage.objects.get(id=postData['fileId'])
+            except:
+                rep['code'] = -1
+                rep['msg'] = '文件不存在'
+                return HttpResponse(json.dumps(rep), content_type='application/json')
+            if postData['appType'] == 0:
+                cmd="""
+                    cd /tmp && if [ ! -f %(fileName)s ]; then curl -O %(fileUrl)s%(fileDownLoadPath)s%(fileName)s; fi  && rm -rf %(filePath)s && mkdir -p %(filePath)s && unzip -o %(fileName)s -d %(filePath)s 
+                """%{"fileName":fileInfo.fileName,
+                     "filePath":app.appPath,
+                     "fileUrl":conf_dit['file_download_url'][0],
+                     "fileDownLoadPath":'/static/appFile'+fileInfo.filePath.split('static/appFile')[-1]}
+                print(cmd)
+            elif postData['appType'] == 1:
+                pass
         return  HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return HttpResponse(status=403)

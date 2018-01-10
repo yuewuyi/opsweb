@@ -84,9 +84,6 @@ function  addModal(type,appid) {
             '<span class="showInfo">是否删除web应用'+appName+'</span>'
         ]
         event.stopPropagation()
-    }else if(type=='deploy'){
-        alert(type)
-        return false
     }else if (type=='start'){
         var titleName="启动应用"
         var appName=$.trim($("#appName"+appid).html())
@@ -119,7 +116,25 @@ function  addModal(type,appid) {
         var body=[
             '<span class="showInfo">是否要备份此应用</span>'
         ]
-
+    }else if(type=='deployApp'){
+        var titleName="部署应用"
+        var body=[
+            '<span id="fileId" style="display: none;">'+appid+'</span>',
+            '<span class="showInfo">是否部署此应用</span>'
+        ]
+    }
+    else if(type=='restoreApp'){
+        var titleName="回滚应用"
+        var body=[
+            '<span id="fileId" style="display: none;">'+appid+'</span>',
+            '<span class="showInfo">是否回滚此应用</span>'
+        ]
+    }else if(type=='restoreWebApp'){
+        var titleName="回滚web应用"
+        var body=[
+            '<span id="fileId" style="display: none;">'+appid+'</span>',
+            '<span class="showInfo">是否回滚此web应用</span>'
+        ]
     }
     createModal(titleName,body)
     $('#submitButton').attr("onclick",onclick)
@@ -223,6 +238,19 @@ function modApplications(method) {
         data['method']=method
         var successTxt="备份请求成功"
         var alertmsg="备份请求失败"
+        var url='/api/deployBackUp/'
+    }
+    //部署应用
+    else if(method=='deployApp' || method=='deployWebApp'){
+        data['appId']=parseInt($("#dappId").html())
+        data['appType']=parseInt($("#dappType").html())
+        data['fileId']=parseInt($("#fileId").html())
+        if (data['appType']==1){
+               data['webId']=parseInt($("#dwebId").html())
+        }
+        data['method']=method
+        var successTxt="部署请求成功"
+        var alertmsg="部署请求失败"
         var url='/api/deployBackUp/'
     }
     $("#submitButton").addClass('buttonClickDisable')
@@ -375,16 +403,41 @@ function tabChange(id) {
         $("#appDeployButton").removeClass('active')
         $("#appReButton").addClass('active')
     }
-''
 }
 function  showTable(id,data,type) {
     var body=''
-    for (var i=0;i< data.length;i++){
-        body+='<tr><td>'+data[i]['id']+'</td>'
-        body+='<td>'+data[i]['version']+'</td>'
-        body+='<td>'+data[i]['create_date']+'</td>'
-        body+='<td><div class="ButtonStyle deployButton SearchButton">部署</div></td></tr>'
+    if (type==1){
+        body+='<tr><th>id</th><th>文件版本</th><th>所属应用</th><th>创建时间</th><th>操作</th></tr>'
+        for (var i=0;i< data.length;i++){
+            body+='<tr><td>'+data[i]['id']+'</td>'
+            body+='<td>'+data[i]['version']+'</td>'
+            body+='<td>'+data[i]['appName']+'</td>'
+            body+='<td>'+data[i]['create_date']+'</td>'
+            if (data[i]['type']==0) {
+                body += '<td><div class="ButtonStyle deployButton SearchButton" onclick="addModal(\'restoreApp\',' + data[i]['id'] + ')">回滚</div></td></tr>'
+            }else if(data[i]['type']==1){
+                body += '<td><div class="ButtonStyle deployButton SearchButton" onclick="addModal(\'restoreApp\',' + data[i]['id'] + ')">回滚</div></td></tr>'
+            }
+        }
+    }else if(type==0){
+        body+='<tr><th>id</th><th>文件版本</th><th>文件包类型</th><th>创建时间</th><th>操作</th></tr>'
+        for (var i=0;i< data.length;i++){
+            body+='<tr><td>'+data[i]['id']+'</td>'
+            body+='<td>'+data[i]['version']+'</td>'
+            if (data[i]['filePackType']==0){
+                body+='<td>完整包</td>'
+            }else if(data[i]['filePackType']==1){
+                body+='<td>补丁包</td>'
+            }
+            body+='<td>'+data[i]['create_date']+'</td>'
+            if (data[i]['type']==0){
+                body+='<td><div class="ButtonStyle deployButton SearchButton" onclick="addModal(\'deployApp\','+data[i]['id']+')">部署</div></td></tr>'
+            }else if(data[i]['type']==1){
+                body+='<td><div class="ButtonStyle deployButton SearchButton" onclick="addModal(\'deployApp\','+data[i]['id']+')">部署</div></td></tr>'
+            }
+        }
     }
+
     $(id).append(body)
 }
 //显示部署模态框
@@ -392,13 +445,13 @@ function showDeplotModal(type,id,webid) {
     $("#dappId").html(id)
     $("#dappType").html(type)
     $("#dwebId").html(webid)
-    $('#deployTable tr:not(:nth-child(1))').remove()
-    $('#reTable tr:not(:nth-child(1))').remove()
+    $('#deployTable tr').remove()
+    $('#reTable tr').remove()
     var qid=id
     if (type==1){
         qid=webid
     }
-    $.when(req_ajax('/api/getFile/',{id:qid,type:type,fileType:0},'deployFile'),req_ajax('/api/getFile/',{id:qid,type:type,fileType:1},'backFile'))
+    $.when(req_ajax('/api/getFile/',{id:qid,type:type,fileType:0},'deployFile'),req_ajax('/api/getFile/',{id:qid,type:type,fileType:1,hostId:sessionStorage.hostId},'backFile'))
         .done(function () {
             showTable('#deployTable',deployFile,0)
             showTable('#reTable',backFile,1)

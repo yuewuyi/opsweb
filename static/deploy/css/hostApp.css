@@ -130,7 +130,7 @@
     margin: 0 0 0 0;
 }
 .deploy_modal_container{
-    width: 30%;
+    width: 40%;
     height: 200px;
     margin: 100px auto;
 }
@@ -171,4 +171,8 @@
 }
 #hostDeploy{
     z-index: 1;
+}
+#appDeploy,#appRe{
+    height: 400px;
+    overflow-y:auto;
 }

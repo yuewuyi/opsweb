@@ -1,1 +1,99 @@
 2018-01-09 21:06:42,022 ERROR    /home/suyue/opsweb/api/views.py[line:228] tomcat日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7f6ac02e4080>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7f6ac02e4080>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2018-01-10 11:16:29,442 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc1a9405400>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc1a9405400>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2018-01-10 11:16:29,457 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc1a940c208>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc1a940c208>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2018-01-10 11:16:29,471 ERROR    /root/opsweb/api/views.py[line:456] nginx日志获取失败ConnectionError((<urllib3.connection.HTTPConnection object at 0x7fc1a8a46da0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)')) caused by: ConnectTimeoutError((<urllib3.connection.HTTPConnection object at 0x7fc1a8a46da0>, 'Connection to 121.41.23.54 timed out. (connect timeout=30)'))
+2018-01-10 11:16:29,514 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2018-01-10 11:16:29,515 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2018-01-10 11:16:29,515 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/nginxLog/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view api.views.nginxLog didn't return an HttpResponse object. It returned None instead.
+2018-01-10 11:16:29,573 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2018-01-10 11:16:29,576 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2018-01-10 11:16:29,579 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/nginxLog/ HTTP/1.0" 500 27
+2018-01-10 17:12:05,052 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/deployBackUp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 577, in deployOrBackUp
+    cmd="cd /tmp && curl -O "+conf_dit['file_download_url']+fileInfo.filePath.split('static/appFile')[-1]
+TypeError: Can't convert 'list' object to str implicitly
+2018-01-10 17:12:05,835 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/deployBackUp/ HTTP/1.0" 500 27
+2018-01-10 17:12:35,016 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/deployBackUp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 577, in deployOrBackUp
+    cmd="cd /tmp && curl -O "+conf_dit['file_download_url']+fileInfo.filePath.split('static/appFile')[0]
+TypeError: Can't convert 'list' object to str implicitly
+2018-01-10 17:12:35,035 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/deployBackUp/ HTTP/1.0" 500 27
+2018-01-10 17:25:59,592 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/deployBackUp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 578, in deployOrBackUp
+    cmd+="cd /tmp && if [ -f %s ];then "(fileInfo.fileName)
+TypeError: 'str' object is not callable
+2018-01-10 17:25:59,604 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/deployBackUp/ HTTP/1.0" 500 27
+2018-01-10 17:42:48,867 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/deployBackUp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 581, in deployOrBackUp
+    "filepath":app.appPath}
+KeyError: 'fileName'
+2018-01-10 17:42:48,889 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/deployBackUp/ HTTP/1.0" 500 27
+2018-01-10 17:43:25,391 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /api/deployBackUp/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/api/deploy.py", line 581, in deployOrBackUp
+    "filepath":app.appPath}
+KeyError: 'filePath'
+2018-01-10 17:43:25,405 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/deployBackUp/ HTTP/1.0" 500 27
+2018-01-10 18:02:32,075 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:03:24,211 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:03:50,662 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:04:11,642 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:06:20,613 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:06:31,817 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:06:55,170 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:06:56,996 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:06:57,619 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:06:58,221 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0
+2018-01-10 18:07:21,401 WARNING  /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET //2018-01-02/o_1c2r32o8bcmu12suht1d341v381v.jpg HTTP/1.0" 403 0

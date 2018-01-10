@@ -58,7 +58,7 @@
 }
 .viewTable tr th:nth-child(11),td:nth-child(11){
     border-right: 0px;
-    width: 20%;
+    width: 21%;
 }
 
 .fileUploadButton{
