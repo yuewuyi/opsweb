@@ -1,6 +1,8 @@
 from utils.zabbix_public_invok import zabbix_data
 from utils.clusterKmease import cluster
+from utils.config import app_config
 import multiprocessing
+from multiprocessing.dummy import Pool as tPool
 import time
 class abnormalCheck():
     __queryItem = ["CPU_util", 'disk_read_Bps', 'disk_write_Bps', 'vailable_memory']
@@ -8,8 +10,9 @@ class abnormalCheck():
         self.__zabbix_data_get = zabbix_data()
     def valueCheck(self):
         s=int(time.time())
+        presult=[]
         itemdata = []
-        pool = multiprocessing.Pool(processes=20)
+        pool = tPool(20)
         for item in self.__queryItem:
             parm = {
                 "output": ['name', 'itemid', 'lastvalue', 'lastclock', 'units', 'value_type'],
@@ -21,10 +24,11 @@ class abnormalCheck():
             zabbix_data_get = zabbix_data()
             itemdata += zabbix_data_get.item_get(parm)
         for item in itemdata:
-            pool.apply_async(historyGet,(item,itemdata))
+            presult.append(pool.apply_async(historyGet,(item,itemdata,),error_callback=poolErrorCallback))
         pool.close()
         pool.join()
         print("总共耗时%s"%str(int(time.time())-s))
+
 def historyGet(item,itemdata):
     zabbix_data_get = zabbix_data()
     now_time = int(time.time())
@@ -38,6 +42,8 @@ def historyGet(item,itemdata):
             "sortfield": "clock",
             "sortorder": "ACS",
         }
-        # result = zabbix_data_get.item_history_get(history_parm)
-        # print(result)
-        print("当前第%s个，一共%s个"%(str(itemdata.index(item)),str(len(itemdata))))
+        result = zabbix_data_get.item_history_get(history_parm)
+        print(result)
+    print("当前第%s个，一共%s个"%(str(itemdata.index(item)),str(len(itemdata))))
+def poolErrorCallback(this):
+    print(this)

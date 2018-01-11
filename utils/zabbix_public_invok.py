@@ -3,9 +3,8 @@ from utils.config import app_config
 class zabbix_data:
     __zapi=''
     def __init__(self):
-        conf=app_config()
-        config_value=conf.get_config_value()
-        self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0], user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+        config_value=app_config.get_config_value()
+        self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0],user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
     def host_trigger_get(self,params):
         warn=[]
         disable=[]
