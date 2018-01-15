@@ -727,3 +727,242 @@ Traceback (most recent call last):
     pool = multiprocessing.dummy.Pool(20)
 AttributeError: module 'multiprocessing' has no attribute 'dummy'
 2018-01-11 17:25:42,195 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-15 19:53:19,800 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/urllib/request.py", line 1254, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3.5/http/client.py", line 849, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/lib/python3.5/socket.py", line 693, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.5/socket.py", line 732, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac=abnormalCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 10, in __init__
+    self.__zabbix_data_get = zabbix_data()
+  File "/home/suyue/opsweb/utils/zabbix_public_invok.py", line 7, in __init__
+    self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0],user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 156, in __init__
+    self._login(user, password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 186, in _login
+    self.auth = self.user.login(user=user, password=password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 82, in fn
+    args or kwargs
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 236, in do_request
+    res = urlopen(req)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "/usr/lib/python3.5/urllib/request.py", line 163, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.5/urllib/request.py", line 466, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.5/urllib/request.py", line 484, in _open
+    '_open', req)
+  File "/usr/lib/python3.5/urllib/request.py", line 444, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.5/urllib/request.py", line 1282, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.5/urllib/request.py", line 1256, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>
+2018-01-15 19:53:20,001 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-15 19:53:37,853 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/urllib/request.py", line 1254, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3.5/http/client.py", line 849, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/lib/python3.5/socket.py", line 693, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.5/socket.py", line 732, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac=abnormalCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 10, in __init__
+    self.__zabbix_data_get = zabbix_data()
+  File "/home/suyue/opsweb/utils/zabbix_public_invok.py", line 7, in __init__
+    self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0],user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 156, in __init__
+    self._login(user, password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 186, in _login
+    self.auth = self.user.login(user=user, password=password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 82, in fn
+    args or kwargs
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 236, in do_request
+    res = urlopen(req)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "/usr/lib/python3.5/urllib/request.py", line 163, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.5/urllib/request.py", line 466, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.5/urllib/request.py", line 484, in _open
+    '_open', req)
+  File "/usr/lib/python3.5/urllib/request.py", line 444, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.5/urllib/request.py", line 1282, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.5/urllib/request.py", line 1256, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>
+2018-01-15 19:53:37,855 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-15 19:53:55,291 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/urllib/request.py", line 1254, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3.5/http/client.py", line 849, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/lib/python3.5/socket.py", line 693, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.5/socket.py", line 732, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac=abnormalCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 10, in __init__
+    self.__zabbix_data_get = zabbix_data()
+  File "/home/suyue/opsweb/utils/zabbix_public_invok.py", line 7, in __init__
+    self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0],user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 156, in __init__
+    self._login(user, password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 186, in _login
+    self.auth = self.user.login(user=user, password=password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 82, in fn
+    args or kwargs
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 236, in do_request
+    res = urlopen(req)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "/usr/lib/python3.5/urllib/request.py", line 163, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.5/urllib/request.py", line 466, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.5/urllib/request.py", line 484, in _open
+    '_open', req)
+  File "/usr/lib/python3.5/urllib/request.py", line 444, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.5/urllib/request.py", line 1282, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.5/urllib/request.py", line 1256, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>
+2018-01-15 19:53:55,293 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-15 19:54:09,607 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=10)
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 22, in __init_pool
+    pro=multiprocessing.Process(self.__woekr_handle)
+  File "/usr/lib/python3.5/multiprocessing/process.py", line 73, in __init__
+    assert group is None, 'group argument must be None for now'
+AssertionError: group argument must be None for now
+2018-01-15 19:54:09,653 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-15 19:54:37,199 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=10)
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 22, in __init_pool
+    pro=multiprocessing.Process(__woekr_handle)
+NameError: name '_cpPoll__woekr_handle' is not defined
+2018-01-15 19:54:37,217 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-15 20:00:19,468 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 23, in __init_pool
+    pro.deamon = true
+NameError: name 'true' is not defined
+2018-01-15 20:00:19,484 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27

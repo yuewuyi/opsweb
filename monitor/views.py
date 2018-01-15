@@ -5,6 +5,7 @@ from utils.config import app_config
 from utils.abNormalCheck import abnormalCheck
 import re
 import time
+from utils.customMultiprocessingPool import cpPoll
 #监控一览视图
 def index(request):
     conf=app_config()
@@ -125,6 +126,7 @@ def history(request):
     return  render(request,'monitor/history.html')
 #异常监控数据
 def abnormal(request):
-    ac=abnormalCheck()
-    ac.valueCheck()
+    # ac=abnormalCheck()
+    # ac.valueCheck()
+    a=cpPoll(process=4)
     return  render(request,'monitor/abnormal.html')
