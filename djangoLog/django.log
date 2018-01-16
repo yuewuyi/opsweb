@@ -966,3 +966,225 @@ Traceback (most recent call last):
     pro.deamon = true
 NameError: name 'true' is not defined
 2018-01-15 20:00:19,484 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:25:08,186 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 24, in __init_pool
+    pool_list.append(multiprocessing.Process(target=woekr_handle))
+NameError: name 'woekr_handle' is not defined
+2018-01-16 15:25:08,274 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:38:30,721 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 15, in __init__
+    self.__task_queue=queue.SimpleQueue()
+AttributeError: module 'queue' has no attribute 'SimpleQueue'
+2018-01-16 15:38:30,735 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:39:07,992 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 15, in __init__
+    self.__task_queue=queues.SimpleQueue()
+TypeError: __init__() missing 1 required keyword-only argument: 'ctx'
+2018-01-16 15:39:08,014 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:40:01,583 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 15, in __init__
+    self.__task_queue=queues.Queue()
+TypeError: __init__() missing 1 required keyword-only argument: 'ctx'
+2018-01-16 15:40:01,612 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:43:03,358 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 15, in __init__
+    self.__task_queue=Queue.Queue()
+AttributeError: 'function' object has no attribute 'Queue'
+2018-01-16 15:43:03,368 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:43:13,531 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 24, in __init_pool
+    pool_list.append(process(target=worker,args=(i,)))
+TypeError: 'module' object is not callable
+2018-01-16 15:43:13,566 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:43:44,372 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 24, in __init_pool
+    pool_list.append(process(target=worker,args=(i,)))
+TypeError: 'module' object is not callable
+2018-01-16 15:43:44,385 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:44:21,082 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 24, in __init_pool
+    pool_list.append(process(target=worker))
+TypeError: 'module' object is not callable
+2018-01-16 15:44:21,095 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:44:49,280 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 24, in __init_pool
+    pool_list.append(process(target=worker,args=(3,)))
+TypeError: 'module' object is not callable
+2018-01-16 15:44:49,294 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:45:21,481 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 18, in __init__
+    self.__init_pool()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 24, in __init_pool
+    pool_list.append(process(target=tttt,args=(3,)))
+TypeError: 'module' object is not callable
+2018-01-16 15:45:21,497 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 15:45:52,469 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 131, in abnormal
+    a=cpPoll(process=4)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 17, in __init__
+    self.__init_pool()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 23, in __init_pool
+    pool_list.append(process(target=worker,args=(3,)))
+TypeError: 'module' object is not callable
+2018-01-16 15:45:52,489 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 16:48:17,160 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 132, in abnormal
+    for i in (10000):
+TypeError: 'int' object is not iterable
+2018-01-16 16:48:17,206 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 16:48:47,787 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 134, in abnormal
+    a.add_task(i)
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 29, in add_task
+    raise ValueError("进程池已关闭，不能再添加任务")
+ValueError: 进程池已关闭，不能再添加任务
+2018-01-16 16:48:47,853 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 16:49:19,163 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 134, in abnormal
+    a.pool_join()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 44, in pool_join
+    raise ValueError("进程池未关闭,不能阻塞退出")
+ValueError: 进程池未关闭,不能阻塞退出
+2018-01-16 16:49:19,207 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-16 17:25:59,194 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 135, in abnormal
+    a.pool_join()
+  File "/root/opsweb/utils/customMultiprocessingPool.py", line 36, in pool_join
+    self.__init_pool.join()
+AttributeError: 'function' object has no attribute 'join'
+2018-01-16 17:25:59,251 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27

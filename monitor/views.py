@@ -129,4 +129,9 @@ def abnormal(request):
     # ac=abnormalCheck()
     # ac.valueCheck()
     a=cpPoll(process=4)
+    for i in range(10000):
+        a.add_task(i)
+    a.close_pool()
+    a.pool_join()
+    print("主进程退出")
     return  render(request,'monitor/abnormal.html')
