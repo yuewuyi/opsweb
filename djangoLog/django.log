@@ -1188,3 +1188,238 @@ Traceback (most recent call last):
     self.__init_pool.join()
 AttributeError: 'function' object has no attribute 'join'
 2018-01-16 17:25:59,251 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 15:27:59,413 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 133, in abnormal
+    a.add_task(i)
+TypeError: add_task() missing 1 required positional argument: 'args'
+2018-01-17 15:28:01,493 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 15:29:04,742 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 133, in abnormal
+    a.add_task(i)
+TypeError: add_task() missing 1 required positional argument: 'args'
+2018-01-17 15:29:04,960 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 15:29:49,881 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 133, in abnormal
+    a.add_task(target=custest,args=(i,))
+TypeError: add_task() got an unexpected keyword argument 'target'
+2018-01-17 15:29:50,088 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 16:21:21,835 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/urllib/request.py", line 1254, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3.5/http/client.py", line 849, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/lib/python3.5/socket.py", line 711, in create_connection
+    raise err
+  File "/usr/lib/python3.5/socket.py", line 702, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 110] Connection timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/root/opsweb/utils/abNormalCheck.py", line 21, in valueCheck
+    zabbix_data_get = zabbix_data()
+  File "/root/opsweb/utils/zabbix_public_invok.py", line 7, in __init__
+    self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0],user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 156, in __init__
+    self._login(user, password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 186, in _login
+    self.auth = self.user.login(user=user, password=password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 82, in fn
+    args or kwargs
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 236, in do_request
+    res = urlopen(req)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "/usr/lib/python3.5/urllib/request.py", line 163, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.5/urllib/request.py", line 466, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.5/urllib/request.py", line 484, in _open
+    '_open', req)
+  File "/usr/lib/python3.5/urllib/request.py", line 444, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.5/urllib/request.py", line 1282, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.5/urllib/request.py", line 1256, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 110] Connection timed out>
+2018-01-17 16:21:21,927 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 16:33:01,911 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 129, in abnormal
+    ac=abnormalCheck()
+  File "/root/opsweb/utils/abNormalCheck.py", line 9, in __init__
+    self.__zabbix_data_get = zabbix_data()
+  File "/root/opsweb/utils/zabbix_public_invok.py", line 7, in __init__
+    self.__zapi = ZabbixAPI(timeout=10,url=config_value['zabbix_api_addr'][0],user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+TypeError: __init__() got an unexpected keyword argument 'timeout'
+2018-01-17 16:33:01,926 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 16:53:26,953 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/urllib/request.py", line 1254, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3.5/http/client.py", line 849, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/lib/python3.5/socket.py", line 711, in create_connection
+    raise err
+  File "/usr/lib/python3.5/socket.py", line 702, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 110] Connection timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 129, in abnormal
+    ac=abnormalCheck()
+  File "/root/opsweb/utils/abNormalCheck.py", line 9, in __init__
+    self.__zabbix_data_get = zabbix_data()
+  File "/root/opsweb/utils/zabbix_public_invok.py", line 7, in __init__
+    self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0],user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 156, in __init__
+    self._login(user, password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 186, in _login
+    self.auth = self.user.login(user=user, password=password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 82, in fn
+    args or kwargs
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 236, in do_request
+    res = urlopen(req)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "/usr/lib/python3.5/urllib/request.py", line 163, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.5/urllib/request.py", line 466, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.5/urllib/request.py", line 484, in _open
+    '_open', req)
+  File "/usr/lib/python3.5/urllib/request.py", line 444, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.5/urllib/request.py", line 1282, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.5/urllib/request.py", line 1256, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 110] Connection timed out>
+2018-01-17 16:53:26,962 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 17:33:14,921 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/urllib/request.py", line 1254, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3.5/http/client.py", line 849, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/lib/python3.5/socket.py", line 711, in create_connection
+    raise err
+  File "/usr/lib/python3.5/socket.py", line 702, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 110] Connection timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/root/opsweb/utils/abNormalCheck.py", line 22, in valueCheck
+    itemdata += zabbix_data_get.item_get(parm)
+  File "/root/opsweb/utils/zabbix_public_invok.py", line 32, in item_get
+    result = self.__zapi.do_request("item.get", params)["result"]
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 236, in do_request
+    res = urlopen(req)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "/usr/lib/python3.5/urllib/request.py", line 163, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.5/urllib/request.py", line 466, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.5/urllib/request.py", line 484, in _open
+    '_open', req)
+  File "/usr/lib/python3.5/urllib/request.py", line 444, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.5/urllib/request.py", line 1282, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.5/urllib/request.py", line 1256, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 110] Connection timed out>
+2018-01-17 17:33:14,929 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
