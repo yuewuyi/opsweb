@@ -34,19 +34,20 @@ class abnormalCheck():
         #         print(result)
         print("总共耗时%s"%str(int(time.time())-s))
 def historyGet(item):
-    zabbix_data_get = zabbix_data()
-    now_time = int(time.time())
-    if item['hosts'][0]['status'] == "0" and (int(item['lastclock']) + 180) >= now_time:
-        history_parm = {
-            "output": "extend",
-            "history": int(item['value_type']),
-            "itemids": item['itemid'],
-            "time_from": int(item['lastclock']) - 3700,
-            "time_till": int(item['lastclock']) - 10,
-            "sortfield": "clock",
-            "sortorder": "ACS",
-        }
-        result = zabbix_data_get.item_history_get(history_parm)
-        return result
+    return  [0,12,3,4]
+    # zabbix_data_get = zabbix_data()
+    # now_time = int(time.time())
+    # if item['hosts'][0]['status'] == "0" and (int(item['lastclock']) + 180) >= now_time:
+    #     history_parm = {
+    #         "output": "extend",
+    #         "history": int(item['value_type']),
+    #         "itemids": item['itemid'],
+    #         "time_from": int(item['lastclock']) - 3700,
+    #         "time_till": int(item['lastclock']) - 10,
+    #         "sortfield": "clock",
+    #         "sortorder": "ACS",
+    #     }
+    #     result = zabbix_data_get.item_history_get(history_parm)
+    #     return result
 def poolErrorCallback(this):
     print(this)

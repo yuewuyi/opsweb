@@ -51,6 +51,7 @@ class cpPoll:
         if self.__pro_dict['close_state']:
             for p in self.__pool_list:
                 p.join()
+                print("进程结束")
             # while pool_state:
             #     time.sleep(0.1)
             #     pool_state = False
@@ -72,11 +73,11 @@ def worker(inTaskQueue,outTaskQueue,process_dict):
                 break
             try:
                 result=fun(*args)
-                print(result)
-                # outTaskQueue.put([True,None,result,fun,args])
+                # print("开始put")
+                outTaskQueue.put([True,None,result,args],timeout=1)
             except Exception as e:
                 pass
-                # outTaskQueue.put([False,e,None,fun, args])
+                # outTaskQueue.put([False,e,None,args])
 
 
 
