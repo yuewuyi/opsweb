@@ -1423,3 +1423,146 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 110] Connection timed out>
 2018-01-17 17:33:14,929 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 19:49:04,242 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/urllib/request.py", line 1254, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/usr/lib/python3.5/http/client.py", line 849, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/lib/python3.5/socket.py", line 693, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.5/socket.py", line 732, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 129, in abnormal
+    ac=abnormalCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 9, in __init__
+    self.__zabbix_data_get = zabbix_data()
+  File "/home/suyue/opsweb/utils/zabbix_public_invok.py", line 7, in __init__
+    self.__zapi = ZabbixAPI(url=config_value['zabbix_api_addr'][0],user=config_value['zabbix_api_user'][0],password=config_value['zabbix_api_user'][1])
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 156, in __init__
+    self._login(user, password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 186, in _login
+    self.auth = self.user.login(user=user, password=password)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 82, in fn
+    args or kwargs
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 236, in do_request
+    res = urlopen(req)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 107, in inner
+    res = func(req, context=ctx)
+  File "/usr/local/lib/python3.5/dist-packages/pyzabbix/api.py", line 118, in urlopen
+    return urllib2.urlopen(*args, **kwargs)
+  File "/usr/lib/python3.5/urllib/request.py", line 163, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.5/urllib/request.py", line 466, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.5/urllib/request.py", line 484, in _open
+    '_open', req)
+  File "/usr/lib/python3.5/urllib/request.py", line 444, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.5/urllib/request.py", line 1282, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.5/urllib/request.py", line 1256, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>
+2018-01-17 19:49:04,638 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 19:55:23,451 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 30, in valueCheck
+    result=a.get_task()
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 45, in get_task
+    elif not self.__pool_state and self.__pool_state.empty():
+AttributeError: 'bool' object has no attribute 'empty'
+2018-01-17 19:55:23,475 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 19:57:37,331 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 30, in valueCheck
+    result=a.get_task()
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 45, in get_task
+    elif not self.__pool_state and self.__pool_state.empty():
+AttributeError: 'bool' object has no attribute 'empty'
+2018-01-17 19:57:37,359 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 19:58:42,036 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 30, in valueCheck
+    result=a.get_task()
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 45, in get_task
+    elif not self.__pool_state and self.__pool_state.empty():
+AttributeError: 'bool' object has no attribute 'empty'
+2018-01-17 19:58:42,064 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 19:59:18,509 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 30, in valueCheck
+    result=a.get_task()
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 45, in get_task
+    elif not self.__pool_state and self.__pool_state.empty():
+AttributeError: 'bool' object has no attribute 'empty'
+2018-01-17 19:59:18,561 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-01-17 20:00:14,735 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/suyue/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/home/suyue/opsweb/utils/abNormalCheck.py", line 30, in valueCheck
+    result=a.get_task()
+  File "/home/suyue/opsweb/utils/customMultiprocessingPool.py", line 45, in get_task
+    elif not self.__pool_state and self.__pool_state.empty():
+AttributeError: 'bool' object has no attribute 'empty'
+2018-01-17 20:00:14,742 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27

@@ -1,13 +1,10 @@
 from celery import task
-from utils.zabbix_public_invok import zabbix_data
+from utils.abNormalCheck import abnormalCheck
+import multiprocessing
 @task
-def abnormalCheck():
-    parm={
-        "output": "extend",
-        "selectHosts":["host","hostid","status"],
-        "search": {
-            "name":"CPU_util"
-        },
-    }
-    zabbix_data_get = zabbix_data()
-    return zabbix_data_get.item_get(parm)
+def abnormalCheckTask():
+    curr_proc = multiprocessing.current_process()
+    curr_proc.daemon = False
+    ac = abnormalCheck()
+    ac.valueCheck()
+    curr_proc.daemon=True

@@ -26,12 +26,12 @@ class abnormalCheck():
         a.close_pool()
         a.pool_join()
         print("join完成")
-        while True:
-            result=a.get_task()
-            if result=='EOF':
-                break
-            elif not result[0]:
-                print(result)
+        # while True:
+        #     result=a.get_task()
+        #     if result=='EOF':
+        #         break
+        #     elif not result[0]:
+        #         print(result)
         print("总共耗时%s"%str(int(time.time())-s))
 def historyGet(item):
     zabbix_data_get = zabbix_data()
@@ -47,6 +47,6 @@ def historyGet(item):
             "sortorder": "ACS",
         }
         result = zabbix_data_get.item_history_get(history_parm)
-        return  result
+        return result
 def poolErrorCallback(this):
     print(this)

@@ -49,12 +49,15 @@ class cpPoll:
     def pool_join(self):
         pool_state=True
         if self.__pro_dict['close_state']:
-            while pool_state:
-                time.sleep(0.1)
-                pool_state = False
-                for p in self.__pool_list:
-                    if p.is_alive():
-                        pool_state=True
+            for p in self.__pool_list:
+                p.join()
+            # while pool_state:
+            #     time.sleep(0.1)
+            #     pool_state = False
+            #     for p in self.__pool_list:
+            #         print(str(time.time())+str(self.__pool_list.index(p))+str(p.is_alive()))
+            #         if p.is_alive():
+            #             pool_state=True
             self.__init_pool.join()
             self.__pool_state=False
         else:
@@ -69,9 +72,11 @@ def worker(inTaskQueue,outTaskQueue,process_dict):
                 break
             try:
                 result=fun(*args)
-                outTaskQueue.put([True,None,result,fun,args])
+                print(result)
+                # outTaskQueue.put([True,None,result,fun,args])
             except Exception as e:
-                outTaskQueue.put([False,e,None,fun, args])
+                pass
+                # outTaskQueue.put([False,e,None,fun, args])
 
 
 
