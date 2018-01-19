@@ -129,12 +129,6 @@ function  addModal(type,appid) {
             '<span id="fileId" style="display: none;">'+appid+'</span>',
             '<span class="showInfo">是否回滚此应用</span>'
         ]
-    }else if(type=='restoreWebApp'){
-        var titleName="回滚web应用"
-        var body=[
-            '<span id="fileId" style="display: none;">'+appid+'</span>',
-            '<span class="showInfo">是否回滚此web应用</span>'
-        ]
     }
     createModal(titleName,body)
     $('#submitButton').attr("onclick",onclick)
@@ -241,7 +235,20 @@ function modApplications(method) {
         var url='/api/deployBackUp/'
     }
     //部署应用
-    else if(method=='deployApp' || method=='deployWebApp'){
+    else if(method=='deployApp'){
+        data['appId']=parseInt($("#dappId").html())
+        data['appType']=parseInt($("#dappType").html())
+        data['fileId']=parseInt($("#fileId").html())
+        if (data['appType']==1){
+               data['webId']=parseInt($("#dwebId").html())
+        }
+        data['method']='deployApp'
+        var successTxt="部署请求成功"
+        var alertmsg="部署请求失败"
+        var url='/api/deployBackUp/'
+    }
+    //回滚应用
+    else if(method=='restoreApp'){
         data['appId']=parseInt($("#dappId").html())
         data['appType']=parseInt($("#dappType").html())
         data['fileId']=parseInt($("#fileId").html())
@@ -249,8 +256,8 @@ function modApplications(method) {
                data['webId']=parseInt($("#dwebId").html())
         }
         data['method']=method
-        var successTxt="部署请求成功"
-        var alertmsg="部署请求失败"
+        var successTxt="回滚请求成功"
+        var alertmsg="回滚请求失败"
         var url='/api/deployBackUp/'
     }
     $("#submitButton").addClass('buttonClickDisable')
@@ -362,6 +369,16 @@ function createApp(data){
         ]
         var loader=[
             '<div class="stateMesg">备份失败</div>',
+            '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
+        ]
+    }else if(data['status']==10){
+        var appColor='stopingColor'
+        var modApp=[
+            '<span class="glyphicon glyphicon-repeat iconStyle" onclick="addModal(\'reset\','+data['id']+')"></span>',
+            '<span class="glyphicon glyphicon-list-alt iconStyle" onclick="addModal(\'showCmdinfo\','+data['id']+')"></span>',
+        ]
+        var loader=[
+            '<div class="stateMesg">部署失败</div>',
             '<div style="display: none;" id="cmdInfo'+data['id']+'">'+data['msg']+'</div>'
         ]
     }

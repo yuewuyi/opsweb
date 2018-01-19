@@ -126,8 +126,8 @@ def history(request):
     return  render(request,'monitor/history.html')
 #异常监控数据
 def abnormal(request):
-    ac=abnormalCheck()
-    ac.valueCheck()
+    # ac=abnormalCheck()
+    # ac.valueCheck()
     # a=cpPoll(process=20)
     # for i in range(50):
     #     a.add_task(fun=custest,args=(i,))
@@ -136,7 +136,7 @@ def abnormal(request):
     #     a.add_task(fun=custest,args=(i,))
     # a.close_pool()
     # a.pool_join()
-    print("主进程退出")
+    # print("主进程退出")
     return  render(request,'monitor/abnormal.html')
 def custest(i):
     print(i)

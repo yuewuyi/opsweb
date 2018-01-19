@@ -43,6 +43,7 @@ def TaskCheck():
         TaskInfo = saltReturns.objects.filter(jid=item['jid']).first()
         if not TaskInfo:
             continue
+        #检查启动
         if item['status']==2:
             num = int(salt.syncCmd(ip, proCheckCmd)[0][ip])
             if TaskInfo.retcode==0 and num>0:
@@ -51,6 +52,7 @@ def TaskCheck():
                 hostApplication.objects.filter(id=item['id']).update(status=7, jidState=0)
             else:
                 hostApplication.objects.filter(id=item['id']).update(status=5,jidState=0)
+        # 检查关闭
         elif item['status']==3:
             num = int(salt.syncCmd(ip, proCheckCmd)[0][ip])
             if TaskInfo.retcode==0 and num==0:
@@ -59,6 +61,7 @@ def TaskCheck():
                 hostApplication.objects.filter(id=item['id']).update(status=7, jidState=0)
             else:
                 hostApplication.objects.filter(id=item['id']).update(status=6,jidState=0)
+        #检查备份
         elif item['status']==8:
             if TaskInfo.retcode==0:
                 hostApplication.objects.filter(id=item['id']).update(status=0, jidState=0)
@@ -66,7 +69,12 @@ def TaskCheck():
             elif TaskInfo.retcode!=0:
                 hostApplication.objects.filter(id=item['id']).update(status=9, jidState=0)
                 app_backup.objects.filter(jid=item['jid'],backState=0).delete()
-
+        # 检查部署
+        elif item['status']==4:
+            if TaskInfo.retcode==0:
+                hostApplication.objects.filter(id=item['id']).update(status=0, jidState=0)
+            elif TaskInfo.retcode!=0:
+                hostApplication.objects.filter(id=item['id']).update(status=10, jidState=0)
 
 
 

@@ -9,24 +9,24 @@ app.autodiscover_tasks()
 #namespace表示获取CELERY前缀的所有配置
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.beat_schedule = {
-    # 'hostKeyFind-10-seconds': {
-    #     'task': 'deploy.tasks.HostKeyFind',
-    #     'schedule': timedelta(seconds=30),
-    #     'args': ()
-    # },
-    # 'HostStatusCheck-10-seconds': {
-    #     'task': 'deploy.tasks.HostStatusCheck',
-    #     'schedule': timedelta(seconds=30),
-    #     'args': ()
-    # },
-    # 'TaskCheck-2-seconds':{
-    #     'task':'deploy.tasks.TaskCheck',
-    #     'schedule':timedelta(seconds=2),
-    #     'args':()
-    # },
-    "abNormalCheck-60-seconds":{
-        'task':'monitor.tasks.abnormalCheckTask',
-        'schedule':timedelta(seconds=60),
+    'hostKeyFind-10-seconds': {
+        'task': 'deploy.tasks.HostKeyFind',
+        'schedule': timedelta(seconds=30),
+        'args': ()
+    },
+    'HostStatusCheck-10-seconds': {
+        'task': 'deploy.tasks.HostStatusCheck',
+        'schedule': timedelta(seconds=30),
+        'args': ()
+    },
+    'TaskCheck-2-seconds':{
+        'task':'deploy.tasks.TaskCheck',
+        'schedule':timedelta(seconds=2),
         'args':()
-    }
+    },
+    # "abNormalCheck-60-seconds":{
+    #     'task':'monitor.tasks.abnormalCheckTask',
+    #     'schedule':timedelta(seconds=60),
+    #     'args':()
+    # }
 }

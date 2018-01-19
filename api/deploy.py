@@ -363,7 +363,6 @@ def startStopApp(request):
             proCheckCmd = "ps axu|grep "+app.appPath+"|grep -v 'grep'|wc -l"
             ip = host.objects.filter(id=app.hostId_id).first().ip
             num = int(salt.syncCmd(ip, proCheckCmd)[0][ip])
-            print(num)
             if num >0:
                 hostApplication.objects.filter(id=postData['id']).update(status=1)
             elif num==0:
@@ -532,9 +531,11 @@ def deployOrBackUp(request):
         try:
             if postData['appType']==0:
                 app=hostApplication.objects.get(id=postData['appId'])
+                templateName = appTemplate.objects.get(id=app.appTempId_id).appTemplateName
             elif postData['appType']==1:
                 app=hostApplication.objects.get(id=postData['appId'])
                 webapp=webApplication.objects.get(id=postData['webId'])
+                templateName=webTemplate.objects.get(id=webApplication.objects.get(hostAppId=postData['appId']).webTempId_id).webTemplateName
         except Exception as e:
             print(e)
             rep['code']=-1
@@ -548,11 +549,9 @@ def deployOrBackUp(request):
         hostInfo = host.objects.get(id=app.hostId_id)
         if postData['method']=='backup':
             if postData['appType']==0:
-                templateName=appTemplate.objects.get(id=app.appTempId_id).appTemplateName
                 fileName=templateName+'-'+date+'.zip'
                 cmd="cd "+app.appPath+' && zip -r /server/backup/'+fileName+' ./*'
             elif postData['appType']==1:
-                templateName=webTemplate.objects.get(id=webApplication.objects.get(hostAppId=postData['appId']).webTempId_id).webTemplateName
                 fileName = templateName + '-' + date + '.zip'
                 cmd = "cd " + app.appPath + '/webapps/'+templateName+' && zip -r /server/backup/' + fileName + ' ./*'
             salt = saltClient()
@@ -567,23 +566,54 @@ def deployOrBackUp(request):
                                       jid=result)
             hostApplication.objects.filter(id=postData['appId']).update(status=8, jid=result, jidState=1)
         elif postData['method']=='deployApp':
-            cmd=''
             try:
                 fileInfo=appVersionManage.objects.get(id=postData['fileId'])
             except:
                 rep['code'] = -1
                 rep['msg'] = '文件不存在'
                 return HttpResponse(json.dumps(rep), content_type='application/json')
-            if postData['appType'] == 0:
+            if postData['appType'] == 1:
+                appPath=app.appPath+'/webapps/'+templateName+'/'
+            elif postData['appType'] == 0:
+                appPath=app.appPath
+            if fileInfo.filePackType==0:
                 cmd="""
-                    cd /tmp && if [ ! -f %(fileName)s ]; then curl -O %(fileUrl)s%(fileDownLoadPath)s%(fileName)s; fi  && rm -rf %(filePath)s && mkdir -p %(filePath)s && unzip -o %(fileName)s -d %(filePath)s 
+                    unset LC_ALL && cd /tmp && if [ ! -f %(fileName)s ]; then curl -O %(fileUrl)s%(fileDownLoadPath)s%(fileName)s; fi  && rm -rf %(filePath)s && mkdir -p %(filePath)s && unzip -I CP936 -o %(fileName)s -d %(filePath)s 
                 """%{"fileName":fileInfo.fileName,
-                     "filePath":app.appPath,
+                     "filePath":appPath,
                      "fileUrl":conf_dit['file_download_url'][0],
                      "fileDownLoadPath":'/static/appFile'+fileInfo.filePath.split('static/appFile')[-1]}
-                print(cmd)
-            elif postData['appType'] == 1:
-                pass
+            elif fileInfo.filePackType==1:
+                cmd = """
+                        unset LC_ALL && cd /tmp && if [ ! -f %(fileName)s ]; then curl -O %(fileUrl)s%(fileDownLoadPath)s%(fileName)s; fi && unzip -I CP936 -o %(fileName)s -d %(filePath)s 
+                    """ % {"fileName": fileInfo.fileName,
+                                       "filePath": appPath,
+                                       "fileUrl": conf_dit['file_download_url'][0],
+                                       "fileDownLoadPath": '/static/appFile' +fileInfo.filePath.split('static/appFile')[-1]}
+            salt = saltClient()
+            result = salt.AsyncCmd(hostInfo.ip, cmd)[0]['jid']
+            hostApplication.objects.filter(id=postData['appId']).update(status=4, jid=result, jidState=1)
+        elif postData['method'] == 'restoreApp':
+            try:
+                backFileInfo=app_backup.objects.get(id=postData['fileId'],hostId_id=hostInfo.id)
+            except Exception as e:
+                print(e)
+                rep['code'] = -1
+                rep['msg'] = '备份文件不存在'
+                return HttpResponse(json.dumps(rep), content_type='application/json')
+            if postData['appType'] == 1:
+                appPath=app.appPath+'/webapps/'+templateName+'/'
+            elif postData['appType'] == 0:
+                appPath=app.appPath
+            cmd="""
+                unset LC_ALL && rm -rf %(filePath)s && mkdir %(filePath)s && unzip -o %(fileName)s -d %(filePath)s
+            """%{
+                "filePath": appPath,
+                "fileName":backFileInfo.fileName
+            }
+            salt = saltClient()
+            result = salt.AsyncCmd(hostInfo.ip, cmd)[0]['jid']
+            hostApplication.objects.filter(id=postData['appId']).update(status=4, jid=result, jidState=1)
         return  HttpResponse(json.dumps(rep),content_type='application/json')
     else:
         return HttpResponse(status=403)
