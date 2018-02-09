@@ -93,6 +93,6 @@ class cluster:
             clusterAssment[nonzero(clusterAssment[:,0]==bestCentToSplit)[0]]=bestClustAss
         return clusterAssment
     def calcCluster(self):
-        return self.biKmeans(self.__data,2)
+        return self.biKmeans(self.__data,3)
 
 
