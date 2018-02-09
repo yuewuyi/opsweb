@@ -24,9 +24,9 @@ app.conf.beat_schedule = {
         'schedule':timedelta(seconds=2),
         'args':()
     },
-    # "abNormalCheck-60-seconds":{
-    #     'task':'monitor.tasks.abnormalCheckTask',
-    #     'schedule':timedelta(seconds=60),
-    #     'args':()
-    # }
+    "abNormalCheck-60-seconds":{
+        'task':'monitor.tasks.abnormalCheckTask',
+        'schedule':timedelta(seconds=60),
+        'args':()
+    }
 }

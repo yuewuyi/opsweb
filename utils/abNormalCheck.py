@@ -1,8 +1,8 @@
 from utils.zabbix_public_invok import zabbix_data
 from utils.clusterKmease import cluster
-from utils.config import app_config
-from utils.customMultiprocessingPool import cpPoll
+from multiprocessing.dummy import Pool
 import time
+from monitor.models import abnormal_value
 class abnormalCheck():
     __queryItem = ["CPU_util", 'disk_read_Bps', 'disk_write_Bps', 'vailable_memory']
     def __init__(self):
@@ -20,34 +20,45 @@ class abnormalCheck():
             }
             zabbix_data_get = zabbix_data()
             itemdata += zabbix_data_get.item_get(parm)
-        a = cpPoll(process=20)
+        a = Pool(processes=10)
         for item in itemdata:
-            a.add_task(fun=historyGet,args=(item,))
-        a.close_pool()
-        a.pool_join()
+            a.apply_async(func=historyGet,args=(item,))
+        a.close()
+        a.join()
         print("join完成")
-        # while True:
-        #     result=a.get_task()
-        #     if result=='EOF':
-        #         break
-        #     elif not result[0]:
-        #         print(result)
         print("总共耗时%s"%str(int(time.time())-s))
 def historyGet(item):
-    return  [0,12,3,4]
-    # zabbix_data_get = zabbix_data()
-    # now_time = int(time.time())
-    # if item['hosts'][0]['status'] == "0" and (int(item['lastclock']) + 180) >= now_time:
-    #     history_parm = {
-    #         "output": "extend",
-    #         "history": int(item['value_type']),
-    #         "itemids": item['itemid'],
-    #         "time_from": int(item['lastclock']) - 3700,
-    #         "time_till": int(item['lastclock']) - 10,
-    #         "sortfield": "clock",
-    #         "sortorder": "ACS",
-    #     }
-    #     result = zabbix_data_get.item_history_get(history_parm)
-    #     return result
-def poolErrorCallback(this):
-    print(this)
+    zabbix_data_get = zabbix_data()
+    now_time = int(time.time())
+    if item['hosts'][0]['status'] == "0" and (int(item['lastclock']) + 180) >= now_time:
+        lastValue=float(item['lastvalue'])
+        history_parm = {
+            "output": "extend",
+            "history": int(item['value_type']),
+            "itemids": item['itemid'],
+            "time_from": int(item['lastclock']) - 3700,
+            "time_till": int(item['lastclock']) - 10,
+            "sortfield": "clock",
+            "sortorder": "ACS",
+        }
+        result = zabbix_data_get.item_history_get(history_parm)
+        valueList=[float(x['value']) for x in result]
+        valueList.append(lastValue)
+        cluKmes=cluster(valueList)
+        clusterAssment=cluKmes.calcCluster().getA()
+        index=clusterAssment[-1][0]
+        indexCount=0
+        for item in clusterAssment:
+            if item[0]==index:
+                indexCount+=1
+        if indexCount == 1:
+            abnormal_value.objects.create(
+                itemid=int(item['itemid']),
+                timestampunix=int(item['lastclock']),
+                hostName=item['hosts'][0]['host'],
+                unit=item['units'],
+                value=float(item['value']),
+                valueType=int(item['valuetype']),
+                itemName=item['name']
+            )
+

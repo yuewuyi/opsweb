@@ -91,8 +91,8 @@ class cluster:
             centList[bestCentToSplit]=bestNewCents[0]
             centList.append(bestNewCents[1])
             clusterAssment[nonzero(clusterAssment[:,0]==bestCentToSplit)[0]]=bestClustAss
-        return centList,clusterAssment
+        return clusterAssment
     def calcCluster(self):
-        return self.biKmeans(self.__data,3)
+        return self.biKmeans(self.__data,2)
 
 

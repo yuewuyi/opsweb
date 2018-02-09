@@ -1582,3 +1582,45 @@ Traceback (most recent call last):
     return reslut[0]["token"]
 TypeError: 'NoneType' object is not subscriptable
 2018-01-19 17:51:21,539 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "POST /api/deployBackUp/ HTTP/1.0" 500 27
+2018-02-09 09:50:28,304 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/root/opsweb/utils/abNormalCheck.py", line 22, in valueCheck
+    a = Pool(process=10)
+TypeError: Pool() got an unexpected keyword argument 'process'
+2018-02-09 09:50:28,971 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-02-09 09:51:13,224 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/root/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    a.add_task(fun=historyGet,args=(item,))
+AttributeError: 'ThreadPool' object has no attribute 'add_task'
+2018-02-09 09:51:13,240 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
+2018-02-09 09:52:36,361 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py[line:135] Internal Server Error: /monitor/abnormal/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/opsweb/monitor/views.py", line 130, in abnormal
+    ac.valueCheck()
+  File "/root/opsweb/utils/abNormalCheck.py", line 24, in valueCheck
+    a.apply_async(fun=historyGet,args=(item,))
+TypeError: apply_async() got an unexpected keyword argument 'fun'
+2018-02-09 09:52:36,388 ERROR    /usr/local/lib/python3.5/dist-packages/django/core/servers/basehttp.py[line:124] "GET /monitor/abnormal/ HTTP/1.0" 500 27
