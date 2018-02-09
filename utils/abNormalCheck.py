@@ -3,6 +3,7 @@ from utils.clusterKmease import cluster
 from multiprocessing.dummy import Pool
 import time
 from monitor.models import abnormal_value
+import traceback
 class abnormalCheck():
     __queryItem = ["CPU_util", 'disk_read_Bps', 'disk_write_Bps', 'vailable_memory']
     def __init__(self):
@@ -20,7 +21,7 @@ class abnormalCheck():
             }
             zabbix_data_get = zabbix_data()
             itemdata += zabbix_data_get.item_get(parm)
-        a = Pool(processes=10)
+        a = Pool(processes=5)
         for item in itemdata:
             a.apply_async(func=historyGet,args=(item,))
         a.close()
@@ -48,17 +49,20 @@ def historyGet(item):
         clusterAssment=cluKmes.calcCluster().getA()
         index=clusterAssment[-1][0]
         indexCount=0
-        for item in clusterAssment:
-            if item[0]==index:
+        for item2 in clusterAssment:
+            if item2[0]==index:
                 indexCount+=1
         if indexCount == 1:
-            abnormal_value.objects.create(
-                itemid=int(item['itemid']),
-                timestampunix=int(item['lastclock']),
-                hostName=item['hosts'][0]['host'],
-                unit=item['units'],
-                value=float(item['value']),
-                valueType=int(item['valuetype']),
-                itemName=item['name']
-            )
+            try:
+                abnormal_value.objects.create(
+                    itemid=int(item['itemid']),
+                    timestampunix=int(item['lastclock']),
+                    hostName=item['hosts'][0]['host'],
+                    unit=item['units'],
+                    value=float(item['lastvalue']),
+                    valueType=int(item['value_type']),
+                    itemName=item['name']
+                )
+            except Exception as e:
+                print(traceback.format_exc())
 
