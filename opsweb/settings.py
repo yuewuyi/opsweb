@@ -18,6 +18,8 @@ CELERY_BROKER_URL = 'redis://:suyue123@127.0.0.1:6379/0'#使用redis作为消息
 CELERY_ACCEPT_CONTENT = ['json']# 指定接受的内容类型
 CELERY_RESULT_BACKEND = 'django-db'# 使用数据库存储任务结果
 CELERY_TASK_SERIALIZER = 'json'#读取任务结果一般性能要求不高，所以使用了可读性更好的JSON
+CELERY_CONCURRENCY=4
+CELERY_MAX_TASKS_PER_CHILD=20
 #日志
 LOGGING = {
     'version': 1,
