@@ -8,6 +8,9 @@ app = Celery('opsweb')
 app.autodiscover_tasks()
 #namespace表示获取CELERY前缀的所有配置
 app.config_from_object('django.conf:settings', namespace='CELERY')
+app.conf.worker_concurrency=4
+app.conf.worker_max_memory_per_child=200000
+app.conf.worker_max_tasks_per_child=10
 app.conf.beat_schedule = {
     'hostKeyFind-10-seconds': {
         'task': 'deploy.tasks.HostKeyFind',
