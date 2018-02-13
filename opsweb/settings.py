@@ -20,6 +20,7 @@ CELERY_RESULT_BACKEND = 'django-db'# 使用数据库存储任务结果
 CELERY_TASK_SERIALIZER = 'json'#读取任务结果一般性能要求不高，所以使用了可读性更好的JSON
 CELERYD_CONCURRENCY=4 #最大并发数
 CELERYD_MAX_TASKS_PER_CHILD=10 #一个worker执行多少次任务后销毁
+worker_max_memory_per_child=200000 #设置一个进程最多占用200M内存
 #日志
 LOGGING = {
     'version': 1,
